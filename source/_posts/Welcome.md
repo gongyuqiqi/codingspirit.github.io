@@ -1,0 +1,10 @@
+---
+layout: post
+title: Welcome
+date: 2017-10-31 20:48:07
+tags: 随便写写
+---
+
+![](/assets/img/coding_spirit.jpg)
+
+	这是一个用node.js+hexo+github搭建起来的小站。好记性不如烂键盘，以后多多写blog咯！

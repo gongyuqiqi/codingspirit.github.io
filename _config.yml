@@ -4,7 +4,7 @@
 
 # Site
 title: Coding Spirit
-subtitle: 一名程序员，比较帅的那种
+subtitle: 这是一只程序员，比较帅的那种
 description:
 author: Coding Spirit
 language: zh-CN
@@ -78,5 +78,24 @@ theme: hexo-theme-yilia
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:codingspirit/codingspirit.github.io.git
+  repo: https://github.com/codingspirit/codingspirit.github.io
   branch: master
+
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: false
+    tags: true
