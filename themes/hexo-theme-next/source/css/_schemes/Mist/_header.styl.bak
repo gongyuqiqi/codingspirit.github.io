@@ -28,7 +28,7 @@
     +mobile() { display: block; }
   }
 
-  .logo { display: block; }
+  .logo { display: none; }
 
   .site-title {
     font-size: 22px;
