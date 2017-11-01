@@ -4,7 +4,7 @@
 
 # Site
 title: Coding Spirit
-subtitle: 这是一只程序员，比较帅的那种
+subtitle: 一位程序员，比较帅的那种
 description:
 author: Coding Spirit
 language: zh-CN
@@ -72,7 +72,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: hexo-theme-yilia
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
