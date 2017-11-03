@@ -5,10 +5,10 @@
 # Site
 title: Coding Spirit
 subtitle: 一位程序员，比较帅的那种
-description:
+description: 毕业于OUC，现就职于Tymphany
 author: Coding Spirit
-language: zh-CN
-timezone:
+language: zh-Hans
+timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -80,3 +80,10 @@ deploy:
   type: git
   repo: https://github.com/codingspirit/codingspirit.github.io
   branch: master
+
+# Search
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000

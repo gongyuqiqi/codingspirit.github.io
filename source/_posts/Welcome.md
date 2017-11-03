@@ -2,7 +2,9 @@
 layout: post
 title: Welcome
 date: 2017-10-31 20:48:07
-tags: 随便写写
+categories: 随便写写
+tags:
+   -日志
 ---
 
 ### Welcome
