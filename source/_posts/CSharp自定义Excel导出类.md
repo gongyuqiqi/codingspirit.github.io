@@ -1,0 +1,85 @@
+---
+title: 'CSharp自定义Excel导出类'
+tags:
+  - C#
+date: 2017-11-08 09:20:36
+categories: 编程相关
+---
+前段时间有写了个debug tool用来自动抓测试数据，需要根据Log抓取数据自动生成带Chart的Excel，但是原生的COM组件非常不好用，于是我重新封装了一个。
+<!--more-->
+Reference: Microsoft Excel 15.0 Object Library(COM组件)
+```cs
+using Microsoft.Office.Interop.Excel;
+using System;
+using System.Reflection;
+
+namespace My_Space
+{
+    class ExportExcel
+    {
+        private string xlsOutPath;
+        private string logPath;
+        private Application xlsApp;
+        private Workbook xlsWorkBook;
+        private Worksheet xlsWorkSheet;
+        private object misValue = Missing.Value;
+
+        public ExportExcel(string excelOutPath)
+        {
+            xlsOutPath = excelOutPath;
+            logPath = null;
+            xlsApp = new Application();
+            if (xlsApp == null)
+            {
+                throw new Exception("Please Install Excel 2013 or Newer Verison");
+            }
+            XlsWorkBook = xlsApp.Workbooks.Add(misValue);
+            xlsWorkSheet = XlsWorkBook.Worksheets.get_Item(1);
+        }
+        public ExportExcel(string logInPath, string excelOutPath)
+        {
+            logPath = logInPath;
+            xlsOutPath = excelOutPath;
+            xlsApp = new Application();
+            if (xlsApp == null)
+            {
+                throw new Exception("Please Install Excel 2013 or Newer Verison");
+            }
+            XlsWorkBook = xlsApp.Workbooks.Add(misValue);
+            xlsWorkSheet = XlsWorkBook.Worksheets.get_Item(1);
+        }
+
+        public Worksheet XlsWorkSheet { get => xlsWorkSheet; set => xlsWorkSheet = value; }
+        public Workbook XlsWorkBook { get => xlsWorkBook; set => xlsWorkBook = value; }
+
+        public void AddChart(Worksheet worksheet, double left, double top, double weight, double height, string dataStart, string dataEnd)
+        {
+            ChartObjects xlsCharts = worksheet.ChartObjects(Type.Missing);
+            ChartObject myChart = xlsCharts.Add(left, top, weight, height);
+            Range chartRange = worksheet.get_Range(dataStart, dataEnd);
+            myChart.Chart.SetSourceData(chartRange, misValue);
+            myChart.Chart.ChartType = XlChartType.xlXYScatterSmooth;
+            myChart.Chart.ChartStyle = 245;
+        }
+        public void AddSheet(string name)
+        {
+            xlsWorkSheet = XlsWorkBook.Sheets.Add(misValue, misValue, misValue, misValue);
+            xlsWorkSheet.Name = name;
+        }
+        public void SaveExcel(bool flag)
+        {
+            if (flag)
+            {
+                xlsWorkBook.Close(true, xlsOutPath, misValue);
+            }
+            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlsWorkSheet);
+            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlsWorkBook);
+            System.Runtime.InteropServices.Marshal.ReleaseComObject(xlsApp);
+            xlsWorkSheet = null;
+            xlsWorkBook = null;
+            xlsApp = null;
+            GC.Collect();
+        }
+    }
+}
+```
