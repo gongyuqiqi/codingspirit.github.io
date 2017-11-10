@@ -5,7 +5,7 @@ tags:
 date: 2017-11-08 09:20:36
 categories: 编程相关
 ---
-前段时间有写了个debug tool用来自动抓测试数据，需要根据Log抓取数据自动生成带Chart的Excel，但是原生的COM组件非常不好用，于是我重新封装了一个。
+前段时间写了个debug tool用来自动抓测试数据，该工具需要通过爬取Log数据自动生成带Chart的Excel，但是原生的COM组件非常不好用，于是我重新封装了一个。
 <!--more-->
 Reference: Microsoft Excel 15.0 Object Library(COM组件)
 ```cs
