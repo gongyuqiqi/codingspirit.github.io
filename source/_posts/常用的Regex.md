@@ -29,7 +29,7 @@ string value = Regex.Match(srcData, "(?<=#).*?(?=!)").Value;
 ## 目标数据为多行
 
 前段时间的一个项目中要求从.c文件中获得某一struct的全部成员变量，一般而言struct内部都是多行的，因此上一种方式无法正确匹配。
-'''cs
+```cs
 string value = Regex.Match(srcData, @"(?<=[START])[\s\S]+?(?=[END])").Value;
-'''
+```
 这种方式就比较粗暴了，直接非贪婪匹配所有字符（非空格和空格字符），所以得到的数据通常包括\r\n。
