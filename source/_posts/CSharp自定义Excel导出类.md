@@ -1,5 +1,5 @@
 ---
-title: 'CSharp自定义Excel导出类'
+title: C#自定义Excel导出类
 tags:
   - C#
 date: 2017-11-08 09:20:36
@@ -18,7 +18,7 @@ namespace My_Space
     class ExportExcel
     {
         private string xlsOutPath;
-        private string logPath;
+        private string xlsInPath;
         private Application xlsApp;
         private Workbook xlsWorkBook;
         private Worksheet xlsWorkSheet;
@@ -27,7 +27,7 @@ namespace My_Space
         public ExportExcel(string excelOutPath)
         {
             xlsOutPath = excelOutPath;
-            logPath = null;
+            xlsInPath = null;
             xlsApp = new Application();
             if (xlsApp == null)
             {
@@ -36,17 +36,17 @@ namespace My_Space
             XlsWorkBook = xlsApp.Workbooks.Add(misValue);
             xlsWorkSheet = XlsWorkBook.Worksheets.get_Item(1);
         }
-        public ExportExcel(string logInPath, string excelOutPath)
+        public ExportExcel(string excelInPath, string excelOutPath)
         {
-            logPath = logInPath;
+            xlsInPath = excelInPath;
             xlsOutPath = excelOutPath;
             xlsApp = new Application();
             if (xlsApp == null)
             {
                 throw new Exception("Please Install Excel 2013 or Newer Verison");
             }
-            XlsWorkBook = xlsApp.Workbooks.Add(misValue);
-            xlsWorkSheet = XlsWorkBook.Worksheets.get_Item(1);
+            XlsWorkBook = xlsApp.Workbooks.Add(xlsInPath);
+            xlsWorkSheet = XlsWorkBook.Worksheets.get_Item(xlsWorkBook.Worksheets.Count);
         }
 
         public Worksheet XlsWorkSheet { get => xlsWorkSheet; set => xlsWorkSheet = value; }
@@ -63,8 +63,41 @@ namespace My_Space
         }
         public void AddSheet(string name)
         {
-            xlsWorkSheet = XlsWorkBook.Sheets.Add(misValue, misValue, misValue, misValue);
-            xlsWorkSheet.Name = name;
+            bool exist = false;int i;
+            for (i = 1; i <= XlsWorkBook.Sheets.Count; i++)
+            {
+                if (XlsWorkBook.Sheets[i].Name == name)
+                {
+                    exist = true;
+                    break;
+                }
+            }
+            if (!exist)
+            {
+                xlsWorkSheet = XlsWorkBook.Sheets.Add(misValue, xlsWorkSheet, misValue, misValue);
+                xlsWorkSheet.Name = name;
+            }
+            else
+            {
+                xlsWorkSheet = XlsWorkBook.Sheets[i];
+            }
+        }
+        public void CopySheet(Worksheet src,Worksheet dst)
+        {
+            src.Cells.Copy(Type.Missing);
+            try
+            {
+                dst.Paste(Type.Missing, Type.Missing);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public void AddHyperLink(string cellName, string link)
+        {
+            Range range = xlsWorkSheet.get_Range(cellName,Type.Missing);
+            xlsWorkSheet.Hyperlinks.Add(range, link);
         }
         public void SaveExcel(bool flag)
         {
