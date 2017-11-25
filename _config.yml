@@ -12,7 +12,7 @@ timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://codingspirit.github.io/
+url: lzqblog.top
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -78,7 +78,9 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/codingspirit/codingspirit.github.io
+  repo: 
+    github: https://github.com/codingspirit/codingspirit.github.io
+    coding: https://git.coding.net/Coding_Spirit/Coding_Spirit.git
   branch: master
 
 # Search
