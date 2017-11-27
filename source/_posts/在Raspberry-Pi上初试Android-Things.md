@@ -17,7 +17,7 @@ categories: 编程相关
   4.Micro SD card
 
 ## 生成IMAGE
-  首先在[Android Things Console](partner.android.com/things/console)上生成Image。新建一个product,输入Product name,选择SOM Type。之后可以添加Bundle自定义开机动画等设置，也可以直接使用Empty bundle。之后选择一个Android Things versions, Create build configuration后，可以进行在线的build和Image生成(之前据说最开始本地build用服务器级的至强cpu都要build 5个小时)，下载生成的zip file。
+  首先在[Android Things Console](https://partner.android.com/things/console/)上生成Image。新建一个product,输入Product name,选择SOM Type。之后可以添加Bundle自定义开机动画等设置，也可以直接使用Empty bundle。之后选择一个Android Things versions, Create build configuration后，可以进行在线的build和Image生成(之前据说最开始本地build用服务器级的至强cpu都要build 5个小时)，下载生成的zip file。
 
 ## 烧录Image
   解压下载的zip file，解压得到使用烧录工具(比如Etcher)将iot_rpi3.img烧录至SD card。
@@ -49,6 +49,12 @@ logcat -d | grep Wifi
 当看见WifiWatcher: Network state changed to CONNECTED时，表明连接成功。这时可以尝试断开adb,拔掉网线,使用adb连接无线ip,连接成功后可以ping一下百度：
 ```bash
 ping baidu.com
+```
+如果想清除所有保存的wifi连接设置：
+```bash
+am startservice \
+    -n com.google.wifisetup/.WifiSetupService \
+    -a WifiSetupService.Reset
 ```
 
 ## UI DEMO
