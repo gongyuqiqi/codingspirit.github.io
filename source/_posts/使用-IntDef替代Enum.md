@@ -6,7 +6,7 @@ tags:
 date: 2017-11-27 11:38:18
 categories: 编程相关
 ---
-  [有篇Android官方文档](https://developer.android.com/topic/performance/memory.html#Overhead)有提到："For example, enums often require more than twice as much memory as static constants. You should strictly avoid using enums on Android." 于是我们使用自定义annotation来代替Enum。
+  [有篇Android官方文档](https://developer.android.com/topic/performance/memory.html#Overhead)提到："For example, enums often require more than twice as much memory as static constants. You should strictly avoid using enums on Android." 于是我们使用自定义annotation来代替Enum。
 <!--more-->
 ```java
     @Retention(RetentionPolicy.SOURCE)
