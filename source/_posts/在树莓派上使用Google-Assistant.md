@@ -1,10 +1,11 @@
 ---
 title: 在树莓派上使用Google Assistant
 tags:
-  - null
-  - null
+  - Android Things
+  - Raspberry Pi
+  - Java
 date: 2017-12-28 16:21:13
-categories:
+categories: 编程相关
 ---
 前段时间尝试在树莓派上使用Google Assistant, 系统能够捕捉音频并识别，使用USB声卡也能正常工作，但使用3.5mm jack时没有音频输出。经过摸索终于有输出了！写篇post记录一下关键步骤吧！
 <!--more-->
