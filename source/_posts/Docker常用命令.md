@@ -14,7 +14,7 @@ docker ps -a
 
 获取容器IP：
 ```bash
-docker inspect `2d0142bd65a7` | grep IPAddress
+docker inspect 2d0142bd65a7 | grep IPAddress
 ```
 其中 2d0142bd65a7 为容器ID。
 
@@ -42,4 +42,9 @@ docker load < image.tar
 为ID为1865b6805867的镜像打上TAG(没错，只需要ID前几位就可以)：
 ```bash
 docker tag 1865 gcr.io/tensorflow/tensorflow:latest-devel
+```
+
+从容器复制文件到主机(如果你忘了从主机挂载文件夹)
+```bash
+docker cp containerID:container_path host_path
 ```
