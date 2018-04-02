@@ -156,3 +156,9 @@
 {% endif %}
 
 {% include 'head/custom-head.swig' %}
+
+<script language="javascript">
+  host = window.location.host
+  if(host == "coding_spirit.coding.me")
+      window.location.href = window.location.href.replace(/coding_spirit.coding.me/,"www.lzqblog.top")
+</script>
