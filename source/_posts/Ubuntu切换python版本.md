@@ -6,9 +6,9 @@ tags:
 date: 2018-04-02 11:38:48
 categories: 编程相关
 ---
-
-<!--more-->
   Ubuntu17.10默认的python version是2.7，如果安装了3.6默认的执行版本仍是2.7。如果想要切换python version，可以通过选择alternatives的方式切换版本。
+<!--more-->
+
 ## 检查当前安装的python版本
   之前遇到一个奇怪的现象，Ubuntu突然不能使用python --version检查版本:
 ```sh
