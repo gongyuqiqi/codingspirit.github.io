@@ -49,7 +49,7 @@ sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2
 ```sh
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
 ```
-现在使用update-alternatives --list python就可以看到当前python所有的alternatives：
+现在使用update-alternatives --config python就可以看到当前python所有的alternatives并进行版本切换：
 ```sh
 There are 2 choices for the alternative python (providing /usr/bin/python).
 
