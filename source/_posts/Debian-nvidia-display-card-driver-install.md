@@ -46,13 +46,13 @@ vblank_mode=0 /opt/VirtualGL/bin/glxspheres64
 ```
 **vblank_mode=0** will temporarily disable vertical synchronization. If you don't add it, you might only can get 60 fps which is same as your monitor refresh rate. The result I got:
 
-{% asset_img 1.jpg %}
+{% asset_img 1.png %}
 
 Then run it with nvidia card:
 ```bash
 vblank_mode=0 optirun /opt/VirtualGL/bin/glxspheres64
 ```
 
-{% asset_img 2.jpg %}
+{% asset_img 2.png %}
 
 It's much faster than Intel card.
