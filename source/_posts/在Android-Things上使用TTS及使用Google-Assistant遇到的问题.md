@@ -4,9 +4,7 @@ tags:
   - Android Things
   - Java
 date: 2017-12-06 16:37:03
-categories: 
-  - 编程相关
-  - 问题记录
+categories: 编程相关
 ---
   智能音响有两个重要功能:“说”和“听”。在Android Things上我们可以通过TextToSpeech和Google Assistant来实现上述功能。TTS的实现比较容易，而Google Assistant就比较麻烦了，目前我遇到的问题是Google Assistant能听懂我说什么，却不能给出答案。。还是写个日志记录一下吧。
 <!--more-->
