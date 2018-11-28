@@ -65,10 +65,14 @@ python tensorflow/tensorflow/examples/image_retraining/retrain.py \
   --image_dir /tf_files/cartoon
 ```
 在这里我们设置了bottleneck的输出目录，training_steps，模型位置，pb文件及label输出位置，样本图片位置。一般而言training_steps越多，训练时间越长，效果越好，反之则反。如果模型位置没有需要的模型，该脚本会尝试自动下载。pb文件就是训练完成的模型，label是一个txt文件，里面包含了我们训练完成的模型能识别的对象名称。不出意外的话，几十分钟后训练就可以完成。
-{% asset_img 0.png %}
+
+![](使用TensorFlow训练自己的图像识别AI/0.png)
+
 可以看到我们的模型的测试识别准确率达到了95.5%。
-  tf_files下生成了我们训练的模型cartoon.pb以及label文件cartoon.txt。打开cartoon.txt可以看到，该模型可以识别的对象有crayon(蜡笔小新)、minions(小黄人)、spongebob(海绵宝宝)三种(就是cartoon文件夹下子文件夹的名字)。我这里生成的pb文件有87.4MB。
-{% asset_img 1.png %}
+
+tf_files下生成了我们训练的模型cartoon.pb以及label文件cartoon.txt。打开cartoon.txt可以看到，该模型可以识别的对象有crayon(蜡笔小新)、minions(小黄人)、spongebob(海绵宝宝)三种(就是cartoon文件夹下子文件夹的名字)。我这里生成的pb文件有87.4MB。
+
+![](使用TensorFlow训练自己的图像识别AI/1.png)
 ## 优化与压缩
 ### 为什么要进行优化和压缩
   对于移动设备(例如智能手机)和嵌入式设备(例如跑Android Things或Linux的设备)来说，这个模型文件太大了。如果你尝试把其打包为apk文件，你可能会得到一个将近100MB的apk，这对用户来说可能体验并不太友好。因此我们需要对该模型进行优化和压缩以减小其体积。
@@ -93,7 +97,9 @@ python tensorflow/tools/quantization/quantize_graph.py \
   --mode=weights_rounded
 ```
   通常来说，新生成的rounded_cartoon.pb大小并不会发生太大变化，但是当我尝试将其压缩为zip文件时，我得到了一个令人满意的压缩包大小：23.9MB
-{% asset_img 2.png %}
+
+![](使用TensorFlow训练自己的图像识别AI/2.png)
+
   现在如果我们尝试将其作为资源文件打包进apk，可以得到一个小得多的安装包，用户下载的时间大大减少了。
 ## 测试与验证
   首先我们将测试经过optimize_for_inference优化的optimized_cartoon.pb。为了方便测试，我使用了TensorFlow在Android上的demo app，你可以在Github上找到其源码。要让我们的模型文件能够在这个demo上正常工作，我们需要做一点微小的工作。
@@ -108,16 +114,15 @@ python tensorflow/tools/quantization/quantize_graph.py \
 
 
   private static final String MODEL_FILE = "file:///android_asset/optimized_cartoon.pb";
-  private static final String LABEL_FILE =
-      "file:///android_asset/cartoon.txt";
+  private static final String LABEL_FILE = "file:///android_asset/cartoon.txt";
 ```
 这里我们限制输入图像为299x299, 并更改INPUT_NAME和OUTPUT_NAME。当然还有MODEL_FILE和LABEL_FILE的位置。测试样例我直接用手机拍的，由于限制了输入图像大小为299x299，所以图片质量比较差，但是还是得到了不错的运行结果：
-{% asset_img res1.png %}
-{% asset_img res2.png %}
-{% asset_img res3.png %}
+![](使用TensorFlow训练自己的图像识别AI/res1.png)
+![](使用TensorFlow训练自己的图像识别AI/res2.png)
+![](使用TensorFlow训练自己的图像识别AI/res3.png)
 再看看经过quantize_graph优化的：
-{% asset_img res4.png %}
-{% asset_img res5.png %}
-{% asset_img res6.png %}
+![](使用TensorFlow训练自己的图像识别AI/res4.png)
+![](使用TensorFlow训练自己的图像识别AI/res5.png)
+![](使用TensorFlow训练自己的图像识别AI/res6.png)
 ## 下一步
   接下来我们可以尝试进行音频方向的机器学习探索。目前还在研究中，等有了有趣的发现后再写篇post吧。

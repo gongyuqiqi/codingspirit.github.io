@@ -43,17 +43,29 @@ Markdown 支持插入简单的表格:
 
 Markdown 甚至支持直接画流程图
 
-![1](Markdown-frequently-used-syntax/006HJgYYgy1fex00ntxymg308c08c74b.png)
+![](Markdown-frequently-used-syntax/006HJgYYgy1fex00ntxymg308c08c74b.png)
+![]()
 
-Bold
-**Bold Text**
-Italic
-*Italic Text*
-Strike Through
-~~Strike Through Text~~
+```flow
+flow
+st=>start: Start
+op=>operation: Your Operation
+cond=>condition: Yes or No?
+e=>end
+st->op->cond
+cond(yes)->e
+cond(no)->op
+```
 
+![](006HJgYYgy1fex00ntxymg308c08c74b.png)
+
+注： hexo默认不支持Markdown流程图，要在hexo上显示流程图需要安装hexo-filter-flowchart
+
+```bash
+npm install --save hexo-filter-flowchart
+```
 
 [Suerp_Link](http://lzqblog.top)
 
 
-{% asset_img 1.jpg %}
+![](1.jpg)

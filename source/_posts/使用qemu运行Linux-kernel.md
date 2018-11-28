@@ -10,7 +10,7 @@ categories: 编程相关
 宿主OS：Ubuntu 17.04
 ## 准备工作
 由于某些众所周知的原因，访问一些国外的服务器非常慢，因此推荐使用国内的镜像，我这里用的是阿里的：
-{% asset_img a.png %}
+![](使用qemu运行Linux-kernel/a.png)
 换完更新源后，个人习惯装一个vim：
 ```bash
 sudo apt-get install vim
@@ -89,8 +89,8 @@ sudo umount tmpfs
 ```bash
 qemu-system-arm -M vexpress-a9 -m 256M -dtb extra_folder/vexpress-v2p-ca9.dtb -kernel extra_folder/zImage -append "root=/dev/mmcblk0 rw" -sd a9rootfs.ext3
 ```
-{% asset_img b.png %}
+![](使用qemu运行Linux-kernel/b.png)
 然后熟悉的企鹅出现了!
-{% asset_img c.png %}
+![](使用qemu运行Linux-kernel/c.png)
 拷个hello world试一下:
-{% asset_img d.png %}
+![](使用qemu运行Linux-kernel/d.png)

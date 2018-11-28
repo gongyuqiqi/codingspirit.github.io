@@ -37,7 +37,7 @@ python tensorflow/examples/speech_commands/train.py \
 tensorboard --logdir /speech_train/logs
 ```
 运行指令后，可以通过浏览器访问本地的6006端口进入TensorBoard。下图是使用conv模型完成18000 steps 训练的过程图：
-{% asset_img 2018-01-16-08-48-12.png %}
+![](使用TensorFlow训练自己的语音识别AI/2018-01-16-08-48-12.png)
 训练花了差不多15个小时。
 ## 生成pb文件
 训练完成后，我们需要将其转化为pb文件：
@@ -70,7 +70,7 @@ python tensorflow/examples/speech_commands/train.py \
 --wanted_words=one,two,three,four,marvin,wow
 ```
 当使用该模型时，可以适当增加training steps和learning rate。在这种情况下，训练的时间大大缩短了：
-{% asset_img 2018-01-12-08-57-07.png %}
+![](使用TensorFlow训练自己的语音识别AI/2018-01-12-08-57-07.png)
 只花了不到3小时.
 ## 其他
 也可以使用gpu版本的tensorflow进行训练，速度可以提升不少哦。

@@ -24,7 +24,9 @@ categories: 编程相关
 
 ## 启动并连接设备
   接好HDMI和Ethernet，插入SD card就可以开机了！
-  {% asset_img 1.jpg %}
+
+  ![](在Raspberry-Pi上初试Android-Things/1.jpg)
+  
   接下来我们测试一下Ethernet的连接性。如果连接正常，屏幕上是会显示当前的ip地址的。使用adb尝试连接一下：
 ```bash
 adb connect 192.168.1.66
@@ -61,7 +63,9 @@ am startservice \
   这里以官方的UI DEMO(om.example.androidthings.simpleui)为例，跑个带UI的app试一下。
 ### 程序结构
   Things工程的结构和普通Android app结构很相似，Things的更加简单。还是熟悉的AndroidManifest.xml + java + res。
-  {% asset_img 2.png %}
+
+  ![](在Raspberry-Pi上初试Android-Things/2.png)
+
   在Manifest中声明主题、入口Activity、权限等，在layout中，Android基本的控件都有。。。总而言之，和普通Android开发相似度极高，以致于我都不想写下去了。。。
 ### 代码
   贴段几段代码，分析下值得注意的地方。首先import了几个在Android开发中没见过的包：
@@ -140,4 +144,4 @@ public class SimpleUiActivity extends Activity {
 }
 ```
 ### 运行结果
-  {% asset_img 3.jpg %}
+  ![](在Raspberry-Pi上初试Android-Things/3.jpg)

@@ -32,5 +32,5 @@ if (ttsEngine != null) {
 即可实现音频输出。完整的代码已上传到github：[Roach](https://github.com/codingspirit/Android_Things_TTS)
 ## Google Assistant
   要使用Google Assistant，必须要使用Google Assistant API并创建相应的加密凭据。同时，申请的Google账号还要给予app权限以允许访问一些敏感内容。先贴张测试结果图：
-{% asset_img 1.png %}
+![](在Android-Things上使用TTS及使用Google-Assistant遇到的问题/1.png)
 在测试中，app似乎成功上传了录音并能正确识别，但是却不能根据问题进行正确的解答，初步怀疑可能还有一些权限没有申请。

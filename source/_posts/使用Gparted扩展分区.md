@@ -38,4 +38,4 @@ Removed /run/systemd/system/var-lib-docker-plugins.mount.
 $ xhost +SI:localuser:root
 ```
   之后就可以正常运行了。首先将当前分区扩容。之后添加一个扩展分区，再在扩展分区下添加linux-swap。最后别忘了应用修改。
-  {% asset_img gparted.png %}
+  ![](使用Gparted扩展分区/gparted.png)
