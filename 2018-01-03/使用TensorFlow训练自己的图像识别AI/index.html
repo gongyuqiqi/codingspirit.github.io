@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="lHwoaFrtYU">
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/assets/img/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Machine Learning,TensorFlow,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="摸索了几天，终于用TensorFlow成功训练了一个能够识别三种动漫人物的AI。写篇post记录一下。由于训练是在虚拟机上跑的，没有办法使用显卡，所以这次的训练只用到了CPU。GPU版本的训练下次再写。">
+<meta name="keywords" content="Machine Learning,TensorFlow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用TensorFlow训练自己的图像识别AI">
+<meta property="og:url" content="http://www.lzqblog.top/2018-01-03/使用TensorFlow训练自己的图像识别AI/index.html">
+<meta property="og:site_name" content="Coding Spirit">
+<meta property="og:description" content="摸索了几天，终于用TensorFlow成功训练了一个能够识别三种动漫人物的AI。写篇post记录一下。由于训练是在虚拟机上跑的，没有办法使用显卡，所以这次的训练只用到了CPU。GPU版本的训练下次再写。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.lzqblog.top/2018-01-03/使用TensorFlow训练自己的图像识别AI/0.png">
+<meta property="og:image" content="http://www.lzqblog.top/2018-01-03/使用TensorFlow训练自己的图像识别AI/1.png">
+<meta property="og:image" content="http://www.lzqblog.top/2018-01-03/使用TensorFlow训练自己的图像识别AI/2.png">
+<meta property="og:image" content="http://www.lzqblog.top/2018-01-03/使用TensorFlow训练自己的图像识别AI/res1.png">
+<meta property="og:image" content="http://www.lzqblog.top/2018-01-03/使用TensorFlow训练自己的图像识别AI/res2.png">
+<meta property="og:image" content="http://www.lzqblog.top/2018-01-03/使用TensorFlow训练自己的图像识别AI/res3.png">
+<meta property="og:image" content="http://www.lzqblog.top/2018-01-03/使用TensorFlow训练自己的图像识别AI/res4.png">
+<meta property="og:image" content="http://www.lzqblog.top/2018-01-03/使用TensorFlow训练自己的图像识别AI/res5.png">
+<meta property="og:image" content="http://www.lzqblog.top/2018-01-03/使用TensorFlow训练自己的图像识别AI/res6.png">
+<meta property="og:updated_time" content="2018-11-28T12:01:18.546Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用TensorFlow训练自己的图像识别AI">
+<meta name="twitter:description" content="摸索了几天，终于用TensorFlow成功训练了一个能够识别三种动漫人物的AI。写篇post记录一下。由于训练是在虚拟机上跑的，没有办法使用显卡，所以这次的训练只用到了CPU。GPU版本的训练下次再写。">
+<meta name="twitter:image" content="http://www.lzqblog.top/2018-01-03/使用TensorFlow训练自己的图像识别AI/0.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.lzqblog.top/2018-01-03/使用TensorFlow训练自己的图像识别AI/">
+
+
+
+
+
+<script language="javascript">
+  host = window.location.host
+  if(host == "coding_spirit.coding.me")
+      window.location.href = window.location.href.replace(/coding_spirit.coding.me/,"www.lzqblog.top")
+</script>
+
+  <title>使用TensorFlow训练自己的图像识别AI | Coding Spirit</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coding Spirit</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">一位程序员，比较帅的那种</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.lzqblog.top/2018-01-03/使用TensorFlow训练自己的图像识别AI/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coding Spirit">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/img/coding_spirit.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Spirit">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">使用TensorFlow训练自己的图像识别AI</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-03T15:46:10+08:00">
+                2018-01-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>&nbsp点击量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.3k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>  摸索了几天，终于用TensorFlow成功训练了一个能够识别三种动漫人物的AI。写篇post记录一下。由于训练是在虚拟机上跑的，没有办法使用显卡，所以这次的训练只用到了CPU。GPU版本的训练下次再写。<br><a id="more"></a><br>训练环境：<br>  OS: Ubuntu 17.10(VMWare)<br>  CPU:i5-6300HQ(开了两个核给虚拟机)<br>  RAM:4G(16G只开了4G给虚拟机)</p>
+<h2 id="配置开发环境"><a href="#配置开发环境" class="headerlink" title="配置开发环境"></a>配置开发环境</h2><p>  安装TensorFlow是一件十分麻烦的事情。你需要python(推荐python3以上)及各种扩展模块，bazel等等，这些安装操作会频繁地更改环境变量，稍有不慎就可能导致崩溃，还极难恢复。因此推荐使用Docker来进行环境搭建。</p>
+<h3 id="什么是Docker"><a href="#什么是Docker" class="headerlink" title="什么是Docker"></a>什么是Docker</h3><p>  Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。你可以把容器看成一个沙箱。Docker提供了一些已经装完TensorFlow开发所需的各种依赖包的image。我们只需要使用Docker下载这些image，就可以在Docker的容器中进行开发，而不用担心安装各种扩展包导致系统崩溃。更重要的是，你可以基于一个image创建多个互不干扰的容器，我们可以在容器里进行各种变态的实验而不需要反复下载image。(特别是这些image由于某些众所周知的原因在大陆下载极其缓慢甚至不能下载)</p>
+<h3 id="如何安装Docker"><a href="#如何安装Docker" class="headerlink" title="如何安装Docker"></a>如何安装Docker</h3><p>  参考Docker的<a href="https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#extra-steps-for-aufs" target="_blank" rel="noopener">官方安装指南</a>可以非常轻松地完成Docker安装。</p>
+<h3 id="下载集成TensorFlow开发环境的镜像"><a href="#下载集成TensorFlow开发环境的镜像" class="headerlink" title="下载集成TensorFlow开发环境的镜像"></a>下载集成TensorFlow开发环境的镜像</h3><p>  接下来的步骤需要root权限并需要访问Google服务器。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker run -it gcr.io/tensorflow/tensorflow:latest-devel</span></span><br></pre></td></tr></table></figure></p>
+<p>执行该指令，Docker会自动下载镜像。你也可以选择下载不同版本的镜像：<br>CPU版：gcr.io/tensorflow/tensorflow<br>CPU版带开发环境：gcr.io/tensorflow/tensorflow:latest-devel<br>GPU版：gcr.io/tensorflow/tensorflow:latest-gpu<br>GPU版带开发环境：gcr.io/tensorflow/tensorflow:latest-devel-gpu</p>
+<h3 id="搭建完成"><a href="#搭建完成" class="headerlink" title="搭建完成"></a>搭建完成</h3><p>  经过漫长的等待，如果命令行变成root@xxxxxxxxxxxx 说明下载安装完成，用户已经在Docker容器中了(xxxxxxxxx为当前容器ID)。</p>
+<h2 id="准备训练样本"><a href="#准备训练样本" class="headerlink" title="准备训练样本"></a>准备训练样本</h2><p>  机器学习需要大量样本。这里我直接使用了Google图片的搜索结果作为样本，这样的方式方便快捷，但样本质量不一定高。当你尝试在Google图片中搜索“蜡笔小新”，搜索结果很有可能出现一幅没有包含蜡笔小新的图，该图可能只包含有动感超人甚至小白。这些错误的“正样本”会对训练结果产生影响。<br>  分别在Google图片中搜索“Crayon Shin-chan”、“spongebob”、“minions”可以找到大量图片。可以使用Chrome的一个名为“Fatkun Batch Download Image”的扩展程序进行图片批量下载。新建一个cartoon文件夹，将图片分别放在其子文件夹cartoon/crayon cartoon/minions cartoon/spongebob下。每个目录有800~900张图。</p>
+<h2 id="开始训练"><a href="#开始训练" class="headerlink" title="开始训练"></a>开始训练</h2><p>  接下来的步骤需要root权限并需要访问Google服务器。</p>
+<h3 id="创建工作目录"><a href="#创建工作目录" class="headerlink" title="创建工作目录"></a>创建工作目录</h3><p>  新建一个名为tf_files的文件夹，并将cartoon文件夹copy进来。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">mkdir tf_files</span><br><span class="line">cp cartoon tf_files</span><br></pre></td></tr></table></figure></p>
+<h3 id="运行容器并挂载工作目录"><a href="#运行容器并挂载工作目录" class="headerlink" title="运行容器并挂载工作目录"></a>运行容器并挂载工作目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run -it -v $(<span class="built_in">pwd</span>)/tf_files:/tf_files \</span><br><span class="line">  gcr.io/tensorflow/tensorflow:latest-devel</span><br></pre></td></tr></table></figure>
+<h3 id="使用迁移学习进行训练"><a href="#使用迁移学习进行训练" class="headerlink" title="使用迁移学习进行训练"></a>使用迁移学习进行训练</h3><h4 id="什么是迁移学习"><a href="#什么是迁移学习" class="headerlink" title="什么是迁移学习"></a>什么是迁移学习</h4><p>  迁移学习(Transfer Learning)试图使用已经训练好的模型参数帮助新模型训练新的数据集。当数个训练任务及数据有一定程度的相关性，使用迁移学习可以加快新模型的学习而不用花费大量时间和样本从头开始训练。我们的任务是一个图像识别任务，这与Google训练好的Inception模型有较大的相关性，而我们的样本又较少，因此基于Inception模型进行迁移学习是个不错的选择。</p>
+<h4 id="什么是Inception模型"><a href="#什么是Inception模型" class="headerlink" title="什么是Inception模型"></a>什么是Inception模型</h4><p>  Inception模型是一种用于图像分类的卷积神经网络模型。这是一个多层、有着极其复杂结构的卷积神经网络。该模型可以识别超过1000种物品，但并不包括我们想要的动漫人物。Github上有提到Inception模型训练是在一台有128GB RAM和8块Tesla K40的电脑上进行的(We targeted a desktop with 128GB of CPU ram connected to 8 NVIDIA Tesla K40 GPU)。如果你想在你的个人电脑上尝试从零开始训练一个这种量级的神经网络，你可能需要数个星期才能完成训练，还有很大的可能性出现run out of GPU memory或run out of CPU memory导致训练失败。在这里我们将尝试使用Tensorflow提供的retrain.py训练整个神经网络的最后一层，即决策层/分类层，而倒数第二层被称为Bottlenecks(瓶颈层)。我们将利用Bottlenecks产生的有效数据，供给最后的决策层/分类层做出最后的分类预测。</p>
+<h4 id="开始训练-1"><a href="#开始训练-1" class="headerlink" title="开始训练"></a>开始训练</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tensorflow/</span><br><span class="line">python tensorflow/tensorflow/examples/image_retraining/retrain.py \</span><br><span class="line">  --bottleneck_dir=/tf_files/bottlenecks \</span><br><span class="line">  --how_many_training_steps 4000 \</span><br><span class="line">  --model_dir=/tf_files/inception \</span><br><span class="line">  --output_graph=/tf_files/cartoon.pb \</span><br><span class="line">  --output_labels=/tf_files/cartoon.txt \</span><br><span class="line">  --image_dir /tf_files/cartoon</span><br></pre></td></tr></table></figure>
+<p>在这里我们设置了bottleneck的输出目录，training_steps，模型位置，pb文件及label输出位置，样本图片位置。一般而言training_steps越多，训练时间越长，效果越好，反之则反。如果模型位置没有需要的模型，该脚本会尝试自动下载。pb文件就是训练完成的模型，label是一个txt文件，里面包含了我们训练完成的模型能识别的对象名称。不出意外的话，几十分钟后训练就可以完成。</p>
+<p><img src="/2018-01-03/使用TensorFlow训练自己的图像识别AI/0.png" alt=""></p>
+<p>可以看到我们的模型的测试识别准确率达到了95.5%。</p>
+<p>tf_files下生成了我们训练的模型cartoon.pb以及label文件cartoon.txt。打开cartoon.txt可以看到，该模型可以识别的对象有crayon(蜡笔小新)、minions(小黄人)、spongebob(海绵宝宝)三种(就是cartoon文件夹下子文件夹的名字)。我这里生成的pb文件有87.4MB。</p>
+<p><img src="/2018-01-03/使用TensorFlow训练自己的图像识别AI/1.png" alt=""></p>
+<h2 id="优化与压缩"><a href="#优化与压缩" class="headerlink" title="优化与压缩"></a>优化与压缩</h2><h3 id="为什么要进行优化和压缩"><a href="#为什么要进行优化和压缩" class="headerlink" title="为什么要进行优化和压缩"></a>为什么要进行优化和压缩</h3><p>  对于移动设备(例如智能手机)和嵌入式设备(例如跑Android Things或Linux的设备)来说，这个模型文件太大了。如果你尝试把其打包为apk文件，你可能会得到一个将近100MB的apk，这对用户来说可能体验并不太友好。因此我们需要对该模型进行优化和压缩以减小其体积。<br>如果你尝试直接将该pb文件压缩为zip文件，你会发现压缩文件大小只比原来小了几MB。我尝试使用优化脚本对pb文件进行优化，优化后的压缩效果还不错。</p>
+<h3 id="使用optimize-for-inference优化工具"><a href="#使用optimize-for-inference优化工具" class="headerlink" title="使用optimize_for_inference优化工具"></a>使用optimize_for_inference优化工具</h3><p>  optimize_for_inference脚本将会帮助我们删除当前模型中输入输出之前不需要的节点，并进行一些其他优化以提高运行性能。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">python tensorflow/python/tools/optimize_for_inference.py \</span><br><span class="line">  --input=/tf_files/cartoon.pb \</span><br><span class="line">  --output=/tf_files/optimized_cartoon.pb \</span><br><span class="line">  --input_names=<span class="string">"Mul"</span> \</span><br><span class="line">  --output_names=<span class="string">"final_result"</span></span><br></pre></td></tr></table></figure></p>
+<p>优化完成后我们可以得到一个名为optimized_cartoon.pb的优化过的模型文件。但是只比原来小了0.2MB。压缩为zip文件也小不了多少:(</p>
+<h3 id="使用quantize-graph工具进行进一步优化"><a href="#使用quantize-graph工具进行进一步优化" class="headerlink" title="使用quantize_graph工具进行进一步优化"></a>使用quantize_graph工具进行进一步优化</h3><p>  看来是时候放大招了。我们将使用quantize_graph对模型文件中的权重参数进行四舍五入。这一方式将会降低预测准确率(但是通常只降低1%左右)。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">python tensorflow/tools/quantization/quantize_graph.py \</span><br><span class="line">  --input=/tf_files/optimized_cartoon.pb \</span><br><span class="line">  --output=/tf_files/rounded_cartoon.pb \</span><br><span class="line">  --output_node_names=<span class="string">"final_result"</span> \</span><br><span class="line">  --mode=weights_rounded</span><br></pre></td></tr></table></figure></p>
+<p>  通常来说，新生成的rounded_cartoon.pb大小并不会发生太大变化，但是当我尝试将其压缩为zip文件时，我得到了一个令人满意的压缩包大小：23.9MB</p>
+<p><img src="/2018-01-03/使用TensorFlow训练自己的图像识别AI/2.png" alt=""></p>
+<p>  现在如果我们尝试将其作为资源文件打包进apk，可以得到一个小得多的安装包，用户下载的时间大大减少了。</p>
+<h2 id="测试与验证"><a href="#测试与验证" class="headerlink" title="测试与验证"></a>测试与验证</h2><p>  首先我们将测试经过optimize_for_inference优化的optimized_cartoon.pb。为了方便测试，我使用了TensorFlow在Android上的demo app，你可以在Github上找到其源码。要让我们的模型文件能够在这个demo上正常工作，我们需要做一点微小的工作。<br>1.复制optimized_cartoon.pb及cartoon.txt文件至app/src/main/assets<br>2.在ClassifierActivity.java中修改如下部分：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> INPUT_SIZE = <span class="number">299</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> IMAGE_MEAN = <span class="number">128</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> IMAGE_STD = <span class="number">128</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String INPUT_NAME = <span class="string">"Mul"</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String OUTPUT_NAME = <span class="string">"final_result"</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String MODEL_FILE = <span class="string">"file:///android_asset/optimized_cartoon.pb"</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String LABEL_FILE = <span class="string">"file:///android_asset/cartoon.txt"</span>;</span><br></pre></td></tr></table></figure></p>
+<p>这里我们限制输入图像为299x299, 并更改INPUT_NAME和OUTPUT_NAME。当然还有MODEL_FILE和LABEL_FILE的位置。测试样例我直接用手机拍的，由于限制了输入图像大小为299x299，所以图片质量比较差，但是还是得到了不错的运行结果：<br><img src="/2018-01-03/使用TensorFlow训练自己的图像识别AI/res1.png" alt=""><br><img src="/2018-01-03/使用TensorFlow训练自己的图像识别AI/res2.png" alt=""><br><img src="/2018-01-03/使用TensorFlow训练自己的图像识别AI/res3.png" alt=""><br>再看看经过quantize_graph优化的：<br><img src="/2018-01-03/使用TensorFlow训练自己的图像识别AI/res4.png" alt=""><br><img src="/2018-01-03/使用TensorFlow训练自己的图像识别AI/res5.png" alt=""><br><img src="/2018-01-03/使用TensorFlow训练自己的图像识别AI/res6.png" alt=""></p>
+<h2 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h2><p>  接下来我们可以尝试进行音频方向的机器学习探索。目前还在研究中，等有了有趣的发现后再写篇post吧。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Coding Spirit
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.lzqblog.top/2018-01-03/使用TensorFlow训练自己的图像识别AI/" title="使用TensorFlow训练自己的图像识别AI">http://www.lzqblog.top/2018-01-03/使用TensorFlow训练自己的图像识别AI/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+          
+            <a href="/tags/TensorFlow/" rel="tag"># TensorFlow</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018-01-03/使用Gparted扩展分区/" rel="next" title="使用Gparted扩展分区">
+                <i class="fa fa-chevron-left"></i> 使用Gparted扩展分区
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018-01-09/Docker常用命令/" rel="prev" title="Docker常用命令">
+                Docker常用命令 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/assets/img/coding_spirit.jpg" alt="Coding Spirit">
+            
+              <p class="site-author-name" itemprop="name">Coding Spirit</p>
+              <p class="site-description motion-element" itemprop="description">毕业于OUC，现就职于Tymphany</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/codingspirit" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:596544399@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          <div id="musicPlayer">
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=3&id=1368025866&auto=1&height=66">
+            </iframe>
+          </div>
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置开发环境"><span class="nav-number">1.</span> <span class="nav-text">配置开发环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Docker"><span class="nav-number">1.1.</span> <span class="nav-text">什么是Docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何安装Docker"><span class="nav-number">1.2.</span> <span class="nav-text">如何安装Docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载集成TensorFlow开发环境的镜像"><span class="nav-number">1.3.</span> <span class="nav-text">下载集成TensorFlow开发环境的镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建完成"><span class="nav-number">1.4.</span> <span class="nav-text">搭建完成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备训练样本"><span class="nav-number">2.</span> <span class="nav-text">准备训练样本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始训练"><span class="nav-number">3.</span> <span class="nav-text">开始训练</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建工作目录"><span class="nav-number">3.1.</span> <span class="nav-text">创建工作目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行容器并挂载工作目录"><span class="nav-number">3.2.</span> <span class="nav-text">运行容器并挂载工作目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用迁移学习进行训练"><span class="nav-number">3.3.</span> <span class="nav-text">使用迁移学习进行训练</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是迁移学习"><span class="nav-number">3.3.1.</span> <span class="nav-text">什么是迁移学习</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是Inception模型"><span class="nav-number">3.3.2.</span> <span class="nav-text">什么是Inception模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开始训练-1"><span class="nav-number">3.3.3.</span> <span class="nav-text">开始训练</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化与压缩"><span class="nav-number">4.</span> <span class="nav-text">优化与压缩</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要进行优化和压缩"><span class="nav-number">4.1.</span> <span class="nav-text">为什么要进行优化和压缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用optimize-for-inference优化工具"><span class="nav-number">4.2.</span> <span class="nav-text">使用optimize_for_inference优化工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用quantize-graph工具进行进一步优化"><span class="nav-number">4.3.</span> <span class="nav-text">使用quantize_graph工具进行进一步优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试与验证"><span class="nav-number">5.</span> <span class="nav-text">测试与验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下一步"><span class="nav-number">6.</span> <span class="nav-text">下一步</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Powered by Coding Spirit. All rights reserved.</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数：
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问次数：
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
