@@ -6,7 +6,7 @@ date: 2018-09-12 16:46:08
 categories: 编程相关
 ---
 
-Singleton is a widely used design patterns in software engineer. This post will tell you when should we use Singleton and how to design a universal,template based Singleton base class.
+Singleton is a widely used design patterns in software engineering. This post will tell you when should we use Singleton and how to design a universal,template based Singleton base class.
 
 <!--more-->
 
