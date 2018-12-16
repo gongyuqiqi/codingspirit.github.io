@@ -1,5 +1,5 @@
 ---
-title: Linux kernel module
+title: Linux kernel module(1)
 tags:
   - Linux
 date: 2018-12-09 11:01:48
@@ -250,6 +250,6 @@ extern typeof(name) __mod_##type##__##name##_device_table		\
 #define MODULE_DEVICE_TABLE(type, name)
 #endif
 ```
-**regmap** will be discussed in Part II. 
+**regmap** etc. will be discussed in Part II. 
 
 To be continued...
