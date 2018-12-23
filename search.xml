@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Linux kernel module(3)]]></title>
+    <url>%2F2018-12-23%2FLinux-kernel-module-3%2F</url>
+    <content type="text"><![CDATA[This post will give a simple introduction to Linux kernel module(Part III.). Linux kernel module简介(三)In this post we will discuss how to call kernel driver in user space. Access IIO devices from user spaceIn last two posts we use a IIO(Linux Industrial I/O Subsystem) device st_uvis25 as a example to show how to write a kernel module. There are a lot of devices fall into this subsystem: ADCs Accelerometers Gyros IMUs Capacitance to Digital Converters (CDCs) Pressure Sensors Color, Light and Proximity Sensors Temperature Sensors Magnetometers DACs DDS (Direct Digital Synthesis) PLLs (Phase Locked Loops) Variable/Programmable Gain Amplifiers (VGA, PGA) In st_uvis25_core.c, a iio_info has been defined and assigned to a iio_dev in probe function:12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849// st_uvis25_core.c, Line 267static const struct iio_info st_uvis25_info = &#123; .read_raw = st_uvis25_read_raw,&#125;;/* code */int st_uvis25_probe(struct device *dev, int irq, struct regmap *regmap)&#123; struct st_uvis25_hw *hw; struct iio_dev *iio_dev; int err; iio_dev = devm_iio_device_alloc(dev, sizeof(*hw)); if (!iio_dev) return -ENOMEM; dev_set_drvdata(dev, (void *)iio_dev); hw = iio_priv(iio_dev); hw-&gt;irq = irq; hw-&gt;regmap = regmap; err = st_uvis25_check_whoami(hw); if (err &lt; 0) return err; iio_dev-&gt;modes = INDIO_DIRECT_MODE; iio_dev-&gt;dev.parent = dev; iio_dev-&gt;channels = st_uvis25_channels; iio_dev-&gt;num_channels = ARRAY_SIZE(st_uvis25_channels); iio_dev-&gt;name = ST_UVIS25_DEV_NAME; iio_dev-&gt;info = &amp;st_uvis25_info; err = st_uvis25_init_sensor(hw); if (err &lt; 0) return err; if (hw-&gt;irq &gt; 0) &#123; err = st_uvis25_allocate_buffer(iio_dev); if (err &lt; 0) return err; err = st_uvis25_allocate_trigger(iio_dev); if (err) return err; &#125; return devm_iio_device_register(dev, iio_dev);&#125; If devm_iio_device_register success and iio_info.read_raw has been registered, a file will be created at :/sys/bus/iio/devices/iio:device0/xxx_rawIn terminal, you can read it by cat1cat /sys/bus/iio/devices/iio:device0/xxx_raw In C/C++ applications, you can use fopen because it’s a file.]]></content>
+      <categories>
+        <category>编程相关</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Comments system has been added]]></title>
     <url>%2F2018-12-22%2FComments-system-has-been-added%2F</url>
     <content type="text"><![CDATA[现在blog支持使用Github帐号评论啦！You can use your github account to add comments now!]]></content>
