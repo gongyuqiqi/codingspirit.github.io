@@ -108,23 +108,25 @@
 
 
 
-  <meta name="description" content="毕业于OUC，现就职于Tymphany">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Coding Spirit">
-<meta property="og:url" content="http://www.lzqblog.top/tags/Android-Things/index.html">
+  <meta name="description" content="在大学的时候就一直用gdb + gdbserver 来远程调试C++， 前年开始用VS Code后在板上部署程序后配合VS Code调试更是爽到不行（根本停不下来），有种本地开发的感觉， 再也不用在蛋疼的GDB里面敲‘b’ ‘r’ ‘c’， 哈哈。最近的项目对adb的支持非常不错，usb上传下载速度比ssh不知道高到哪里去了。今天突然想到之前写Android app的时候都能通过usb和adb进行">
+<meta name="keywords" content="Linux,C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux C&#x2F;C++ debugging: using adb and gdb">
+<meta property="og:url" content="http://www.lzqblog.top/2019-02-16/Linux-C-C-debugging-using-adb-and-gdb/index.html">
 <meta property="og:site_name" content="Coding Spirit">
-<meta property="og:description" content="毕业于OUC，现就职于Tymphany">
+<meta property="og:description" content="在大学的时候就一直用gdb + gdbserver 来远程调试C++， 前年开始用VS Code后在板上部署程序后配合VS Code调试更是爽到不行（根本停不下来），有种本地开发的感觉， 再也不用在蛋疼的GDB里面敲‘b’ ‘r’ ‘c’， 哈哈。最近的项目对adb的支持非常不错，usb上传下载速度比ssh不知道高到哪里去了。今天突然想到之前写Android app的时候都能通过usb和adb进行">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-02-16T14:04:27.272Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Coding Spirit">
-<meta name="twitter:description" content="毕业于OUC，现就职于Tymphany">
+<meta name="twitter:title" content="Linux C&#x2F;C++ debugging: using adb and gdb">
+<meta name="twitter:description" content="在大学的时候就一直用gdb + gdbserver 来远程调试C++， 前年开始用VS Code后在板上部署程序后配合VS Code调试更是爽到不行（根本停不下来），有种本地开发的感觉， 再也不用在蛋疼的GDB里面敲‘b’ ‘r’ ‘c’， 哈哈。最近的项目对adb的支持非常不错，usb上传下载速度比ssh不知道高到哪里去了。今天突然想到之前写Android app的时候都能通过usb和adb进行">
 
 
 
 
 
 
-  <link rel="canonical" href="http://www.lzqblog.top/tags/Android-Things/">
+  <link rel="canonical" href="http://www.lzqblog.top/2019-02-16/Linux-C-C-debugging-using-adb-and-gdb/">
 
 
 
@@ -134,7 +136,7 @@
   };
 </script>
 
-  <title>Tag: Android Things | Coding Spirit</title>
+  <title>Linux C/C++ debugging: using adb and gdb | Coding Spirit</title>
   
 
 
@@ -182,7 +184,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -240,7 +242,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -304,25 +306,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -368,134 +351,240 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Android Things<small>Tag</small>
-        </h1>
-      </div>
-
-      
-        
+  
+    <div class="reading-progress-bar"></div>
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.lzqblog.top/2019-02-16/Linux-C-C-debugging-using-adb-and-gdb/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coding Spirit">
+      <meta itemprop="description" content="毕业于OUC，现就职于Tymphany">
+      <meta itemprop="image" content="/assets/img/coding_spirit.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Spirit">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017-12-28/在树莓派上使用Google-Assistant/" itemprop="url">
-              
-                <span itemprop="name">在树莓派上使用Google Assistant</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Linux C/C++ debugging: using adb and gdb
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-12-28T16:21:13+08:00" content="2017-12-28">
-          12-28
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-02-16 19:38:56 / Modified: 22:04:27" itemprop="dateCreated datePublished" datetime="2019-02-16T19:38:56+08:00">2019-02-16</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/编程相关/" itemprop="url" rel="index"><span itemprop="name">编程相关</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017-12-06/在Android-Things上使用TTS及使用Google-Assistant遇到的问题/" itemprop="url">
-              
-                <span itemprop="name">在Android Things上使用TTS及使用Google Assistant遇到的问题</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-12-06T16:37:03+08:00" content="2017-12-06">
-          12-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017-11-25/在Android-Things上使用远程屏幕/" itemprop="url">
-              
-                <span itemprop="name">在Android Things上使用远程屏幕</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-11-25T10:26:05+08:00" content="2017-11-25">
-          11-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017-11-24/在Raspberry-Pi上初试Android-Things/" itemprop="url">
-              
-                <span itemprop="name">在Raspberry Pi上初试Android Things</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-11-24T13:48:14+08:00" content="2017-11-24">
-          11-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <p>在大学的时候就一直用gdb + gdbserver 来远程调试C++， 前年开始用VS Code后在板上部署程序后配合VS Code调试更是爽到不行（根本停不下来），有种本地开发的感觉， 再也不用在蛋疼的GDB里面敲‘b’ ‘r’ ‘c’， 哈哈。<br>最近的项目对adb的支持非常不错，usb上传下载速度比ssh不知道高到哪里去了。今天突然想到之前写Android app的时候都能通过usb和adb进行调试， 现在在Linux下调C++应该也可以通过usb+adb实现， 为什么不试一下呢？<br><a id="more"></a></p>
+<h2 id="gdb-gdbserver"><a href="#gdb-gdbserver" class="headerlink" title="gdb + gdbserver"></a>gdb + gdbserver</h2><p>既然要调C/C++， 这两兄弟基本上是必备了(VC++程序员表示并不需要)。 在target device上部署待调试程序并启动gdbserver，然后再在host上使用gdb target remote连接， 跨平台调试变得非常容易， 配合VS Code使用的例子可以参考<a href="https://github.com/codingspirit/VoiceSpirit/tree/develop/.vscode" target="_blank" rel="noopener">这里</a></p>
+<h2 id="adb-forward"><a href="#adb-forward" class="headerlink" title="adb forward"></a>adb forward</h2><p>gdb和gdbserver可以提供调试的server和client， 只要client能够访问到server的指定端口，调试就能够进行。通常我们使用gdb+gdbserver， target device和host在一个局域网内， 通过socket能很轻松地实现连接。 如果我们要通过usb实现这个连接， 可以通过adb forward实现。 如果你在Android上写过通过socket通信的app（不禁想起了做毕设的时候）， 基本上都会用到这个cmd， 只需一行命令 <strong>adb forward tcp:1234 tcp:5678</strong>, 所有在host端1234端口的通信都会被重定向到target端的5678端口，调试socket时轻松愉快！ 有了它的帮助， 就能通过usb线实现socket连接了</p>
+<h2 id="Step-By-Step"><a href="#Step-By-Step" class="headerlink" title="Step By Step"></a>Step By Step</h2><p>Let’s have a quick step by step instruction:</p>
+<p>First of all, build your C/C++ app and upload your app binary to target device.</p>
+<p>Then we start <strong>gdbserver</strong> on target device:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#target device</span></span><br><span class="line">gdbserver :<span class="variable">$&#123;TARGET_PORT&#125;</span> <span class="variable">$&#123;EXEC_FILE&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>i.e. :  <strong>gdbserver :1234 /usr/bin/test_app</strong>. gdbserver will listening at port 1234 and waiting for client to connect.</p>
+<p>After that we can use <strong>adb forward</strong> on host PC(make sure usb connection is good and adb shell works well):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#host</span></span><br><span class="line">adb forward tcp:<span class="variable">$&#123;HOST_PORT&#125;</span> tcp:<span class="variable">$&#123;TARGET_PORT&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>All the communication data on specific host port will be redirected to target server port.<br>i.e. : <strong>adb forward tcp:4567 tcp:1234</strong>. Then all the data send to <strong>localhost:4567</strong> on host PC will be redirected to target device <strong>1234</strong> port.</p>
+<p>Last step, start gdb on host PC then connect to target gdbserver:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#host</span></span><br><span class="line">$ gdb</span><br><span class="line"><span class="comment">#make sure your gdb and your gdbserver are from one set of toolchain</span></span><br><span class="line">GNU gdb (Debian 7.12-6) 7.12.0.20161007-git</span><br><span class="line">Copyright (C) 2016 Free Software Foundation, Inc.</span><br><span class="line">License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;</span><br><span class="line">This is free software: you are free to change and redistribute it.</span><br><span class="line">There is NO WARRANTY, to the extent permitted by law.  Type <span class="string">"show copying"</span></span><br><span class="line">and <span class="string">"show warranty"</span> <span class="keyword">for</span> details.</span><br><span class="line">This GDB was configured as <span class="string">"x86_64-linux-gnu"</span>.</span><br><span class="line">Type <span class="string">"show configuration"</span> <span class="keyword">for</span> configuration details.</span><br><span class="line">For bug reporting instructions, please see:</span><br><span class="line">&lt;http://www.gnu.org/software/gdb/bugs/&gt;.</span><br><span class="line">Find the GDB manual and other documentation resources online at:</span><br><span class="line">&lt;http://www.gnu.org/software/gdb/documentation/&gt;.</span><br><span class="line">For <span class="built_in">help</span>, <span class="built_in">type</span> <span class="string">"help"</span>.</span><br><span class="line">Type <span class="string">"apropos word"</span> to search <span class="keyword">for</span> commands related to <span class="string">"word"</span>.</span><br><span class="line">(gdb) target remote :<span class="variable">$&#123;HOST_PORT&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>i.e. : <strong>(gdb) target remote :4567</strong></p>
+<p>Now we can start hunting bug!</p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Coding Spirit</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    
+    <a href="http://www.lzqblog.top/2019-02-16/Linux-C-C-debugging-using-adb-and-gdb/" title="Linux C/C++ debugging: using adb and gdb">http://www.lzqblog.top/2019-02-16/Linux-C-C-debugging-using-adb-and-gdb/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/C/" rel="tag"># C++</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018-12-23/Linux-kernel-module-3/" rel="next" title="Linux kernel module(3)">
+                <i class="fa fa-chevron-left"></i> Linux kernel module(3)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+  </div>
 
 
           </div>
           
+
+  
+    <div id="gitalk-container">
+    </div>
+    
+  
+
+
 
         </div>
         
@@ -516,8 +605,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -670,6 +768,22 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#gdb-gdbserver"><span class="nav-number">1.</span> <span class="nav-text">gdb + gdbserver</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adb-forward"><span class="nav-number">2.</span> <span class="nav-text">adb forward</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-By-Step"><span class="nav-number">3.</span> <span class="nav-text">Step By Step</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -837,6 +951,10 @@
   
 
   
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
+
+
 
   
 
@@ -859,6 +977,32 @@
 
 
 
+
+
+  
+  
+  <script src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+
+  
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.css">
+
+  
+  
+  <script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+   <script>
+        var gitalk = new Gitalk({
+          clientID: '965ca656ae3d59a50b73',
+          clientSecret: '94dbe9c760ce8b778c84481a7fe2f37f548d7375',
+          repo: 'blog-gitalk',
+          owner: 'codingspirit',
+          admin: ['codingspirit'],
+          id: md5(location.pathname),
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')
+       </script>
 
 
   
