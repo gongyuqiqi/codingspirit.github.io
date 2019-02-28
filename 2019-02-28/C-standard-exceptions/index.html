@@ -108,28 +108,25 @@
 
 
 
-  <meta name="description" content="写篇post总结一下当年做平衡车的一些经验。这篇post是概述性质的，详细的软硬件设计以后有时间再写吧。">
-<meta name="keywords" content="智能车">
+  <meta name="description" content="…">
+<meta name="keywords" content="C++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="项目总结（一）：平衡车的设计概述">
-<meta property="og:url" content="http://www.lzqblog.top/2017-11-05/项目总结（一）：平衡车的设计概述/index.html">
+<meta property="og:title" content="C++ standard exceptions">
+<meta property="og:url" content="http://www.lzqblog.top/2019-02-28/C-standard-exceptions/index.html">
 <meta property="og:site_name" content="Coding Spirit">
-<meta property="og:description" content="写篇post总结一下当年做平衡车的一些经验。这篇post是概述性质的，详细的软硬件设计以后有时间再写吧。">
+<meta property="og:description" content="…">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.lzqblog.top/2017-11-05/项目总结（一）：平衡车的设计概述/MOSH1.png">
-<meta property="og:image" content="http://www.lzqblog.top/2017-11-05/项目总结（一）：平衡车的设计概述/MOSH2.png">
-<meta property="og:updated_time" content="2018-11-29T02:18:03.761Z">
+<meta property="og:updated_time" content="2019-02-28T12:22:00.440Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="项目总结（一）：平衡车的设计概述">
-<meta name="twitter:description" content="写篇post总结一下当年做平衡车的一些经验。这篇post是概述性质的，详细的软硬件设计以后有时间再写吧。">
-<meta name="twitter:image" content="http://www.lzqblog.top/2017-11-05/项目总结（一）：平衡车的设计概述/MOSH1.png">
+<meta name="twitter:title" content="C++ standard exceptions">
+<meta name="twitter:description" content="…">
 
 
 
 
 
 
-  <link rel="canonical" href="http://www.lzqblog.top/2017-11-05/项目总结（一）：平衡车的设计概述/">
+  <link rel="canonical" href="http://www.lzqblog.top/2019-02-28/C-standard-exceptions/">
 
 
 
@@ -139,7 +136,7 @@
   };
 </script>
 
-  <title>项目总结（一）：平衡车的设计概述 | Coding Spirit</title>
+  <title>C++ standard exceptions | Coding Spirit</title>
   
 
 
@@ -372,7 +369,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.lzqblog.top/2017-11-05/项目总结（一）：平衡车的设计概述/">
+    <link itemprop="mainEntityOfPage" href="http://www.lzqblog.top/2019-02-28/C-standard-exceptions/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coding Spirit">
@@ -389,7 +386,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">项目总结（一）：平衡车的设计概述
+          <h1 class="post-title" itemprop="name headline">C++ standard exceptions
 
               
             
@@ -415,24 +412,12 @@
                 
               
 
-              <time title="Created: 2017-11-05 08:43:47" itemprop="dateCreated datePublished" datetime="2017-11-05T08:43:47+08:00">2017-11-05</time>
+              <time title="Created: 2019-02-28 03:01:07 / Modified: 20:22:00" itemprop="dateCreated datePublished" datetime="2019-02-28T03:01:07+08:00">2019-02-28</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-29 10:18:03" itemprop="dateModified" datetime="2018-11-29T10:18:03+08:00">2018-11-29</time>
               
             
           </span>
@@ -449,7 +434,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/项目总结/" itemprop="url" rel="index"><span itemprop="name">项目总结</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/编程相关/" itemprop="url" rel="index"><span itemprop="name">编程相关</span></a></span>
 
                 
                 
@@ -490,20 +475,46 @@
       
 
       
-        <p>写篇post总结一下当年做平衡车的一些经验。这篇post是概述性质的，详细的软硬件设计以后有时间再写吧。</p>
-<a id="more"></a>
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>其实大二大三的时候都有参加智能车竞赛(原来叫飞思卡尔智能车竞赛，简称飞赛，后来飞思卡尔被nxp收购，改名恩智浦智能车竞赛..)，但是学院有个政策，不允许同一年既参加电子设计竞赛（简称电赛）又参加飞赛，理由是要让更多的同学有机会参加到比赛中（至少老师是这么告诉我们的），于是大二那一年做智能车做到一半就弃权参加电赛去了。不过后来我和我的小伙伴们发现，居然有些同学两个比赛都参加了，这TM就很尴尬了。。</p>
-<h2 id="硬件基本架构"><a href="#硬件基本架构" class="headerlink" title="硬件基本架构"></a>硬件基本架构</h2><p>概括来讲，需要关心的是三个部份:</p>
-<h3 id="1-电源"><a href="#1-电源" class="headerlink" title="1.电源"></a>1.电源</h3><p>首先稳压电路是一定会有的，我们选用了LM1117，外围电路简单，使用十分方便，可替代的LDO也不少。另外如果使用MOS管自己搭H桥，就需要boost电路了。</p>
-<h3 id="2-主控部分"><a href="#2-主控部分" class="headerlink" title="2.主控部分"></a>2.主控部分</h3><p>这个部分包括MCU最小系统以及各种传感器。对于平衡车而言，陀螺仪、角度传感器和编码器、图像传感器都算是核心传感器，一个用于获取角加速度，一个获取当前角度，一个获取电机转速，最后一个当然是识别赛道啦。除此之外，我们还使用了蓝牙模块，自己写了个上位机，无线调车、实时图传简直不能再爽。</p>
-<h3 id="3-驱动桥（H桥）"><a href="#3-驱动桥（H桥）" class="headerlink" title="3.驱动桥（H桥）"></a>3.驱动桥（H桥）</h3><p>平衡车是有两个电机的，而且两个电机都要求能够正反转，因此需要两个全桥，需要4片BTS7970或者8片mos。大二图方便，使用的是BTS7970，淘宝上一片二三十。。。<br>大三总裁用mos管搭了一个，效果差不多，成本却低了不少。后来我毕设要用到电机控制又自己画了一块，虽然只是双面板并且为了过大电流大面积开窗，但是花点时间优化layout还是可以把板子做得很小。大三的电路图由于硬盘挂了找不到了:( 贴个毕设搭的MOSH Layout图：</p>
-<p><img src="/2017-11-05/项目总结（一）：平衡车的设计概述/MOSH1.png" alt="Top" title="Top"><br><img src="/2017-11-05/项目总结（一）：平衡车的设计概述/MOSH2.png" alt="Bottom" title="Bottom"></p>
-<p>设计文件挺早的时候就上传了：<br><a href="https://github.com/codingspirit/MOS_H" target="_blank" rel="noopener">Coding Spirit:MOS_H</a></p>
-<h2 id="MCU选型"><a href="#MCU选型" class="headerlink" title="MCU选型"></a>MCU选型</h2><p>大二用的是coldfire，大三用的是K60。Coldfire是freescale自己的架构，当时我们用的mcf52255, 最高80MHz，K60是Cortex-M4，最高100MHz，另外带FPU。<br>就我的个人感觉来说，K60的综合性能是要好于mcf52255的。另外coldfire资料不如k60多，这点对于初学者来说比较关键，因为从准备到参赛只有几个月的时间，从头开始学一款没接触过的架构的MCU会花掉大量时间。但是Coldfire配合Codewarrior有种STM32CUBEMX的感觉，代码生成感觉还不错。</p>
-<h2 id="软件基本架构"><a href="#软件基本架构" class="headerlink" title="软件基本架构"></a>软件基本架构</h2><p>首先贴个代码：<a href="https://github.com/codingspirit/Balance_Car" target="_blank" rel="noopener">Coding Spirit:Balance_Car</a></p>
-<h3 id="是否跑RTOS"><a href="#是否跑RTOS" class="headerlink" title="是否跑RTOS"></a>是否跑RTOS</h3><p>裸奔和RTOS其实都能做，但由于PID控制的周期性，使用定时器中断控制周期，进行采样、计算、输出显得非常和谐，任务不多的情况下裸奔其实更合理一点。我们也使用了这种方式，通过1ms的定时器中断进行状态机的切换。</p>
-<h3 id="PID控制"><a href="#PID控制" class="headerlink" title="PID控制"></a>PID控制</h3><p>对于自动化专业的学生来说，这种控制还是蛮简单的。首先平衡车需要实现三个闭环：<br>1.角度闭环：建议使用PD控制。如果有陀螺仪的话不用计算差分，直接把Kd*陀螺仪测量值作为D项就可以了。我尝试过加入I项，要么系统滞后非常严重，要么没什么用。。。<br>2.速度闭环：建议使用PI控制。建议不加入D项的原因是系统不需要预测速度，速度是我们直接给定的，比较稳定。<br>3.转向闭环: 当时使用的是PD控制。D项来源于纵向的陀螺仪测量值，我们担心会出现转向过猛的情况，加入D负反馈限制了转向加速度，不然容易出现P参数过大时车体原地打转的<br>情况。<br>另外增量式和位置式PID的选择不用过多纠结，只有速度环有I项，积分饱和的情况很少见。不过积分限幅和输出限幅很有必要，不然车很容易撞坏。。</p>
-<h3 id="上位机"><a href="#上位机" class="headerlink" title="上位机"></a>上位机</h3><p>我设计了个简陋的通信协议，并且写了两个配套的上位机，一个是初代没有图传功能，用VC++写的，V2.0就用C#写了一个可以实时传输图像的上位机，另外使用了自创的蜜汁压缩，稳定30fps哦！这里吹一波，比那些每4秒1帧的好到不知道哪里去了。但是当时着急用，代码写得很乱。。。<br>V2.0源代码在此：<a href="https://github.com/codingspirit/CarDebugger_V2.0" target="_blank" rel="noopener">Coding Spirit:Car_Debugger_V2.0</a></p>
+        <p>…<br><a id="more"></a></p>
+<ul>
+<li>logic_error(It reports errors that are a consequence of faulty logic within the program such as violating logical preconditions or class invariants and may be preventable.)<ul>
+<li>invalid_argument</li>
+<li>domain_error</li>
+<li>length_error</li>
+<li>out_of_range</li>
+<li>future_error(C++11)</li>
+</ul>
+</li>
+<li>bad_optional_access(C++17)</li>
+<li>runtime_error(It reports errors that are due to events beyond the scope of the program and can not be easily predicted.)<ul>
+<li>range_error</li>
+<li>overflow_error</li>
+<li>underflow_error</li>
+<li>regex_error(C++11)</li>
+<li>nonexistent_local_time(C++20)</li>
+<li>ambiguous_local_time(C++20)</li>
+<li>tx_exception(TM TS)</li>
+<li>system_error(C++11)</li>
+<li>ios_base::failure(C++11)</li>
+<li>filesystem::filesystem_error(C++17)</li>
+</ul>
+</li>
+<li>bad_typeid</li>
+<li>bad_cast<ul>
+<li>bad_any_cast(C++17)</li>
+</ul>
+</li>
+<li>bad_weak_ptr(C++11)</li>
+<li>bad_function_call(C++11)</li>
+<li>bad_alloc(report failure to allocate storage)<ul>
+<li>bad_array_new_length(C++11)</li>
+</ul>
+</li>
+<li>bad_exception</li>
+<li>ios_base::failure(until C++11)</li>
+<li>bad_variant_access(C++17)</li>
+</ul>
+<p>For more details, refer to <a href="https://en.cppreference.com/w/cpp/error/exception" target="_blank" rel="noopener">cppreference</a></p>
 
       
     </div>
@@ -537,7 +548,7 @@
   <li class="post-copyright-link">
     <strong>Post link: </strong>
     
-    <a href="http://www.lzqblog.top/2017-11-05/项目总结（一）：平衡车的设计概述/" title="项目总结（一）：平衡车的设计概述">http://www.lzqblog.top/2017-11-05/项目总结（一）：平衡车的设计概述/</a>
+    <a href="http://www.lzqblog.top/2019-02-28/C-standard-exceptions/" title="C++ standard exceptions">http://www.lzqblog.top/2019-02-28/C-standard-exceptions/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
@@ -550,7 +561,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/智能车/" rel="tag"># 智能车</a>
+            <a href="/tags/C/" rel="tag"># C++</a>
           
         </div>
       
@@ -563,8 +574,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017-11-01/常用的Regex/" rel="next" title="常用的Regex">
-                <i class="fa fa-chevron-left"></i> 常用的Regex
+              <a href="/2019-02-16/Linux-C-C-debugging-using-adb-and-gdb/" rel="next" title="Linux C/C++ debugging: using adb and gdb">
+                <i class="fa fa-chevron-left"></i> Linux C/C++ debugging: using adb and gdb
               </a>
             
           </div>
@@ -572,10 +583,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017-11-07/关闭程序窗口后仍有线程残留的解决办法/" rel="prev" title="关闭程序窗口后仍有线程残留的解决办法">
-                关闭程序窗口后仍有线程残留的解决办法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -624,17 +631,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -787,22 +785,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#硬件基本架构"><span class="nav-number">2.</span> <span class="nav-text">硬件基本架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-电源"><span class="nav-number">2.1.</span> <span class="nav-text">1.电源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-主控部分"><span class="nav-number">2.2.</span> <span class="nav-text">2.主控部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-驱动桥（H桥）"><span class="nav-number">2.3.</span> <span class="nav-text">3.驱动桥（H桥）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MCU选型"><span class="nav-number">3.</span> <span class="nav-text">MCU选型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件基本架构"><span class="nav-number">4.</span> <span class="nav-text">软件基本架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#是否跑RTOS"><span class="nav-number">4.1.</span> <span class="nav-text">是否跑RTOS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PID控制"><span class="nav-number">4.2.</span> <span class="nav-text">PID控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上位机"><span class="nav-number">4.3.</span> <span class="nav-text">上位机</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
