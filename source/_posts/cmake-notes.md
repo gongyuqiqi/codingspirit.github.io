@@ -10,7 +10,7 @@ Take notes!
 
 ## Use pkg-config in cmake
 ```cmake
-#require gstreamer and check version, store flags/include dir/lib into variable ${GST}
+#require gstreamer and check version, ${GST} is an user defined prefix for _LIBRARIES/_INCLUDE_DIRS/_CFLAGS_OTHER
 pkg_check_modules(GST REQUIRED gstreamer-1.0>=1.10
                   gstreamer-app-1.0>=1.10)
 #Then we can get hidden variables ${GST_LIBRARIES} ${GST_INCLUDE_DIRS} ${GST_CFLAGS_OTHER}
