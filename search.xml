@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[cmake notes]]></title>
+    <url>%2F2019-03-04%2Fcmake-notes%2F</url>
+    <content type="text"><![CDATA[Take notes! Use pkg-config in cmake12345678#require gstreamer and check version, $&#123;GST&#125; is an user defined prefix for _LIBRARIES/_INCLUDE_DIRS/_CFLAGS_OTHERpkg_check_modules(GST REQUIRED gstreamer-1.0&gt;=1.10 gstreamer-app-1.0&gt;=1.10)#Then we can get hidden variables $&#123;GST_LIBRARIES&#125; $&#123;GST_INCLUDE_DIRS&#125; $&#123;GST_CFLAGS_OTHER&#125;target_link_libraries($&#123;PROJECT_NAME&#125; boost_log pthread $&#123;GST_LIBRARIES&#125;)target_include_directories($&#123;PROJECT_NAME&#125; PUBLIC $&#123;GST_INCLUDE_DIRS&#125;)target_compile_options($&#123;PROJECT_NAME&#125; PUBLIC $&#123;GST_CFLAGS_OTHER&#125;) Add all files under a folder(i.e. add all source files)123456#option 1: use file(), store files into variable SRC_FILESfile(GLOB SRC_FILES "*.cpp")#if there are sub-dirs should be searched, use recursivefile(GLOB_RECURSE SRC_FILES "*.cpp")#option 2: use aux_source_directory(), store source files into variable SRC_FILESaux_source_directory(. SRC_FILES)]]></content>
+      <categories>
+        <category>编程相关</category>
+      </categories>
+      <tags>
+        <tag>cmake</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[C++ standard exceptions]]></title>
     <url>%2F2019-02-28%2FC-standard-exceptions%2F</url>
     <content type="text"><![CDATA[… logic_error(It reports errors that are a consequence of faulty logic within the program such as violating logical preconditions or class invariants and may be preventable.) invalid_argument domain_error length_error out_of_range future_error(C++11) bad_optional_access(C++17) runtime_error(It reports errors that are due to events beyond the scope of the program and can not be easily predicted.) range_error overflow_error underflow_error regex_error(C++11) nonexistent_local_time(C++20) ambiguous_local_time(C++20) tx_exception(TM TS) system_error(C++11) ios_base::failure(C++11) filesystem::filesystem_error(C++17) bad_typeid bad_cast bad_any_cast(C++17) bad_weak_ptr(C++11) bad_function_call(C++11) bad_alloc(report failure to allocate storage) bad_array_new_length(C++11) bad_exception ios_base::failure(until C++11) bad_variant_access(C++17) For more details, refer to cppreference]]></content>
@@ -127,7 +138,7 @@
   <entry>
     <title><![CDATA[git command备忘录]]></title>
     <url>%2F2018-10-22%2Fgit-command%E5%A4%87%E5%BF%98%E5%BD%95%2F</url>
-    <content type="text"><![CDATA[… 全局配置用户名和邮箱:12git config --global user.name "Alex.Li"git config --global user.email "Alex.Li@xxxx.com" ssh密钥生成:1ssh-keygen -t rsa -C "Alex.Li@xxxx.com" 储存https/http方式用户名密码:1git config --global credential.helper store]]></content>
+    <content type="text"><![CDATA[… 全局配置用户名和邮箱:12git config --global user.name "Alex.Li"git config --global user.email "Alex.Li@xxxx.com" ssh密钥生成:1ssh-keygen -t rsa -C "Alex.Li@xxxx.com" 储存https/http方式用户名密码:1git config --global credential.helper store 添加tag并推送到远端:12git tag -a 1.0.0 -m 'add version 1.0.0'git push origin master --tags]]></content>
       <categories>
         <category>随便写写</category>
       </categories>
