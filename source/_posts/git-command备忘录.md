@@ -23,3 +23,9 @@ ssh-keygen -t rsa -C "Alex.Li@xxxx.com"
 ```bash
 git config --global credential.helper store
 ```
+
+添加tag并推送到远端:
+```bash
+git tag -a 1.0.0 -m 'add version 1.0.0'
+git push origin master --tags
+```
