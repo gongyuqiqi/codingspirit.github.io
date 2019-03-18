@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[C/C++ mixed programming error: undefined reference]]></title>
+    <url>%2F2019-03-18%2FC-C-mixed-programming-error-undefined-reference%2F</url>
+    <content type="text"><![CDATA[The solution for this issue is very sample, add #ifdef cplusplus extern “C” in your C header files. I have seen a lots of C header files with this code, I also know that those codes will help C code compatible with C++ code, but I had never try to dig in to find out why those codes works until few weeks ago I was trying to call a lib written by C but lib headers didn’t surround with #ifdef cplusplus extern “C”.(Shame on me) This post will told you why. Why “undefined reference”?Normally, You can see this “undefined reference” error when compiler can’t find your functions’ definition. But if you click into this post, I’m pretty sure that you have checked your code more than once. The reason why you meet this error while mixing programming is C and C++ compilers have different name mangling rules while compiling. In C, one function only can have one definition, but in C++ polymorphism was added so method can have same name but different version definition with different parameter lists.i.e. you have a function named foo in C:1void foo(int a)&#123;&#125;; Meanwhile you have 2 method in C++:12void foo(int a)&#123;&#125;;void foo(char a)&#123;&#125;; C compiler might rename it as __foo in assembly. But C++ have to do some changes to make sure method name is unique in assembly, normally in C++ compiler it might be renamed with parameter list like __Z1_foo_int and __Z1_foo_char. Their will be linking error like “undefined reference” when your trying to link a C lib whihc was compiled by C compiler and your C header files didn’t add #ifdef cplusplus extern “C”, because C++ compiler trying to find a symbol named **Z1_foo_int but it can’t because it was renamed as __foo** by C compiler. Why extern “C” can solve this?12345678910111213#ifdef __cplusplusextern "C" &#123;#endif/**** your declarations *****/#ifdef __cplusplus &#125;#endif C compiler will ignore those codes because of marco #ifdef __cplusplus, it’s easy to understand. But if you are using a C++ compiler, this extern “C” will be active and tell C++ compiler “you should link those functions with name mangling rules”. In this case, C++ can find function definitions correctly in your C lib.]]></content>
+      <categories>
+        <category>编程相关</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[cmake notes]]></title>
     <url>%2F2019-03-04%2Fcmake-notes%2F</url>
     <content type="text"><![CDATA[Take notes! Use pkg-config in cmake12345678#require gstreamer and check version, $&#123;GST&#125; is an user defined prefix for _LIBRARIES/_INCLUDE_DIRS/_CFLAGS_OTHERpkg_check_modules(GST REQUIRED gstreamer-1.0&gt;=1.10 gstreamer-app-1.0&gt;=1.10)#Then we can get hidden variables $&#123;GST_LIBRARIES&#125; $&#123;GST_INCLUDE_DIRS&#125; $&#123;GST_CFLAGS_OTHER&#125;target_link_libraries($&#123;PROJECT_NAME&#125; boost_log pthread $&#123;GST_LIBRARIES&#125;)target_include_directories($&#123;PROJECT_NAME&#125; PUBLIC $&#123;GST_INCLUDE_DIRS&#125;)target_compile_options($&#123;PROJECT_NAME&#125; PUBLIC $&#123;GST_CFLAGS_OTHER&#125;) Add all files under a folder(i.e. add all source files)123456#option 1: use file(), store files into variable SRC_FILESfile(GLOB SRC_FILES "*.cpp")#if there are sub-dirs should be searched, use recursivefile(GLOB_RECURSE SRC_FILES "*.cpp")#option 2: use aux_source_directory(), store source files into variable SRC_FILESaux_source_directory(. SRC_FILES)]]></content>
@@ -30,8 +42,8 @@
         <category>编程相关</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
         <tag>C++</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -130,8 +142,8 @@
         <category>编程相关</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
         <tag>C++</tag>
+        <tag>Linux</tag>
         <tag>gPRC</tag>
       </tags>
   </entry>
