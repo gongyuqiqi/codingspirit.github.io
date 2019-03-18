@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Coding Spirit">
 <meta property="og:description" content="The solution for this issue is very sample, add #ifdef cplusplus extern “C” in your C header files. I have seen a lots of C header files with this code, I also know that those codes will help C code c">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-18T13:34:47.239Z">
+<meta property="og:updated_time" content="2019-03-18T14:05:59.843Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C&#x2F;C++ mixed programming error: undefined reference">
 <meta name="twitter:description" content="The solution for this issue is very sample, add #ifdef cplusplus extern “C” in your C header files. I have seen a lots of C header files with this code, I also know that those codes will help C code c">
@@ -412,7 +412,7 @@
                 
               
 
-              <time title="Created: 2019-03-18 20:37:06 / Modified: 21:34:47" itemprop="dateCreated datePublished" datetime="2019-03-18T20:37:06+08:00">2019-03-18</time>
+              <time title="Created: 2019-03-18 20:37:06 / Modified: 22:05:59" itemprop="dateCreated datePublished" datetime="2019-03-18T20:37:06+08:00">2019-03-18</time>
             
 
             
@@ -475,7 +475,7 @@
       
 
       
-        <p>The solution for this issue is very sample, add <span style="color:red">#ifdef <strong>cplusplus extern “C”</strong></span> in your C header files. I have seen a lots of C header files with this code, I also know that those codes will help C code compatible with C++ code, but I had never try to dig in to find out why those codes works until few weeks ago I was trying to call a lib written by C but lib headers didn’t surround with <span style="color:red">#ifdef cplusplus extern “C”</span>.(Shame on me) This post will told you why.<br><a id="more"></a></p>
+        <p>The solution for this issue is very sample, add <span style="color:red">#ifdef <strong>cplusplus extern “C”</strong></span> in your C header files. I have seen a lots of C header files with this code, I also know that those codes will help C code compatible with C++ code, but I had never try to dig in to find out why those codes works until few weeks ago I was trying to call a lib written by C but lib headers didn’t surround with <span style="color:red">#ifdef cplusplus extern “C”</span>.(Shame on me) This post will tell you why.<br><a id="more"></a></p>
 <h2 id="Why-“undefined-reference”"><a href="#Why-“undefined-reference”" class="headerlink" title="Why “undefined reference”?"></a>Why “undefined reference”?</h2><p>Normally, You can see this “undefined reference” error when compiler can’t find your functions’ definition. But if you click into this post, I’m pretty sure that you have checked your code more than once. The reason why you meet this error while mixing programming is C and C++ compilers have different name mangling rules while compiling. In C, one function only can have one definition, but in C++ polymorphism was added so method can have same name but different version definition with different parameter lists.<br>i.e. you have a function named foo in C:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;&#125;;</span><br></pre></td></tr></table></figure></p>
 <p>Meanwhile you have 2 method in C++:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(<span class="keyword">char</span> a)</span></span>&#123;&#125;;</span><br></pre></td></tr></table></figure></p>
 <p>C compiler might rename it as <strong>__foo</strong> in assembly. But C++ have to do some changes to make sure method name is unique in assembly, normally in C++ compiler it might be renamed with parameter list like <strong>__Z1_foo_int</strong> and <strong>__Z1_foo_char</strong>. Their will be linking error like “undefined reference” when your trying to link a C lib whihc was compiled by C compiler and your C header files didn’t add <span style="color:red">#ifdef <strong>cplusplus extern “C”</strong></span>, because C++ compiler trying to find a symbol named **Z1_foo_int<strong> but it can’t because it was renamed as </strong>__foo** by C compiler.</p>
