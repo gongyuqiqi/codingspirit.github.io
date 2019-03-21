@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Coding Spirit">
 <meta property="og:description" content="This post will show you how to setup environment(Linux) for NXP i.MX 8 and build a image fot i.MX8 Mini EVK. If you trying to build a Android image, close this post.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-21T12:26:44.854Z">
+<meta property="og:updated_time" content="2019-03-21T12:30:29.869Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="i.MX 8 getting started: setup environment">
 <meta name="twitter:description" content="This post will show you how to setup environment(Linux) for NXP i.MX 8 and build a image fot i.MX8 Mini EVK. If you trying to build a Android image, close this post.">
@@ -412,7 +412,7 @@
                 
               
 
-              <time title="Created: 2019-03-21 14:51:39 / Modified: 20:26:44" itemprop="dateCreated datePublished" datetime="2019-03-21T14:51:39+08:00">2019-03-21</time>
+              <time title="Created: 2019-03-21 14:51:39 / Modified: 20:30:29" itemprop="dateCreated datePublished" datetime="2019-03-21T14:51:39+08:00">2019-03-21</time>
             
 
             
@@ -490,7 +490,7 @@
 </ul>
 <p>use <strong>apt install</strong> install all of them.</p>
 <p>Also for <strong>repo</strong>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ curl https://storage.googleapis.com/git-repo-downloads/repo  &gt; /usr/<span class="built_in">local</span>/bin/repo</span><br><span class="line">$ chmod a+x /usr/<span class="built_in">local</span>/bin/repo</span><br></pre></td></tr></table></figure></p>
-<p>You can choice your own repo install path, but make sure this path was added into <strong>PATH</strong>.</p>
+<p>You can choose your own repo install path, but make sure this path was added into <strong>PATH</strong>.</p>
 <h2 id="Yocto-project-setup"><a href="#Yocto-project-setup" class="headerlink" title="Yocto project setup"></a>Yocto project setup</h2><p>We will use i.MX official repo to init.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir imx-yocto-bsp </span><br><span class="line">$ <span class="built_in">cd</span> imx-yocto-bsp </span><br><span class="line">$ repo init -u https://source.codeaurora.org/external/imx/imx-manifest  -b imx-linux-sumo -m imx-4.14.78-1.0.0_ga.xml </span><br><span class="line">$ repo sync</span><br></pre></td></tr></table></figure></p>
 <p>Use <strong>-b \&lt;branch-name></strong> to switch to use other branch if you want. Check on <a href="https://source.codeaurora.org/external/imx/imx-manifest" target="_blank" rel="noopener">https://source.codeaurora.org/external/imx/imx-manifest</a> to find all available branches.</p>
 <h2 id="Start-build"><a href="#Start-build" class="headerlink" title="Start build"></a>Start build</h2><h3 id="Chose-one-graphical-backend-for-your-image"><a href="#Chose-one-graphical-backend-for-your-image" class="headerlink" title="Chose one graphical backend for your image"></a>Chose one graphical backend for your image</h3><ul>
