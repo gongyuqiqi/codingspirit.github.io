@@ -4,7 +4,14 @@
   <url>
     <loc>http://www.lzqblog.top/2019-03-18/C-C-mixed-programming-error-undefined-reference/</loc>
     
-    <lastmod>2019-03-18T14:05:59.843Z</lastmod>
+    <lastmod>2019-03-21T12:26:44.854Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.lzqblog.top/2019-03-21/i-MX-8-getting-started-setup-environment/</loc>
+    
+    <lastmod>2019-03-21T12:26:44.854Z</lastmod>
     
   </url>
   
@@ -86,6 +93,13 @@
   </url>
   
   <url>
+    <loc>http://www.lzqblog.top/2017-11-25/%E5%9C%A8Android-Things%E4%B8%8A%E4%BD%BF%E7%94%A8%E8%BF%9C%E7%A8%8B%E5%B1%8F%E5%B9%95/</loc>
+    
+    <lastmod>2018-11-28T12:01:18.546Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.lzqblog.top/2018-11-20/Debian-nvidia-display-card-driver-install/</loc>
     
     <lastmod>2018-11-28T12:01:18.546Z</lastmod>
@@ -93,21 +107,7 @@
   </url>
   
   <url>
-    <loc>http://www.lzqblog.top/2018-01-03/%E4%BD%BF%E7%94%A8Gparted%E6%89%A9%E5%B1%95%E5%88%86%E5%8C%BA/</loc>
-    
-    <lastmod>2018-11-28T12:01:18.546Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.lzqblog.top/2018-01-03/%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%ABAI/</loc>
-    
-    <lastmod>2018-11-28T12:01:18.546Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.lzqblog.top/2017-11-25/%E5%9C%A8Android-Things%E4%B8%8A%E4%BD%BF%E7%94%A8%E8%BF%9C%E7%A8%8B%E5%B1%8F%E5%B9%95/</loc>
     
     <lastmod>2018-11-28T12:01:18.546Z</lastmod>
     
@@ -135,6 +135,13 @@
   </url>
   
   <url>
+    <loc>http://www.lzqblog.top/2018-01-03/%E4%BD%BF%E7%94%A8Gparted%E6%89%A9%E5%B1%95%E5%88%86%E5%8C%BA/</loc>
+    
+    <lastmod>2018-11-28T12:01:18.546Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.lzqblog.top/2017-11-24/%E5%9C%A8Raspberry-Pi%E4%B8%8A%E5%88%9D%E8%AF%95Android-Things/</loc>
     
     <lastmod>2018-11-28T12:01:18.546Z</lastmod>
@@ -145,13 +152,6 @@
     <loc>http://www.lzqblog.top/2018-11-23/Linux-%E2%80%98adb-devices%E2%80%99-can-t-find-devices/</loc>
     
     <lastmod>2018-11-26T11:26:53.072Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.lzqblog.top/2018-06-11/%E7%8E%B0%E5%9C%A8%E6%94%AF%E6%8C%81HTTPS%E5%95%A6/</loc>
-    
-    <lastmod>2018-11-20T11:54:50.571Z</lastmod>
     
   </url>
   
@@ -184,13 +184,6 @@
   </url>
   
   <url>
-    <loc>http://www.lzqblog.top/2018-01-23/%E5%9C%A8Windows%E4%B8%8B%E5%AE%89%E8%A3%85gpu%E7%89%88%E7%9A%84TensorFlow/</loc>
-    
-    <lastmod>2018-11-20T11:54:50.571Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.lzqblog.top/tags/index.html</loc>
     
     <lastmod>2018-11-20T11:54:50.571Z</lastmod>
@@ -205,6 +198,20 @@
   </url>
   
   <url>
+    <loc>http://www.lzqblog.top/2018-01-23/%E5%9C%A8Windows%E4%B8%8B%E5%AE%89%E8%A3%85gpu%E7%89%88%E7%9A%84TensorFlow/</loc>
+    
+    <lastmod>2018-11-20T11:54:50.571Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.lzqblog.top/2018-06-11/%E7%8E%B0%E5%9C%A8%E6%94%AF%E6%8C%81HTTPS%E5%95%A6/</loc>
+    
+    <lastmod>2018-11-20T11:54:50.571Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.lzqblog.top/2017-11-07/%E5%85%B3%E9%97%AD%E7%A8%8B%E5%BA%8F%E7%AA%97%E5%8F%A3%E5%90%8E%E4%BB%8D%E6%9C%89%E7%BA%BF%E7%A8%8B%E6%AE%8B%E7%95%99%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</loc>
     
     <lastmod>2018-11-20T11:54:50.555Z</lastmod>
@@ -212,14 +219,7 @@
   </url>
   
   <url>
-    <loc>http://www.lzqblog.top/2017-10-31/Welcome/</loc>
-    
-    <lastmod>2018-11-20T11:54:50.527Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.lzqblog.top/2018-01-09/Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
+    <loc>http://www.lzqblog.top/2018-04-02/Ubuntu%E5%88%87%E6%8D%A2python%E7%89%88%E6%9C%AC/</loc>
     
     <lastmod>2018-11-20T11:54:50.527Z</lastmod>
     
@@ -233,7 +233,7 @@
   </url>
   
   <url>
-    <loc>http://www.lzqblog.top/2018-11-14/Issue-No-such-file-or-directory/</loc>
+    <loc>http://www.lzqblog.top/2018-03-20/Jenkins-Gerrit-%E8%87%AA%E5%8A%A8commit-code-review-submit/</loc>
     
     <lastmod>2018-11-20T11:54:50.527Z</lastmod>
     
@@ -254,14 +254,21 @@
   </url>
   
   <url>
-    <loc>http://www.lzqblog.top/2018-03-20/Jenkins-Gerrit-%E8%87%AA%E5%8A%A8commit-code-review-submit/</loc>
+    <loc>http://www.lzqblog.top/2017-10-31/Welcome/</loc>
     
     <lastmod>2018-11-20T11:54:50.527Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.lzqblog.top/2018-04-02/Ubuntu%E5%88%87%E6%8D%A2python%E7%89%88%E6%9C%AC/</loc>
+    <loc>http://www.lzqblog.top/2018-11-14/Issue-No-such-file-or-directory/</loc>
+    
+    <lastmod>2018-11-20T11:54:50.527Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.lzqblog.top/2018-01-09/Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
     
     <lastmod>2018-11-20T11:54:50.527Z</lastmod>
     
@@ -282,7 +289,7 @@
   </url>
   
   <url>
-    <loc>http://www.lzqblog.top/2017-11-09/Android%E6%B7%BB%E5%8A%A0App%E8%BD%BD%E5%85%A5%E7%95%8C%E9%9D%A2/</loc>
+    <loc>http://www.lzqblog.top/2017-11-08/CSharp%E8%87%AA%E5%AE%9A%E4%B9%89Excel%E5%AF%BC%E5%87%BA%E7%B1%BB/</loc>
     
     <lastmod>2018-11-20T11:54:50.523Z</lastmod>
     
@@ -296,14 +303,14 @@
   </url>
   
   <url>
-    <loc>http://www.lzqblog.top/2018-11-08/Cross-compile-gRPC-for-ARM/</loc>
+    <loc>http://www.lzqblog.top/2017-11-09/Android%E6%B7%BB%E5%8A%A0App%E8%BD%BD%E5%85%A5%E7%95%8C%E9%9D%A2/</loc>
     
     <lastmod>2018-11-20T11:54:50.523Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.lzqblog.top/2017-11-08/CSharp%E8%87%AA%E5%AE%9A%E4%B9%89Excel%E5%AF%BC%E5%87%BA%E7%B1%BB/</loc>
+    <loc>http://www.lzqblog.top/2018-11-08/Cross-compile-gRPC-for-ARM/</loc>
     
     <lastmod>2018-11-20T11:54:50.523Z</lastmod>
     
