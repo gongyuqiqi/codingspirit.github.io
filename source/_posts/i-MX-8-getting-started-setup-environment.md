@@ -40,7 +40,7 @@ $ cd imx-yocto-bsp
 $ repo init -u https://source.codeaurora.org/external/imx/imx-manifest  -b imx-linux-sumo -m imx-4.14.78-1.0.0_ga.xml 
 $ repo sync
 ```
-Use **-b \<branch-name\>** to switch to use other branch if you want. Check on [https://source.codeaurora.org/external/imx/imx-manifest](https://source.codeaurora.org/external/imx/imx-manifest) to find all available branches.
+Use **-b &lt;branch-name&gt;** to switch to use other branch if you want. Check on [https://source.codeaurora.org/external/imx/imx-manifest](https://source.codeaurora.org/external/imx/imx-manifest) to find all available branches.
 
 ## Start build
 ### Choose one graphical backend for your image
