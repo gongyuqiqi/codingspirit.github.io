@@ -1,5 +1,5 @@
 ---
-title: i-MX-8-getting-started-create-your-kernel-module
+title: 'i.MX 8 getting started: create your kernel module'
 tags:
   - Yocto
   - Linux
