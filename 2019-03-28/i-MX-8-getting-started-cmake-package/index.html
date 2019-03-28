@@ -110,25 +110,25 @@
 
 
 
-  <meta name="description" content="在大学的时候就一直用gdb + gdbserver 来远程调试C++， 前年开始用VS Code后在板上部署程序后配合VS Code调试更是爽到不行（根本停不下来），有种本地开发的感觉， 再也不用在蛋疼的GDB里面敲‘b’ ‘r’ ‘c’， 哈哈。最近的项目对adb的支持非常不错，usb上传下载速度比ssh不知道高到哪里去了。今天突然想到之前写Android app的时候都能通过usb和adb进行">
-<meta name="keywords" content="C++,Linux">
+  <meta name="description" content="We already started to use cmake instead of writing Makefile by our own in buildroot. Let’s see how to have a cmake package in Yocto.">
+<meta name="keywords" content="Linux,Yocto">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux C&#x2F;C++ debugging: using adb and gdb">
-<meta property="og:url" content="http://www.lzqblog.top/2019-02-16/Linux-C-C-debugging-using-adb-and-gdb/index.html">
+<meta property="og:title" content="i.MX 8 getting started: cmake package">
+<meta property="og:url" content="http://www.lzqblog.top/2019-03-28/i-MX-8-getting-started-cmake-package/index.html">
 <meta property="og:site_name" content="Coding Spirit">
-<meta property="og:description" content="在大学的时候就一直用gdb + gdbserver 来远程调试C++， 前年开始用VS Code后在板上部署程序后配合VS Code调试更是爽到不行（根本停不下来），有种本地开发的感觉， 再也不用在蛋疼的GDB里面敲‘b’ ‘r’ ‘c’， 哈哈。最近的项目对adb的支持非常不错，usb上传下载速度比ssh不知道高到哪里去了。今天突然想到之前写Android app的时候都能通过usb和adb进行">
+<meta property="og:description" content="We already started to use cmake instead of writing Makefile by our own in buildroot. Let’s see how to have a cmake package in Yocto.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-16T14:04:27.272Z">
+<meta property="og:updated_time" content="2019-03-28T12:10:44.724Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux C&#x2F;C++ debugging: using adb and gdb">
-<meta name="twitter:description" content="在大学的时候就一直用gdb + gdbserver 来远程调试C++， 前年开始用VS Code后在板上部署程序后配合VS Code调试更是爽到不行（根本停不下来），有种本地开发的感觉， 再也不用在蛋疼的GDB里面敲‘b’ ‘r’ ‘c’， 哈哈。最近的项目对adb的支持非常不错，usb上传下载速度比ssh不知道高到哪里去了。今天突然想到之前写Android app的时候都能通过usb和adb进行">
+<meta name="twitter:title" content="i.MX 8 getting started: cmake package">
+<meta name="twitter:description" content="We already started to use cmake instead of writing Makefile by our own in buildroot. Let’s see how to have a cmake package in Yocto.">
 
 
 
 
 
 
-  <link rel="canonical" href="http://www.lzqblog.top/2019-02-16/Linux-C-C-debugging-using-adb-and-gdb/">
+  <link rel="canonical" href="http://www.lzqblog.top/2019-03-28/i-MX-8-getting-started-cmake-package/">
 
 
 
@@ -138,7 +138,7 @@
   };
 </script>
 
-  <title>Linux C/C++ debugging: using adb and gdb | Coding Spirit</title>
+  <title>i.MX 8 getting started: cmake package | Coding Spirit</title>
   
 
 
@@ -371,7 +371,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.lzqblog.top/2019-02-16/Linux-C-C-debugging-using-adb-and-gdb/">
+    <link itemprop="mainEntityOfPage" href="http://www.lzqblog.top/2019-03-28/i-MX-8-getting-started-cmake-package/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coding Spirit">
@@ -388,7 +388,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Linux C/C++ debugging: using adb and gdb
+          <h1 class="post-title" itemprop="name headline">i.MX 8 getting started: cmake package
 
               
             
@@ -414,7 +414,7 @@
                 
               
 
-              <time title="Created: 2019-02-16 19:38:56 / Modified: 22:04:27" itemprop="dateCreated datePublished" datetime="2019-02-16T19:38:56+08:00">2019-02-16</time>
+              <time title="Created: 2019-03-28 19:56:53 / Modified: 20:10:44" itemprop="dateCreated datePublished" datetime="2019-03-28T19:56:53+08:00">2019-03-28</time>
             
 
             
@@ -477,18 +477,22 @@
       
 
       
-        <p>在大学的时候就一直用gdb + gdbserver 来远程调试C++， 前年开始用VS Code后在板上部署程序后配合VS Code调试更是爽到不行（根本停不下来），有种本地开发的感觉， 再也不用在蛋疼的GDB里面敲‘b’ ‘r’ ‘c’， 哈哈。<br>最近的项目对adb的支持非常不错，usb上传下载速度比ssh不知道高到哪里去了。今天突然想到之前写Android app的时候都能通过usb和adb进行调试， 现在在Linux下调C++应该也可以通过usb+adb实现， 为什么不试一下呢？<br><a id="more"></a></p>
-<h2 id="gdb-gdbserver"><a href="#gdb-gdbserver" class="headerlink" title="gdb + gdbserver"></a>gdb + gdbserver</h2><p>既然要调C/C++， 这两兄弟基本上是必备了(VC++程序员表示并不需要)。 在target device上部署待调试程序并启动gdbserver，然后再在host上使用gdb target remote连接， 跨平台调试变得非常容易， 配合VS Code使用的例子可以参考<a href="https://github.com/codingspirit/VoiceSpirit/tree/develop/.vscode" target="_blank" rel="noopener">这里</a></p>
-<h2 id="adb-forward"><a href="#adb-forward" class="headerlink" title="adb forward"></a>adb forward</h2><p>gdb和gdbserver可以提供调试的server和client， 只要client能够访问到server的指定端口，调试就能够进行。通常我们使用gdb+gdbserver， target device和host在一个局域网内， 通过socket能很轻松地实现连接。 如果我们要通过usb实现这个连接， 可以通过adb forward实现。 如果你在Android上写过通过socket通信的app（不禁想起了做毕设的时候）， 基本上都会用到这个cmd， 只需一行命令 <strong>adb forward tcp:1234 tcp:5678</strong>, 所有在host端1234端口的通信都会被重定向到target端的5678端口，调试socket时轻松愉快！ 有了它的帮助， 就能通过usb线实现socket连接了</p>
-<h2 id="Step-By-Step"><a href="#Step-By-Step" class="headerlink" title="Step By Step"></a>Step By Step</h2><p>Let’s have a quick step by step instruction:</p>
-<p>First of all, build your C/C++ app and upload your app binary to target device.</p>
-<p>Then we start <strong>gdbserver</strong> on target device:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#target device</span></span><br><span class="line">gdbserver :<span class="variable">$&#123;TARGET_PORT&#125;</span> <span class="variable">$&#123;EXEC_FILE&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>i.e. :  <strong>gdbserver :1234 /usr/bin/test_app</strong>. gdbserver will listening at port 1234 and waiting for client to connect.</p>
-<p>After that we can use <strong>adb forward</strong> on host PC(make sure usb connection is good and adb shell works well):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#host</span></span><br><span class="line">adb forward tcp:<span class="variable">$&#123;HOST_PORT&#125;</span> tcp:<span class="variable">$&#123;TARGET_PORT&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>All the communication data on specific host port will be redirected to target server port.<br>i.e. : <strong>adb forward tcp:4567 tcp:1234</strong>. Then all the data send to <strong>localhost:4567</strong> on host PC will be redirected to target device <strong>1234</strong> port.</p>
-<p>Last step, start gdb on host PC then connect to target gdbserver:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#host</span></span><br><span class="line">$ gdb</span><br><span class="line"><span class="comment">#make sure your gdb and your gdbserver are from one set of toolchain</span></span><br><span class="line">GNU gdb (Debian 7.12-6) 7.12.0.20161007-git</span><br><span class="line">Copyright (C) 2016 Free Software Foundation, Inc.</span><br><span class="line">License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;</span><br><span class="line">This is free software: you are free to change and redistribute it.</span><br><span class="line">There is NO WARRANTY, to the extent permitted by law.  Type <span class="string">"show copying"</span></span><br><span class="line">and <span class="string">"show warranty"</span> <span class="keyword">for</span> details.</span><br><span class="line">This GDB was configured as <span class="string">"x86_64-linux-gnu"</span>.</span><br><span class="line">Type <span class="string">"show configuration"</span> <span class="keyword">for</span> configuration details.</span><br><span class="line">For bug reporting instructions, please see:</span><br><span class="line">&lt;http://www.gnu.org/software/gdb/bugs/&gt;.</span><br><span class="line">Find the GDB manual and other documentation resources online at:</span><br><span class="line">&lt;http://www.gnu.org/software/gdb/documentation/&gt;.</span><br><span class="line">For <span class="built_in">help</span>, <span class="built_in">type</span> <span class="string">"help"</span>.</span><br><span class="line">Type <span class="string">"apropos word"</span> to search <span class="keyword">for</span> commands related to <span class="string">"word"</span>.</span><br><span class="line">(gdb) target remote :<span class="variable">$&#123;HOST_PORT&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>i.e. : <strong>(gdb) target remote :4567</strong></p>
-<p>Now we can start hunting bug!</p>
+        <p>We already started to use cmake instead of writing Makefile by our own in buildroot. Let’s see how to have a cmake package in Yocto.<br><a id="more"></a></p>
+<h2 id="Add-your-source-file-and-CMakeLists"><a href="#Add-your-source-file-and-CMakeLists" class="headerlink" title="Add your source file and CMakeLists"></a>Add your source file and CMakeLists</h2><p>Here we use a simple cpp source file to test c++11 and pthread.</p>
+<p><strong>alexcmaketest.cpp</strong> :</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;thread&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;memory&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> thread1 = <span class="built_in">std</span>::make_unique&lt;<span class="built_in">std</span>::thread&gt;([]() &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"hello world from thread1"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">auto</span> thread2 = <span class="built_in">std</span>::make_unique&lt;<span class="built_in">std</span>::thread&gt;([]() &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"hello world from thread2"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (thread1-&gt;joinable())</span><br><span class="line">        thread1-&gt;join();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (thread2-&gt;joinable())</span><br><span class="line">        thread2-&gt;join();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Then prepare your CMakeLists.txt:</p>
+<p><strong>CMakeLists.txt</strong>:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">2.8</span> FATAL_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="keyword">project</span>(alexcmaketest)</span><br><span class="line"></span><br><span class="line"><span class="keyword">file</span>(GLOB SRC_FILES <span class="string">"*.cpp"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">add_executable</span>(<span class="variable">$&#123;PROJECT_NAME&#125;</span> <span class="variable">$&#123;SRC_FILES&#125;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">target_link_libraries</span>(<span class="variable">$&#123;PROJECT_NAME&#125;</span> pthread)</span><br><span class="line"></span><br><span class="line"><span class="keyword">install</span>(TARGETS <span class="variable">$&#123;PROJECT_NAME&#125;</span> DESTINATION bin)</span><br></pre></td></tr></table></figure>
+<p>Notice : <strong>install</strong> should be added into your <strong>CMakeLists.txt</strong> if you want your binary to be installed into rootfs.</p>
+<h2 id="Write-your-recipe"><a href="#Write-your-recipe" class="headerlink" title="Write your recipe"></a>Write your recipe</h2><p><strong>cmakeexample_0.1.bb</strong> :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">SUMMARY = &quot;cmake example&quot;</span><br><span class="line">DESCRIPTION = &quot;Recipe for cmake test&quot;</span><br><span class="line">LICENSE = &quot;GPL-2.0&quot;</span><br><span class="line">LIC_FILES_CHKSUM = &quot;file://$&#123;COMMON_LICENSE_DIR&#125;/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6&quot;</span><br><span class="line"></span><br><span class="line">SRC_URI = &quot;file://alexcmaketest.cpp \</span><br><span class="line">            file://CMakeLists.txt&quot;</span><br><span class="line"></span><br><span class="line">S = &quot;$&#123;WORKDIR&#125;&quot;</span><br><span class="line"></span><br><span class="line">inherit cmake</span><br></pre></td></tr></table></figure>
+<p>There is no need to override <strong>do_install</strong> nor <strong>do_config</strong> in this scenario. <strong>cmake.bbclass</strong> has already defined those tasks and we can just inherit from it.<br>If <strong>pkgconfig</strong> is required by your cmake, use <strong>inherit pkgconfig cmake</strong> instead.</p>
+<p>Then add your packages into your layer, don’t forget config your package as <span style="color:red">IMAGE_INSTALL_append</span> in <span style="color:red">layer.conf</span>. After that, you should have a folder tree like this:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── bitbake-cookerdaemon.log</span><br><span class="line">├── conf</span><br><span class="line">│   └── layer.conf</span><br><span class="line">├── COPYING.MIT</span><br><span class="line">├── README</span><br><span class="line">├── recipes-cmakeexample</span><br><span class="line">│   └── cmakeexample</span><br><span class="line">│       ├── cmakeexample-0.1</span><br><span class="line">│       │   ├── alexcmaketest.cpp</span><br><span class="line">│       │   └── CMakeLists.txt</span><br><span class="line">│       └── cmakeexample_0.1.bb</span><br></pre></td></tr></table></figure>
+<h2 id="Build-your-package"><a href="#Build-your-package" class="headerlink" title="Build your package!"></a>Build your package!</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bitbake cmakeexample</span><br></pre></td></tr></table></figure>
+<h2 id="Build-your-image"><a href="#Build-your-image" class="headerlink" title="Build your image"></a>Build your image</h2><p>Of course don’t forget to re-build your image.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bitbake fsl-image-qt5-validation-imx</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -522,7 +526,7 @@
   <li class="post-copyright-link">
     <strong>Post link: </strong>
     
-    <a href="http://www.lzqblog.top/2019-02-16/Linux-C-C-debugging-using-adb-and-gdb/" title="Linux C/C++ debugging: using adb and gdb">http://www.lzqblog.top/2019-02-16/Linux-C-C-debugging-using-adb-and-gdb/</a>
+    <a href="http://www.lzqblog.top/2019-03-28/i-MX-8-getting-started-cmake-package/" title="i.MX 8 getting started: cmake package">http://www.lzqblog.top/2019-03-28/i-MX-8-getting-started-cmake-package/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
@@ -535,9 +539,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/C/" rel="tag"># C++</a>
-          
             <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/Yocto/" rel="tag"># Yocto</a>
           
         </div>
       
@@ -550,8 +554,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018-12-23/Linux-kernel-module-3/" rel="next" title="Linux kernel module(3)">
-                <i class="fa fa-chevron-left"></i> Linux kernel module(3)
+              <a href="/2019-03-26/i-MX-8-getting-started-create-your-kernel-module/" rel="next" title="i.MX 8 getting started: create-your-kernel-module">
+                <i class="fa fa-chevron-left"></i> i.MX 8 getting started: create-your-kernel-module
               </a>
             
           </div>
@@ -559,10 +563,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019-02-28/C-standard-exceptions/" rel="prev" title="C++ standard exceptions">
-                C++ standard exceptions <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -790,7 +790,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#gdb-gdbserver"><span class="nav-number">1.</span> <span class="nav-text">gdb + gdbserver</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adb-forward"><span class="nav-number">2.</span> <span class="nav-text">adb forward</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-By-Step"><span class="nav-number">3.</span> <span class="nav-text">Step By Step</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Add-your-source-file-and-CMakeLists"><span class="nav-number">1.</span> <span class="nav-text">Add your source file and CMakeLists</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Write-your-recipe"><span class="nav-number">2.</span> <span class="nav-text">Write your recipe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Build-your-package"><span class="nav-number">3.</span> <span class="nav-text">Build your package!</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Build-your-image"><span class="nav-number">4.</span> <span class="nav-text">Build your image</span></a></li></ol></div>
             
 
           </div>
