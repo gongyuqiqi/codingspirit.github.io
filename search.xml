@@ -209,8 +209,8 @@
   </entry>
   <entry>
     <title><![CDATA[git command备忘录]]></title>
-    <url>%2F2018-10-22%2Fgit-command%E5%A4%87%E5%BF%98%E5%BD%95%2F</url>
-    <content type="text"><![CDATA[… 全局配置用户名和邮箱:12git config --global user.name "Alex.Li"git config --global user.email "Alex.Li@xxxx.com" ssh密钥生成:1ssh-keygen -t rsa -C "Alex.Li@xxxx.com" 储存https/http方式用户名密码:1git config --global credential.helper store 添加tag并推送到远端:12git tag -a 1.0.0 -m 'add version 1.0.0'git push origin master --tags]]></content>
+    <url>%2F2018-10-21%2Fgit-command%E5%A4%87%E5%BF%98%E5%BD%95%2F</url>
+    <content type="text"><![CDATA[… 全局配置用户名和邮箱:12git config --global user.name "Alex.Li"git config --global user.email "Alex.Li@xxxx.com" ssh密钥生成:1ssh-keygen -t rsa -C "Alex.Li@xxxx.com" 储存https/http方式用户名密码:1git config --global credential.helper store 添加tag并推送到远端:12git tag -a 1.0.0 -m 'add version 1.0.0'git push origin master --tags 更改一个https仓库为ssh仓库： .git/config中1url = https://xxxx.com/somebody/abcdef.git 改为1url = git@gxxxx.com:somebody/abcdef.git 反之则反]]></content>
       <categories>
         <category>随便写写</category>
       </categories>
