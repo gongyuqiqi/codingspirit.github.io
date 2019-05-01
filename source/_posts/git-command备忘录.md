@@ -2,7 +2,7 @@
 title: git command备忘录
 tags:
   - 日志 
-date: 2018-10-22 16:20:36
+date: 2018-10-21 16:20:36
 categories: 随便写写
 ---
 ...
@@ -29,3 +29,16 @@ git config --global credential.helper store
 git tag -a 1.0.0 -m 'add version 1.0.0'
 git push origin master --tags
 ```
+
+更改一个https仓库为ssh仓库：
+
+*.git/config*中
+```
+url = https://xxxx.com/somebody/abcdef.git
+```
+改为
+```
+url = git@gxxxx.com:somebody/abcdef.git
+```
+反之则反
+
