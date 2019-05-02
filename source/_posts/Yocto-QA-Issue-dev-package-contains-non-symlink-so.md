@@ -18,16 +18,14 @@ Add below line to add lib version information in cmake:
 ```cmake
 set_target_properties(${PROJECT_NAME} PROPERTIES VERSION 0.0.3 SOVERSION 0.0.3)
 ```
-
-And use below line instead of directly set 
-
-**DESTINATION** as **lib**:
+A better way:
 ```cmake
-install(TARGETS ${PROJECT_NAME} LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+set(${PROJECT_NAME}_VERSION "0.0.3")
+set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${${PROJECT_NAME}_VERSION} SOVERSION ${${PROJECT_NAME}_VERSION})
+message(STATUS "Version: ${${PROJECT_NAME}_VERSION}")
 ```
 
-Variable **CMAKE_INSTALL_LIBDIR** will be set by Yocto automatically. The only issue is, if you use **CMAKE_INSTALL_LIBDIR** instead of **lib**, you can't built it on your PC directly without Yocto, because **CMAKE_INSTALL_LIBDIR** is not set.
-My solution is make this change as a patch, which will be patched by Yocto recipe.
+After that, when you build it with bitbake, version number will be added to extension automatically, a soft link we mentioned will be created as well.
 
 ### Force Yocto ignore this warning
 
