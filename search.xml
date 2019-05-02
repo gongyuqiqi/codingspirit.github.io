@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Yocto QA Issue: Files/directories were installed but not shipped in any package]]></title>
+    <url>%2F2019-05-02%2FYocto-QA-Issue-Files-directories-were-installed-but-not-shipped-in-any-package%2F</url>
+    <content type="text"><![CDATA[Yocto has much more strict rules than buildroot, one more QA Issue I met today is when I trying to install some regular files into rootfs by cmake install. Root causeYocto/bitbake need to record every file you trying to install into rootfs, so it can easily remove those files when you trying to remove a package. Special case is When you trying to install TARGET by cmake like this:1install(TARGETS $&#123;PROJECT_NAME&#125; DESTINATION bin) Yocto will automatically record TARGET in this case if your inherit cmake recipe even you didn’t declare it in recipe explicitly. However, if we trying to install some regular files(like some setting files,scripts etc.) by install(FILES or install(DIRECTORY, yocto will require us to declare those files explicitly. FixDeclare those files in recipe:12FILES_$&#123;PN&#125; += &quot;/test/*&quot;# Change &quot;/test/*&quot; to where your regular file installed]]></content>
+      <categories>
+        <category>问题记录</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Yocto</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Yocto QA Issue: -dev package contains non-symlink .so]]></title>
     <url>%2F2019-04-29%2FYocto-QA-Issue-dev-package-contains-non-symlink-so%2F</url>
-    <content type="text"><![CDATA[Last week I met an issue when I trying to include a shared lib(built by cmake) written by me into Yocto project, which has already been verified in buildroot.The root cause is recipe trying to directly install a *.so lib into target filesystem, which doesn’t meet Yocto QA request. Lib should be installed with version number(i.e. libabc.so.0.0.3), then use a soft link(i.e. libabc.so) link to it. Quick fixIf your lib is using cmakeAdd below line to add lib version information in cmake:1set_target_properties($&#123;PROJECT_NAME&#125; PROPERTIES VERSION 0.0.3 SOVERSION 0.0.3) And use below line instead of directly set DESTINATION as lib:1install(TARGETS $&#123;PROJECT_NAME&#125; LIBRARY DESTINATION $&#123;CMAKE_INSTALL_LIBDIR&#125;) Variable CMAKE_INSTALL_LIBDIR will be set by Yocto automatically. The only issue is, if you use CMAKE_INSTALL_LIBDIR instead of lib, you can’t built it on your PC directly without Yocto, because CMAKE_INSTALL_LIBDIR is not set.My solution is make this change as a patch, which will be patched by Yocto recipe. Force Yocto ignore this warningIt’s not recommended but you can add below line into your lib recipe to force Yocto ignore this issue:1INSANE_SKIP_$&#123;PN&#125; = &quot;dev-so&quot; As matter of fact, you can use this line to avoid almost all QA Issues, just replace “dev-so” into your error type.]]></content>
+    <content type="text"><![CDATA[Last week I met an issue when I trying to include a shared lib(built by cmake) written by me into Yocto project, which has already been verified in buildroot.The root cause is recipe trying to directly install a *.so lib into target filesystem, which doesn’t meet Yocto QA request. Lib should be installed with version number(i.e. libabc.so.0.0.3), then use a soft link(i.e. libabc.so) link to it. Quick fixIf your lib is using cmakeAdd below line to add lib version information in cmake:1set_target_properties($&#123;PROJECT_NAME&#125; PROPERTIES VERSION 0.0.3 SOVERSION 0.0.3) A better way:123set($&#123;PROJECT_NAME&#125;_VERSION "0.0.3")set_target_properties($&#123;PROJECT_NAME&#125; PROPERTIES VERSION $&#123;$&#123;PROJECT_NAME&#125;_VERSION&#125; SOVERSION $&#123;$&#123;PROJECT_NAME&#125;_VERSION&#125;)message(STATUS "Version: $&#123;$&#123;PROJECT_NAME&#125;_VERSION&#125;") After that, when you build it with bitbake, version number will be added to extension automatically, a soft link we mentioned will be created as well. Force Yocto ignore this warningIt’s not recommended but you can add below line into your lib recipe to force Yocto ignore this issue:1INSANE_SKIP_$&#123;PN&#125; = &quot;dev-so&quot; As matter of fact, you can use this line to avoid almost all QA Issues, just replace “dev-so” into your error type.]]></content>
       <categories>
         <category>问题记录</category>
       </categories>

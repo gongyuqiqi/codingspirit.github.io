@@ -118,7 +118,7 @@
 <meta property="og:site_name" content="Coding Spirit">
 <meta property="og:description" content="Last week I met an issue when I trying to include a shared lib(built by cmake) written by me into Yocto project, which has already been verified in buildroot.The root cause is recipe trying to directl">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-29T11:44:19.003Z">
+<meta property="og:updated_time" content="2019-05-02T11:52:11.882Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Yocto QA Issue: -dev package contains non-symlink .so">
 <meta name="twitter:description" content="Last week I met an issue when I trying to include a shared lib(built by cmake) written by me into Yocto project, which has already been verified in buildroot.The root cause is recipe trying to directl">
@@ -414,12 +414,24 @@
                 
               
 
-              <time title="Created: 2019-04-29 19:11:37 / Modified: 19:44:19" itemprop="dateCreated datePublished" datetime="2019-04-29T19:11:37+08:00">2019-04-29</time>
+              <time title="Created: 2019-04-29 19:11:37" itemprop="dateCreated datePublished" datetime="2019-04-29T19:11:37+08:00">2019-04-29</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-02 19:52:11" itemprop="dateModified" datetime="2019-05-02T19:52:11+08:00">2019-05-02</time>
               
             
           </span>
@@ -479,9 +491,8 @@
       
         <p>Last week I met an issue when I trying to include a shared lib(built by cmake) written by me into Yocto project, which has already been verified in buildroot.<br>The root cause is recipe trying to directly install a *.so lib into target filesystem, which doesn’t meet Yocto QA request. Lib should be installed with version number(i.e. libabc.so.0.0.3), then use a soft link(i.e. libabc.so) link to it.<br><a id="more"></a></p>
 <h2 id="Quick-fix"><a href="#Quick-fix" class="headerlink" title="Quick fix"></a>Quick fix</h2><h3 id="If-your-lib-is-using-cmake"><a href="#If-your-lib-is-using-cmake" class="headerlink" title="If your lib is using cmake"></a>If your lib is using cmake</h3><p>Add below line to add lib version information in cmake:<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set_target_properties</span>(<span class="variable">$&#123;PROJECT_NAME&#125;</span> PROPERTIES VERSION <span class="number">0.0</span>.<span class="number">3</span> SOVERSION <span class="number">0.0</span>.<span class="number">3</span>)</span><br></pre></td></tr></table></figure></p>
-<p>And use below line instead of directly set </p>
-<p><strong>DESTINATION</strong> as <strong>lib</strong>:<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">install</span>(TARGETS <span class="variable">$&#123;PROJECT_NAME&#125;</span> LIBRARY DESTINATION <span class="variable">$&#123;CMAKE_INSTALL_LIBDIR&#125;</span>)</span><br></pre></td></tr></table></figure></p>
-<p>Variable <strong>CMAKE_INSTALL_LIBDIR</strong> will be set by Yocto automatically. The only issue is, if you use <strong>CMAKE_INSTALL_LIBDIR</strong> instead of <strong>lib</strong>, you can’t built it on your PC directly without Yocto, because <strong>CMAKE_INSTALL_LIBDIR</strong> is not set.<br>My solution is make this change as a patch, which will be patched by Yocto recipe.</p>
+<p>A better way:<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span>(<span class="variable">$&#123;PROJECT_NAME&#125;</span>_VERSION <span class="string">"0.0.3"</span>)</span><br><span class="line"><span class="keyword">set_target_properties</span>(<span class="variable">$&#123;PROJECT_NAME&#125;</span> PROPERTIES VERSION <span class="variable">$&#123;$&#123;PROJECT_NAME&#125;</span>_VERSION&#125; SOVERSION <span class="variable">$&#123;$&#123;PROJECT_NAME&#125;</span>_VERSION&#125;)</span><br><span class="line"><span class="keyword">message</span>(STATUS <span class="string">"Version: $&#123;$&#123;PROJECT_NAME&#125;_VERSION&#125;"</span>)</span><br></pre></td></tr></table></figure></p>
+<p>After that, when you build it with bitbake, version number will be added to extension automatically, a soft link we mentioned will be created as well.</p>
 <h3 id="Force-Yocto-ignore-this-warning"><a href="#Force-Yocto-ignore-this-warning" class="headerlink" title="Force Yocto ignore this warning"></a>Force Yocto ignore this warning</h3><p>It’s not recommended but you can add below line into your lib recipe to force Yocto ignore this issue:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSANE_SKIP_$&#123;PN&#125; = &quot;dev-so&quot;</span><br></pre></td></tr></table></figure></p>
 <p>As matter of fact, you can use this line to avoid almost all <em>QA Issues</em>, just replace <strong>“dev-so”</strong> into your error type.</p>
 
@@ -554,6 +565,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019-05-02/Yocto-QA-Issue-Files-directories-were-installed-but-not-shipped-in-any-package/" rel="prev" title="Yocto QA Issue: Files/directories were installed but not shipped in any package">
+                Yocto QA Issue: Files/directories were installed but not shipped in any package <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -629,7 +644,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
