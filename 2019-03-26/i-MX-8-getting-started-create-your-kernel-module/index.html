@@ -118,7 +118,7 @@
 <meta property="og:site_name" content="Coding Spirit">
 <meta property="og:description" content="The normal way that using yocto to do kernel development is really painful… Maybe try out-of-tree build is a better choice.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-28T12:15:58.725Z">
+<meta property="og:updated_time" content="2019-03-28T12:15:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="i.MX 8 getting started: create your kernel module">
 <meta name="twitter:description" content="The normal way that using yocto to do kernel development is really painful… Maybe try out-of-tree build is a better choice.">
@@ -785,12 +785,13 @@
           
           
 
-          <div id="musicPlayer">
-            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=3&id=1368025866&auto=1&height=66">
-            </iframe>
-          </div>
 
-          <span style="color:white;font-family:Impact;font-style:italic;cursor:crosshair;font-size:15px">How about this song?</span>
+          
+            <div id="musicPlayerHome">
+              <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=3&id=1368025866&auto=0&height=66">
+              </iframe>
+            </div>
+          
 
           
             
@@ -919,10 +920,10 @@
 
 
 
-
-
   
   
+
+
 
 
 
@@ -961,7 +962,7 @@
 
   
   
-    <script src="/lib/three/canvas_lines.min.js"></script>
+    <script src="/lib/three/three-waves.min.js"></script>
   
 
   
@@ -1473,4 +1474,9 @@
   
 
 </body>
+  
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
+    <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+    <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
 </html>

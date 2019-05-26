@@ -118,7 +118,7 @@
 <meta property="og:site_name" content="Coding Spirit">
 <meta property="og:description" content="在大学的时候就一直用gdb + gdbserver 来远程调试C++， 前年开始用VS Code后在板上部署程序后配合VS Code调试更是爽到不行（根本停不下来），有种本地开发的感觉， 再也不用在蛋疼的GDB里面敲‘b’ ‘r’ ‘c’， 哈哈。最近的项目对adb的支持非常不错，usb上传下载速度比ssh不知道高到哪里去了。今天突然想到之前写Android app的时候都能通过usb和adb进行">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-16T14:04:27.272Z">
+<meta property="og:updated_time" content="2019-02-16T14:04:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux C&#x2F;C++ debugging: using adb and gdb">
 <meta name="twitter:description" content="在大学的时候就一直用gdb + gdbserver 来远程调试C++， 前年开始用VS Code后在板上部署程序后配合VS Code调试更是爽到不行（根本停不下来），有种本地开发的感觉， 再也不用在蛋疼的GDB里面敲‘b’ ‘r’ ‘c’， 哈哈。最近的项目对adb的支持非常不错，usb上传下载速度比ssh不知道高到哪里去了。今天突然想到之前写Android app的时候都能通过usb和adb进行">
@@ -767,12 +767,13 @@
           
           
 
-          <div id="musicPlayer">
-            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=3&id=1368025866&auto=1&height=66">
-            </iframe>
-          </div>
 
-          <span style="color:white;font-family:Impact;font-style:italic;cursor:crosshair;font-size:15px">How about this song?</span>
+          
+            <div id="musicPlayerHome">
+              <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=3&id=1368025866&auto=0&height=66">
+              </iframe>
+            </div>
+          
 
           
             
@@ -901,10 +902,10 @@
 
 
 
-
-
   
   
+
+
 
 
 
@@ -943,7 +944,7 @@
 
   
   
-    <script src="/lib/three/canvas_lines.min.js"></script>
+    <script src="/lib/three/three-waves.min.js"></script>
   
 
   
@@ -1455,4 +1456,9 @@
   
 
 </body>
+  
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
+    <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+    <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
 </html>

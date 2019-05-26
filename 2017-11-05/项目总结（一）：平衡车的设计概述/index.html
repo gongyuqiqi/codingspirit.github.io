@@ -120,7 +120,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.lzqblog.top/2017-11-05/项目总结（一）：平衡车的设计概述/MOSH1.png">
 <meta property="og:image" content="http://www.lzqblog.top/2017-11-05/项目总结（一）：平衡车的设计概述/MOSH2.png">
-<meta property="og:updated_time" content="2018-11-29T02:18:03.761Z">
+<meta property="og:updated_time" content="2018-11-29T02:18:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="项目总结（一）：平衡车的设计概述">
 <meta name="twitter:description" content="写篇post总结一下当年做平衡车的一些经验。这篇post是概述性质的，详细的软硬件设计以后有时间再写吧。">
@@ -782,12 +782,13 @@
           
           
 
-          <div id="musicPlayer">
-            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=3&id=1368025866&auto=1&height=66">
-            </iframe>
-          </div>
 
-          <span style="color:white;font-family:Impact;font-style:italic;cursor:crosshair;font-size:15px">How about this song?</span>
+          
+            <div id="musicPlayerHome">
+              <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=3&id=1368025866&auto=0&height=66">
+              </iframe>
+            </div>
+          
 
           
             
@@ -916,10 +917,10 @@
 
 
 
-
-
   
   
+
+
 
 
 
@@ -958,7 +959,7 @@
 
   
   
-    <script src="/lib/three/canvas_lines.min.js"></script>
+    <script src="/lib/three/three-waves.min.js"></script>
   
 
   
@@ -1470,4 +1471,9 @@
   
 
 </body>
+  
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
+    <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+    <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
 </html>
