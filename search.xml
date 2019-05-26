@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[i.MX setup TFTP and NFS]]></title>
+    <url>%2F2019-05-26%2Fi-MX-setup-TFTP-and-NFS%2F</url>
+    <content type="text"><![CDATA[Using TFTP(Trivial File Transfer Protocol) and NFS(Network File System) to load kernel and rootfs can help to reduce operations of flash write efficiently, which can make you EVK board live longer… This summary is based on Alexey‘s version, with some modifications according to my experiment. TFTPInstall necessary tools1sudo apt-get install xinetd tftpd tftp Setup TFTP12345678910111213mkdir -p /etc/xinetd.d/nano /etc/xinetd.d/tftpservice tftp&#123; protocol = udp port = 69 socket_type = dgram wait = yes user = nobody server = /usr/sbin/in.tftpd server_args = /srv/tftp disable = no&#125; create folder to store tftp files: 123sudo mkdir /srv/tftpsudo chmod -R 777 /srv/tftpsudo chown -R nobody /srv/tftp restart tftpd by xinetd: 1sudo /etc/init.d/xinetd restart copy device trees/kernel image to tftp folder: 12cp Image /srv/tftpcp Image-fsl-imx8mq-evk.dtb /srv/tftp/fsl-imx8mq-evk.dtb NFSInstall necessary tools1sudo apt-get install nfs-kernel-server nfs-common portmap Setup NFSAdd below line at end of /etc/exports1/home/ *(rw,insecure,no_root_squash,no_subtree_check) restart nfs server:1sudo /etc/init.d/nfs-kernel-server restart create copy of your rootfs:12345cd ~mkdir imx8-evk-dummy# goto your yocto image build dir, i.e. imx-yocto-bsp/imx8mmevk_build/tmp/work/imx8mmevk-poky-linux/fsl-image-validation-imx/1.0-r0cd &lt;your_yocto_image_build_folder&gt;cp -r rootfs ~/imx8-evk-dummy Notice: Seems long path of rootfs will cause rootfs mounting error, suggest copy your rootfs to a short path TargetInterrupt board booting up then type into u-boot terminal: 1234567setenv nfsroot &lt;path-to-your-rootfs&gt;setenv image &lt;kernel-image-name-in-tftp-folder&gt;setenv fdt_file &lt;devid-tree-file-name-in-tftp-folder&gt;setenv serverip &lt;pc-ip-address&gt;setenv bootcmd &apos;run netboot&apos;savreset i.e.: 1234567setenv nfsroot /home/alex/imx8-evk-dummy/rootfssetenv image Imagesetenv fdt_file fsl-imx8mm-evk.dtbsetenv serverip 10.0.1.17setenv bootcmd &apos;run netboot&apos;savreset]]></content>
+      <categories>
+        <category>随便谢谢</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Yocto QA Issue: Files/directories were installed but not shipped in any package]]></title>
     <url>%2F2019-05-02%2FYocto-QA-Issue-Files-directories-were-installed-but-not-shipped-in-any-package%2F</url>
     <content type="text"><![CDATA[Yocto has much more strict rules than buildroot, one more QA Issue I met today is when I trying to install some regular files into rootfs by cmake install. Root causeYocto/bitbake need to record every file you trying to install into rootfs, so it can easily remove those files when you trying to remove a package. Special case is When you trying to install TARGET by cmake like this:1install(TARGETS $&#123;PROJECT_NAME&#125; DESTINATION bin) Yocto will automatically record TARGET in this case if your inherit cmake recipe even you didn’t declare it in recipe explicitly. However, if we trying to install some regular files(like some setting files,scripts etc.) by install(FILES or install(DIRECTORY, yocto will require us to declare those files explicitly. FixDeclare those files in recipe:12FILES_$&#123;PN&#125; += &quot;/test/*&quot;# Change &quot;/test/*&quot; to where your regular file installed]]></content>

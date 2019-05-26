@@ -110,25 +110,25 @@
 
 
 
-  <meta name="description" content="Clarify this issueIf you trying to execute a executable binary, but you see this error “No such file or directory”, it’s normally caused by you trying to run a 32-bits binary on a 64-bits OS.">
+  <meta name="description" content="Using TFTP(Trivial File Transfer Protocol) and NFS(Network File System) to load kernel and rootfs can help to reduce operations of flash write efficiently, which can make you EVK board live longer… Th">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Issue:No such file or directory">
-<meta property="og:url" content="http://www.lzqblog.top/2018-11-14/Issue-No-such-file-or-directory/index.html">
+<meta property="og:title" content="i.MX setup TFTP and NFS">
+<meta property="og:url" content="http://www.lzqblog.top/2019-05-26/i-MX-setup-TFTP-and-NFS/index.html">
 <meta property="og:site_name" content="Coding Spirit">
-<meta property="og:description" content="Clarify this issueIf you trying to execute a executable binary, but you see this error “No such file or directory”, it’s normally caused by you trying to run a 32-bits binary on a 64-bits OS.">
+<meta property="og:description" content="Using TFTP(Trivial File Transfer Protocol) and NFS(Network File System) to load kernel and rootfs can help to reduce operations of flash write efficiently, which can make you EVK board live longer… Th">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-20T11:54:50.000Z">
+<meta property="og:updated_time" content="2019-05-26T08:25:06.788Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Issue:No such file or directory">
-<meta name="twitter:description" content="Clarify this issueIf you trying to execute a executable binary, but you see this error “No such file or directory”, it’s normally caused by you trying to run a 32-bits binary on a 64-bits OS.">
+<meta name="twitter:title" content="i.MX setup TFTP and NFS">
+<meta name="twitter:description" content="Using TFTP(Trivial File Transfer Protocol) and NFS(Network File System) to load kernel and rootfs can help to reduce operations of flash write efficiently, which can make you EVK board live longer… Th">
 
 
 
 
 
 
-  <link rel="canonical" href="http://www.lzqblog.top/2018-11-14/Issue-No-such-file-or-directory/">
+  <link rel="canonical" href="http://www.lzqblog.top/2019-05-26/i-MX-setup-TFTP-and-NFS/">
 
 
 
@@ -138,7 +138,7 @@
   };
 </script>
 
-  <title>Issue:No such file or directory | Coding Spirit</title>
+  <title>i.MX setup TFTP and NFS | Coding Spirit</title>
   
 
 
@@ -371,7 +371,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.lzqblog.top/2018-11-14/Issue-No-such-file-or-directory/">
+    <link itemprop="mainEntityOfPage" href="http://www.lzqblog.top/2019-05-26/i-MX-setup-TFTP-and-NFS/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coding Spirit">
@@ -388,7 +388,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Issue:No such file or directory
+          <h1 class="post-title" itemprop="name headline">i.MX setup TFTP and NFS
 
               
             
@@ -414,24 +414,12 @@
                 
               
 
-              <time title="Created: 2018-11-14 10:23:11" itemprop="dateCreated datePublished" datetime="2018-11-14T10:23:11+08:00">2018-11-14</time>
+              <time title="Created: 2019-05-26 16:03:24 / Modified: 16:25:06" itemprop="dateCreated datePublished" datetime="2019-05-26T16:03:24+08:00">2019-05-26</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-20 19:54:50" itemprop="dateModified" datetime="2018-11-20T19:54:50+08:00">2018-11-20</time>
               
             
           </span>
@@ -448,7 +436,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/问题记录/" itemprop="url" rel="index"><span itemprop="name">问题记录</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/随便谢谢/" itemprop="url" rel="index"><span itemprop="name">随便谢谢</span></a></span>
 
                 
                 
@@ -489,12 +477,25 @@
       
 
       
-        <h1 id="Clarify-this-issue"><a href="#Clarify-this-issue" class="headerlink" title="Clarify this issue"></a>Clarify this issue</h1><p>If you trying to execute a executable binary, but you see this error “No such file or directory”, it’s normally caused by you trying to run a 32-bits binary on a 64-bits OS.<br><a id="more"></a></p>
-<p>First of all you should check your OS:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -a</span><br></pre></td></tr></table></figure></p>
-<p>If you see <strong>x86_64</strong>, we can make sure you are using a 64-bits OS.<br>Then we should check file type of executable binary:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file <span class="variable">$&#123;THE_EXECUTABLE_BIN&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>If you see <strong>ELF 32-bit LSB executable, Intel 80386</strong>, basically we can make sure you are trying to run a 32-bits binary on a 64-bits OS meanwhile your OS haven’t add <strong>i386</strong> architecture yet.</p>
-<h1 id="How-to-fix-it"><a href="#How-to-fix-it" class="headerlink" title="How to fix it"></a>How to fix it</h1><p>We need to add <strong>i386</strong> architecture support on your 64-bits OS.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg --add-architecture i386</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install multiarch-support</span><br><span class="line">sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386</span><br></pre></td></tr></table></figure></p>
-<p>After that, try to run it again :)</p>
+        <p>Using TFTP(Trivial File Transfer Protocol) and NFS(Network File System) to load kernel and rootfs can help to reduce operations of flash write efficiently, which can make you EVK board live longer…</p>
+<p>This summary is based on <a href="https://github.com/Alexey-Abdulov-Tymphany" target="_blank" rel="noopener">Alexey</a>‘s version, with some modifications according to my experiment.<br><a id="more"></a></p>
+<h2 id="TFTP"><a href="#TFTP" class="headerlink" title="TFTP"></a>TFTP</h2><h3 id="Install-necessary-tools"><a href="#Install-necessary-tools" class="headerlink" title="Install necessary tools"></a>Install necessary tools</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install xinetd tftpd tftp</span><br></pre></td></tr></table></figure>
+<h3 id="Setup-TFTP"><a href="#Setup-TFTP" class="headerlink" title="Setup TFTP"></a>Setup TFTP</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /etc/xinetd.d/</span><br><span class="line">nano /etc/xinetd.d/tftp</span><br><span class="line">service tftp</span><br><span class="line">&#123;</span><br><span class="line">    protocol        = udp</span><br><span class="line">    port            = 69</span><br><span class="line">    socket_type     = dgram</span><br><span class="line">    <span class="built_in">wait</span>            = yes</span><br><span class="line">    user            = nobody</span><br><span class="line">    server          = /usr/sbin/in.tftpd</span><br><span class="line">    server_args     = /srv/tftp</span><br><span class="line">    <span class="built_in">disable</span>         = no</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>create folder to store tftp files:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /srv/tftp</span><br><span class="line">sudo chmod -R 777 /srv/tftp</span><br><span class="line">sudo chown -R nobody /srv/tftp</span><br></pre></td></tr></table></figure>
+<p>restart tftpd by xinetd:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/xinetd restart</span><br></pre></td></tr></table></figure>
+<p>copy device trees/kernel image to tftp folder:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp Image /srv/tftp</span><br><span class="line">cp Image-fsl-imx8mq-evk.dtb /srv/tftp/fsl-imx8mq-evk.dtb</span><br></pre></td></tr></table></figure>
+<h2 id="NFS"><a href="#NFS" class="headerlink" title="NFS"></a>NFS</h2><h3 id="Install-necessary-tools-1"><a href="#Install-necessary-tools-1" class="headerlink" title="Install necessary tools"></a>Install necessary tools</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nfs-kernel-server nfs-common portmap</span><br></pre></td></tr></table></figure>
+<h3 id="Setup-NFS"><a href="#Setup-NFS" class="headerlink" title="Setup NFS"></a>Setup NFS</h3><p>Add below line at end of <em>/etc/exports</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/home/ *(rw,insecure,no_root_squash,no_subtree_check)</span><br></pre></td></tr></table></figure></p>
+<p>restart nfs server:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/nfs-kernel-server restart</span><br></pre></td></tr></table></figure></p>
+<p>create copy of your rootfs:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">mkdir imx8-evk-dummy</span><br><span class="line"><span class="comment"># goto your yocto image build dir, i.e. imx-yocto-bsp/imx8mmevk_build/tmp/work/imx8mmevk-poky-linux/fsl-image-validation-imx/1.0-r0</span></span><br><span class="line"><span class="built_in">cd</span> &lt;your_yocto_image_build_folder&gt;</span><br><span class="line">cp -r rootfs ~/imx8-evk-dummy</span><br></pre></td></tr></table></figure></p>
+<p><span style="color:red">Notice:</span> Seems long path of rootfs will cause rootfs mounting error, suggest copy your rootfs to a short path</p>
+<h2 id="Target"><a href="#Target" class="headerlink" title="Target"></a>Target</h2><p>Interrupt board booting up then type into u-boot terminal:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">setenv nfsroot &lt;path-to-your-rootfs&gt;</span><br><span class="line">setenv image &lt;kernel-image-name-in-tftp-folder&gt;</span><br><span class="line">setenv fdt_file &lt;devid-tree-file-name-in-tftp-folder&gt;</span><br><span class="line">setenv serverip &lt;pc-ip-address&gt;</span><br><span class="line">setenv bootcmd &apos;run netboot&apos;</span><br><span class="line">sav</span><br><span class="line">reset</span><br></pre></td></tr></table></figure>
+<p>i.e.:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">setenv nfsroot /home/alex/imx8-evk-dummy/rootfs</span><br><span class="line">setenv image Image</span><br><span class="line">setenv fdt_file fsl-imx8mm-evk.dtb</span><br><span class="line">setenv serverip 10.0.1.17</span><br><span class="line">setenv bootcmd &apos;run netboot&apos;</span><br><span class="line">sav</span><br><span class="line">reset</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -528,7 +529,7 @@
   <li class="post-copyright-link">
     <strong>Post link: </strong>
     
-    <a href="http://www.lzqblog.top/2018-11-14/Issue-No-such-file-or-directory/" title="Issue:No such file or directory">http://www.lzqblog.top/2018-11-14/Issue-No-such-file-or-directory/</a>
+    <a href="http://www.lzqblog.top/2019-05-26/i-MX-setup-TFTP-and-NFS/" title="i.MX setup TFTP and NFS">http://www.lzqblog.top/2019-05-26/i-MX-setup-TFTP-and-NFS/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
@@ -554,8 +555,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018-11-08/Cross-compile-gRPC-for-ARM/" rel="next" title="Cross compile gRPC for ARM">
-                <i class="fa fa-chevron-left"></i> Cross compile gRPC for ARM
+              <a href="/2019-05-02/Yocto-QA-Issue-Files-directories-were-installed-but-not-shipped-in-any-package/" rel="next" title="Yocto QA Issue: Files/directories were installed but not shipped in any package">
+                <i class="fa fa-chevron-left"></i> Yocto QA Issue: Files/directories were installed but not shipped in any package
               </a>
             
           </div>
@@ -563,10 +564,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018-11-20/Debian-nvidia-display-card-driver-install/" rel="prev" title="Debian: nvidia display card driver install">
-                Debian: nvidia display card driver install <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -799,7 +796,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Clarify-this-issue"><span class="nav-number">1.</span> <span class="nav-text">Clarify this issue</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#How-to-fix-it"><span class="nav-number">2.</span> <span class="nav-text">How to fix it</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#TFTP"><span class="nav-number">1.</span> <span class="nav-text">TFTP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-necessary-tools"><span class="nav-number">1.1.</span> <span class="nav-text">Install necessary tools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Setup-TFTP"><span class="nav-number">1.2.</span> <span class="nav-text">Setup TFTP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NFS"><span class="nav-number">2.</span> <span class="nav-text">NFS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-necessary-tools-1"><span class="nav-number">2.1.</span> <span class="nav-text">Install necessary tools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Setup-NFS"><span class="nav-number">2.2.</span> <span class="nav-text">Setup NFS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Target"><span class="nav-number">3.</span> <span class="nav-text">Target</span></a></li></ol></div>
             
 
           </div>
