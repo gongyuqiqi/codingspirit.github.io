@@ -90,3 +90,15 @@ meta-qt5             = "HEAD:d4e7f73d04e8448d326b6f89908701e304e37d65"
 ```bash
 $ source setup-environment <build-dir>
 ```
+
+## Flash
+
+Using [mfgtools](https://github.com/NXPmicro/mfgtools) provided by nxp to flash.
+
+Flash to emmc:
+
+```bash
+sudo uuu -b emmc_all imx-boot-imx8mmevk-sd.bin-flash_evk fsl-image-validation-imx-imx8mmevk.sdcard.bz2/*
+```
+
+In develop stage, suggest to use TFTP and NFS for a longer flash life span. See [i.MX setup TFTP and NFS](https://lzqblog.top/2019-05-26/i-MX-setup-TFTP-and-NFS/) for more details.
