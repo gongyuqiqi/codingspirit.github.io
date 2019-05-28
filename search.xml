@@ -14,7 +14,7 @@
   <entry>
     <title><![CDATA[canvas demo page]]></title>
     <url>%2F2019-05-27%2Fcanvas-demo-page%2F</url>
-    <content type="text"><![CDATA[This is a demo page for cool html5 canvas demos. Try to click them!Black Hole]]></content>
+    <content type="text"><![CDATA[This is a demo page for cool html5 canvas demos. Try to click them!Beware of performance issues if you trying to access those pages through mobile devices. :)Black Hole]]></content>
       <categories>
         <category>随便写写</category>
       </categories>
