@@ -4,7 +4,21 @@
   <url>
     <loc>http://www.lzqblog.top/2019-05-27/canvas-demo-page/</loc>
     
-    <lastmod>2019-05-28T13:55:40.696Z</lastmod>
+    <lastmod>2019-05-29T12:06:05.437Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.lzqblog.top/fireball.html</loc>
+    
+    <lastmod>2019-05-29T12:04:23.085Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.lzqblog.top/blackhole.html</loc>
+    
+    <lastmod>2019-05-29T11:55:36.624Z</lastmod>
     
   </url>
   
@@ -19,13 +33,6 @@
     <loc>http://www.lzqblog.top/2019-05-28/Android-Error-when-execute-sdkmanager/</loc>
     
     <lastmod>2019-05-28T12:54:51.548Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.lzqblog.top/blackhole.html</loc>
-    
-    <lastmod>2019-05-27T14:43:59.792Z</lastmod>
     
   </url>
   
@@ -163,7 +170,7 @@
   </url>
   
   <url>
-    <loc>http://www.lzqblog.top/2017-12-06/%E5%9C%A8Android-Things%E4%B8%8A%E4%BD%BF%E7%94%A8TTS%E5%8F%8A%E4%BD%BF%E7%94%A8Google-Assistant%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</loc>
+    <loc>http://www.lzqblog.top/2018-01-11/%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%ABAI/</loc>
     
     <lastmod>2018-11-28T12:01:18.000Z</lastmod>
     
@@ -184,14 +191,14 @@
   </url>
   
   <url>
-    <loc>http://www.lzqblog.top/2018-11-20/Debian-nvidia-display-card-driver-install/</loc>
+    <loc>http://www.lzqblog.top/2017-12-06/%E5%9C%A8Android-Things%E4%B8%8A%E4%BD%BF%E7%94%A8TTS%E5%8F%8A%E4%BD%BF%E7%94%A8Google-Assistant%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</loc>
     
     <lastmod>2018-11-28T12:01:18.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.lzqblog.top/2017-11-25/%E5%9C%A8Android-Things%E4%B8%8A%E4%BD%BF%E7%94%A8%E8%BF%9C%E7%A8%8B%E5%B1%8F%E5%B9%95/</loc>
+    <loc>http://www.lzqblog.top/2018-11-20/Debian-nvidia-display-card-driver-install/</loc>
     
     <lastmod>2018-11-28T12:01:18.000Z</lastmod>
     
@@ -212,7 +219,7 @@
   </url>
   
   <url>
-    <loc>http://www.lzqblog.top/2018-01-11/%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%ABAI/</loc>
+    <loc>http://www.lzqblog.top/2017-11-25/%E5%9C%A8Android-Things%E4%B8%8A%E4%BD%BF%E7%94%A8%E8%BF%9C%E7%A8%8B%E5%B1%8F%E5%B9%95/</loc>
     
     <lastmod>2018-11-28T12:01:18.000Z</lastmod>
     
@@ -222,13 +229,6 @@
     <loc>http://www.lzqblog.top/2018-11-23/Linux-%E2%80%98adb-devices%E2%80%99-can-t-find-devices/</loc>
     
     <lastmod>2018-11-26T11:26:53.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.lzqblog.top/2018-02-09/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4/</loc>
-    
-    <lastmod>2018-11-20T11:54:50.000Z</lastmod>
     
   </url>
   
@@ -289,14 +289,14 @@
   </url>
   
   <url>
-    <loc>http://www.lzqblog.top/2018-11-08/Cross-compile-gRPC-for-ARM/</loc>
+    <loc>http://www.lzqblog.top/2018-05-24/make-warning-Clock-skew-detected/</loc>
     
     <lastmod>2018-11-20T11:54:50.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.lzqblog.top/2018-05-02/Linux%E9%85%8D%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%A3%B0%E5%8D%A1/</loc>
+    <loc>http://www.lzqblog.top/2018-11-08/Cross-compile-gRPC-for-ARM/</loc>
     
     <lastmod>2018-11-20T11:54:50.000Z</lastmod>
     
@@ -373,6 +373,13 @@
   </url>
   
   <url>
+    <loc>http://www.lzqblog.top/2018-02-09/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4/</loc>
+    
+    <lastmod>2018-11-20T11:54:50.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.lzqblog.top/categories/index.html</loc>
     
     <lastmod>2018-11-20T11:54:50.000Z</lastmod>
@@ -380,7 +387,7 @@
   </url>
   
   <url>
-    <loc>http://www.lzqblog.top/2018-05-24/make-warning-Clock-skew-detected/</loc>
+    <loc>http://www.lzqblog.top/2018-05-02/Linux%E9%85%8D%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%A3%B0%E5%8D%A1/</loc>
     
     <lastmod>2018-11-20T11:54:50.000Z</lastmod>
     
