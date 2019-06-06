@@ -3,7 +3,7 @@ title: i.MX setup TFTP and NFS
 tags:
   - Linux
 date: 2019-05-26 16:03:24
-categories: 随便谢谢
+categories: 随便写写
 ---
 Using TFTP(Trivial File Transfer Protocol) and NFS(Network File System) to load kernel and rootfs can help to reduce operations of flash write efficiently, which can make you EVK board live longer...
 
