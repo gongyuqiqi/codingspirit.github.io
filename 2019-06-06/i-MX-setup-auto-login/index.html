@@ -109,22 +109,18 @@
 
 
 
-  <meta name="description" content="Markdown 常用语法小结 写了这么久的md, 偶尔还是会忘记一些细节，干脆写篇日志总结一下，以备不时之需">
-<meta name="keywords" content="Markdown">
+  <meta name="description" content="The default BSP provided by NXP requires login in UART after booting up, which seems “unfriendly” to some users.">
+<meta name="keywords" content="Linux,Yocto">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Markdown frequently used syntax">
-<meta property="og:url" content="http://www.lzqblog.top/2018-11-24/Markdown-frequently-used-syntax/index.html">
+<meta property="og:title" content="i.MX setup auto login">
+<meta property="og:url" content="http://www.lzqblog.top/2019-06-06/i-MX-setup-auto-login/index.html">
 <meta property="og:site_name" content="Coding Spirit">
-<meta property="og:description" content="Markdown 常用语法小结 写了这么久的md, 偶尔还是会忘记一些细节，干脆写篇日志总结一下，以备不时之需">
+<meta property="og:description" content="The default BSP provided by NXP requires login in UART after booting up, which seems “unfriendly” to some users.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.lzqblog.top/2018-11-24/Markdown-frequently-used-syntax/IMG_20170621_154100.jpg">
-<meta property="og:image" content="http://www.lzqblog.top/2018-11-24/Markdown-frequently-used-syntax/006HJgYYgy1fex00ntxymg308c08c74b.png">
-<meta property="og:image" content="http://www.lzqblog.top/2018-11-24/Markdown-frequently-used-syntax/75aecbdeb48f8c5448e454b638292df5e1fe7f70.gif">
-<meta property="og:updated_time" content="2018-11-29T11:02:29.000Z">
+<meta property="og:updated_time" content="2019-06-06T12:14:18.777Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Markdown frequently used syntax">
-<meta name="twitter:description" content="Markdown 常用语法小结 写了这么久的md, 偶尔还是会忘记一些细节，干脆写篇日志总结一下，以备不时之需">
-<meta name="twitter:image" content="http://www.lzqblog.top/2018-11-24/Markdown-frequently-used-syntax/IMG_20170621_154100.jpg">
+<meta name="twitter:title" content="i.MX setup auto login">
+<meta name="twitter:description" content="The default BSP provided by NXP requires login in UART after booting up, which seems “unfriendly” to some users.">
 
 
 
@@ -132,7 +128,7 @@
 
   
   
-  <link rel="canonical" href="http://www.lzqblog.top/2018-11-24/Markdown-frequently-used-syntax/">
+  <link rel="canonical" href="http://www.lzqblog.top/2019-06-06/i-MX-setup-auto-login/">
 
 
 
@@ -142,7 +138,7 @@
   };
 </script>
 
-  <title>Markdown frequently used syntax | Coding Spirit</title>
+  <title>i.MX setup auto login | Coding Spirit</title>
   
 
 
@@ -376,7 +372,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.lzqblog.top/2018-11-24/Markdown-frequently-used-syntax/">
+    <link itemprop="mainEntityOfPage" href="http://www.lzqblog.top/2019-06-06/i-MX-setup-auto-login/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coding Spirit">
@@ -393,7 +389,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Markdown frequently used syntax
+          <h1 class="post-title" itemprop="name headline">i.MX setup auto login
 
               
             
@@ -419,24 +415,12 @@
                 
               
 
-              <time title="Created: 2018-11-24 10:55:05" itemprop="dateCreated datePublished" datetime="2018-11-24T10:55:05+08:00">2018-11-24</time>
+              <time title="Created: 2019-06-06 20:00:22 / Modified: 20:14:18" itemprop="dateCreated datePublished" datetime="2019-06-06T20:00:22+08:00">2019-06-06</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-29 19:02:29" itemprop="dateModified" datetime="2018-11-29T19:02:29+08:00">2018-11-29</time>
               
             
           </span>
@@ -453,7 +437,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/随便写写/" itemprop="url" rel="index"><span itemprop="name">随便写写</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/编程相关/" itemprop="url" rel="index"><span itemprop="name">编程相关</span></a></span>
 
                 
                 
@@ -495,119 +479,12 @@
       
 
       
-        <p>Markdown 常用语法小结</p>
-<p>写了这么久的md, 偶尔还是会忘记一些细节，干脆写篇日志总结一下，以备不时之需<br><a id="more"></a></p>
-<h2 id="Highlight-突出显示"><a href="#Highlight-突出显示" class="headerlink" title="Highlight(突出显示)"></a>Highlight(突出显示)</h2><table>
-<thead>
-<tr>
-<th style="text-align:center">Item</th>
-<th style="text-align:center">How to use</th>
-<th style="text-align:center">Preview</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Bold(加粗)</td>
-<td style="text-align:center">**Bold Text**</td>
-<td style="text-align:center"><strong>Bold Text</strong></td>
-</tr>
-<tr>
-<td style="text-align:center">Italic(斜体)</td>
-<td style="text-align:center">*Italic Text*</td>
-<td style="text-align:center"><em>Italic Text</em></td>
-</tr>
-<tr>
-<td style="text-align:center">Strike Through(删除线)</td>
-<td style="text-align:center">~~Strike Through Text~~</td>
-<td style="text-align:center"><del>Strike Through Text</del></td>
-</tr>
-<tr>
-<td style="text-align:center">Font Color(字体颜色)</td>
-<td style="text-align:center">&lt;span style=&quot;color:red&quot;&gt;Red Text&lt;/span&gt;</td>
-<td style="text-align:center"><span style="color:red">Red Text</span></td>
-</tr>
-</tbody>
-</table>
-<p>Markdown本身不支持更改字体颜色，但是支持插入HTML, 上面的&lt;span&gt;其实是HTML的标签。 如果还有其他奇奇怪怪的要求(如更改字体，更改大小，设置指针样式)，也可以使用&lt;span&gt;实现:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">"color:blue;font-family:Impact;font-style:italic;cursor:crosshair;font-size:30px"</span>&gt;</span>Impact font blue italic 30px with crosshair pointer<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>效果如下（鼠标移到上面试试）：</p>
-<p><span style="color:blue;font-family:Impact;font-style:italic;cursor:crosshair;font-size:30px">Impact font blue italic 30px with crosshair pointer</span></p>
-<h2 id="Table-表格"><a href="#Table-表格" class="headerlink" title="Table(表格)"></a>Table(表格)</h2><p>Markdown 支持插入简单的表格:</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| Default   | left aligned | right aligned | mid aligned |</span><br><span class="line">| --------- | :----------- | ------------: | :---------: |</span><br><span class="line">| short     | short        | short         | short       |</span><br><span class="line">| long text | long text    | long text     | long text   |</span><br></pre></td></tr></table></figure>
-<p>效果如下：</p>
-<table>
-<thead>
-<tr>
-<th>Default</th>
-<th style="text-align:left">left aligned</th>
-<th style="text-align:right">right aligned</th>
-<th style="text-align:center">mid aligned</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>short</td>
-<td style="text-align:left">short</td>
-<td style="text-align:right">short</td>
-<td style="text-align:center">short</td>
-</tr>
-<tr>
-<td>long text</td>
-<td style="text-align:left">long text</td>
-<td style="text-align:right">long text</td>
-<td style="text-align:center">long text</td>
-</tr>
-</tbody>
-</table>
-<p>表格内容的对齐方式可以通过更改”&minus;&minus;&minus;”进行调整：<br><figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-----    //默认，标题居中，内容左对齐</span><br><span class="line">:----    //标题和内容都左对齐</span><br><span class="line">-----:   //标题和内容都右对齐</span><br><span class="line">:----:   //标题和内容都居中对齐</span><br></pre></td></tr></table></figure></p>
-<h2 id="Insert-image-or-super-link-图片和超链接"><a href="#Insert-image-or-super-link-图片和超链接" class="headerlink" title="Insert image or super link(图片和超链接)"></a>Insert image or super link(图片和超链接)</h2><h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p>  使用<strong>![Background Text](image_path ‘Title’)</strong>可以插入图片, 其中:</p>
-<ul>
-<li>Background Text: 显示在图片下层的文字，也就是说如果图片显示正常的话一般会被挡住看不见</li>
-<li>image_path: 图像源文件的路径。可以是网络链接，也可以是本地路径</li>
-<li>Title: 显示在图片下方的标题</li>
-</ul>
-<p>如：</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](Markdown-frequently-used-syntax/IMG<span class="emphasis">_20170621_</span>154100.jpg 'Flying Spirit')</span><br></pre></td></tr></table></figure>
-<p><img src="/2018-11-24/Markdown-frequently-used-syntax/IMG_20170621_154100.jpg" alt="" title="Flying Spirit"></p>
-<h3 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h3><p>使用<strong>[Suerp_Link](url)</strong>的方式插入超链接, 其中:</p>
-<ul>
-<li>Suerp_Link: 超链接显示的文本</li>
-<li>url: 指向的链接</li>
-</ul>
-<p>如:</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">一位程序员，比较帅的那种</span>](<span class="link">https://www.lzqblog.top</span>)</span><br></pre></td></tr></table></figure>
-<p><a href="https://www.lzqblog.top">一位程序员，比较帅的那种</a></p>
-<h2 id="Check-box"><a href="#Check-box" class="headerlink" title="Check box"></a>Check box</h2><p>Markdown也支持带check box的样式，用户可以通过单击来框选，但是这种样式在静态页面中没什么用</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">- </span>[x] item1</span><br><span class="line"><span class="bullet">- </span>[ ] item2</span><br><span class="line"><span class="bullet">- </span>[x] item3</span><br></pre></td></tr></table></figure>
-<ul>
-<li style="list-style: none"><input type="checkbox" checked> item1</li>
-<li style="list-style: none"><input type="checkbox"> item2</li>
-<li style="list-style: none"><input type="checkbox" checked> item3</li>
-</ul>
-<h2 id="Flow-流程图"><a href="#Flow-流程图" class="headerlink" title="Flow(流程图)"></a>Flow(流程图)</h2><p>Markdown 甚至支持直接画流程图</p>
-<p><img src="/2018-11-24/Markdown-frequently-used-syntax/006HJgYYgy1fex00ntxymg308c08c74b.png" alt=""></p>
-<p>要创建流程图只需两步：1.声明元素 2.连接元素<br>一个简单的例子：</p>
-<p>```flow<br>flow<br>st=&gt;start: Main Start:&gt;<a href="http://www.lzqblog.top">www.lzqblog.top</a><br>input=&gt;inputoutput: input a<br>op=&gt;operation: a–<br>sb=&gt;subroutine: a = a!<br>cond=&gt;condition: a &gt; 100?<br>output=&gt;inputoutput: print a<br>e=&gt;end<br>st-&gt;input-&gt;op-&gt;cond<br>cond(no,right)-&gt;sb(right)-&gt;output(right)-&gt;op<br>cond(yes,down)-&gt;e<br>```<br>效果如下：</p>
-<div id="flowchart-0" class="flow-chart"></div>
-
-<h3 id="流程图的基本语法"><a href="#流程图的基本语法" class="headerlink" title="流程图的基本语法"></a>流程图的基本语法</h3><p><strong>声明元素</strong>:</p>
-<p>tag=&gt;type: content:&gt;url</p>
-<p>tag 为标签，在连接元素的时候会用到<br>type为元素类型，常用的有 start condition operation inputoutput subroutine end几种<br>content 为显示在元素中的内容<br>url为可添加的超链接</p>
-<p><strong>连接元素</strong>：<br>对于非条件元素:<br>tag1-&gt;tag2<br>默认的箭头方向是向下(down)，也可以指定箭头方向：<br>tag1(right)-&gt;tag2<br>对于条件元素(condition)，多了一个yes or no参数:<br>condition_tag(no,right)-&gt;tag2<br>condition_tag(yes,down)-&gt;tag2</p>
-<p>注： hexo默认不支持Markdown流程图，要在hexo上显示流程图需要安装hexo-filter-flowchart</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-filter-flowchart</span><br></pre></td></tr></table></figure>
-<p>常用的差不多就这些，有想到的以后再补充吧</p>
-<p><img src="/2018-11-24/Markdown-frequently-used-syntax/75aecbdeb48f8c5448e454b638292df5e1fe7f70.gif" alt=""></p>
-<p><script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">flow
-st=>start: Main Start:>http://www.lzqblog.top
-input=>inputoutput: input a
-op=>operation: a--
-sb=>subroutine: a = a!
-cond=>condition: a > 100?
-output=>inputoutput: print a
-e=>end
-st->input->op->cond
-cond(no,right)->sb(right)->output(right)->op
-cond(yes,down)->e</textarea><textarea id="flowchart-0-options" style="display: none">{"scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-0-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-0", options);</script></p>
+        <p>The default BSP provided by NXP requires login in UART after booting up, which seems “unfriendly” to some users.<br><a id="more"></a></p>
+<p>In i.MX Yocto BSP, Login is provided by a systemd service called systemd-serialgetty:<br><strong>sources/poky/meta/recipes-core/systemd/systemd-serialgetty/serial-getty@.service</strong><br>This service will execute <strong>agetty</strong> when system booting up and require login.</p>
+<p>So there are two ways to disable login:</p>
+<h2 id="Replace-agetty-with-bin-login"><a href="#Replace-agetty-with-bin-login" class="headerlink" title="Replace agetty with /bin/login"></a>Replace agetty with <strong>/bin/login</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ExecStart=/bin/login -f root</span><br></pre></td></tr></table></figure>
+<h2 id="Provide-username-to-agetty"><a href="#Provide-username-to-agetty" class="headerlink" title="Provide username to agetty"></a>Provide username to agetty</h2><p>Add option <strong>-a</strong> to provide username to agetty.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[Service]</span><br><span class="line">Environment=&quot;TERM=xterm&quot;</span><br><span class="line">#ExecStart=-/sbin/agetty -8 -L %I @BAUDRATE@ $TERM</span><br><span class="line">ExecStart=-/sbin/agetty -8 -a root -L %I @BAUDRATE@ $TERM</span><br><span class="line">Type=idle</span><br><span class="line">Restart=always</span><br><span class="line">RestartSec=0</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -642,7 +519,7 @@ cond(yes,down)->e</textarea><textarea id="flowchart-0-options" style="display: n
   <li class="post-copyright-link">
     <strong>Post link: </strong>
     
-    <a href="http://www.lzqblog.top/2018-11-24/Markdown-frequently-used-syntax/" title="Markdown frequently used syntax">http://www.lzqblog.top/2018-11-24/Markdown-frequently-used-syntax/</a>
+    <a href="http://www.lzqblog.top/2019-06-06/i-MX-setup-auto-login/" title="i.MX setup auto login">http://www.lzqblog.top/2019-06-06/i-MX-setup-auto-login/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
@@ -655,7 +532,9 @@ cond(yes,down)->e</textarea><textarea id="flowchart-0-options" style="display: n
       
         <div class="post-tags">
           
-            <a href="/tags/Markdown/" rel="tag"># Markdown</a>
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/Yocto/" rel="tag"># Yocto</a>
           
         </div>
       
@@ -668,8 +547,8 @@ cond(yes,down)->e</textarea><textarea id="flowchart-0-options" style="display: n
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018-11-23/Linux-‘adb-devices’-can-t-find-devices/" rel="next" title="Linux: ‘adb devices’ can't find devices">
-                <i class="fa fa-chevron-left"></i> Linux: ‘adb devices’ can't find devices
+              <a href="/2019-05-28/Android-Error-when-execute-sdkmanager/" rel="next" title="Android: Error when execute sdkmanager">
+                <i class="fa fa-chevron-left"></i> Android: Error when execute sdkmanager
               </a>
             
           </div>
@@ -677,10 +556,6 @@ cond(yes,down)->e</textarea><textarea id="flowchart-0-options" style="display: n
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018-12-09/Linux-kernel-module-1/" rel="prev" title="Linux kernel module(1)">
-                Linux kernel module(1) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -919,7 +794,7 @@ cond(yes,down)->e</textarea><textarea id="flowchart-0-options" style="display: n
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Highlight-突出显示"><span class="nav-number">1.</span> <span class="nav-text">Highlight(突出显示)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Table-表格"><span class="nav-number">2.</span> <span class="nav-text">Table(表格)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Insert-image-or-super-link-图片和超链接"><span class="nav-number">3.</span> <span class="nav-text">Insert image or super link(图片和超链接)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#图片"><span class="nav-number">3.1.</span> <span class="nav-text">图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#超链接"><span class="nav-number">3.2.</span> <span class="nav-text">超链接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Check-box"><span class="nav-number">4.</span> <span class="nav-text">Check box</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flow-流程图"><span class="nav-number">5.</span> <span class="nav-text">Flow(流程图)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#流程图的基本语法"><span class="nav-number">5.1.</span> <span class="nav-text">流程图的基本语法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Replace-agetty-with-bin-login"><span class="nav-number">1.</span> <span class="nav-text">Replace agetty with /bin/login</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Provide-username-to-agetty"><span class="nav-number">2.</span> <span class="nav-text">Provide username to agetty</span></a></li></ol></div>
             
 
           </div>

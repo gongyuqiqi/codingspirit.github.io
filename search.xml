@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[i.MX setup auto login]]></title>
+    <url>%2F2019-06-06%2Fi-MX-setup-auto-login%2F</url>
+    <content type="text"><![CDATA[The default BSP provided by NXP requires login in UART after booting up, which seems “unfriendly” to some users. In i.MX Yocto BSP, Login is provided by a systemd service called systemd-serialgetty:sources/poky/meta/recipes-core/systemd/systemd-serialgetty/serial-getty@.serviceThis service will execute agetty when system booting up and require login. So there are two ways to disable login: Replace agetty with /bin/login1ExecStart=/bin/login -f root Provide username to agettyAdd option -a to provide username to agetty. 1234567[Service]Environment=&quot;TERM=xterm&quot;#ExecStart=-/sbin/agetty -8 -L %I @BAUDRATE@ $TERMExecStart=-/sbin/agetty -8 -a root -L %I @BAUDRATE@ $TERMType=idleRestart=alwaysRestartSec=0]]></content>
+      <categories>
+        <category>编程相关</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Yocto</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Android: Error when execute sdkmanager]]></title>
     <url>%2F2019-05-28%2FAndroid-Error-when-execute-sdkmanager%2F</url>
     <content type="text"><![CDATA[Quick fix for error that sdkmanager throw exception when trying to call sdkmanager –license and sdkmanager –list. Error messages1234567891011Exception in thread &quot;main&quot; java.lang.NoClassDefFoundError: javax/xml/bind/annotation/XmlSchema at com.android.repository.api.SchemaModule$SchemaModuleVersion.&lt;init&gt;(SchemaModule.java:156) at com.android.repository.api.SchemaModule.&lt;init&gt;(SchemaModule.java:75) at com.android.sdklib.repository.AndroidSdkHandler.&lt;clinit&gt;(AndroidSdkHandler.java:81) at com.android.sdklib.tool.sdkmanager.SdkManagerCli.main(SdkManagerCli.java:73) at com.android.sdklib.tool.sdkmanager.SdkManagerCli.main(SdkManagerCli.java:48) Caused by: java.lang.ClassNotFoundException: javax.xml.bind.annotation.XmlSchema at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:582) at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:185) at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:496) ... 5 more Quick fixIn Windows: Go to C:\Users\Alex.Li\AppData\Local\Android\Sdk\tools\bin Open sdkmanager.bat with editor Add -XX:+IgnoreUnrecognizedVMOptions –add-modules java.se.ee after set DEFAULT_JVM_OPTS=”-Dcom.android.sdklib.toolsdir=%~dp0..”:1set DEFAULT_JVM_OPTS="-Dcom.android.sdklib.toolsdir=%~dp0\.." -XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee In Linux: Go to &lt;android_sdk_path&gt;/tools/bin, &lt;android_sdk_path&gt; is the path where you unzip your Android SDK. Open sdkmanger with editor Add -XX:+IgnoreUnrecognizedVMOptions –add-modules java.se.ee after DEFAULT_JVM_OPTS=’”-Dcom.android.sdklib.toolsdir=$APP_HOME”‘“:1DEFAULT_JVM_OPTS='"-Dcom.android.sdklib.toolsdir=$APP_HOME" -XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee']]></content>
@@ -39,7 +51,7 @@
     <url>%2F2019-05-26%2Fi-MX-setup-TFTP-and-NFS%2F</url>
     <content type="text"><![CDATA[Using TFTP(Trivial File Transfer Protocol) and NFS(Network File System) to load kernel and rootfs can help to reduce operations of flash write efficiently, which can make you EVK board live longer… This summary is based on Alexey‘s version, with some modifications according to my experiment. TFTPInstall necessary tools1sudo apt-get install xinetd tftpd tftp Setup TFTP12345678910111213mkdir -p /etc/xinetd.d/nano /etc/xinetd.d/tftpservice tftp&#123; protocol = udp port = 69 socket_type = dgram wait = yes user = nobody server = /usr/sbin/in.tftpd server_args = /srv/tftp disable = no&#125; create folder to store tftp files: 123sudo mkdir /srv/tftpsudo chmod -R 777 /srv/tftpsudo chown -R nobody /srv/tftp restart tftpd by xinetd: 1sudo /etc/init.d/xinetd restart copy device trees/kernel image to tftp folder: 12cp Image /srv/tftpcp Image-fsl-imx8mq-evk.dtb /srv/tftp/fsl-imx8mq-evk.dtb NFSInstall necessary tools1sudo apt-get install nfs-kernel-server nfs-common portmap Setup NFSAdd below line at end of /etc/exports1/home/ *(rw,insecure,no_root_squash,no_subtree_check) restart nfs server:1sudo /etc/init.d/nfs-kernel-server restart create copy of your rootfs:12345cd ~mkdir imx8-evk-dummy# goto your yocto image build dir, i.e. imx-yocto-bsp/imx8mmevk_build/tmp/work/imx8mmevk-poky-linux/fsl-image-validation-imx/1.0-r0cd &lt;your_yocto_image_build_folder&gt;cp -r rootfs ~/imx8-evk-dummy Notice: Seems long path of rootfs will cause rootfs mounting error, suggest copy your rootfs to a short path TargetInterrupt board booting up then type into u-boot terminal: 1234567setenv nfsroot &lt;path-to-your-rootfs&gt;setenv image &lt;kernel-image-name-in-tftp-folder&gt;setenv fdt_file &lt;devid-tree-file-name-in-tftp-folder&gt;setenv serverip &lt;pc-ip-address&gt;setenv bootcmd &apos;run netboot&apos;savreset i.e.: 1234567setenv nfsroot /home/alex/imx8-evk-dummy/rootfssetenv image Imagesetenv fdt_file fsl-imx8mm-evk.dtbsetenv serverip 10.0.1.17setenv bootcmd &apos;run netboot&apos;savreset]]></content>
       <categories>
-        <category>随便谢谢</category>
+        <category>随便写写</category>
       </categories>
       <tags>
         <tag>Linux</tag>
