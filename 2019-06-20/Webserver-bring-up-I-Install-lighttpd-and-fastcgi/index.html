@@ -117,7 +117,7 @@
 <meta property="og:site_name" content="Coding Spirit">
 <meta property="og:description" content="Webserver bring up(I): Install lighttpd and fastcgi++">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-20T11:35:05.847Z">
+<meta property="og:updated_time" content="2019-06-20T11:41:31.531Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Webserver bring up (I): Install lighttpd and fastcgi++">
 <meta name="twitter:description" content="Webserver bring up(I): Install lighttpd and fastcgi++">
@@ -415,7 +415,7 @@
                 
               
 
-              <time title="Created: 2019-06-20 18:55:08 / Modified: 19:35:05" itemprop="dateCreated datePublished" datetime="2019-06-20T18:55:08+08:00">2019-06-20</time>
+              <time title="Created: 2019-06-20 18:55:08 / Modified: 19:41:31" itemprop="dateCreated datePublished" datetime="2019-06-20T18:55:08+08:00">2019-06-20</time>
             
 
             
@@ -520,7 +520,7 @@
 </li>
 </ol>
 <h1 id="Install-fastcgi"><a href="#Install-fastcgi" class="headerlink" title="Install fastcgi++"></a>Install fastcgi++</h1><p><a href="https://fastcgipp.isatec.ca" target="_blank" rel="noopener">fastcgi++(fastcgipp)</a> is a C++ FastCGI and Web development platform. I choose this library because it provides support for C++14 and the official site of <a href="http://www.fastcgi.com/" target="_blank" rel="noopener">fastcgi</a> which provides C/C++ libraries before has been closed for several years.  </p>
-<p>Seems there is no exist yocto recipe for fastcgi++ on internet, but it’s easy to write a recipe by myself because it support built by cmake. Here comes my recipe for fastcgi++:</p>
+<p>Seems there is no yocto recipe for fastcgi++ on internet, but it’s easy to write a recipe by myself because it supports built by cmake. Here comes my recipe for fastcgi++:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">SUMMARY = &quot;fastcgi++&quot;</span><br><span class="line">DESCRIPTION = &quot;C++ FastCGI and Web development platform&quot;</span><br><span class="line">SECTION = &quot;libs&quot;</span><br><span class="line">LICENSE = &quot;GPL-2.0&quot;</span><br><span class="line">AUTHOR = &quot;Alex.Don.Scofield(codingspirit)&quot;</span><br><span class="line">LIC_FILES_CHKSUM = &quot;file://$&#123;COMMON_LICENSE_DIR&#125;/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6&quot;</span><br><span class="line"></span><br><span class="line">$&#123;PN&#125;_REPO = &quot;github.com/eddic/fastcgipp.git&quot;</span><br><span class="line">SRCREV_$&#123;PN&#125; = &quot;5a5c3a263595a1792b2867188770bcf4f4df8b83&quot;</span><br><span class="line"></span><br><span class="line">TARGET_CC_ARCH += &quot;$&#123;LDFLAGS&#125;&quot;</span><br><span class="line"></span><br><span class="line">SRC_URI = &quot; \</span><br><span class="line">  git://$&#123;$&#123;PN&#125;_REPO&#125;;name=$&#123;PN&#125;;protocol=https;nobranch=1;destsuffix=git/$&#123;PN&#125; \</span><br><span class="line">  &quot;</span><br><span class="line"></span><br><span class="line">S = &quot;$&#123;WORKDIR&#125;/git/$&#123;PN&#125;&quot;</span><br><span class="line">B = &quot;$&#123;WORKDIR&#125;/$&#123;BPN&#125;&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">EXTRA_OECMAKE = &quot;-DCMAKE_BUILD_TYPE=RELEASE&quot;</span><br><span class="line">inherit cmake</span><br></pre></td></tr></table></figure>
 <p>BTW to pass cmake runtime parameters in Yocto, we can use <strong>EXTRA_OECMAKE</strong> :</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">EXTRA_OECMAKE += &quot;-DBUILD_SAMPLE=ON&quot;</span><br><span class="line">inherit cmake</span><br></pre></td></tr></table></figure>
