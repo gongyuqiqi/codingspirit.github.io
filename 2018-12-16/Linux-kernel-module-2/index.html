@@ -113,7 +113,7 @@
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux kernel module(2)">
-<meta property="og:url" content="http://www.lzqblog.top/2018-12-16/Linux-kernel-module-2/index.html">
+<meta property="og:url" content="http://lzqblog.top/2018-12-16/Linux-kernel-module-2/index.html">
 <meta property="og:site_name" content="Coding Spirit">
 <meta property="og:description" content="This post will give a simple introduction to Linux kernel module(Part II.). Linux kernel module简介(二)">
 <meta property="og:locale" content="zh-Hans">
@@ -128,7 +128,7 @@
 
   
   
-  <link rel="canonical" href="http://www.lzqblog.top/2018-12-16/Linux-kernel-module-2/">
+  <link rel="canonical" href="http://lzqblog.top/2018-12-16/Linux-kernel-module-2/">
 
 
 
@@ -372,7 +372,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.lzqblog.top/2018-12-16/Linux-kernel-module-2/">
+    <link itemprop="mainEntityOfPage" href="http://lzqblog.top/2018-12-16/Linux-kernel-module-2/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coding Spirit">
@@ -508,7 +508,7 @@
 
       
         <p>This post will give a simple introduction to Linux kernel module(Part II.).</p>
-<p>Linux kernel module简介(二)<br><a id="more"></a><br>Let’s continue the unfinished parts we left in <a href="https://lzqblog.top/2018-12-08/Linux-kernel-module-1/" target="_blank" rel="noopener">Part I.</a>.</p>
+<p>Linux kernel module简介(二)<br><a id="more"></a><br>Let’s continue the unfinished parts we left in <a href="https://lzqblog.top/2018-12-08/Linux-kernel-module-1/">Part I.</a>.</p>
 <h2 id="A-I2C-module"><a href="#A-I2C-module" class="headerlink" title="A I2C module"></a>A I2C module</h2><h3 id="What-is-regmap"><a href="#What-is-regmap" class="headerlink" title="What is regmap"></a>What is regmap</h3><p><strong>regmap</strong> is a new API added in kernel 3.1. It helps to provide a abstraction for I2C/SPI/IRQ etc. operations. If chips provide both I2C and SPI interfaces, using regmap also can help to reuse part of code. In this example(st_uvis25, a UVI sensor), it provides another SPI driver(st_uvis25_spi.c), and a interfaces-nonrelevant file(st_uvis25_core.c) as well. st_uvis25_core.c will not care which kind of interfaces you are using, every I2C/SPI read/write will be done through regmap. If you put your device on I2C bus in dts file, regmap will call I2C operate functions when you use <strong>regmap_write</strong>, if it’s on SPI bus, regmap will call SPI operate functions instead.</p>
 <p>Tos use regmap API, a <strong>regmap_config</strong> should be defined. <strong>reg_bits</strong> and <strong>val_bits</strong> defined the register address length and data length inside this device. write_flag_mask and read_flag_mask will do OR operation with the data you trying to send/read(they are optional):<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// linux-4.9/drivers/base/regmap/regmap.c, Line 2002</span></span><br><span class="line">	u8 = buf;</span><br><span class="line">	*u8 |= <span class="built_in">map</span>-&gt;write_flag_mask;</span><br></pre></td></tr></table></figure></p>
 <p>Then use <strong>devm_regmap_init_i2c</strong> or <strong>devm_regmap_init_spi</strong> to initialize your regmap. It will help you to allocate memory for your regmap and release it when module remove.</p>
@@ -558,7 +558,7 @@
   <li class="post-copyright-link">
     <strong>Post link: </strong>
     
-    <a href="http://www.lzqblog.top/2018-12-16/Linux-kernel-module-2/" title="Linux kernel module(2)">http://www.lzqblog.top/2018-12-16/Linux-kernel-module-2/</a>
+    <a href="http://lzqblog.top/2018-12-16/Linux-kernel-module-2/" title="Linux kernel module(2)">http://lzqblog.top/2018-12-16/Linux-kernel-module-2/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
