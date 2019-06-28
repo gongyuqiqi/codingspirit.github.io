@@ -109,20 +109,18 @@
 
 
 
-  <meta name="description" content="智能音响有两个重要功能:“说”和“听”。在Android Things上我们可以通过TextToSpeech和Google Assistant来实现上述功能。TTS的实现比较容易，而Google Assistant就比较麻烦了，目前我遇到的问题是Google Assistant能听懂我说什么，却不能给出答案。。还是写个日志记录一下吧。">
-<meta name="keywords" content="Java,Android Things">
+  <meta name="description" content="In last post we have installed lighttpd and fastcgi++, it’s create a demo page to have a quick verification.">
+<meta name="keywords" content="Linux,Web">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在Android Things上使用TTS及使用Google Assistant遇到的问题">
-<meta property="og:url" content="http://lzqblog.top/2017-12-06/在Android-Things上使用TTS及使用Google-Assistant遇到的问题/index.html">
+<meta property="og:title" content="Webserver bring up (II): Create a demo page(html+fcgi)">
+<meta property="og:url" content="http://lzqblog.top/2019-06-28/Webserver-bring-up-II-Create-a-demo-page-html-fcgi/index.html">
 <meta property="og:site_name" content="Coding Spirit">
-<meta property="og:description" content="智能音响有两个重要功能:“说”和“听”。在Android Things上我们可以通过TextToSpeech和Google Assistant来实现上述功能。TTS的实现比较容易，而Google Assistant就比较麻烦了，目前我遇到的问题是Google Assistant能听懂我说什么，却不能给出答案。。还是写个日志记录一下吧。">
+<meta property="og:description" content="In last post we have installed lighttpd and fastcgi++, it’s create a demo page to have a quick verification.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://lzqblog.top/2017-12-06/在Android-Things上使用TTS及使用Google-Assistant遇到的问题/1.png">
-<meta property="og:updated_time" content="2018-11-28T12:01:18.000Z">
+<meta property="og:updated_time" content="2019-06-28T12:17:06.853Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="在Android Things上使用TTS及使用Google Assistant遇到的问题">
-<meta name="twitter:description" content="智能音响有两个重要功能:“说”和“听”。在Android Things上我们可以通过TextToSpeech和Google Assistant来实现上述功能。TTS的实现比较容易，而Google Assistant就比较麻烦了，目前我遇到的问题是Google Assistant能听懂我说什么，却不能给出答案。。还是写个日志记录一下吧。">
-<meta name="twitter:image" content="http://lzqblog.top/2017-12-06/在Android-Things上使用TTS及使用Google-Assistant遇到的问题/1.png">
+<meta name="twitter:title" content="Webserver bring up (II): Create a demo page(html+fcgi)">
+<meta name="twitter:description" content="In last post we have installed lighttpd and fastcgi++, it’s create a demo page to have a quick verification.">
 
 
 
@@ -130,7 +128,7 @@
 
   
   
-  <link rel="canonical" href="http://lzqblog.top/2017-12-06/在Android-Things上使用TTS及使用Google-Assistant遇到的问题/">
+  <link rel="canonical" href="http://lzqblog.top/2019-06-28/Webserver-bring-up-II-Create-a-demo-page-html-fcgi/">
 
 
 
@@ -140,7 +138,7 @@
   };
 </script>
 
-  <title>在Android Things上使用TTS及使用Google Assistant遇到的问题 | Coding Spirit</title>
+  <title>Webserver bring up (II): Create a demo page(html+fcgi) | Coding Spirit</title>
   
 
 
@@ -374,7 +372,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lzqblog.top/2017-12-06/在Android-Things上使用TTS及使用Google-Assistant遇到的问题/">
+    <link itemprop="mainEntityOfPage" href="http://lzqblog.top/2019-06-28/Webserver-bring-up-II-Create-a-demo-page-html-fcgi/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coding Spirit">
@@ -391,7 +389,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">在Android Things上使用TTS及使用Google Assistant遇到的问题
+          <h1 class="post-title" itemprop="name headline">Webserver bring up (II): Create a demo page(html+fcgi)
 
               
             
@@ -417,24 +415,12 @@
                 
               
 
-              <time title="Created: 2017-12-06 16:37:03" itemprop="dateCreated datePublished" datetime="2017-12-06T16:37:03+08:00">2017-12-06</time>
+              <time title="Created: 2019-06-28 19:53:01 / Modified: 20:17:06" itemprop="dateCreated datePublished" datetime="2019-06-28T19:53:01+08:00">2019-06-28</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-28 20:01:18" itemprop="dateModified" datetime="2018-11-28T20:01:18+08:00">2018-11-28</time>
               
             
           </span>
@@ -487,7 +473,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">952</span>
+                <span title="Symbols count in article">4.9k</span>
               
 
               
@@ -501,7 +487,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">1 mins.</span>
+                <span title="Reading time">4 mins.</span>
               
             </div>
           
@@ -521,11 +507,22 @@
       
 
       
-        <p>  智能音响有两个重要功能:“说”和“听”。在Android Things上我们可以通过TextToSpeech和Google Assistant来实现上述功能。TTS的实现比较容易，而Google Assistant就比较麻烦了，目前我遇到的问题是Google Assistant能听懂我说什么，却不能给出答案。。还是写个日志记录一下吧。<br><a id="more"></a></p>
-<h2 id="TTS的实现"><a href="#TTS的实现" class="headerlink" title="TTS的实现"></a>TTS的实现</h2><p>  TTS实现起来十分容易，创建TextToSpeech并重写OnInitListener的onInit方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ttsEngine = <span class="keyword">new</span> TextToSpeech(MainActivity.<span class="keyword">this</span>, <span class="keyword">new</span> TextToSpeech.OnInitListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onInit</span><span class="params">(<span class="keyword">int</span> status)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (status==TextToSpeech.SUCCESS)&#123;</span><br><span class="line">            ttsEngine.setLanguage(Locale.US);</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            Log.w(TAG,<span class="string">"Can not init tts engine"</span>);</span><br><span class="line">            ttsEngine = <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>再通过<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (ttsEngine != <span class="keyword">null</span>) &#123;</span><br><span class="line">    ttsEngine.speak(<span class="string">"Hi master. What can I do for you?"</span>, TextToSpeech.QUEUE_ADD, <span class="keyword">null</span>, <span class="string">"UTTERANCE_ID"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>即可实现音频输出。完整的代码已上传到github：<a href="https://github.com/codingspirit/Android_Things_TTS" target="_blank" rel="noopener">Roach</a></p>
-<h2 id="Google-Assistant"><a href="#Google-Assistant" class="headerlink" title="Google Assistant"></a>Google Assistant</h2><p>  要使用Google Assistant，必须要使用Google Assistant API并创建相应的加密凭据。同时，申请的Google账号还要给予app权限以允许访问一些敏感内容。先贴张测试结果图：<br><img src="/2017-12-06/在Android-Things上使用TTS及使用Google-Assistant遇到的问题/1.png" alt=""><br>在测试中，app似乎成功上传了录音并能正确识别，但是却不能根据问题进行正确的解答，初步怀疑可能还有一些权限没有申请。</p>
+        <p>In last post we have installed lighttpd and fastcgi++, it’s create a demo page to have a quick verification.</p>
+<a id="more"></a>
+<h2 id="A-simple-html"><a href="#A-simple-html" class="headerlink" title="A simple html"></a>A simple html</h2><p>Let’s write a simple html for demo:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">'utf-8'</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"icon"</span> <span class="attr">href</span>=<span class="string">"/img/favicon.ico"</span> <span class="attr">type</span>=<span class="string">"img/x-ico"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Alex Demo page<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">background</span>=<span class="string">"/img/back.jpg"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">style</span>=<span class="string">" background-repeat:no-repeat ;background-size:100% 100%;background-attachment: fixed;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">align</span>=<span class="string">"center"</span> <span class="attr">style</span>=<span class="string">"margin-top: 25%"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"diag"</span> <span class="attr">action</span>=<span class="string">"/cpp_get.fcgi"</span> <span class="attr">method</span>=<span class="string">"get"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"0"</span> <span class="attr">style</span>=<span class="string">"background-color:dimgrey"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"right"</span> <span class="attr">valign</span>=<span class="string">"middle"</span>&gt;</span></span><br><span class="line">                        Product Name:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">" text"</span> <span class="attr">name</span>=<span class="string">"product_name"</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">                        Product ID:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"product_id"</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span> /&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>This page will show a picture as page background, meanwhile a from will be created for testing GET method. The path we are using in html is relative path, i.e. if you put your pages to <em>/var/www/pages/test.html</em>, the absolute path of back.jpg will be <em>/var/www/pages/img/back.jpg</em> and the relative path will be <em>/img/back.jpg</em>.</p>
+<p>Beware of access rights of those files/directories, the user and user group of lighttpd was configured in <strong>lighttpd.conf</strong> by <strong>server.username</strong> and <strong>server.groupname</strong>. Make sure lighttpd can access them.</p>
+<h2 id="Write-a-simple-fgci-backend"><a href="#Write-a-simple-fgci-backend" class="headerlink" title="Write a simple fgci backend"></a>Write a simple fgci backend</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// fcgi_get.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fastcgi++/request.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GetTest</span> :</span> <span class="keyword">public</span> Fastcgipp::Request&lt;<span class="keyword">wchar_t</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">response</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">std</span>::<span class="function">wofstream <span class="title">outPutFile</span><span class="params">(<span class="string">"output.patch"</span>, <span class="built_in">std</span>::ios_base::out | <span class="built_in">std</span>::ios_base::binary)</span></span>;</span><br><span class="line">        <span class="comment">//! [Response definition]</span></span><br><span class="line">        <span class="comment">//! [HTTP header]</span></span><br><span class="line">        out &lt;&lt; <span class="string">L"Content-Type: text/html; charset=utf-8\r\n\r\n"</span>;</span><br><span class="line">        <span class="comment">//! [HTTP header]</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//! [Output]</span></span><br><span class="line">        out &lt;&lt; <span class="string">L"&lt;!DOCTYPE html&gt;\n"</span></span><br><span class="line">               <span class="string">L"&lt;html&gt;"</span></span><br><span class="line">               <span class="string">L"&lt;head&gt;"</span></span><br><span class="line">               <span class="string">L"&lt;meta charset='utf-8' /&gt;"</span></span><br><span class="line">               <span class="string">L"&lt;title&gt;Success&lt;/title&gt;"</span></span><br><span class="line">               <span class="string">L"&lt;/head&gt;"</span></span><br><span class="line">               <span class="string">L"&lt;body&gt;"</span></span><br><span class="line">               <span class="string">L"&lt;p&gt;"</span>;</span><br><span class="line">        <span class="keyword">using</span> Fastcgipp::Encoding;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!environment().gets.empty())</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;get : environment().gets)</span><br><span class="line">            &#123;</span><br><span class="line">                out &lt;&lt; <span class="string">L"&lt;b&gt;"</span> &lt;&lt; Encoding::HTML &lt;&lt; get.first &lt;&lt; Encoding::NONE</span><br><span class="line">                    &lt;&lt; <span class="string">L":&lt;/b&gt; "</span> &lt;&lt; Encoding::HTML &lt;&lt; get.second</span><br><span class="line">                    &lt;&lt; Encoding::NONE &lt;&lt; <span class="string">L"&lt;br /&gt;"</span>;</span><br><span class="line">                outPutFile &lt;&lt; get.first &lt;&lt; <span class="string">":"</span> &lt;&lt; get.second;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        out &lt;&lt; <span class="string">L"&lt;/p&gt;"</span></span><br><span class="line">               <span class="string">L"&lt;/body&gt;"</span></span><br><span class="line">               <span class="string">L"&lt;/html&gt;"</span>;</span><br><span class="line">        <span class="comment">//! [Output]</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//! [Return]</span></span><br><span class="line">        outPutFile &lt;&lt; <span class="string">"FFF"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">        outPutFile.close();</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fastcgi++/manager.hpp&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Fastcgipp::Manager&lt;GetTest&gt; manager;</span><br><span class="line">    <span class="comment">//! [Manager]</span></span><br><span class="line">    <span class="comment">//! [Signals]</span></span><br><span class="line">    manager.setupSignals();</span><br><span class="line">    <span class="comment">//! [Signals]</span></span><br><span class="line">    <span class="comment">//! [Listen]</span></span><br><span class="line">    manager.listen();</span><br><span class="line">    <span class="comment">//! [Listen]</span></span><br><span class="line">    <span class="comment">//! [Start]</span></span><br><span class="line">    manager.start();</span><br><span class="line">    <span class="comment">//! [Start]</span></span><br><span class="line">    <span class="comment">//! [Join]</span></span><br><span class="line">    manager.join();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Use <em>environment().gets</em> to get all data passed by frontend through GET method.</p>
+<h2 id="Compile-your-fcgi"><a href="#Compile-your-fcgi" class="headerlink" title="Compile your fcgi"></a>Compile your fcgi</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ fcgi_get.cpp -lfastcgipp -o cpp_get.fcgi</span><br></pre></td></tr></table></figure>
+<p>Then copy it to <em>/var/www/fcgi-bin/cpp_get.fcgi</em>. Don’t forget add rights of execution for this fcgi file.</p>
+<h2 id="Add-your-fcgi-into-lighttpd-conf"><a href="#Add-your-fcgi-into-lighttpd-conf" class="headerlink" title="Add your fcgi into lighttpd conf"></a>Add your fcgi into lighttpd conf</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&quot;/cpp_get.fcgi&quot; =&gt; (</span><br><span class="line">  &quot;cpp_get.fastcgi.handler&quot; =&gt; (</span><br><span class="line">    &quot;socket&quot; =&gt; &quot;/var/run/lighttpd/lighttpd-cpp_get-&quot; + PID + &quot;.socket&quot;,,</span><br><span class="line">    &quot;check-local&quot; =&gt; &quot;disable&quot;,</span><br><span class="line">    &quot;bin-path&quot; =&gt; &quot;/var/www/fcgi-bin/cpp_get.fcgi&quot;,</span><br><span class="line">    &quot;max-procs&quot; =&gt; 30,</span><br><span class="line">  )</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>This configuration allows you execute your fcgi by access localhost/cpp_get.fcgi.</p>
+<h2 id="Apply-changes"><a href="#Apply-changes" class="headerlink" title="Apply changes"></a>Apply changes</h2><p>If lighttpd is already started on your device, you might need to restart lighttpd services to apply changes: </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service lighttpd force-reload</span><br></pre></td></tr></table></figure>
+<h2 id="Verification"><a href="#Verification" class="headerlink" title="Verification"></a>Verification</h2><p>Open <em><a href="http://localhost/test.html" target="_blank" rel="noopener">http://localhost/test.html</a></em>, input something in the form then click “提交”, if everything is ok, browser will jump to <em><a href="http://localhost/cpp_get.fcgi" target="_blank" rel="noopener">http://localhost/cpp_get.fcgi</a></em> and show what you have inputted. Meanwhile a file called <em>output.patch</em> will be generated at your page folder which contains the text you inputted as well.</p>
+<p>Tips: If error occurred, you can find the path of error log by checking the value of <strong>server.errorlog</strong> in your <strong>lighttpd.conf</strong>.</p>
 
       
     </div>
@@ -560,7 +557,7 @@
   <li class="post-copyright-link">
     <strong>Post link: </strong>
     
-    <a href="http://lzqblog.top/2017-12-06/在Android-Things上使用TTS及使用Google-Assistant遇到的问题/" title="在Android Things上使用TTS及使用Google Assistant遇到的问题">http://lzqblog.top/2017-12-06/在Android-Things上使用TTS及使用Google-Assistant遇到的问题/</a>
+    <a href="http://lzqblog.top/2019-06-28/Webserver-bring-up-II-Create-a-demo-page-html-fcgi/" title="Webserver bring up (II): Create a demo page(html+fcgi)">http://lzqblog.top/2019-06-28/Webserver-bring-up-II-Create-a-demo-page-html-fcgi/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
@@ -573,9 +570,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java/" rel="tag"># Java</a>
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
           
-            <a href="/tags/Android-Things/" rel="tag"># Android Things</a>
+            <a href="/tags/Web/" rel="tag"># Web</a>
           
         </div>
       
@@ -588,8 +585,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017-11-27/使用-IntDef替代Enum/" rel="next" title="使用@IntDef替代Enum">
-                <i class="fa fa-chevron-left"></i> 使用@IntDef替代Enum
+              <a href="/2019-06-20/Webserver-bring-up-I-Install-lighttpd-and-fastcgi/" rel="next" title="Webserver bring up (I): Install lighttpd and fastcgi++">
+                <i class="fa fa-chevron-left"></i> Webserver bring up (I): Install lighttpd and fastcgi++
               </a>
             
           </div>
@@ -597,10 +594,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017-12-28/在树莓派上使用Google-Assistant/" rel="prev" title="在树莓派上使用Google Assistant">
-                在树莓派上使用Google Assistant <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -845,7 +838,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#TTS的实现"><span class="nav-number">1.</span> <span class="nav-text">TTS的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Google-Assistant"><span class="nav-number">2.</span> <span class="nav-text">Google Assistant</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-simple-html"><span class="nav-number">1.</span> <span class="nav-text">A simple html</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Write-a-simple-fgci-backend"><span class="nav-number">2.</span> <span class="nav-text">Write a simple fgci backend</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Compile-your-fcgi"><span class="nav-number">3.</span> <span class="nav-text">Compile your fcgi</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Add-your-fcgi-into-lighttpd-conf"><span class="nav-number">4.</span> <span class="nav-text">Add your fcgi into lighttpd conf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Apply-changes"><span class="nav-number">5.</span> <span class="nav-text">Apply changes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Verification"><span class="nav-number">6.</span> <span class="nav-text">Verification</span></a></li></ol></div>
             
 
           </div>

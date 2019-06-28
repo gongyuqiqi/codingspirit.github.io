@@ -117,7 +117,7 @@
 <meta property="og:site_name" content="Coding Spirit">
 <meta property="og:description" content="Jenkins+Gerrit的一般工作模式：user commit code to Gerrit-&amp;gt;Jenkins test build success-&amp;gt;other user code review +2-&amp;gt;user submit-&amp;gt;Jenkins release build-&amp;gt;release SW. 我之前写了个release notes generator,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-20T11:54:50.000Z">
+<meta property="og:updated_time" content="2019-06-28T12:17:06.853Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jenkins+Gerrit: 自动commit&#x2F;&#x2F;code review&#x2F;&#x2F;submit">
 <meta name="twitter:description" content="Jenkins+Gerrit的一般工作模式：user commit code to Gerrit-&amp;gt;Jenkins test build success-&amp;gt;other user code review +2-&amp;gt;user submit-&amp;gt;Jenkins release build-&amp;gt;release SW. 我之前写了个release notes generator,">
@@ -432,7 +432,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-11-20 19:54:50" itemprop="dateModified" datetime="2018-11-20T19:54:50+08:00">2018-11-20</time>
+                <time title="Modified: 2019-06-28 20:17:06" itemprop="dateModified" datetime="2019-06-28T20:17:06+08:00">2019-06-28</time>
               
             
           </span>
@@ -525,7 +525,7 @@
 <p>  Staged changes并commit:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add test.txt</span><br><span class="line"><span class="comment">#if have two files: git add test1.txt text2.txt</span></span><br><span class="line">git commit -m <span class="string">"jenkins update test.txt</span></span><br></pre></td></tr></table></figure></p>
 <p>另：如果提交时没有生成commit id, 可以通过git hooks实现自动添加commit id。</p>
 <h2 id="Push-changes"><a href="#Push-changes" class="headerlink" title="Push changes"></a>Push changes</h2><p>  然后需要把改动Push到git远端。之前在Jenkins server上配置过git ssh key，因此我可以在server上直接push changes而不会报错。但是如果在Jenkins execute shell中执行脚本会遇到Permission denied的问题，因为execute shell的运行环境是独立的，并没有配置过ssh key。这时可以通过临时添加key的方式进行push：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-agent sh -c <span class="string">'ssh-add C:/Users/jenkins1/.ssh/id_rsa; git push origin</span></span><br><span class="line"><span class="string">jenkins_temp:refs/for/master'</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="verified-code-review-submit"><a href="#verified-code-review-submit" class="headerlink" title="verified,code review,submit"></a>verified,code review,submit</h2><p>  通常来讲，Push到git remote的commit都需要通过test build,如果成功，将会由jenkins verified +1。只后再通过其他人code review, 在code review +2后才能submit，也就是真正合并到remote branch上。由于jenkins只更改了relase notes这种非代码文件，我们希望jenkins能够自动将changes合并到remote branch上。这里就需要通过shell操作Gerrit。从<a href="https://gerrit-documentation.storage.googleapis.com/Documentation/2.5.1/cmd-review.html" target="_blank" rel="noopener">Gerrit官方文档</a>上，我们可以找到一些可以通过ssh连接完成的操作，包括verified,code review,submit等等。注意，这里同样需要指定ssh key，否则Permission denied。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh -i C:/Users/jenkins1/.ssh/id_rsa -p 29418 jenkins1@sw.tymphany.com gerrit review --verified +1 <span class="string">"<span class="variable">$(git rev-parse --short HEAD)</span>"</span></span><br><span class="line">ssh -i C:/Users/jenkins1/.ssh/id_rsa -p 29418 jenkins1@sw.tymphany.com gerrit review --code-review +2 <span class="string">"<span class="variable">$(git rev-parse --short HEAD)</span>"</span></span><br><span class="line">ssh -i C:/Users/jenkins1/.ssh/id_rsa -p 29418 jenkins1@sw.tymphany.com gerrit review -s <span class="string">"<span class="variable">$(git rev-parse --short HEAD)</span>"</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="verified-code-review-submit"><a href="#verified-code-review-submit" class="headerlink" title="verified,code review,submit"></a>verified,code review,submit</h2><p>  通常来讲，Push到git remote的commit都需要通过test build,如果成功，将会由jenkins verified +1。只后再通过其他人code review, 在code review +2后才能submit，也就是真正合并到remote branch上。由于jenkins只更改了relase notes这种非代码文件，我们希望jenkins能够自动将changes合并到remote branch上。这里就需要通过shell操作Gerrit。从<a href="https://gerrit-documentation.storage.googleapis.com/Documentation/2.5.1/cmd-review.html" target="_blank" rel="noopener">Gerrit官方文档</a>上，我们可以找到一些可以通过ssh连接完成的操作，包括verified,code review,submit等等。注意，这里同样需要指定ssh key，否则Permission denied。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh -i C:/Users/jenkins1/.ssh/id_rsa -p 29418 jenkins1@sw.domian.com gerrit review --verified +1 <span class="string">"<span class="variable">$(git rev-parse --short HEAD)</span>"</span></span><br><span class="line">ssh -i C:/Users/jenkins1/.ssh/id_rsa -p 29418 jenkins1@sw.domian.com gerrit review --code-review +2 <span class="string">"<span class="variable">$(git rev-parse --short HEAD)</span>"</span></span><br><span class="line">ssh -i C:/Users/jenkins1/.ssh/id_rsa -p 29418 jenkins1@sw.domian.com gerrit review -s <span class="string">"<span class="variable">$(git rev-parse --short HEAD)</span>"</span></span><br></pre></td></tr></table></figure></p>
 <p>至此，jenkins完成了自动构建。<br>其他可能有用的git command:<br>git 获取当前branch name<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git symbolic-ref --short -q HEAD</span><br></pre></td></tr></table></figure></p>
 <p>git 获取上一次提交的commit id<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#short</span></span><br><span class="line">git rev-parse --short HEAD</span><br><span class="line"><span class="comment">#long</span></span><br><span class="line">git rev-parse HEAD</span><br></pre></td></tr></table></figure></p>
 
@@ -677,7 +677,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">54</span>
+                    <span class="site-state-item-count">55</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -880,7 +880,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">102k</span>
+    <span title="Symbols count total">107k</span>
   
 
   
@@ -889,7 +889,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">1:33</span>
+    <span title="Reading time total">1:37</span>
   
 </div>
 
