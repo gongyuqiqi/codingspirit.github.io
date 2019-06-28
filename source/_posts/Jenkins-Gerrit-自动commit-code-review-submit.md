@@ -41,9 +41,9 @@ git commit -m "jenkins update test.txt
 ## verified,code review,submit
   通常来讲，Push到git remote的commit都需要通过test build,如果成功，将会由jenkins verified +1。只后再通过其他人code review, 在code review +2后才能submit，也就是真正合并到remote branch上。由于jenkins只更改了relase notes这种非代码文件，我们希望jenkins能够自动将changes合并到remote branch上。这里就需要通过shell操作Gerrit。从[Gerrit官方文档](https://gerrit-documentation.storage.googleapis.com/Documentation/2.5.1/cmd-review.html)上，我们可以找到一些可以通过ssh连接完成的操作，包括verified,code review,submit等等。注意，这里同样需要指定ssh key，否则Permission denied。
 ```sh
-ssh -i C:/Users/jenkins1/.ssh/id_rsa -p 29418 jenkins1@sw.tymphany.com gerrit review --verified +1 "$(git rev-parse --short HEAD)"
-ssh -i C:/Users/jenkins1/.ssh/id_rsa -p 29418 jenkins1@sw.tymphany.com gerrit review --code-review +2 "$(git rev-parse --short HEAD)"
-ssh -i C:/Users/jenkins1/.ssh/id_rsa -p 29418 jenkins1@sw.tymphany.com gerrit review -s "$(git rev-parse --short HEAD)"
+ssh -i C:/Users/jenkins1/.ssh/id_rsa -p 29418 jenkins1@sw.domian.com gerrit review --verified +1 "$(git rev-parse --short HEAD)"
+ssh -i C:/Users/jenkins1/.ssh/id_rsa -p 29418 jenkins1@sw.domian.com gerrit review --code-review +2 "$(git rev-parse --short HEAD)"
+ssh -i C:/Users/jenkins1/.ssh/id_rsa -p 29418 jenkins1@sw.domian.com gerrit review -s "$(git rev-parse --short HEAD)"
 ```
 至此，jenkins完成了自动构建。
 其他可能有用的git command:
