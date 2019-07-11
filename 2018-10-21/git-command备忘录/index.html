@@ -117,7 +117,7 @@
 <meta property="og:site_name" content="Coding Spirit">
 <meta property="og:description" content="…">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-01T05:23:15.000Z">
+<meta property="og:updated_time" content="2019-07-03T10:27:57.021Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git command备忘录">
 <meta name="twitter:description" content="…">
@@ -432,7 +432,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-01 13:23:15" itemprop="dateModified" datetime="2019-05-01T13:23:15+08:00">2019-05-01</time>
+                <time title="Modified: 2019-07-03 18:27:57" itemprop="dateModified" datetime="2019-07-03T18:27:57+08:00">2019-07-03</time>
               
             
           </span>
@@ -485,7 +485,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">416</span>
+                <span title="Symbols count in article">503</span>
               
 
               
@@ -520,14 +520,14 @@
 
       
         <p>…<br><a id="more"></a></p>
-<p>全局配置用户名和邮箱:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"Alex.Li"</span></span><br><span class="line">git config --global user.email <span class="string">"Alex.Li@xxxx.com"</span></span><br></pre></td></tr></table></figure></p>
-<p>ssh密钥生成:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"Alex.Li@xxxx.com"</span></span><br></pre></td></tr></table></figure></p>
-<p>储存https/http方式用户名密码:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global credential.helper store</span><br></pre></td></tr></table></figure></p>
-<p>添加tag并推送到远端:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git tag -a 1.0.0 -m <span class="string">'add version 1.0.0'</span></span><br><span class="line">git push origin master --tags</span><br></pre></td></tr></table></figure></p>
-<p>更改一个https仓库为ssh仓库：</p>
-<p><em>.git/config</em>中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url = https://xxxx.com/somebody/abcdef.git</span><br></pre></td></tr></table></figure></p>
+<h2 id="全局配置用户名和邮箱"><a href="#全局配置用户名和邮箱" class="headerlink" title="全局配置用户名和邮箱:"></a>全局配置用户名和邮箱:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"Alex.Li"</span></span><br><span class="line">git config --global user.email <span class="string">"Alex.Li@xxxx.com"</span></span><br></pre></td></tr></table></figure>
+<h2 id="ssh密钥生成"><a href="#ssh密钥生成" class="headerlink" title="ssh密钥生成:"></a>ssh密钥生成:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"Alex.Li@xxxx.com"</span></span><br></pre></td></tr></table></figure>
+<h2 id="储存https-http方式用户名密码"><a href="#储存https-http方式用户名密码" class="headerlink" title="储存https/http方式用户名密码:"></a>储存https/http方式用户名密码:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global credential.helper store</span><br></pre></td></tr></table></figure>
+<h2 id="添加tag并推送到远端"><a href="#添加tag并推送到远端" class="headerlink" title="添加tag并推送到远端:"></a>添加tag并推送到远端:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git tag -a 1.0.0 -m <span class="string">'add version 1.0.0'</span></span><br><span class="line">git push origin master --tags</span><br></pre></td></tr></table></figure>
+<h2 id="更改一个https仓库为ssh仓库："><a href="#更改一个https仓库为ssh仓库：" class="headerlink" title="更改一个https仓库为ssh仓库："></a>更改一个https仓库为ssh仓库：</h2><p><em>.git/config</em>中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url = https://xxxx.com/somebody/abcdef.git</span><br></pre></td></tr></table></figure></p>
 <p>改为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url = git@gxxxx.com:somebody/abcdef.git</span><br></pre></td></tr></table></figure></p>
 <p>反之则反</p>
+<h2 id="删除remotes-origin-branch"><a href="#删除remotes-origin-branch" class="headerlink" title="删除remotes/origin/{branch}"></a>删除remotes/origin/{branch}</h2><p>远端分支已经删除， 但本地仍可见remotes/origin/{branch}<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote prune origin</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -648,8 +648,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -666,7 +675,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">55</span>
+                    <span class="site-state-item-count">56</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -764,7 +773,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">26</span>
+                      
+                    
+                    <span class="site-state-item-count">27</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -826,6 +837,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#全局配置用户名和邮箱"><span class="nav-number">1.</span> <span class="nav-text">全局配置用户名和邮箱:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssh密钥生成"><span class="nav-number">2.</span> <span class="nav-text">ssh密钥生成:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#储存https-http方式用户名密码"><span class="nav-number">3.</span> <span class="nav-text">储存https/http方式用户名密码:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加tag并推送到远端"><span class="nav-number">4.</span> <span class="nav-text">添加tag并推送到远端:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改一个https仓库为ssh仓库："><span class="nav-number">5.</span> <span class="nav-text">更改一个https仓库为ssh仓库：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除remotes-origin-branch"><span class="nav-number">6.</span> <span class="nav-text">删除remotes/origin/{branch}</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -852,7 +880,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">107k</span>
+    <span title="Symbols count total">109k</span>
   
 
   
@@ -861,7 +889,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">1:37</span>
+    <span title="Reading time total">1:39</span>
   
 </div>
 
