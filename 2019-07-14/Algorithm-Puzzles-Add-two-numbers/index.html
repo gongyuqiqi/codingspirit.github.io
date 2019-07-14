@@ -109,18 +109,21 @@
 
 
 
-  <meta name="description" content="树莓派多声卡，尝试配置声卡0为默认输出设备，声卡1为默认输入设备。">
-<meta name="keywords" content="Linux,Raspberry Pi">
+  <meta name="description" content="Algorithm Puzzles everyday every week sometimes: Add two numbers">
+<meta name="keywords" content="Algorithm,C++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux配置默认声卡">
-<meta property="og:url" content="http://lzqblog.top/2018-05-02/Linux配置默认声卡/index.html">
+<meta property="og:title" content="Algorithm Puzzles: Add two numbers">
+<meta property="og:url" content="http://lzqblog.top/2019-07-14/Algorithm-Puzzles-Add-two-numbers/index.html">
 <meta property="og:site_name" content="Coding Spirit">
-<meta property="og:description" content="树莓派多声卡，尝试配置声卡0为默认输出设备，声卡1为默认输入设备。">
+<meta property="og:description" content="Algorithm Puzzles everyday every week sometimes: Add two numbers">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-20T11:54:50.000Z">
+<meta property="og:image" content="http://lzqblog.top/2019-07-14/Algorithm-Puzzles-Add-two-numbers/s1.png">
+<meta property="og:image" content="http://lzqblog.top/2019-07-14/Algorithm-Puzzles-Add-two-numbers/s2.png">
+<meta property="og:updated_time" content="2019-07-14T09:42:09.415Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux配置默认声卡">
-<meta name="twitter:description" content="树莓派多声卡，尝试配置声卡0为默认输出设备，声卡1为默认输入设备。">
+<meta name="twitter:title" content="Algorithm Puzzles: Add two numbers">
+<meta name="twitter:description" content="Algorithm Puzzles everyday every week sometimes: Add two numbers">
+<meta name="twitter:image" content="http://lzqblog.top/2019-07-14/Algorithm-Puzzles-Add-two-numbers/s1.png">
 
 
 
@@ -128,7 +131,7 @@
 
   
   
-  <link rel="canonical" href="http://lzqblog.top/2018-05-02/Linux配置默认声卡/">
+  <link rel="canonical" href="http://lzqblog.top/2019-07-14/Algorithm-Puzzles-Add-two-numbers/">
 
 
 
@@ -138,7 +141,7 @@
   };
 </script>
 
-  <title>Linux配置默认声卡 | Coding Spirit</title>
+  <title>Algorithm Puzzles: Add two numbers | Coding Spirit</title>
   
 
 
@@ -372,7 +375,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lzqblog.top/2018-05-02/Linux配置默认声卡/">
+    <link itemprop="mainEntityOfPage" href="http://lzqblog.top/2019-07-14/Algorithm-Puzzles-Add-two-numbers/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coding Spirit">
@@ -389,7 +392,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Linux配置默认声卡
+          <h1 class="post-title" itemprop="name headline">Algorithm Puzzles: Add two numbers
 
               
             
@@ -415,24 +418,12 @@
                 
               
 
-              <time title="Created: 2018-05-02 14:08:54" itemprop="dateCreated datePublished" datetime="2018-05-02T14:08:54+08:00">2018-05-02</time>
+              <time title="Created: 2019-07-14 16:59:31 / Modified: 17:42:09" itemprop="dateCreated datePublished" datetime="2019-07-14T16:59:31+08:00">2019-07-14</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-20 19:54:50" itemprop="dateModified" datetime="2018-11-20T19:54:50+08:00">2018-11-20</time>
               
             
           </span>
@@ -449,7 +440,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/随便写写/" itemprop="url" rel="index"><span itemprop="name">随便写写</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/编程相关/" itemprop="url" rel="index"><span itemprop="name">编程相关</span></a></span>
 
                 
                 
@@ -485,7 +476,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">1.1k</span>
+                <span title="Symbols count in article">3.5k</span>
               
 
               
@@ -499,7 +490,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">1 mins.</span>
+                <span title="Reading time">3 mins.</span>
               
             </div>
           
@@ -519,13 +510,21 @@
       
 
       
-        <p>树莓派多声卡，尝试配置声卡0为默认输出设备，声卡1为默认输入设备。<br><a id="more"></a></p>
-<h2 id="List-all-play-record-device"><a href="#List-all-play-record-device" class="headerlink" title="List all play/record device"></a>List all play/record device</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">pi@raspberrypi:~ $ aplay -l</span><br><span class="line">**** List of PLAYBACK Hardware Devices ****</span><br><span class="line">card 0: ALSA [bcm2835 ALSA], device 0: bcm2835 ALSA [bcm2835 ALSA]</span><br><span class="line">  Subdevices: 7/7</span><br><span class="line">  Subdevice <span class="comment">#0: subdevice #0</span></span><br><span class="line">  Subdevice <span class="comment">#1: subdevice #1</span></span><br><span class="line">  Subdevice <span class="comment">#2: subdevice #2</span></span><br><span class="line">  Subdevice <span class="comment">#3: subdevice #3</span></span><br><span class="line">  Subdevice <span class="comment">#4: subdevice #4</span></span><br><span class="line">  Subdevice <span class="comment">#5: subdevice #5</span></span><br><span class="line">  Subdevice <span class="comment">#6: subdevice #6</span></span><br><span class="line">card 0: ALSA [bcm2835 ALSA], device 1: bcm2835 ALSA [bcm2835 IEC958/HDMI]</span><br><span class="line">  Subdevices: 1/1</span><br><span class="line">  Subdevice <span class="comment">#0: subdevice #0</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pi@raspberrypi:~ $ arecord -l</span><br><span class="line">**** List of CAPTURE Hardware Devices ****</span><br><span class="line">card 1: Device [USB PnP Sound Device], device 0: USB Audio [USB Audio]</span><br><span class="line">  Subdevices: 1/1</span><br><span class="line">  Subdevice <span class="comment">#0: subdevice #0</span></span><br></pre></td></tr></table></figure>
-<h2 id="Set-card-0-as-playback-card-1-as-capture"><a href="#Set-card-0-as-playback-card-1-as-capture" class="headerlink" title="Set card 0 as playback, card 1 as capture"></a>Set card 0 as playback, card 1 as capture</h2><p>Open <strong>.asoundrc</strong> file under <strong>$HOME</strong><br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="variable">$HOME</span></span><br><span class="line">vim .asoundrc</span><br></pre></td></tr></table></figure></p>
-<p>Modify <strong>.asoundrc</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pcm.!default &#123;</span><br><span class="line">    type asym</span><br><span class="line">    playback.pcm &quot;plughw:0,0&quot;</span><br><span class="line">    capture.pcm  &quot;plughw:1,0&quot;</span><br><span class="line">&#125;</span><br><span class="line">ctl.!default &#123;</span><br><span class="line">        type hw</span><br><span class="line">        card 0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><em>“plughw:1,0”</em> means card 1, device 0</p>
-<p>Then <strong>save file</strong> and <strong>reboot</strong></p>
+        <p>Algorithm Puzzles <del>everyday</del> <del>every week</del> sometimes: Add two numbers<br><a id="more"></a></p>
+<h2 id="Puzzle"><a href="#Puzzle" class="headerlink" title="Puzzle"></a>Puzzle</h2><p>Puzzle from <a href="https://leetcode.com" target="_blank" rel="noopener">leetcode</a>:</p>
+<p>You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
+<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+<p>Example:</p>
+<p>Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>Output: 7 -&gt; 0 -&gt; 8<br>Explanation: 342 + 465 = 807.</p>
+<p>The template code provided by leetcode:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="Solving"><a href="#Solving" class="headerlink" title="Solving"></a>Solving</h2><p>My first came out solution just like how we do sum on draft paper:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode* result = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        ListNode* resultHead = result;</span><br><span class="line">        ListNode emptyNode&#123;<span class="number">0</span>&#125;; </span><br><span class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">            carry = addTwoNode(l1, l2, carry, result);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>((carry == <span class="number">0</span>) &amp;&amp; (l1-&gt;next == <span class="literal">nullptr</span>) &amp;&amp; (l2-&gt;next == <span class="literal">nullptr</span>))&#123;</span><br><span class="line">                <span class="keyword">return</span> resultHead;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                result-&gt;next = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">                result = result-&gt;next;</span><br><span class="line">                l1 = l1-&gt;next?l1-&gt;next:&amp;emptyNode;</span><br><span class="line">                l2 = l2-&gt;next?l2-&gt;next:&amp;emptyNode;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">addTwoNode</span><span class="params">(ListNode* l1, ListNode* l2, <span class="keyword">int</span> carry, ListNode* result)</span></span>&#123;</span><br><span class="line">        result-&gt;val = (l1-&gt;val + l2-&gt;val + carry);</span><br><span class="line">        <span class="keyword">if</span>(result-&gt;val &gt;= <span class="number">10</span>)&#123;</span><br><span class="line">            result-&gt;val -= <span class="number">10</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Time complexity: O(n)<br><img src="/2019-07-14/Algorithm-Puzzles-Add-two-numbers/s1.png" alt=""></p>
+<p>It’s do a little optimization:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode* result = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        ListNode* resultHead = result;</span><br><span class="line">        ListNode emptyNode&#123;<span class="number">0</span>&#125;; </span><br><span class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">            carry = addTwoNode(l1-&gt;val, l2-&gt;val, result);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>((carry == <span class="number">0</span>) &amp;&amp; (l1-&gt;next == <span class="literal">nullptr</span>) &amp;&amp; (l2-&gt;next == <span class="literal">nullptr</span>))&#123;</span><br><span class="line">                <span class="keyword">return</span> resultHead;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                result-&gt;next = <span class="keyword">new</span> ListNode(carry);</span><br><span class="line">                result = result-&gt;next;</span><br><span class="line">                l1 = l1-&gt;next?l1-&gt;next:&amp;emptyNode;</span><br><span class="line">                l2 = l2-&gt;next?l2-&gt;next:&amp;emptyNode;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">addTwoNode</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; l1, <span class="keyword">const</span> <span class="keyword">int</span>&amp; l2, ListNode* result)</span></span>&#123;</span><br><span class="line">        result-&gt;val += (l1 + l2);</span><br><span class="line">        <span class="keyword">if</span>(result-&gt;val &gt;= <span class="number">10</span>)&#123;</span><br><span class="line">            result-&gt;val -= <span class="number">10</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019-07-14/Algorithm-Puzzles-Add-two-numbers/s2.png" alt=""></p>
+<p>Super! Better than 99.99%!</p>
 
       
     </div>
@@ -560,7 +559,7 @@
   <li class="post-copyright-link">
     <strong>Post link: </strong>
     
-    <a href="http://lzqblog.top/2018-05-02/Linux配置默认声卡/" title="Linux配置默认声卡">http://lzqblog.top/2018-05-02/Linux配置默认声卡/</a>
+    <a href="http://lzqblog.top/2019-07-14/Algorithm-Puzzles-Add-two-numbers/" title="Algorithm Puzzles: Add two numbers">http://lzqblog.top/2019-07-14/Algorithm-Puzzles-Add-two-numbers/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
@@ -573,9 +572,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Linux/" rel="tag"># Linux</a>
+            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
           
-            <a href="/tags/Raspberry-Pi/" rel="tag"># Raspberry Pi</a>
+            <a href="/tags/C/" rel="tag"># C++</a>
           
         </div>
       
@@ -588,8 +587,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018-04-02/Ubuntu切换python版本/" rel="next" title="Ubuntu切换python版本">
-                <i class="fa fa-chevron-left"></i> Ubuntu切换python版本
+              <a href="/2019-07-11/Algorithm-Puzzles-Two-Sum/" rel="next" title="Algorithm Puzzles: Two Sum">
+                <i class="fa fa-chevron-left"></i> Algorithm Puzzles: Two Sum
               </a>
             
           </div>
@@ -597,10 +596,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018-05-24/make-warning-Clock-skew-detected/" rel="prev" title="make: warning: Clock skew detected">
-                make: warning: Clock skew detected <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -847,7 +842,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#List-all-play-record-device"><span class="nav-number">1.</span> <span class="nav-text">List all play/record device</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set-card-0-as-playback-card-1-as-capture"><span class="nav-number">2.</span> <span class="nav-text">Set card 0 as playback, card 1 as capture</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Puzzle"><span class="nav-number">1.</span> <span class="nav-text">Puzzle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solving"><span class="nav-number">2.</span> <span class="nav-text">Solving</span></a></li></ol></div>
             
 
           </div>

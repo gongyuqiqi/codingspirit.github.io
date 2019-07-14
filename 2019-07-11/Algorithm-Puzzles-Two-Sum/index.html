@@ -119,8 +119,9 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://lzqblog.top/2019-07-11/Algorithm-Puzzles-Two-Sum/think.jpg">
 <meta property="og:image" content="http://lzqblog.top/2019-07-11/Algorithm-Puzzles-Two-Sum/s1.png">
-<meta property="og:image" content="http://lzqblog.top/2019-07-11/Algorithm-Puzzles-Two-Sum/s2.png">
-<meta property="og:updated_time" content="2019-07-11T12:14:55.148Z">
+<meta property="og:image" content="http://lzqblog.top/2019-07-11/Algorithm-Puzzles-Two-Sum/s2_1.png">
+<meta property="og:image" content="http://lzqblog.top/2019-07-11/Algorithm-Puzzles-Two-Sum/s2_2.png">
+<meta property="og:updated_time" content="2019-07-14T09:13:10.914Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm Puzzles: Two Sum">
 <meta name="twitter:description" content="Algorithm Puzzles everyday every week sometimes: Two Sum">
@@ -419,12 +420,24 @@
                 
               
 
-              <time title="Created: 2019-07-11 19:34:16 / Modified: 20:14:55" itemprop="dateCreated datePublished" datetime="2019-07-11T19:34:16+08:00">2019-07-11</time>
+              <time title="Created: 2019-07-11 19:34:16" itemprop="dateCreated datePublished" datetime="2019-07-11T19:34:16+08:00">2019-07-11</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-07-14 17:13:10" itemprop="dateModified" datetime="2019-07-14T17:13:10+08:00">2019-07-14</time>
               
             
           </span>
@@ -512,7 +525,7 @@
 
       
         <p>Algorithm Puzzles <del>everyday</del> <del>every week</del> sometimes: Two Sum<br><a id="more"></a></p>
-<h2 id="Puzzle"><a href="#Puzzle" class="headerlink" title="Puzzle"></a>Puzzle</h2><p>Puzzle from <a href="https://leetcodecom" target="_blank" rel="noopener">leetcode</a>:</p>
+<h2 id="Puzzle"><a href="#Puzzle" class="headerlink" title="Puzzle"></a>Puzzle</h2><p>Puzzle from <a href="https://leetcode.com" target="_blank" rel="noopener">leetcode</a>:</p>
 <p>Given an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.</p>
 <p>You may assume that each input would have <strong>exactly</strong> one solution, and you may not use the same element twice.</p>
 <p>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Given nums = [2, 7, 11, 15], target = 9,</span><br><span class="line"></span><br><span class="line">Because nums[0] + nums[1] = 2 + 7 = 9,</span><br><span class="line">return [0, 1].</span><br></pre></td></tr></table></figure></p>
@@ -526,10 +539,11 @@
 
 <p>So what kind of search method is better? Maybe hash table?</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; twoSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; <span class="built_in">map</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">const</span> <span class="keyword">auto</span>&amp; a : nums)&#123;</span><br><span class="line">            <span class="built_in">map</span>.insert(&#123;a,i&#125;);</span><br><span class="line">            <span class="keyword">auto</span> res = <span class="built_in">map</span>.find(target-a);</span><br><span class="line">            <span class="keyword">if</span>(res != <span class="built_in">map</span>.end())&#123;</span><br><span class="line">                <span class="keyword">if</span>(i != res-&gt;second)</span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(&#123;i, res-&gt;second&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="built_in">std</span>::invalid_argument(<span class="string">""</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>Bravo! Time complexity is <strong>O(n)</strong> now!(but we used more space)<br>results:<br><img src="/2019-07-11/Algorithm-Puzzles-Two-Sum/s1.png" alt="result1"><br>What? Only better than 88.56%? OK it still can get improvements by replacing for-each with for-loop(But why I choose for-each at the first time…)</p>
+<p>Bravo! Time complexity is <strong>O(n)</strong> now!(but we used more space)<br>results:<br><img src="/2019-07-11/Algorithm-Puzzles-Two-Sum/s1.png" alt=""><br>What? Only better than 88.56%? OK it still can get improvements by replacing for-each with for-loop(But why I choose for-each at the first time…)</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; twoSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; <span class="built_in">map</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); i++)&#123;</span><br><span class="line">            <span class="built_in">map</span>.insert(&#123;nums[i],i&#125;);</span><br><span class="line">            <span class="keyword">auto</span> res = <span class="built_in">map</span>.find(target-nums[i]);</span><br><span class="line">            <span class="keyword">if</span>(res != <span class="built_in">map</span>.end())&#123;</span><br><span class="line">                <span class="keyword">if</span>(i != res-&gt;second)</span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(&#123;i, res-&gt;second&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>result:<br><img src="/2019-07-11/Algorithm-Puzzles-Two-Sum/s2.png" alt="result2"></p>
-<p>Cool, better than 96.11% now!</p>
+<p>result:<br><img src="/2019-07-11/Algorithm-Puzzles-Two-Sum/s2_1.png" alt=""></p>
+<p><img src="/2019-07-11/Algorithm-Puzzles-Two-Sum/s2_2.png" alt=""></p>
+<p>Cool, better than 99.79% now!</p>
 
       
     </div>
@@ -601,6 +615,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019-07-14/Algorithm-Puzzles-Add-two-numbers/" rel="prev" title="Algorithm Puzzles: Add two numbers">
+                Algorithm Puzzles: Add two numbers <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -675,7 +693,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-count">57</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -880,7 +898,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">109k</span>
+    <span title="Symbols count total">113k</span>
   
 
   
@@ -889,7 +907,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">1:39</span>
+    <span title="Reading time total">1:43</span>
   
 </div>
 
