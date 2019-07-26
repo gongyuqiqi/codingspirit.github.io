@@ -109,18 +109,20 @@
 
 
 
-  <meta name="description" content="Using TFTP(Trivial File Transfer Protocol) and NFS(Network File System) to load kernel and rootfs can help to reduce operations of flash write efficiently, which can make you EVK board live longer… Th">
-<meta name="keywords" content="Linux">
+  <meta name="description" content="Algorithm Puzzles everyday every week sometimes: Median of Two Sorted Arrays">
+<meta name="keywords" content="Algorithm,C++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="i.MX setup TFTP and NFS">
-<meta property="og:url" content="http://lzqblog.top/2019-05-26/i-MX-setup-TFTP-and-NFS/index.html">
+<meta property="og:title" content="Algorithm Puzzles: Median of Two Sorted Arrays">
+<meta property="og:url" content="http://lzqblog.top/2019-07-27/Algorithm-Puzzles-Median-of-Two-Sorted-Arrays/index.html">
 <meta property="og:site_name" content="Coding Spirit">
-<meta property="og:description" content="Using TFTP(Trivial File Transfer Protocol) and NFS(Network File System) to load kernel and rootfs can help to reduce operations of flash write efficiently, which can make you EVK board live longer… Th">
+<meta property="og:description" content="Algorithm Puzzles everyday every week sometimes: Median of Two Sorted Arrays">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-06T12:14:48.012Z">
+<meta property="og:image" content="http://lzqblog.top/2019-07-27/Algorithm-Puzzles-Median-of-Two-Sorted-Arrays/s1.png">
+<meta property="og:updated_time" content="2019-07-26T11:02:50.618Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="i.MX setup TFTP and NFS">
-<meta name="twitter:description" content="Using TFTP(Trivial File Transfer Protocol) and NFS(Network File System) to load kernel and rootfs can help to reduce operations of flash write efficiently, which can make you EVK board live longer… Th">
+<meta name="twitter:title" content="Algorithm Puzzles: Median of Two Sorted Arrays">
+<meta name="twitter:description" content="Algorithm Puzzles everyday every week sometimes: Median of Two Sorted Arrays">
+<meta name="twitter:image" content="http://lzqblog.top/2019-07-27/Algorithm-Puzzles-Median-of-Two-Sorted-Arrays/s1.png">
 
 
 
@@ -128,7 +130,7 @@
 
   
   
-  <link rel="canonical" href="http://lzqblog.top/2019-05-26/i-MX-setup-TFTP-and-NFS/">
+  <link rel="canonical" href="http://lzqblog.top/2019-07-27/Algorithm-Puzzles-Median-of-Two-Sorted-Arrays/">
 
 
 
@@ -138,7 +140,7 @@
   };
 </script>
 
-  <title>i.MX setup TFTP and NFS | Coding Spirit</title>
+  <title>Algorithm Puzzles: Median of Two Sorted Arrays | Coding Spirit</title>
   
 
 
@@ -372,7 +374,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lzqblog.top/2019-05-26/i-MX-setup-TFTP-and-NFS/">
+    <link itemprop="mainEntityOfPage" href="http://lzqblog.top/2019-07-27/Algorithm-Puzzles-Median-of-Two-Sorted-Arrays/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coding Spirit">
@@ -389,7 +391,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">i.MX setup TFTP and NFS
+          <h1 class="post-title" itemprop="name headline">Algorithm Puzzles: Median of Two Sorted Arrays
 
               
             
@@ -415,7 +417,7 @@
                 
               
 
-              <time title="Created: 2019-05-26 16:03:24" itemprop="dateCreated datePublished" datetime="2019-05-26T16:03:24+08:00">2019-05-26</time>
+              <time title="Created: 2019-07-27 02:51:16" itemprop="dateCreated datePublished" datetime="2019-07-27T02:51:16+08:00">2019-07-27</time>
             
 
             
@@ -432,7 +434,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-06 20:14:48" itemprop="dateModified" datetime="2019-06-06T20:14:48+08:00">2019-06-06</time>
+                <time title="Modified: 2019-07-26 19:02:50" itemprop="dateModified" datetime="2019-07-26T19:02:50+08:00">2019-07-26</time>
               
             
           </span>
@@ -449,7 +451,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/随便写写/" itemprop="url" rel="index"><span itemprop="name">随便写写</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/编程相关/" itemprop="url" rel="index"><span itemprop="name">编程相关</span></a></span>
 
                 
                 
@@ -485,7 +487,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">2k</span>
+                <span title="Symbols count in article">1.9k</span>
               
 
               
@@ -519,25 +521,22 @@
       
 
       
-        <p>Using TFTP(Trivial File Transfer Protocol) and NFS(Network File System) to load kernel and rootfs can help to reduce operations of flash write efficiently, which can make you EVK board live longer…</p>
-<p>This summary is based on <a href="https://github.com/Alexey-Abdulov-Tymphany" target="_blank" rel="noopener">Alexey</a>‘s version, with some modifications according to my experiment.<br><a id="more"></a></p>
-<h2 id="TFTP"><a href="#TFTP" class="headerlink" title="TFTP"></a>TFTP</h2><h3 id="Install-necessary-tools"><a href="#Install-necessary-tools" class="headerlink" title="Install necessary tools"></a>Install necessary tools</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install xinetd tftpd tftp</span><br></pre></td></tr></table></figure>
-<h3 id="Setup-TFTP"><a href="#Setup-TFTP" class="headerlink" title="Setup TFTP"></a>Setup TFTP</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /etc/xinetd.d/</span><br><span class="line">nano /etc/xinetd.d/tftp</span><br><span class="line">service tftp</span><br><span class="line">&#123;</span><br><span class="line">    protocol        = udp</span><br><span class="line">    port            = 69</span><br><span class="line">    socket_type     = dgram</span><br><span class="line">    <span class="built_in">wait</span>            = yes</span><br><span class="line">    user            = nobody</span><br><span class="line">    server          = /usr/sbin/in.tftpd</span><br><span class="line">    server_args     = /srv/tftp</span><br><span class="line">    <span class="built_in">disable</span>         = no</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>create folder to store tftp files:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /srv/tftp</span><br><span class="line">sudo chmod -R 777 /srv/tftp</span><br><span class="line">sudo chown -R nobody /srv/tftp</span><br></pre></td></tr></table></figure>
-<p>restart tftpd by xinetd:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/xinetd restart</span><br></pre></td></tr></table></figure>
-<p>copy device trees/kernel image to tftp folder:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp Image /srv/tftp</span><br><span class="line">cp Image-fsl-imx8mq-evk.dtb /srv/tftp/fsl-imx8mq-evk.dtb</span><br></pre></td></tr></table></figure>
-<h2 id="NFS"><a href="#NFS" class="headerlink" title="NFS"></a>NFS</h2><h3 id="Install-necessary-tools-1"><a href="#Install-necessary-tools-1" class="headerlink" title="Install necessary tools"></a>Install necessary tools</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nfs-kernel-server nfs-common portmap</span><br></pre></td></tr></table></figure>
-<h3 id="Setup-NFS"><a href="#Setup-NFS" class="headerlink" title="Setup NFS"></a>Setup NFS</h3><p>Add below line at end of <em>/etc/exports</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/home/ *(rw,insecure,no_root_squash,no_subtree_check)</span><br></pre></td></tr></table></figure></p>
-<p>restart nfs server:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/nfs-kernel-server restart</span><br></pre></td></tr></table></figure></p>
-<p>create copy of your rootfs:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">mkdir imx8-evk-dummy</span><br><span class="line"><span class="comment"># goto your yocto image build dir, i.e. imx-yocto-bsp/imx8mmevk_build/tmp/work/imx8mmevk-poky-linux/fsl-image-validation-imx/1.0-r0</span></span><br><span class="line"><span class="built_in">cd</span> &lt;your_yocto_image_build_folder&gt;</span><br><span class="line">cp -r rootfs ~/imx8-evk-dummy</span><br></pre></td></tr></table></figure></p>
-<p><span style="color:red">Notice:</span> Seems long path of rootfs will cause rootfs mounting error, suggest copy your rootfs to a short path</p>
-<h2 id="Target"><a href="#Target" class="headerlink" title="Target"></a>Target</h2><p>Interrupt board booting up then type into u-boot terminal:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">setenv nfsroot &lt;path-to-your-rootfs&gt;</span><br><span class="line">setenv image &lt;kernel-image-name-in-tftp-folder&gt;</span><br><span class="line">setenv fdt_file &lt;devid-tree-file-name-in-tftp-folder&gt;</span><br><span class="line">setenv serverip &lt;pc-ip-address&gt;</span><br><span class="line">setenv bootcmd &apos;run netboot&apos;</span><br><span class="line">sav</span><br><span class="line">reset</span><br></pre></td></tr></table></figure>
-<p>i.e.:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">setenv nfsroot /home/alex/imx8-evk-dummy/rootfs</span><br><span class="line">setenv image Image</span><br><span class="line">setenv fdt_file fsl-imx8mm-evk.dtb</span><br><span class="line">setenv serverip 10.0.1.17</span><br><span class="line">setenv bootcmd &apos;run netboot&apos;</span><br><span class="line">sav</span><br><span class="line">reset</span><br></pre></td></tr></table></figure>
+        <p>Algorithm Puzzles <del>everyday</del> <del>every week</del> sometimes: Median of Two Sorted Arrays</p>
+<a id="more"></a>
+<h2 id="Puzzle"><a href="#Puzzle" class="headerlink" title="Puzzle"></a>Puzzle</h2><p>Puzzle from <a href="https://leetcode.com" target="_blank" rel="noopener">leetcode</a>:</p>
+<p>There are two sorted arrays nums1 and nums2 of size m and n respectively.</p>
+<p>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p>
+<p>You may assume nums1 and nums2 cannot be both empty.</p>
+<p>Example 1:</p>
+<p>nums1 = [1, 3]<br>nums2 = [2]</p>
+<p>The median is 2.0<br>Example 2:</p>
+<p>nums1 = [1, 2]<br>nums2 = [3, 4]</p>
+<p>The median is (2 + 3)/2 = 2.5</p>
+<h2 id="Solving"><a href="#Solving" class="headerlink" title="Solving"></a>Solving</h2><p>The first came out solution is using merge sort since the sub-vectors are already sorted. The funny part is the puzzle requests time complexity should be O(log (m+n)), which is same as merge sort.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">findMedianSortedArrays</span><span class="params">(<span class="keyword">const</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1,<span class="keyword">const</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; nums3;</span><br><span class="line">        nums3.resize(nums1.size()+nums2.size());</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">auto</span> iter1 = nums1.begin();</span><br><span class="line">        <span class="keyword">auto</span> iter2 = nums2.begin();</span><br><span class="line">        <span class="keyword">auto</span> iter3 = nums3.begin();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(;; ++iter3)&#123;</span><br><span class="line">            <span class="keyword">if</span>(iter1 == nums1.end())&#123;</span><br><span class="line">                <span class="built_in">std</span>::copy(iter2,nums2.end(),iter3);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(iter2 == nums2.end())&#123;</span><br><span class="line">                <span class="built_in">std</span>::copy(iter1,nums1.end(),iter3);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(*iter1&lt;=*iter2)&#123;</span><br><span class="line">                *iter3 = *iter1;</span><br><span class="line">                ++iter1;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                *iter3 = *iter2;</span><br><span class="line">                ++iter2;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(nums3.size()%<span class="number">2</span> == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> nums3[(nums3.size()<span class="number">-1</span>)/<span class="number">2</span>];</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (nums3[nums3.size()/<span class="number">2</span>] + nums3[nums3.size()/<span class="number">2</span> - <span class="number">1</span>])/<span class="number">2.0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Time complexity: O(log(m+n))</p>
+<p>Result I got:<br><img src="/2019-07-27/Algorithm-Puzzles-Median-of-Two-Sorted-Arrays/s1.png" alt=""></p>
+<p>Better than 98.75%. BTW it seems I can get different result with the exactly same code…</p>
 
       
     </div>
@@ -572,7 +571,7 @@
   <li class="post-copyright-link">
     <strong>Post link: </strong>
     
-    <a href="http://lzqblog.top/2019-05-26/i-MX-setup-TFTP-and-NFS/" title="i.MX setup TFTP and NFS">http://lzqblog.top/2019-05-26/i-MX-setup-TFTP-and-NFS/</a>
+    <a href="http://lzqblog.top/2019-07-27/Algorithm-Puzzles-Median-of-Two-Sorted-Arrays/" title="Algorithm Puzzles: Median of Two Sorted Arrays">http://lzqblog.top/2019-07-27/Algorithm-Puzzles-Median-of-Two-Sorted-Arrays/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
@@ -585,7 +584,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Linux/" rel="tag"># Linux</a>
+            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
+          
+            <a href="/tags/C/" rel="tag"># C++</a>
           
         </div>
       
@@ -598,8 +599,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019-05-02/Yocto-QA-Issue-Files-directories-were-installed-but-not-shipped-in-any-package/" rel="next" title="Yocto QA Issue: Files/directories were installed but not shipped in any package">
-                <i class="fa fa-chevron-left"></i> Yocto QA Issue: Files/directories were installed but not shipped in any package
+              <a href="/2019-07-27/i-MX8-adb-bring-up/" rel="next" title="i.MX8 adb bring up">
+                <i class="fa fa-chevron-left"></i> i.MX8 adb bring up
               </a>
             
           </div>
@@ -607,10 +608,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019-05-27/Yocto-recipe-Git/" rel="prev" title="Yocto recipe: Git">
-                Yocto recipe: Git <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -857,7 +854,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#TFTP"><span class="nav-number">1.</span> <span class="nav-text">TFTP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-necessary-tools"><span class="nav-number">1.1.</span> <span class="nav-text">Install necessary tools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Setup-TFTP"><span class="nav-number">1.2.</span> <span class="nav-text">Setup TFTP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NFS"><span class="nav-number">2.</span> <span class="nav-text">NFS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-necessary-tools-1"><span class="nav-number">2.1.</span> <span class="nav-text">Install necessary tools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Setup-NFS"><span class="nav-number">2.2.</span> <span class="nav-text">Setup NFS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Target"><span class="nav-number">3.</span> <span class="nav-text">Target</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Puzzle"><span class="nav-number">1.</span> <span class="nav-text">Puzzle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solving"><span class="nav-number">2.</span> <span class="nav-text">Solving</span></a></li></ol></div>
             
 
           </div>

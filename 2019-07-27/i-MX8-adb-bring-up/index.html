@@ -109,18 +109,18 @@
 
 
 
-  <meta name="description" content="Using TFTP(Trivial File Transfer Protocol) and NFS(Network File System) to load kernel and rootfs can help to reduce operations of flash write efficiently, which can make you EVK board live longer… Th">
-<meta name="keywords" content="Linux">
+  <meta name="description" content="The default BSP provided by NXP doesn’t support adb, we have to port it by ourselves. Our goal is making adbd running on SoC meanwhile we can use adb through USB port.Let’s have a quick summary before">
+<meta name="keywords" content="Linux,Yocto">
 <meta property="og:type" content="article">
-<meta property="og:title" content="i.MX setup TFTP and NFS">
-<meta property="og:url" content="http://lzqblog.top/2019-05-26/i-MX-setup-TFTP-and-NFS/index.html">
+<meta property="og:title" content="i.MX8 adb bring up">
+<meta property="og:url" content="http://lzqblog.top/2019-07-27/i-MX8-adb-bring-up/index.html">
 <meta property="og:site_name" content="Coding Spirit">
-<meta property="og:description" content="Using TFTP(Trivial File Transfer Protocol) and NFS(Network File System) to load kernel and rootfs can help to reduce operations of flash write efficiently, which can make you EVK board live longer… Th">
+<meta property="og:description" content="The default BSP provided by NXP doesn’t support adb, we have to port it by ourselves. Our goal is making adbd running on SoC meanwhile we can use adb through USB port.Let’s have a quick summary before">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-06T12:14:48.012Z">
+<meta property="og:updated_time" content="2019-07-26T10:55:36.226Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="i.MX setup TFTP and NFS">
-<meta name="twitter:description" content="Using TFTP(Trivial File Transfer Protocol) and NFS(Network File System) to load kernel and rootfs can help to reduce operations of flash write efficiently, which can make you EVK board live longer… Th">
+<meta name="twitter:title" content="i.MX8 adb bring up">
+<meta name="twitter:description" content="The default BSP provided by NXP doesn’t support adb, we have to port it by ourselves. Our goal is making adbd running on SoC meanwhile we can use adb through USB port.Let’s have a quick summary before">
 
 
 
@@ -128,7 +128,7 @@
 
   
   
-  <link rel="canonical" href="http://lzqblog.top/2019-05-26/i-MX-setup-TFTP-and-NFS/">
+  <link rel="canonical" href="http://lzqblog.top/2019-07-27/i-MX8-adb-bring-up/">
 
 
 
@@ -138,7 +138,7 @@
   };
 </script>
 
-  <title>i.MX setup TFTP and NFS | Coding Spirit</title>
+  <title>i.MX8 adb bring up | Coding Spirit</title>
   
 
 
@@ -372,7 +372,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lzqblog.top/2019-05-26/i-MX-setup-TFTP-and-NFS/">
+    <link itemprop="mainEntityOfPage" href="http://lzqblog.top/2019-07-27/i-MX8-adb-bring-up/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coding Spirit">
@@ -389,7 +389,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">i.MX setup TFTP and NFS
+          <h1 class="post-title" itemprop="name headline">i.MX8 adb bring up
 
               
             
@@ -415,7 +415,7 @@
                 
               
 
-              <time title="Created: 2019-05-26 16:03:24" itemprop="dateCreated datePublished" datetime="2019-05-26T16:03:24+08:00">2019-05-26</time>
+              <time title="Created: 2019-07-27 02:49:35" itemprop="dateCreated datePublished" datetime="2019-07-27T02:49:35+08:00">2019-07-27</time>
             
 
             
@@ -432,7 +432,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-06 20:14:48" itemprop="dateModified" datetime="2019-06-06T20:14:48+08:00">2019-06-06</time>
+                <time title="Modified: 2019-07-26 18:55:36" itemprop="dateModified" datetime="2019-07-26T18:55:36+08:00">2019-07-26</time>
               
             
           </span>
@@ -485,7 +485,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">2k</span>
+                <span title="Symbols count in article">3.5k</span>
               
 
               
@@ -499,7 +499,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">2 mins.</span>
+                <span title="Reading time">3 mins.</span>
               
             </div>
           
@@ -519,25 +519,20 @@
       
 
       
-        <p>Using TFTP(Trivial File Transfer Protocol) and NFS(Network File System) to load kernel and rootfs can help to reduce operations of flash write efficiently, which can make you EVK board live longer…</p>
-<p>This summary is based on <a href="https://github.com/Alexey-Abdulov-Tymphany" target="_blank" rel="noopener">Alexey</a>‘s version, with some modifications according to my experiment.<br><a id="more"></a></p>
-<h2 id="TFTP"><a href="#TFTP" class="headerlink" title="TFTP"></a>TFTP</h2><h3 id="Install-necessary-tools"><a href="#Install-necessary-tools" class="headerlink" title="Install necessary tools"></a>Install necessary tools</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install xinetd tftpd tftp</span><br></pre></td></tr></table></figure>
-<h3 id="Setup-TFTP"><a href="#Setup-TFTP" class="headerlink" title="Setup TFTP"></a>Setup TFTP</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /etc/xinetd.d/</span><br><span class="line">nano /etc/xinetd.d/tftp</span><br><span class="line">service tftp</span><br><span class="line">&#123;</span><br><span class="line">    protocol        = udp</span><br><span class="line">    port            = 69</span><br><span class="line">    socket_type     = dgram</span><br><span class="line">    <span class="built_in">wait</span>            = yes</span><br><span class="line">    user            = nobody</span><br><span class="line">    server          = /usr/sbin/in.tftpd</span><br><span class="line">    server_args     = /srv/tftp</span><br><span class="line">    <span class="built_in">disable</span>         = no</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>create folder to store tftp files:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /srv/tftp</span><br><span class="line">sudo chmod -R 777 /srv/tftp</span><br><span class="line">sudo chown -R nobody /srv/tftp</span><br></pre></td></tr></table></figure>
-<p>restart tftpd by xinetd:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/xinetd restart</span><br></pre></td></tr></table></figure>
-<p>copy device trees/kernel image to tftp folder:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp Image /srv/tftp</span><br><span class="line">cp Image-fsl-imx8mq-evk.dtb /srv/tftp/fsl-imx8mq-evk.dtb</span><br></pre></td></tr></table></figure>
-<h2 id="NFS"><a href="#NFS" class="headerlink" title="NFS"></a>NFS</h2><h3 id="Install-necessary-tools-1"><a href="#Install-necessary-tools-1" class="headerlink" title="Install necessary tools"></a>Install necessary tools</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nfs-kernel-server nfs-common portmap</span><br></pre></td></tr></table></figure>
-<h3 id="Setup-NFS"><a href="#Setup-NFS" class="headerlink" title="Setup NFS"></a>Setup NFS</h3><p>Add below line at end of <em>/etc/exports</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/home/ *(rw,insecure,no_root_squash,no_subtree_check)</span><br></pre></td></tr></table></figure></p>
-<p>restart nfs server:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/nfs-kernel-server restart</span><br></pre></td></tr></table></figure></p>
-<p>create copy of your rootfs:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">mkdir imx8-evk-dummy</span><br><span class="line"><span class="comment"># goto your yocto image build dir, i.e. imx-yocto-bsp/imx8mmevk_build/tmp/work/imx8mmevk-poky-linux/fsl-image-validation-imx/1.0-r0</span></span><br><span class="line"><span class="built_in">cd</span> &lt;your_yocto_image_build_folder&gt;</span><br><span class="line">cp -r rootfs ~/imx8-evk-dummy</span><br></pre></td></tr></table></figure></p>
-<p><span style="color:red">Notice:</span> Seems long path of rootfs will cause rootfs mounting error, suggest copy your rootfs to a short path</p>
-<h2 id="Target"><a href="#Target" class="headerlink" title="Target"></a>Target</h2><p>Interrupt board booting up then type into u-boot terminal:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">setenv nfsroot &lt;path-to-your-rootfs&gt;</span><br><span class="line">setenv image &lt;kernel-image-name-in-tftp-folder&gt;</span><br><span class="line">setenv fdt_file &lt;devid-tree-file-name-in-tftp-folder&gt;</span><br><span class="line">setenv serverip &lt;pc-ip-address&gt;</span><br><span class="line">setenv bootcmd &apos;run netboot&apos;</span><br><span class="line">sav</span><br><span class="line">reset</span><br></pre></td></tr></table></figure>
-<p>i.e.:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">setenv nfsroot /home/alex/imx8-evk-dummy/rootfs</span><br><span class="line">setenv image Image</span><br><span class="line">setenv fdt_file fsl-imx8mm-evk.dtb</span><br><span class="line">setenv serverip 10.0.1.17</span><br><span class="line">setenv bootcmd &apos;run netboot&apos;</span><br><span class="line">sav</span><br><span class="line">reset</span><br></pre></td></tr></table></figure>
+        <p>The default BSP provided by NXP doesn’t support <strong>adb</strong>, we have to port it by ourselves. Our goal is making <strong>adbd</strong> running on SoC meanwhile we can use <strong>adb</strong> through USB port.<br>Let’s have a quick summary before I forget it(I already done this 3 months ago…)</p>
+<a id="more"></a>
+<h2 id="Source-code-of-adb-amp-adbd"><a href="#Source-code-of-adb-amp-adbd" class="headerlink" title="Source code of adb &amp; adbd"></a>Source code of adb &amp; adbd</h2><p>You can find adb &amp; adbd source codes easily, but I found that there is a recipe in openembedded already provided adb &amp; adbd:<br><em>meta-openembedded/meta-oe/recipes-devtools/android-tools</em><br>But the default recipes can’t work on imx8mm through USB. We need do some modifications later.</p>
+<h2 id="Adding-support-for-login-adb-as-root"><a href="#Adding-support-for-login-adb-as-root" class="headerlink" title="Adding support for login adb as root"></a>Adding support for login adb as root</h2><p>There is a function called <strong>should_drop_privileges</strong> in adbd source code, modify this function that makes it always return 0 to disallow drop privileges. It has been added into newer openembedded but not the i.mx BSP.</p>
+<figure class="highlight patch"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">From 3a788e9168c9b9eac66c4fa479413f4a95c61be4 Mon Sep 17 00:00:00 2001</span><br><span class="line">From: Florent Revest &lt;revestflo@gmail.com&gt;</span><br><span class="line">Date: Mon, 30 Oct 2017 21:05:46 +0100</span><br><span class="line">Subject: [PATCH] adb: Allow adbd to be ran as root</span><br><span class="line"></span><br><span class="line"><span class="comment">---</span></span><br><span class="line"> adb/adb.c | 1 +</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br><span class="line"></span><br><span class="line">diff --git a/adb/adb.c b/adb/adb.c</span><br><span class="line">index 027edd9359..e0f7ecde45 100644</span><br><span class="line"><span class="comment">--- a/adb/adb.c</span></span><br><span class="line"><span class="comment">+++ b/adb/adb.c</span></span><br><span class="line">@@ -1271,6 +1271,7 @@ static int should_drop_privileges() &#123;</span><br><span class="line">     int secure = 0;</span><br><span class="line">     char value[PROPERTY_VALUE_MAX];</span><br><span class="line"> </span><br><span class="line"><span class="addition">+    return 0;</span></span><br><span class="line">    /* run adbd in secure mode if ro.secure is set and</span><br><span class="line">     ** we are not in the emulator</span><br><span class="line">     */</span><br></pre></td></tr></table></figure>
+<p>You need to add this patch into recipe sources as well:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SRC_URI += &quot; \</span><br><span class="line">    file://0008-adb-Allow-adbd-to-be-ran-as-root.patch;patchdir=system/core \</span><br><span class="line">&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="Adding-support-for-USB-adb"><a href="#Adding-support-for-USB-adb" class="headerlink" title="Adding support for USB adb"></a>Adding support for USB adb</h2><p>To connect adbd through USB, we need support from usb function filesystem. To enable it in kernel:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">│ Symbol: USB_FUNCTIONFS [=m]                                                                      │  </span><br><span class="line">│ Type  : tristate                                                                                 │  </span><br><span class="line">│ Prompt: Function Filesystem                                                                      │  </span><br><span class="line">│   Location:                                                                                      │  </span><br><span class="line">│     -&gt; Device Drivers                                                                            │  </span><br><span class="line">│       -&gt; USB support (USB_SUPPORT [=y])                                                          │  </span><br><span class="line">│         -&gt; USB Gadget Support (USB_GADGET [=y])                                                  │  </span><br><span class="line">│ (4)       -&gt; USB Gadget precomposed configurations (&lt;choice&gt; [=m])                               │  </span><br><span class="line">│   Defined at drivers/usb/gadget/legacy/Kconfig:196                                               │  </span><br><span class="line">│   Depends on: &lt;choice&gt;                                                                           │  </span><br><span class="line">│   Selects: USB_LIBCOMPOSITE [=y] &amp;&amp; USB_F_FS [=y] &amp;&amp; USB_FUNCTIONFS_GENERIC [=y]</span><br></pre></td></tr></table></figure>
+<p>After installation of <strong>USB_FUNCTIONFS</strong>, we need to <em>modprobe</em> and <em>mount</em> functionfs before adbd start(initialization):</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line">modprobe g_ffs idVendor=0x18d1 idProduct=0x4e42 iSerialNumber=<span class="string">"codingspirit"</span></span><br><span class="line">mkdir -p /dev/usb-ffs/adb</span><br><span class="line">mount -t functionfs adb /dev/usb-ffs/adb -o uid=0,gid=0</span><br></pre></td></tr></table></figure>
+<p>Then we can start adbd now.</p>
+<p>In my case I’m using systemd to do this initialization(as a <strong>ExecStartPre</strong>), then set <em>/usr/bin/adbd</em> as <strong>ExecStart</strong>.</p>
+<p>After all of those steps, we can do quick test by <strong>adb devices</strong>! If everything goes well, you can see your device has been recognized. Then use <strong>adb shell</strong> to login, a <strong>#</strong> symbol should be shown which means you are in root.</p>
 
       
     </div>
@@ -572,7 +567,7 @@
   <li class="post-copyright-link">
     <strong>Post link: </strong>
     
-    <a href="http://lzqblog.top/2019-05-26/i-MX-setup-TFTP-and-NFS/" title="i.MX setup TFTP and NFS">http://lzqblog.top/2019-05-26/i-MX-setup-TFTP-and-NFS/</a>
+    <a href="http://lzqblog.top/2019-07-27/i-MX8-adb-bring-up/" title="i.MX8 adb bring up">http://lzqblog.top/2019-07-27/i-MX8-adb-bring-up/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
@@ -587,6 +582,8 @@
           
             <a href="/tags/Linux/" rel="tag"># Linux</a>
           
+            <a href="/tags/Yocto/" rel="tag"># Yocto</a>
+          
         </div>
       
 
@@ -598,8 +595,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019-05-02/Yocto-QA-Issue-Files-directories-were-installed-but-not-shipped-in-any-package/" rel="next" title="Yocto QA Issue: Files/directories were installed but not shipped in any package">
-                <i class="fa fa-chevron-left"></i> Yocto QA Issue: Files/directories were installed but not shipped in any package
+              <a href="/2019-07-21/Algorithm-Puzzles-Longest-Substring-Without-Repeating-Characters/" rel="next" title="Algorithm Puzzles: Longest Substring Without Repeating Characters">
+                <i class="fa fa-chevron-left"></i> Algorithm Puzzles: Longest Substring Without Repeating Characters
               </a>
             
           </div>
@@ -608,8 +605,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019-05-27/Yocto-recipe-Git/" rel="prev" title="Yocto recipe: Git">
-                Yocto recipe: Git <i class="fa fa-chevron-right"></i>
+              <a href="/2019-07-27/Algorithm-Puzzles-Median-of-Two-Sorted-Arrays/" rel="prev" title="Algorithm Puzzles: Median of Two Sorted Arrays">
+                Algorithm Puzzles: Median of Two Sorted Arrays <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -857,7 +854,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#TFTP"><span class="nav-number">1.</span> <span class="nav-text">TFTP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-necessary-tools"><span class="nav-number">1.1.</span> <span class="nav-text">Install necessary tools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Setup-TFTP"><span class="nav-number">1.2.</span> <span class="nav-text">Setup TFTP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NFS"><span class="nav-number">2.</span> <span class="nav-text">NFS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-necessary-tools-1"><span class="nav-number">2.1.</span> <span class="nav-text">Install necessary tools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Setup-NFS"><span class="nav-number">2.2.</span> <span class="nav-text">Setup NFS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Target"><span class="nav-number">3.</span> <span class="nav-text">Target</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Source-code-of-adb-amp-adbd"><span class="nav-number">1.</span> <span class="nav-text">Source code of adb &amp; adbd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Adding-support-for-login-adb-as-root"><span class="nav-number">2.</span> <span class="nav-text">Adding support for login adb as root</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Adding-support-for-USB-adb"><span class="nav-number">3.</span> <span class="nav-text">Adding support for USB adb</span></a></li></ol></div>
             
 
           </div>
