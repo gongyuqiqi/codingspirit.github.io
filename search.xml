@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Yocto: Replace sysvinit with systemd]]></title>
+    <url>%2F2019-08-17%2FYocto-Replace-sysvinit-with-systemd%2F</url>
+    <content type="text"><![CDATA[There are some Yocto distributions still using sysvinit as their default init manager. To replace it with systemd, some modifications need to be done in local.conf: 12345# build/conf/local.confDISTRO_FEATURES_append += &quot;systemd&quot;VIRTUAL-RUNTIME_init_manager = &quot;systemd&quot;DISTRO_FEATURES_BACKFILL_CONSIDERED += &quot;sysvinit&quot;VIRTUAL-RUNTIME_initscripts = &quot;&quot;]]></content>
+      <categories>
+        <category>随便写写</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Yocto</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Algorithm Puzzles: Longest Palindromic Substring]]></title>
     <url>%2F2019-08-04%2FAlgorithm-Puzzles-Longest-Palindromic-Substring%2F</url>
     <content type="text"><![CDATA[Algorithm Puzzles everyday every week sometimes: Longest Palindromic Substring PuzzlePuzzle from leetcode: Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000. Example 1: Input: “babad”Output: “bab”Note: “aba” is also a valid answer.Example 2: Input: “cbbd”Output: “bb” SolvingFirst Came out solution:123456789101112131415161718192021222324252627282930313233343536class Solution &#123;public: string longestPalindrome(const string&amp; s) &#123; int head = 0,tail = 0; int length = s.length(); int longestH = 0, longestT = 0; while(head != length)&#123; if(s[head] == s[tail])&#123; if(isPalindromic(s.substr(head, tail - head + 1)))&#123; longestH = head; longestT = tail; &#125; &#125; ++tail; if(tail &gt;= length)&#123; ++head; tail = head + longestT - longestH + 1; if(tail &gt;= length)&#123; break; &#125; &#125; &#125; return s.substr(longestH, longestT - longestH + 1); &#125;private: bool isPalindromic(const string&amp; s)&#123; double dMid = s.length()/2.0; int mid = s.length()/2; string sub = s.substr((dMid - mid) &gt; 0 ? mid + 1 : mid); std::reverse(sub.begin(), sub.end()); if(sub == s.substr(0, mid))&#123; return true; &#125; return false; &#125;&#125;; Result: Well, that’s the worst result I have ever seen. Extend from the centerChecked the solution provided by leetcode, there is one way only have time complexity O(n²), I implemented in it C++ with a little optimization: 12345678910111213141516171819202122232425262728class Solution &#123;public: const string longestPalindrome(const string&amp; s) &#123; int start = 0, maxLength = 0, halfLength = 0; for(int i = 0; i &lt; s.length(); i++)&#123; if(s.length() - i + 1 &lt; halfLength || i + 1 &lt; halfLength)&#123; continue; &#125; int len1 = extendFromCenter(s, i, i); int len2 = extendFromCenter(s, i, i+1); int len = len1 &gt; len2 ? len1 : len2; if(len &gt; maxLength)&#123; start = i - (len - 1) / 2; maxLength = len; halfLength = maxLength / 2; &#125; &#125; return s.substr(start, maxLength); &#125;private: int extendFromCenter(const string&amp; s, int left, int right)&#123; while(left &gt;= 0 &amp;&amp; right &lt; s.length() &amp;&amp; s[left] == s[right])&#123; --left; ++right; &#125; return right - left - 1; &#125;&#125;; Result with this:]]></content>
