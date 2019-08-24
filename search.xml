@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Yocto: Configure kernel with config fragments]]></title>
+    <url>%2F2019-08-24%2FYocto-Configure-kernel-with-config-fragments%2F</url>
+    <content type="text"><![CDATA[From my point of view it will be better to use config fragments to configure kernel instead of directly modifying .config file, the former way will be much easier to disable changes when you want to roll back. Using menuconfig to get the new .config file you wantTaking raspberrypi as an example. Replace linux-raspberrypi to your kernel recipe name. i.e. change it to linux-imx if you are using NXP i.MX SoC. Same modification need to be applied for following steps. 1bitbake linux-raspberrypi -c menuconfig Get differences1bitbake linux-raspberrypi -c diffconfig Save the generated .cfg fragments file. We gonna use it in next step. If you can make sure about which CONFIG_XXXX need to be changed, you can write fragments file by yourself as well. Using bbappend to apply fragmentsYocto provides bbappend for developers to modify constructing steps without modifying the original recipes, and that’s how we apply fragments. Assuming that you already have a yocto layer works properly, then create recipes with this structure: 12345recipes-kernel/└── linux ├── linux-raspberrypi │ └── enable_adb-cp.cfg └── linux-raspberrypi_%.bbappend Name of bbappend file should be same as your kernel recipe, here we use wildcard % to make sure bbappend can be applied to any version of linux-raspberrypi recipes. 123456789FILESEXTRAPATHS_prepend:=&quot;$&#123;THISDIR&#125;/$&#123;PN&#125;:&quot;# Enable adbSRC_URI_append += &quot;file://enable_adb-cp.cfg&quot;do_configure_append() &#123; $&#123;S&#125;/scripts/kconfig/merge_config.sh -m -O $&#123;B&#125; $&#123;B&#125;/.config $&#123;WORKDIR&#125;/*-cp.cfg&#125; As you can see the path we put *.cfg files will not be include by default, so using FILESEXTRAPATHS_prepend to specify searching path is required. Then we will add step when do_configure, which will call merge_config.sh tool provided by kernel source to automatically merge fragments into kernel config file. The funny part is I found that I made a mistake when I trying to enable usb adbd on raspberry pi 3: raspberry pi 3 can’t be used as gadget mode because of hardware limitations. But at least I verified the way to apply fragments works.-_-.]]></content>
+      <categories>
+        <category>随便写写</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Yocto</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Yocto: Replace sysvinit with systemd]]></title>
     <url>%2F2019-08-17%2FYocto-Replace-sysvinit-with-systemd%2F</url>
     <content type="text"><![CDATA[There are some Yocto distributions still using sysvinit as their default init manager. To replace it with systemd, some modifications need to be done in local.conf: 12345# build/conf/local.confDISTRO_FEATURES_append += &quot;systemd&quot;VIRTUAL-RUNTIME_init_manager = &quot;systemd&quot;DISTRO_FEATURES_BACKFILL_CONSIDERED += &quot;sysvinit&quot;VIRTUAL-RUNTIME_initscripts = &quot;&quot;]]></content>

@@ -109,16 +109,18 @@
 
 
 
-  <meta name="description" content="毕业于OUC，现就职于Tymphany">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Coding Spirit">
-<meta property="og:url" content="http://lzqblog.top/tags/日志/index.html">
+  <meta name="description" content="From my point of view it will be better to use config fragments to configure kernel instead of directly modifying .config file, the former way will be much easier to disable changes when you want to r">
+<meta name="keywords" content="Linux,Yocto">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Yocto: Configure kernel with config fragments">
+<meta property="og:url" content="http://lzqblog.top/2019-08-24/Yocto-Configure-kernel-with-config-fragments/index.html">
 <meta property="og:site_name" content="Coding Spirit">
-<meta property="og:description" content="毕业于OUC，现就职于Tymphany">
+<meta property="og:description" content="From my point of view it will be better to use config fragments to configure kernel instead of directly modifying .config file, the former way will be much easier to disable changes when you want to r">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-24T10:11:34.888Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Coding Spirit">
-<meta name="twitter:description" content="毕业于OUC，现就职于Tymphany">
+<meta name="twitter:title" content="Yocto: Configure kernel with config fragments">
+<meta name="twitter:description" content="From my point of view it will be better to use config fragments to configure kernel instead of directly modifying .config file, the former way will be much easier to disable changes when you want to r">
 
 
 
@@ -126,7 +128,7 @@
 
   
   
-  <link rel="canonical" href="http://lzqblog.top/tags/日志/">
+  <link rel="canonical" href="http://lzqblog.top/2019-08-24/Yocto-Configure-kernel-with-config-fragments/">
 
 
 
@@ -136,7 +138,7 @@
   };
 </script>
 
-  <title>Tag: 日志 | Coding Spirit</title>
+  <title>Yocto: Configure kernel with config fragments | Coding Spirit</title>
   
 
 
@@ -184,7 +186,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -243,7 +245,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -307,25 +309,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -371,187 +354,272 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>日志<small>Tag</small>
-        </h1>
-      </div>
-
-      
-        
+  
+    <div class="reading-progress-bar"></div>
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lzqblog.top/2019-08-24/Yocto-Configure-kernel-with-config-fragments/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coding Spirit">
+      <meta itemprop="description" content="毕业于OUC，现就职于Tymphany">
+      <meta itemprop="image" content="/assets/img/coding_spirit.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Spirit">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2018-12-22/Comments-system-has-been-added/" itemprop="url">
-            
-              <span itemprop="name">Comments system has been added</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Yocto: Configure kernel with config fragments
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-22T09:40:27+08:00" content="2018-12-22">
-          12-22
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-08-24 18:09:44 / Modified: 18:11:34" itemprop="dateCreated datePublished" datetime="2019-08-24T18:09:44+08:00">2019-08-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/随便写写/" itemprop="url" rel="index"><span itemprop="name">随便写写</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">2.2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">2 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2018-10-21/git-command备忘录/" itemprop="url">
-            
-              <span itemprop="name">git command备忘录</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-10-21T16:20:36+08:00" content="2018-10-21">
-          10-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2018-06-11/现在支持HTTPS啦/" itemprop="url">
-            
-              <span itemprop="name">现在支持HTTPS啦</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-06-11T14:46:02+08:00" content="2018-06-11">
-          06-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2018-02-09/常用命令行字符串操作指令/" itemprop="url">
-            
-              <span itemprop="name">常用命令行字符串操作指令</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-02-09T15:42:29+08:00" content="2018-02-09">
-          02-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2018-01-09/Docker常用命令/" itemprop="url">
-            
-              <span itemprop="name">Docker常用命令</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-01-09T14:10:14+08:00" content="2018-01-09">
-          01-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2017-10-31/Welcome/" itemprop="url">
-            
-              <span itemprop="name">Welcome</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-10-31T20:48:07+08:00" content="2017-10-31">
-          10-31
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <p>From my point of view it will be better to use config fragments to configure kernel instead of directly modifying <em>.config</em> file, the former way will be much easier to disable changes when you want to roll back.</p>
+<a id="more"></a>
+<h2 id="Using-menuconfig-to-get-the-new-config-file-you-want"><a href="#Using-menuconfig-to-get-the-new-config-file-you-want" class="headerlink" title="Using menuconfig to get the new .config file you want"></a>Using menuconfig to get the new .config file you want</h2><p>Taking raspberrypi as an example. Replace <em>linux-raspberrypi</em> to your kernel recipe name. i.e. change it to linux-imx if you are using NXP i.MX SoC. Same modification need to be applied for following steps.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitbake linux-raspberrypi -c menuconfig</span><br></pre></td></tr></table></figure>
+<h2 id="Get-differences"><a href="#Get-differences" class="headerlink" title="Get differences"></a>Get differences</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitbake linux-raspberrypi -c diffconfig</span><br></pre></td></tr></table></figure>
+<p>Save the generated <em>.cfg</em> fragments file. We gonna use it in next step.</p>
+<p>If you can make sure about which <em>CONFIG_XXXX</em> need to be changed, you can write fragments file by yourself as well.</p>
+<h2 id="Using-bbappend-to-apply-fragments"><a href="#Using-bbappend-to-apply-fragments" class="headerlink" title="Using bbappend to apply fragments"></a>Using bbappend to apply fragments</h2><p>Yocto provides bbappend for developers to modify constructing steps without modifying the original recipes, and that’s how we apply fragments.</p>
+<p>Assuming that you already have a yocto layer works properly, then create recipes with this structure:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">recipes-kernel/</span><br><span class="line">└── linux</span><br><span class="line">    ├── linux-raspberrypi</span><br><span class="line">    │   └── enable_adb-cp.cfg</span><br><span class="line">    └── linux-raspberrypi_%.bbappend</span><br></pre></td></tr></table></figure>
+<p>Name of bbappend file should be same as your kernel recipe, here we use wildcard <em>%</em> to make sure bbappend can be applied to any version of linux-raspberrypi recipes.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">FILESEXTRAPATHS_prepend:=&quot;$&#123;THISDIR&#125;/$&#123;PN&#125;:&quot;</span><br><span class="line"></span><br><span class="line"># Enable adb</span><br><span class="line">SRC_URI_append += &quot;file://enable_adb-cp.cfg&quot;</span><br><span class="line"></span><br><span class="line">do_configure_append() &#123;</span><br><span class="line">    $&#123;S&#125;/scripts/kconfig/merge_config.sh -m -O $&#123;B&#125; $&#123;B&#125;/.config $&#123;WORKDIR&#125;/*-cp.cfg</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>As you can see the path we put <strong>*.cfg</strong> files will not be include by default, so using <strong>FILESEXTRAPATHS_prepend</strong> to specify searching path is required. Then we will add step when do_configure, which will call <strong>merge_config.sh</strong> tool provided by kernel source to automatically merge fragments into kernel config file.</p>
+<p>The funny part is I found that I made a mistake when I trying to enable usb adbd on raspberry pi 3: raspberry pi 3 can’t be used as gadget mode because of hardware limitations. But at least I verified the way to apply fragments works.-_-.</p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Coding Spirit</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    
+    <a href="http://lzqblog.top/2019-08-24/Yocto-Configure-kernel-with-config-fragments/" title="Yocto: Configure kernel with config fragments">http://lzqblog.top/2019-08-24/Yocto-Configure-kernel-with-config-fragments/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/Yocto/" rel="tag"># Yocto</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019-08-17/Yocto-Replace-sysvinit-with-systemd/" rel="next" title="Yocto: Replace sysvinit with systemd">
+                <i class="fa fa-chevron-left"></i> Yocto: Replace sysvinit with systemd
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -571,8 +639,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -749,6 +826,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-menuconfig-to-get-the-new-config-file-you-want"><span class="nav-number">1.</span> <span class="nav-text">Using menuconfig to get the new .config file you want</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Get-differences"><span class="nav-number">2.</span> <span class="nav-text">Get differences</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-bbappend-to-apply-fragments"><span class="nav-number">3.</span> <span class="nav-text">Using bbappend to apply fragments</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -928,6 +1022,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
 
   
 
@@ -943,6 +1041,37 @@
 
   
 
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '965ca656ae3d59a50b73',
+    clientSecret: '94dbe9c760ce8b778c84481a7fe2f37f548d7375',
+    repo: 'blog-gitalk',
+    owner: 'codingspirit',
+    admin: ['codingspirit'],
+    id: md5(location.pathname),
+    
+      language: window.navigator.language || window.navigator.userLanguage,
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
 
 
   
