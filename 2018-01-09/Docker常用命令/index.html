@@ -109,18 +109,18 @@
 
 
 
-  <meta name="description" content="Docker常用命令小结">
+  <meta name="description" content="Docker常用命令小结Update: Translate to EN">
 <meta name="keywords" content="日志">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker常用命令">
 <meta property="og:url" content="http://lzqblog.top/2018-01-09/Docker常用命令/index.html">
 <meta property="og:site_name" content="Coding Spirit">
-<meta property="og:description" content="Docker常用命令小结">
+<meta property="og:description" content="Docker常用命令小结Update: Translate to EN">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-20T11:54:50.000Z">
+<meta property="og:updated_time" content="2019-09-28T01:18:21.741Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker常用命令">
-<meta name="twitter:description" content="Docker常用命令小结">
+<meta name="twitter:description" content="Docker常用命令小结Update: Translate to EN">
 
 
 
@@ -432,7 +432,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-11-20 19:54:50" itemprop="dateModified" datetime="2018-11-20T19:54:50+08:00">2018-11-20</time>
+                <time title="Modified: 2019-09-28 09:18:21" itemprop="dateModified" datetime="2019-09-28T09:18:21+08:00">2019-09-28</time>
               
             
           </span>
@@ -485,7 +485,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">435</span>
+                <span title="Symbols count in article">1.5k</span>
               
 
               
@@ -519,16 +519,24 @@
       
 
       
-        <p>Docker常用命令小结<br><a id="more"></a><br>列出所有容器：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure></p>
-<p>获取容器IP：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect 2d0142bd65a7 | grep IPAddress</span><br></pre></td></tr></table></figure></p>
-<p>其中 2d0142bd65a7 为容器ID。</p>
-<p>删除所有容器：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm $(docker ps -aq)</span><br></pre></td></tr></table></figure></p>
-<p>列出可以装载的镜像：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure></p>
-<p>导出镜像：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker save 1865b6805867&gt; image.tar</span><br></pre></td></tr></table></figure></p>
-<p>其中 1865b6805867 为镜像ID。</p>
-<p>导入镜像：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker load &lt; image.tar</span><br></pre></td></tr></table></figure></p>
-<p>为ID为1865b6805867的镜像打上TAG(没错，只需要ID前几位就可以)：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker tag 1865 gcr.io/tensorflow/tensorflow:latest-devel</span><br></pre></td></tr></table></figure></p>
-<p>从容器复制文件到主机(如果你忘了从主机挂载文件夹)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp containerID:container_path host_path</span><br></pre></td></tr></table></figure></p>
+        <p>Docker常用命令小结<br>Update: Translate to EN<br><a id="more"></a></p>
+<h2 id="Gather-info"><a href="#Gather-info" class="headerlink" title="Gather info"></a>Gather info</h2><p>List all containers <br> 列出所有容器：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure></p>
+<p>Get container IP <br> 获取容器IP：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect 2d0142bd65a7 | grep IPAddress</span><br></pre></td></tr></table></figure></p>
+<p><em>2d0142bd65a7</em> is a container id. <br> 其中 <em>2d0142bd65a7</em> 为容器ID。 </p>
+<p>List all loadable images <br> 列出可以装载的镜像：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure></p>
+<h2 id="Save-Load-Tag-and-cp"><a href="#Save-Load-Tag-and-cp" class="headerlink" title="Save,Load,Tag and cp"></a>Save,Load,Tag and cp</h2><p>Save image to local file <br> 导出镜像：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker save 1865b6805867 &gt; image.tar</span><br></pre></td></tr></table></figure></p>
+<p><em>1865b6805867</em> is a image id. <br> 其中 <em>1865b6805867</em> 为镜像ID。 </p>
+<p>Create docker image based on a container <br> 基于容器创建镜像<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker commit <span class="variable">$&#123;container_id&#125;</span> <span class="variable">$&#123;image_name&#125;</span>:<span class="variable">$&#123;image_tag&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>Load image from local file <br> 导入镜像：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker load &lt; image.tar</span><br></pre></td></tr></table></figure></p>
+<p>Tag a image which id is <em>1865b6805867</em>(Only first 4 digits of ID is acceptable) <br><br>为ID为<em>1865b6805867</em>的镜像打上TAG(没错，只需要ID前几位就可以)：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker tag 1865 gcr.io/tensorflow/tensorflow:latest-devel</span><br></pre></td></tr></table></figure></p>
+<p>Copy a file or folder from container to local host:<br><br>从容器复制文件到主机(如果你忘了从主机挂载文件夹):<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp <span class="variable">$&#123;containerID&#125;</span>:<span class="variable">$&#123;file_path_in_container&#125;</span> <span class="variable">$&#123;host_path&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>It’s basically same when you trying to copy a file from host to container, just swap two parameters.</p>
+<h2 id="Clean"><a href="#Clean" class="headerlink" title="Clean"></a>Clean</h2><p>Stop all containers <br> 停止所有容器<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">kill</span> $(docker ps -aq)</span><br></pre></td></tr></table></figure></p>
+<p>Delete all containers <br> 删除所有容器<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm $(docker ps -aq)</span><br></pre></td></tr></table></figure></p>
+<p>Change <em>$(docker ps -aq)</em> to container id to stop or delete the specific container.</p>
+<p>Delete all images <br> 删除所有镜像<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi $(docker images -q)</span><br></pre></td></tr></table></figure></p>
+<p>Change <em>$(docker images -q)</em> to image id to delete the specific image.</p>
+<p>Remove unused data to free disk space <br> 删除未使用的数据以释放磁盘空间<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker system prune</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -649,8 +657,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -667,7 +684,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">64</span>
+                    <span class="site-state-item-count">66</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -828,6 +845,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Gather-info"><span class="nav-number">1.</span> <span class="nav-text">Gather info</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Save-Load-Tag-and-cp"><span class="nav-number">2.</span> <span class="nav-text">Save,Load,Tag and cp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Clean"><span class="nav-number">3.</span> <span class="nav-text">Clean</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -854,7 +888,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">127k</span>
+    <span title="Symbols count total">134k</span>
   
 
   
@@ -863,7 +897,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">1:56</span>
+    <span title="Reading time total">2:02</span>
   
 </div>
 
