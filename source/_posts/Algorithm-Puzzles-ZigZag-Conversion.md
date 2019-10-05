@@ -5,7 +5,7 @@ tags:
   - Algorithm
   - C++
 date: 2019-09-28 07:58:32
-categories: 编程相关
+categories: 算法题解
 ---
 
 Algorithm Puzzles ~~everyday~~ ~~every week~~ sometimes: ZigZag Conversion
@@ -13,6 +13,8 @@ Algorithm Puzzles ~~everyday~~ ~~every week~~ sometimes: ZigZag Conversion
 <!--more-->
 
 ## Puzzle
+
+Puzzle from [leetcode](https://leetcode.com):
 
 The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
 ```

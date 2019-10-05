@@ -5,7 +5,7 @@ tags:
   - Algorithm
   - C++
 date: 2019-07-21 18:07:33
-categories: 编程相关
+categories: 算法题解
 ---
 Algorithm Puzzles ~~everyday~~ ~~every week~~ sometimes: Longest Substring Without Repeating Characters
 <!--more-->

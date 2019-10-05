@@ -5,7 +5,7 @@ tags:
   - Algorithm
   - C++
 date: 2019-07-27 02:51:16
-categories: 编程相关
+categories: 算法题解
 ---
 
 Algorithm Puzzles ~~everyday~~ ~~every week~~ sometimes: Median of Two Sorted Arrays

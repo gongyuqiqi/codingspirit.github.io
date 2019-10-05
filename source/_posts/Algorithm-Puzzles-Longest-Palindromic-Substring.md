@@ -5,7 +5,7 @@ tags:
   - Algorithm
   - C++
 date: 2019-08-04 15:50:03
-categories: 编程相关
+categories: 算法题解
 ---
 
 Algorithm Puzzles ~~everyday~~ ~~every week~~ sometimes: Longest Palindromic Substring

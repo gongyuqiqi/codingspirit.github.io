@@ -5,7 +5,7 @@ tags:
   - Algorithm
   - C++
 date: 2019-07-14 16:59:31
-categories: 编程相关
+categories: 算法题解
 ---
 Algorithm Puzzles ~~everyday~~ ~~every week~~ sometimes: Add two numbers
 <!--more-->
