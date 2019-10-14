@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Algorithm Puzzles: String to Integer (atoi)]]></title>
+    <url>%2F2019-10-13%2FAlgorithm-Puzzles-String-to-Integer-atoi%2F</url>
+    <content type="text"><![CDATA[Algorithm Puzzles everyday every week sometimes: String to Integer (atoi) PuzzlePuzzle from leetcode: Implement atoi which converts a string to an integer. The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value. The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function. If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed. If no valid conversion could be performed, a zero value is returned. Note: Only the space character ‘ ‘ is considered as whitespace character.Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231, 231 − 1]. If the numerical value is out of the range of representable values, INT_MAX (231 − 1) or INT_MIN (−231) is returned.Example 1:12Input: &quot;42&quot;Output: 42 Example 2:1234Input: &quot; -42&quot;Output: -42Explanation: The first non-whitespace character is &apos;-&apos;, which is the minus sign. Then take as many numerical digits as possible, which gets 42. Example 3:123Input: &quot;4193 with words&quot;Output: 4193Explanation: Conversion stops at digit &apos;3&apos; as the next character is not a numerical digit. Example 4:1234Input: &quot;words and 987&quot;Output: 0Explanation: The first non-whitespace character is &apos;w&apos;, which is not a numerical digit or a +/- sign. Therefore no valid conversion could be performed. Example 5:1234Input: &quot;-91283472332&quot;Output: -2147483648Explanation: The number &quot;-91283472332&quot; is out of the range of a 32-bit signed integer. Thefore INT_MIN (−231) is returned. SolvingMy first solution is using regex to filtrate incorrect inputs and find out the numerical: 12345678910111213141516171819202122232425262728293031class Solution &#123; public: int myAtoi(const std::string&amp; str) &#123; const int intMin = -2147483648; const int intMax = 2147483647; if (std::regex_match(str, std::regex("[ ]*[-+]?\\d&#123;1,&#125;[\\s\\S]*"))) &#123; std::smatch numMatch; std::regex_search(str, numMatch, std::regex("[-+]?\\d&#123;1,&#125;")); int index = 0, res = 0; int negative = 1; if (numMatch[0].str()[0] == '-') &#123; negative = -1; index = 1; &#125; else if (numMatch[0].str()[0] == '+') &#123; index = 1; &#125; for (; index &lt; numMatch[0].str().length(); ++index) &#123; if (res &gt; 214748364 || (res == 214748364 &amp;&amp; numMatch[0].str()[index] - '0' &gt; 7)) &#123; return negative == -1 ? intMin : intMax; &#125; res = res * 10 + (numMatch[0].str()[index] - '0'); &#125; return res * negative; &#125; return 0; &#125;&#125;; Then : I realized that maybe using regex is not a good idea since there is no need to traversal string more than once… After some modification, here is my solution 2: 1234567891011121314151617181920212223242526272829303132333435363738394041class Solution &#123; public: int myAtoi(const string&amp; str) &#123; const int intMin = -2147483648; const int intMax = 2147483647; size_t index = 0; size_t length = str.length(); int res = 0; bool negative = false; index = str.find_first_not_of(' '); if (index == std::string::npos) &#123; return 0; &#125; if (str[index] &lt; '0' || str[index] &gt; '9') &#123; if (str[index] == '-') &#123; negative = true; ++index; &#125; else if (str[index] == '+') &#123; ++index; &#125; else &#123; return 0; &#125; &#125; for (; index &lt; length; ++index) &#123; if (str[index] &lt; '0' || str[index] &gt; '9') &#123; break; &#125; if (res &gt; 214748364 || (res == 214748364 &amp;&amp; (str[index] - '0' &gt; 7))) &#123; return negative ? intMin : intMax; &#125; res = res * 10 + (str[index] - '0'); &#125; return negative ? -res : res; &#125;&#125;; Result I got: 0 ms and better than 100%…]]></content>
+      <categories>
+        <category>算法题解</category>
+      </categories>
+      <tags>
+        <tag>Algorithm</tag>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Algorithm Puzzles: Reverse Integer]]></title>
     <url>%2F2019-10-05%2FAlgorithm-Puzzles-Reverse-Integer%2F</url>
     <content type="text"><![CDATA[Algorithm Puzzles everyday every week sometimes: Reverse Integer PuzzlePuzzle from leetcode: Given a 32-bit signed integer, reverse digits of an integer. Example 1: Input: 123Output: 321Example 2: Input: -123Output: -321Example 3: Input: 120Output: 21 Note:Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231, 231 − 1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows. SolvingThis puzzle is ez to solve if you considered possible overflow at the very beginning. I’d like to using string to do reverse process, which should be no overflow during reverse, after reversing then do overflow check. Considering that the range of int32_t is [-2147483648, 2147483647], we need to check the value after reversing is in this range or not. 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647class Solution&#123;public: int32_t reverse(int32_t x) &#123; string ori = std::to_string(x); if (ori[0] == '-') &#123; std::reverse(++std::begin(ori), std::end(ori)); &#125; else &#123; std::reverse(std::begin(ori), std::end(ori)); &#125; if (ori.length() == 10) &#123; if (ori[0] &gt; '2') &#123; return 0; &#125; else if (ori[0] == '2') &#123; if (atoi(ori.substr(1, 9).c_str()) &gt; 147483647) &#123; return 0; &#125; &#125; &#125; if (ori.length() == 11) &#123; if (ori[1] &gt; '2') &#123; return 0; &#125; else if (ori[1] == '2') &#123; if (atoi(ori.substr(2, 9).c_str()) &gt; 147483648) &#123; return 0; &#125; &#125; &#125; return atoi(ori.c_str()); &#125;&#125;; Result I got: One shot pass~~]]></content>
@@ -349,8 +361,8 @@
         <category>编程相关</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
         <tag>C++</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -449,8 +461,8 @@
         <category>编程相关</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
         <tag>C++</tag>
+        <tag>Linux</tag>
         <tag>gPRC</tag>
       </tags>
   </entry>
