@@ -109,18 +109,17 @@
 
 
 
-  <meta name="description" content="A brief introduction about how to setup Gitlab CI (part I).">
-<meta name="keywords" content="Continuous integration">
+  <meta name="description" content="A brief introduction about how to setup Gitlab CI (part II).">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Setting up Gitlab CI (I): docker+gitlab-runner">
-<meta property="og:url" content="http://lzqblog.top/2019-09-28/Setting-up-Gitlab-CI-I-docker-gitlab-runner/index.html">
+<meta property="og:title" content="Setting up Gitlab CI (II): pipeline and .gitlab-ci.yml">
+<meta property="og:url" content="http://lzqblog.top/2019-10-19/Setting-up-Gitlab-CI-II-pipeline-and-gitlab-ci-yml/index.html">
 <meta property="og:site_name" content="Coding Spirit">
-<meta property="og:description" content="A brief introduction about how to setup Gitlab CI (part I).">
+<meta property="og:description" content="A brief introduction about how to setup Gitlab CI (part II).">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-28T01:21:19.068Z">
+<meta property="og:updated_time" content="2019-10-19T13:22:13.632Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Setting up Gitlab CI (I): docker+gitlab-runner">
-<meta name="twitter:description" content="A brief introduction about how to setup Gitlab CI (part I).">
+<meta name="twitter:title" content="Setting up Gitlab CI (II): pipeline and .gitlab-ci.yml">
+<meta name="twitter:description" content="A brief introduction about how to setup Gitlab CI (part II).">
 
 
 
@@ -128,7 +127,7 @@
 
   
   
-  <link rel="canonical" href="http://lzqblog.top/2019-09-28/Setting-up-Gitlab-CI-I-docker-gitlab-runner/">
+  <link rel="canonical" href="http://lzqblog.top/2019-10-19/Setting-up-Gitlab-CI-II-pipeline-and-gitlab-ci-yml/">
 
 
 
@@ -138,7 +137,7 @@
   };
 </script>
 
-  <title>Setting up Gitlab CI (I): docker+gitlab-runner | Coding Spirit</title>
+  <title>Setting up Gitlab CI (II): pipeline and .gitlab-ci.yml | Coding Spirit</title>
   
 
 
@@ -372,7 +371,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lzqblog.top/2019-09-28/Setting-up-Gitlab-CI-I-docker-gitlab-runner/">
+    <link itemprop="mainEntityOfPage" href="http://lzqblog.top/2019-10-19/Setting-up-Gitlab-CI-II-pipeline-and-gitlab-ci-yml/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coding Spirit">
@@ -389,7 +388,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Setting up Gitlab CI (I): docker+gitlab-runner
+          <h1 class="post-title" itemprop="name headline">Setting up Gitlab CI (II): pipeline and .gitlab-ci.yml
 
               
             
@@ -415,7 +414,7 @@
                 
               
 
-              <time title="Created: 2019-09-28 08:14:36 / Modified: 09:21:19" itemprop="dateCreated datePublished" datetime="2019-09-28T08:14:36+08:00">2019-09-28</time>
+              <time title="Created: 2019-10-19 19:00:31 / Modified: 21:22:13" itemprop="dateCreated datePublished" datetime="2019-10-19T19:00:31+08:00">2019-10-19</time>
             
 
             
@@ -425,24 +424,6 @@
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CI/" itemprop="url" rel="index"><span itemprop="name">CI</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -473,7 +454,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">1.7k</span>
+                <span title="Symbols count in article">1.9k</span>
               
 
               
@@ -507,21 +488,48 @@
       
 
       
-        <p>A brief introduction about how to setup Gitlab CI (part I).</p>
+        <p>A brief introduction about how to setup Gitlab CI (part II).</p>
 <a id="more"></a>
-<p>If you are new to docker, this post might help: <a href="https://lzqblog.top/2018-01-09/Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Click this</a></p>
-<h2 id="Install-and-setup-gitlab-runner"><a href="#Install-and-setup-gitlab-runner" class="headerlink" title="Install and setup gitlab runner"></a>Install and setup gitlab runner</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Install gitlab runner docker image</span></span><br><span class="line">docker run -d --name gitlab-runner --restart always \</span><br><span class="line">  -v /srv/gitlab-runner/config:/etc/gitlab-runner \</span><br><span class="line">  -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">  gitlab/gitlab-runner:latest</span><br><span class="line"><span class="comment"># Config and register runner</span></span><br><span class="line">docker <span class="built_in">exec</span> -it <span class="variable">$&#123;container_id_of_gitlab-runner&#125;</span> gitlab-runner register</span><br></pre></td></tr></table></figure>
-<p>If you have installed gitlab-runner binary, you also can do register by one single command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sudo gitlab-runner register \</span><br><span class="line">  --non-interactive \</span><br><span class="line">  --url <span class="string">"https://gitlab.com/"</span> \</span><br><span class="line">  --registration-token <span class="string">"PROJECT_REGISTRATION_TOKEN"</span> \</span><br><span class="line">  --executor <span class="string">"docker"</span> \</span><br><span class="line">  --docker-image alpine:latest \</span><br><span class="line">  --description <span class="string">"description_of_runner"</span> \</span><br><span class="line">  --tag-list <span class="string">"docker,aws"</span> \</span><br><span class="line">  --run-untagged=<span class="string">"true"</span> \</span><br><span class="line">  --locked=<span class="string">"false"</span> \</span><br><span class="line">  --access-level=<span class="string">"not_protected"</span></span><br></pre></td></tr></table></figure>
-<h2 id="Prepare-your-docker-image-as-CI-environment"><a href="#Prepare-your-docker-image-as-CI-environment" class="headerlink" title="Prepare your docker image as CI environment"></a>Prepare your docker image as CI environment</h2><p>Docker images can be built from a local <strong>Dockerfile</strong>:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t <span class="variable">$&#123;image_name&#125;</span>:<span class="variable">$&#123;version_number&#125;</span> .</span><br></pre></td></tr></table></figure>
-<p>There is a “.” at the end, don’t forget it.</p>
-<h2 id="Create-local-docker-hub"><a href="#Create-local-docker-hub" class="headerlink" title="Create local docker hub"></a>Create local docker hub</h2><p>Normally you can deploy your image to dockerhub.com. But if you don’t want to open your images to public, you also can create a local docker hub instead:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 5000:5000 --restart=always --name registry registry:2</span><br><span class="line">docker tag <span class="variable">$&#123;image_name&#125;</span>:<span class="variable">$&#123;image_tag&#125;</span> localhost:5000/<span class="variable">$&#123;image_name&#125;</span></span><br><span class="line">docker push localhost:5000/<span class="variable">$&#123;image_name&#125;</span></span><br></pre></td></tr></table></figure>
-<p>After that gitlab-runner can “download” your images from <em>localhost:5000/${image_name}</em>. </p>
-<p>You also can do a quick check if your image repo exist or not by accessing catalog:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://localhost:5000/v2/_catalog</span><br></pre></td></tr></table></figure>
-<p>To be continued…</p>
+<p>In <a href="https://lzqblog.top/2019-09-28/Setting-up-Gitlab-CI-I-docker-gitlab-runner/">Setting up Gitlab CI (I): docker+gitlab-runner</a> we already created a docker image for gitlab-runner, which will be our CI environment. Next step is define the behaviors of your CI processes.</p>
+<h2 id="Pipeline"><a href="#Pipeline" class="headerlink" title="Pipeline"></a>Pipeline</h2><p><a href="https://docs.gitlab.com/ee/ci/pipelines.html" target="_blank" rel="noopener">Creating and using CI/CD pipelines</a>:</p>
+<blockquote>
+<p> Pipelines are the top-level component of continuous integration, delivery, and deployment.</p>
+</blockquote>
+<p>If <strong>.gitlab-ci.yml</strong> has been set up correctly, you could see pipeline flow under <em>CI/CD-&gt;Pipelines</em>. </p>
+<h2 id="gitlab-ci-yml"><a href="#gitlab-ci-yml" class="headerlink" title=".gitlab-ci.yml"></a>.gitlab-ci.yml</h2><p>If CI was enabled in your gitlab projects, gitlab-runner will try to find a file named <strong>.gitlab-ci.yml</strong> in your repository root. This file will tell gitlab-runner what should be done during CI process. </p>
+<h3 id="image-variables"><a href="#image-variables" class="headerlink" title="image, variables"></a>image, variables</h3><p>You need to specify the docker image and environment variables gitlab-runner are going to use at very beginning:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">image:</span> <span class="attr">localhost:5000/$&#123;name_of_your_image&#125;</span></span><br><span class="line"><span class="attr">variables:</span></span><br><span class="line"><span class="attr">  SDK_VERSION:</span> <span class="number">1.2</span><span class="number">.3</span></span><br></pre></td></tr></table></figure></p>
+<p>In our case we use the image from local docker hub.</p>
+<h3 id="stages-jobs-and-script"><a href="#stages-jobs-and-script" class="headerlink" title="stages, jobs and script"></a>stages, jobs and script</h3><p>In normal cases, our pipeline should have 3 stages roughly:</p>
+<ul>
+<li>build</li>
+<li>test</li>
+<li>deploy</li>
+</ul>
+<p>Stages can be split into several jobs like:</p>
+<ul>
+<li>code/commit style check</li>
+<li>downloading build dependencies</li>
+<li>build code</li>
+<li>run unit test</li>
+<li>run integration testing</li>
+<li>deploy</li>
+</ul>
+<p>In <strong>.gitlab-ci.yml</strong>, job can be defined as:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">job_name:</span></span><br><span class="line"><span class="attr">  stage:</span> <span class="string">test</span></span><br><span class="line"><span class="attr">  script:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">uname</span> <span class="bullet">-a</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">echo</span> <span class="string">"hello"</span></span><br></pre></td></tr></table></figure>
+<p><strong>script</strong> defines shell scripts which will be executed by gitlab-runner.</p>
+<p>Each job must have a unique name, but there are some reserved keywords can’t be used as job name:</p>
+<ul>
+<li>image</li>
+<li>services</li>
+<li>stages</li>
+<li>types</li>
+<li>before_script</li>
+<li>after_script</li>
+<li>variables</li>
+<li>cache</li>
+</ul>
+<p>Job name also can start with a dot(<strong>.</strong>) like <em>.job</em>. If a job name started with a dot, it will be ignored by gitlab CI(gitlab-runner will skip it).</p>
+<h3 id="More"><a href="#More" class="headerlink" title="More"></a>More</h3><p>There are a lot of features can be defined in <strong>.gitlab-ci.yml</strong>. Go to <a href="https://docs.gitlab.com/ee/ci/yaml/README.html" target="_blank" rel="noopener">GitLab CI/CD Pipeline Configuration Reference</a> for more details.</p>
 
       
     </div>
@@ -556,7 +564,7 @@
   <li class="post-copyright-link">
     <strong>Post link: </strong>
     
-    <a href="http://lzqblog.top/2019-09-28/Setting-up-Gitlab-CI-I-docker-gitlab-runner/" title="Setting up Gitlab CI (I): docker+gitlab-runner">http://lzqblog.top/2019-09-28/Setting-up-Gitlab-CI-I-docker-gitlab-runner/</a>
+    <a href="http://lzqblog.top/2019-10-19/Setting-up-Gitlab-CI-II-pipeline-and-gitlab-ci-yml/" title="Setting up Gitlab CI (II): pipeline and .gitlab-ci.yml">http://lzqblog.top/2019-10-19/Setting-up-Gitlab-CI-II-pipeline-and-gitlab-ci-yml/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
@@ -567,12 +575,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Continuous-integration/" rel="tag"># Continuous integration</a>
-          
-        </div>
-      
 
       
       
@@ -582,8 +584,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019-09-28/Algorithm-Puzzles-ZigZag-Conversion/" rel="next" title="Algorithm Puzzles: ZigZag Conversion">
-                <i class="fa fa-chevron-left"></i> Algorithm Puzzles: ZigZag Conversion
+              <a href="/2019-10-13/Algorithm-Puzzles-String-to-Integer-atoi/" rel="next" title="Algorithm Puzzles: String to Integer (atoi)">
+                <i class="fa fa-chevron-left"></i> Algorithm Puzzles: String to Integer (atoi)
               </a>
             
           </div>
@@ -591,10 +593,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019-10-05/Algorithm-Puzzles-Reverse-Integer/" rel="prev" title="Algorithm Puzzles: Reverse Integer">
-                Algorithm Puzzles: Reverse Integer <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -842,7 +840,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-and-setup-gitlab-runner"><span class="nav-number">1.</span> <span class="nav-text">Install and setup gitlab runner</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prepare-your-docker-image-as-CI-environment"><span class="nav-number">2.</span> <span class="nav-text">Prepare your docker image as CI environment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-local-docker-hub"><span class="nav-number">3.</span> <span class="nav-text">Create local docker hub</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Pipeline"><span class="nav-number">1.</span> <span class="nav-text">Pipeline</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gitlab-ci-yml"><span class="nav-number">2.</span> <span class="nav-text">.gitlab-ci.yml</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#image-variables"><span class="nav-number">2.1.</span> <span class="nav-text">image, variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stages-jobs-and-script"><span class="nav-number">2.2.</span> <span class="nav-text">stages, jobs and script</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#More"><span class="nav-number">2.3.</span> <span class="nav-text">More</span></a></li></ol></li></ol></div>
             
 
           </div>
