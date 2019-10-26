@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Algorithm Puzzles: Palindrome Number]]></title>
+    <url>%2F2019-10-26%2FAlgorithm-Puzzles-Palindrome-Number%2F</url>
+    <content type="text"><![CDATA[Algorithm Puzzles everyday every week sometimes: Palindrome Number SolvingFirst came out solutionMy first came out solution is using string: 123456789101112131415161718192021222324class Solution &#123; public: bool isPalindrome(int x) &#123; if (x &lt; 0) &#123; return false; &#125; std::stringstream stream; std::string str; stream &lt;&lt; x; stream &gt;&gt; str; size_t length = str.length(); auto iterHead = str.cbegin(); auto iterTail = str.cend() - 1; for(size_t i = 0; i &lt; length; i+=2)&#123; if(*iterHead == *iterTail)&#123; ++iterHead; --iterTail; &#125;else&#123; return false; &#125; &#125; return true; &#125;&#125;; I know it’s not the best solution at very beginning, but it still surprised me when submitted: Another approachSince the performance of transferring to string is so bad, I’d like to try to handle it in integer only. 1234567891011121314151617class Solution &#123; public: bool isPalindrome(int x) &#123; int reverted = 0; if (x % 10 == 0 &amp;&amp; x != 0) &#123; return false; &#125; while (x &gt; reverted) &#123; reverted = reverted * 10 + x % 10; x /= 10; &#125; return (x == reverted) || (x == reverted / 10); &#125;&#125;;]]></content>
+      <categories>
+        <category>算法题解</category>
+      </categories>
+      <tags>
+        <tag>Algorithm</tag>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Setting up Gitlab CI (II): pipeline and .gitlab-ci.yml]]></title>
     <url>%2F2019-10-19%2FSetting-up-Gitlab-CI-II-pipeline-and-gitlab-ci-yml%2F</url>
     <content type="text"><![CDATA[A brief introduction about how to setup Gitlab CI (part II). In Setting up Gitlab CI (I): docker+gitlab-runner we already created a docker image for gitlab-runner, which will be our CI environment. Next step is define the behaviors of your CI processes. PipelineCreating and using CI/CD pipelines: Pipelines are the top-level component of continuous integration, delivery, and deployment. If .gitlab-ci.yml has been set up correctly, you could see pipeline flow under CI/CD-&gt;Pipelines. .gitlab-ci.ymlIf CI was enabled in your gitlab projects, gitlab-runner will try to find a file named .gitlab-ci.yml in your repository root. This file will tell gitlab-runner what should be done during CI process. image, variablesYou need to specify the docker image and environment variables gitlab-runner are going to use at very beginning:123image: localhost:5000/$&#123;name_of_your_image&#125;variables: SDK_VERSION: 1.2.3 In our case we use the image from local docker hub. stages, jobs and scriptIn normal cases, our pipeline should have 3 stages roughly: build test deploy Stages can be split into several jobs like: code/commit style check downloading build dependencies build code run unit test run integration testing deploy In .gitlab-ci.yml, job can be defined as: 12345job_name: stage: test script: - uname -a - echo "hello" script defines shell scripts which will be executed by gitlab-runner. Each job must have a unique name, but there are some reserved keywords can’t be used as job name: image services stages types before_script after_script variables cache Job name also can start with a dot(.) like .job. If a job name started with a dot, it will be ignored by gitlab CI(gitlab-runner will skip it). MoreThere are a lot of features can be defined in .gitlab-ci.yml. Go to GitLab CI/CD Pipeline Configuration Reference for more details.]]></content>
@@ -366,8 +378,8 @@
         <category>编程相关</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
         <tag>C++</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -466,8 +478,8 @@
         <category>编程相关</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
         <tag>C++</tag>
+        <tag>Linux</tag>
         <tag>gPRC</tag>
       </tags>
   </entry>
