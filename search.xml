@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Chrome: ERR_NETWORK_CHANGED on Ubuntu]]></title>
+    <url>%2F2019-11-14%2FChrome-ERR-NETWORK-CHANGED-on-Ubuntu%2F</url>
+    <content type="text"><![CDATA[In my scenario it was caused by some docker containers - All of them have booting issues but they have been set as –restart=always, which caused they start to create js requests periodicity. Everything is ok after removing those docker containers.]]></content>
+      <categories>
+        <category>问题记录</category>
+      </categories>
+      <tags>
+        <tag>日志</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[vscode settings for zephyr]]></title>
     <url>%2F2019-11-10%2Fvscode-settings-for-zephyr%2F</url>
-    <content type="text"><![CDATA[This is an example vscode settings to provide supports for zephyr based projects build/debug: vscode-zephyr I’m not planing to discuss details about those json files here since I know you lazy guys just want to know how to use it(Or maybe I’m too lazy to write those details down, who knows). Quick start Copy this .vscode folder into your project root folder. Modify the environment variables at the end of task.json and launch.json base on your own settings:12345678910//task.json"options": &#123; "env": &#123; "ZEPHYR_TOOLCHAIN_VARIANT": "zephyr", "ZEPHYR_SDK_INSTALL_DIR": "/home/alex/zephyr-sdk-0.10.3", "ZEPHYR_BASE": "$&#123;workspaceFolder&#125;/zephyrproject/zephyr", "VS_CODE_BOARD_TO_BUILD": "reel_board", "VS_CODE_ZEPHYR_BIN_NAME": "zephyr.elf", &#125;&#125; 12345 //launch.json "miDebuggerPath": "/home/alex/zephyr-sdk-0.10.3/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb" &#125; ]&#125; Press Ctrl+Shit+B to trigger build task(You also can run task “zephyr build ninja“ alternatively if you want to use ninja to build). Press the holy F5 button(which is on the right side of the F4 button) to start debugging. An selecting list will jump out when terminated debug process, don’t forget to select it. Know issues An exception will occur when stop at main(). Not sure where the root cause is, but debug process still can proceed, just ignore it. Breakpoints can’t be added into some lines but you can run code step by step to those lines. Disable zephyr build optimization doesn’t help on this, it might related to zephyr toolchain.]]></content>
+    <content type="text"><![CDATA[This is an example vscode settings to provide supports for zephyr based projects build/debug: vscode-zepjyr I’m not planing to discuss details about those json files here since I know you lazy guys just want to know how to use it(Or maybe I’m too lazy to write those details down, who knows). Quick start Copy this .vscode folder into your project root folder. Modify the environment variables at the end of task.json and launch.json base on your own settings:12345678910//task.json"options": &#123; "env": &#123; "ZEPHYR_TOOLCHAIN_VARIANT": "zephyr", "ZEPHYR_SDK_INSTALL_DIR": "/home/alex/zephyr-sdk-0.10.3", "ZEPHYR_BASE": "$&#123;workspaceFolder&#125;/zephyrproject/zephyr", "VS_CODE_BOARD_TO_BUILD": "reel_board", "VS_CODE_ZEPHYR_BIN_NAME": "zephyr.elf", &#125;&#125; 12345 //launch.json "miDebuggerPath": "/home/alex/zephyr-sdk-0.10.3/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb" &#125; ]&#125; Press Ctrl+Shit+B to trigger build task(You also can run task “zephyr build ninja“ alternatively if you want to use ninja to build). Press the holy F5 button(which is on the right side of the F4 button) to start debugging. An selecting list will jump out when terminated debug process, don’t forget to select it. Known issues An exception will occur when stop at main(). Not sure where the root cause is, but debug process still can proceed, just ignore it. Breakpoints can’t be added into some lines but you can run code step by step to those lines. Disable zephyr build optimization doesn’t help on this, it might related to zephyr toolchain.]]></content>
       <categories>
         <category>随便写写</category>
       </categories>
@@ -389,8 +400,8 @@
         <category>编程相关</category>
       </categories>
       <tags>
-        <tag>C++</tag>
         <tag>Linux</tag>
+        <tag>C++</tag>
       </tags>
   </entry>
   <entry>
@@ -489,8 +500,8 @@
         <category>编程相关</category>
       </categories>
       <tags>
-        <tag>C++</tag>
         <tag>Linux</tag>
+        <tag>C++</tag>
         <tag>gPRC</tag>
       </tags>
   </entry>
