@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Install JDK/JRE for Ubuntu]]></title>
+    <url>%2F2019-11-16%2FInstall-JDK-JRE-for-Ubuntu%2F</url>
+    <content type="text"><![CDATA[… There are two versions of JDK/JRE can be installed on Ubuntu: Open JDK/JRE Oracle JDK/JRE Install Open JDK/JREOpen JDK/JRE can be easily installed by12sudo apt install default-jresudo apt install default-jdk Install Oracle standalone JRE First of all download Oracle JRE from Oracle Unpack downloaded package and install it into the path you like(i.e /usr/lib/java) 12cd /usr/lib/javasudo tar -zxvf ~/Downloads/jre-8u231-linux-x64.tar.gz Add JRE installation path into $PATH 1sudo nano /etc/environment Add :/usr/lib/java/jre1.8.0_231 into PATH Add installed java as alternative 1sudo update-alternatives --install /usr/bin/java java /usr/lib/java/jre1.8.0_231/bin/java 1 To switch to other alternative java. use: 1sudo update-alternatives --config java Check installation 1234java -versionjava version "1.8.0_231"Java(TM) SE Runtime Environment (build 1.8.0_231-b11)Java HotSpot(TM) 64-Bit Server VM (build 25.231-b11, mixed mode)]]></content>
+      <categories>
+        <category>随便写写</category>
+      </categories>
+      <tags>
+        <tag>日志</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[STM32MP1 getting started: setup environments]]></title>
+    <url>%2F2019-11-16%2FSTM32MP1-getting-started-setup-environments%2F</url>
+    <content type="text"><![CDATA[I’m planing to do some research on ST newest MPU series: STM32MP1. It’s a Cortex A7(solo or dual core) + M4 solution, not very powerful but the price might be very competitive. In the post we will setup the development environments. Choose the suitable base software packageThere are 3 basic software packages provided by ST: Starter Package(For evaluation) Developer Package(For limited modification and application development) Distribution Package(For creating custom distribution) Similar with Qualcomm solutions, there are two packages are available for development purpose. In my scenario I will use Distribution Package for sure, so the following parts of this post is about how to setup environments for Developer Package based development. BTW the experiences I got during Qualcomm apq8009 based SoC really sucks… Their packages just like a huge shit mountain. Initialize repoIf you are new to Yocto, you need to install some packages before start(i.e. repo)123mkdir openstlinux-4.19-thud-mp1-19-10-09 &amp;&amp; cd openstlinux-4.19-thud-mp1-19-10-09repo init -u https://github.com/STMicroelectronics/oe-manifest.git -b refs/tags/openstlinux-4.19-thud-mp1-19-10-09repo sync package structureFrom ST WIKI: 123456789101112131415161718192021222324252627282930313233openstlinux-4.19-thud-mp1-19-10-09 OpenSTLinux distribution├── layers │ ├── meta-openembedded Collection of layers for the OpenEmbedded-Core universe (OpenEmbedded standard)│ ├── meta-qt5 QT5 layer for OpenEmbedded (standard)│ ├── meta-st│ │ ├── meta-st-openstlinux STMicroelectronics layer that contains the frameworks and images settings for the OpenSTLinux distribution│ │ ├── meta-st-stm32mp STMicroelectronics layer that contains the description of the BSP for the STM32 MPU devices│ │ │ ├── recipes-bsp│ │ │ │ ├── alsa Recipes for ALSA control configuration│ │ │ │ ├── drivers Recipes for Vivante GCNANO GPU kernel drivers│ │ │ │ ├── trusted-firmware-a Recipes for TF-A│ │ │ │ └── u-boot Recipes for U-Boot│ │ │ ├── recipes-extended│ │ │ │ ├── linux-examples Recipes for Linux examples for STM32 MPU devices│ │ │ │ ├── m4coredump Recipes for script to manage coredump of cortexM4│ │ │ │ └── m4projects Recipes for firmware examples for Cortex M4│ │ │ ├── recipes-graphics│ │ │ │ ├── gcnano-userland Recipes for Vivante libraries OpenGL ES, OpenVG and EGL (multi backend)│ │ │ │ └── [...]│ │ │ ├── recipes-kernel│ │ │ │ ├── linux Recipes for Linux kernel│ │ │ │ └── linux-firmware Recipes for Linux firmwares (example, Bluetooth firmware)│ │ │ ├── recipes-security│ │ │ │ └── optee Recipes for OPTEE│ │ │ ├── recipes-st│ │ │ │ └── images Recipes for the bootfs and userfs partitions binaries│ │ │ └── [...]│ │ ├── meta-st-stm32mp-addons STMicroelectronics layer that helps managing the STM32CubeMX integration│ │ └── scripts│ │ ├── envsetup.sh Environment setup script for Distribution Package│ │ └── [...]│ ├── meta-timesys Timesys layer for OpenEmbedded (standard)│ └── openembedded-core Core metadata for current versions of OpenEmbedded (standard) Test building image1DISTRO=openstlinux-weston MACHINE=stm32mp1 source layers/meta-st/scripts/envsetup.sh If you want to test without wayland or x11 support, using DISTRO=openstlinux-eglfs MACHINE=st-image-core instead.]]></content>
+      <categories>
+        <category>编程相关</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Yocto</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Chrome: ERR_NETWORK_CHANGED on Ubuntu]]></title>
     <url>%2F2019-11-14%2FChrome-ERR-NETWORK-CHANGED-on-Ubuntu%2F</url>
     <content type="text"><![CDATA[In my scenario it was caused by some docker containers - All of them have booting issues but they have been set as –restart=always, which caused they start to create js requests periodicity. Everything is ok after removing those docker containers.]]></content>
@@ -400,8 +424,8 @@
         <category>编程相关</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
         <tag>C++</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -500,8 +524,8 @@
         <category>编程相关</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
         <tag>C++</tag>
+        <tag>Linux</tag>
         <tag>gPRC</tag>
       </tags>
   </entry>
