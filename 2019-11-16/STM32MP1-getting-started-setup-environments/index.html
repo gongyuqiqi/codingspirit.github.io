@@ -109,18 +109,18 @@
 
 
 
-  <meta name="description" content="I’m planing to do some research on ST newest MPU series: STM32MP1. It’s a Cortex A7(solo or dual core) + M4 solution, not very powerful but the price might be very competitive. In the post we will set">
+  <meta name="description" content="I’m planing to do some research on ST newest MPU series: STM32MP1. It’s a Cortex A7(solo or dual core) + M4 solution, not very powerful but the price might be very competitive. In this post we will se">
 <meta name="keywords" content="Linux,Yocto">
 <meta property="og:type" content="article">
 <meta property="og:title" content="STM32MP1 getting started: setup environments">
 <meta property="og:url" content="http://lzqblog.top/2019-11-16/STM32MP1-getting-started-setup-environments/index.html">
 <meta property="og:site_name" content="Coding Spirit">
-<meta property="og:description" content="I’m planing to do some research on ST newest MPU series: STM32MP1. It’s a Cortex A7(solo or dual core) + M4 solution, not very powerful but the price might be very competitive. In the post we will set">
+<meta property="og:description" content="I’m planing to do some research on ST newest MPU series: STM32MP1. It’s a Cortex A7(solo or dual core) + M4 solution, not very powerful but the price might be very competitive. In this post we will se">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-16T10:09:04.716Z">
+<meta property="og:updated_time" content="2019-11-17T05:00:41.257Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="STM32MP1 getting started: setup environments">
-<meta name="twitter:description" content="I’m planing to do some research on ST newest MPU series: STM32MP1. It’s a Cortex A7(solo or dual core) + M4 solution, not very powerful but the price might be very competitive. In the post we will set">
+<meta name="twitter:description" content="I’m planing to do some research on ST newest MPU series: STM32MP1. It’s a Cortex A7(solo or dual core) + M4 solution, not very powerful but the price might be very competitive. In this post we will se">
 
 
 
@@ -415,12 +415,24 @@
                 
               
 
-              <time title="Created: 2019-11-16 09:14:45 / Modified: 18:09:04" itemprop="dateCreated datePublished" datetime="2019-11-16T09:14:45+08:00">2019-11-16</time>
+              <time title="Created: 2019-11-16 09:14:45" itemprop="dateCreated datePublished" datetime="2019-11-16T09:14:45+08:00">2019-11-16</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-11-17 13:00:41" itemprop="dateModified" datetime="2019-11-17T13:00:41+08:00">2019-11-17</time>
               
             
           </span>
@@ -473,7 +485,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">3.6k</span>
+                <span title="Symbols count in article">5.3k</span>
               
 
               
@@ -487,7 +499,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">3 mins.</span>
+                <span title="Reading time">5 mins.</span>
               
             </div>
           
@@ -507,7 +519,7 @@
       
 
       
-        <p>I’m planing to do some research on ST newest MPU series: STM32MP1. It’s a Cortex A7(solo or dual core) + M4 solution, not very powerful but the price might be very competitive. In the post we will setup the development environments.<br><a id="more"></a></p>
+        <p>I’m planing to do some research on ST newest MPU series: STM32MP1. It’s a Cortex A7(solo or dual core) + M4 solution, not very powerful but the price might be very competitive. In this post we will setup the development environments.<br><a id="more"></a></p>
 <h2 id="Choose-the-suitable-base-software-package"><a href="#Choose-the-suitable-base-software-package" class="headerlink" title="Choose the suitable base software package"></a>Choose the suitable base software package</h2><p>There are 3 basic software packages provided by ST:</p>
 <ul>
 <li>Starter Package(For evaluation)</li>
@@ -517,10 +529,21 @@
 <p>Similar with Qualcomm solutions, there are two packages are available for development purpose. In my scenario I will use Distribution Package for sure, so the following parts of this post is about how to setup environments for Developer Package based development.</p>
 <p>BTW the experiences I got during Qualcomm apq8009 based SoC really sucks… Their packages just like a huge shit mountain.</p>
 <h2 id="Initialize-repo"><a href="#Initialize-repo" class="headerlink" title="Initialize repo"></a>Initialize repo</h2><p>If you are new to Yocto, you need to install some packages before start(i.e. <strong>repo</strong>)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir openstlinux-4.19-thud-mp1-19-10-09 &amp;&amp; <span class="built_in">cd</span> openstlinux-4.19-thud-mp1-19-10-09</span><br><span class="line">repo init -u https://github.com/STMicroelectronics/oe-manifest.git -b refs/tags/openstlinux-4.19-thud-mp1-19-10-09</span><br><span class="line">repo sync</span><br></pre></td></tr></table></figure></p>
-<h2 id="package-structure"><a href="#package-structure" class="headerlink" title="package structure"></a>package structure</h2><p>From <a href="https://wiki.st.com/stm32mpu/wiki/STM32MP1_Distribution_Package" target="_blank" rel="noopener">ST WIKI</a>:</p>
+<h2 id="Package-structure"><a href="#Package-structure" class="headerlink" title="Package structure"></a>Package structure</h2><p>From <a href="https://wiki.st.com/stm32mpu/wiki/STM32MP1_Distribution_Package" target="_blank" rel="noopener">ST WIKI</a>:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">openstlinux-4.19-thud-mp1-19-10-09  OpenSTLinux distribution</span><br><span class="line">├── layers </span><br><span class="line">│    ├── meta-openembedded                Collection of layers <span class="keyword">for</span> the OpenEmbedded-Core universe (OpenEmbedded standard)</span><br><span class="line">│    ├── meta-qt5                         QT5 layer <span class="keyword">for</span> OpenEmbedded (standard)</span><br><span class="line">│    ├── meta-st</span><br><span class="line">│    │   ├── meta-st-openstlinux          STMicroelectronics layer that contains the frameworks and images settings <span class="keyword">for</span> the OpenSTLinux distribution</span><br><span class="line">│    │   ├── meta-st-stm32mp              STMicroelectronics layer that contains the description of the BSP <span class="keyword">for</span> the STM32 MPU devices</span><br><span class="line">│    │   │   ├── recipes-bsp</span><br><span class="line">│    │   │   │   ├── alsa                 Recipes <span class="keyword">for</span> ALSA control configuration</span><br><span class="line">│    │   │   │   ├── drivers              Recipes <span class="keyword">for</span> Vivante GCNANO GPU kernel drivers</span><br><span class="line">│    │   │   │   ├── trusted-firmware<span class="_">-a</span>   Recipes <span class="keyword">for</span> TF-A</span><br><span class="line">│    │   │   │   └── u-boot               Recipes <span class="keyword">for</span> U-Boot</span><br><span class="line">│    │   │   ├── recipes-extended</span><br><span class="line">│    │   │   │   ├── linux-examples       Recipes <span class="keyword">for</span> Linux examples <span class="keyword">for</span> STM32 MPU devices</span><br><span class="line">│    │   │   │   ├── m4coredump           Recipes <span class="keyword">for</span> script to manage coredump of cortexM4</span><br><span class="line">│    │   │   │   └── m4projects           Recipes <span class="keyword">for</span> firmware examples <span class="keyword">for</span> Cortex M4</span><br><span class="line">│    │   │   ├── recipes-graphics</span><br><span class="line">│    │   │   │   ├── gcnano-userland      Recipes <span class="keyword">for</span> Vivante libraries OpenGL ES, OpenVG and EGL (multi backend)</span><br><span class="line">│    │   │   │   └── [...]</span><br><span class="line">│    │   │   ├── recipes-kernel</span><br><span class="line">│    │   │   │   ├── linux                Recipes <span class="keyword">for</span> Linux kernel</span><br><span class="line">│    │   │   │   └── linux-firmware       Recipes <span class="keyword">for</span> Linux firmwares (example, Bluetooth firmware)</span><br><span class="line">│    │   │   ├── recipes-security</span><br><span class="line">│    │   │   │   └── optee                Recipes <span class="keyword">for</span> OPTEE</span><br><span class="line">│    │   │   ├── recipes-st</span><br><span class="line">│    │   │   │   └── images               Recipes <span class="keyword">for</span> the bootfs and userfs partitions binaries</span><br><span class="line">│    │   │   └── [...]</span><br><span class="line">│    │   ├── meta-st-stm32mp-addons       STMicroelectronics layer that helps managing the STM32CubeMX integration</span><br><span class="line">│    │   └── scripts</span><br><span class="line">│    │       ├── envsetup.sh              Environment setup script <span class="keyword">for</span> Distribution Package</span><br><span class="line">│    │       └── [...]</span><br><span class="line">│    ├── meta-timesys                     Timesys layer <span class="keyword">for</span> OpenEmbedded (standard)</span><br><span class="line">│    └── openembedded-core                Core metadata <span class="keyword">for</span> current versions of OpenEmbedded (standard)</span><br></pre></td></tr></table></figure>
-<h2 id="Test-building-image"><a href="#Test-building-image" class="headerlink" title="Test building image"></a>Test building image</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DISTRO=openstlinux-weston MACHINE=stm32mp1 <span class="built_in">source</span> layers/meta-st/scripts/envsetup.sh</span><br></pre></td></tr></table></figure>
+<h2 id="Test-building-image"><a href="#Test-building-image" class="headerlink" title="Test building image"></a>Test building image</h2><h3 id="Environment-setup"><a href="#Environment-setup" class="headerlink" title="Environment setup"></a>Environment setup</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DISTRO=openstlinux-weston MACHINE=stm32mp1 <span class="built_in">source</span> layers/meta-st/scripts/envsetup.sh</span><br></pre></td></tr></table></figure>
 <p>If you want to test without wayland or x11 support, using <strong>DISTRO=openstlinux-eglfs MACHINE=st-image-core</strong> instead.</p>
+<p>If build folder has been created, using blow command to re-use it:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> layers/meta-st/scripts/envsetup.sh build-openstlinuxweston-stm32mp1/</span><br></pre></td></tr></table></figure></p>
+<h3 id="Trigger-building"><a href="#Trigger-building" class="headerlink" title="Trigger building"></a>Trigger building</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitbake st-image-weston</span><br></pre></td></tr></table></figure>
+<p><strong>st-image-core</strong> is also available if you want to create a console only image.</p>
+<h2 id="USB-Flash"><a href="#USB-Flash" class="headerlink" title="USB Flash"></a>USB Flash</h2><p>USB flash need to use <a href="https://my.st.com/content/my_st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-programmers/stm32cubeprog.html" target="_blank" rel="noopener">STM32CubeProgrammer</a>. Device need to switched as usb flash mode as well.</p>
+<p>After installation, using <strong>STM32_Programmer_CLI</strong> to check if device can be detected:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ sudo STM32_Programmer_CLI -l usb</span><br><span class="line">      -------------------------------------------------------------------</span><br><span class="line">                        STM32CubeProgrammer v2.2.1                  </span><br><span class="line">      -------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">=====  DFU Interface   =====</span><br><span class="line"></span><br><span class="line">Total number of available STM32 device <span class="keyword">in</span> DFU mode: 1</span><br><span class="line"></span><br><span class="line">  Device Index           : USB1</span><br><span class="line">  USB Bus Number         : 001</span><br><span class="line">  USB Address Number     : 004</span><br><span class="line">  Product ID             : DFU <span class="keyword">in</span> HS Mode @Device ID /0x500, @Revision ID /0x0000</span><br><span class="line">  Serial number          : 004800293338511139303435</span><br><span class="line">  Firmware version       : 0x0110</span><br><span class="line">  Device ID              : 0x0500</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>Notice: You may need to create a soft link from <em>$HOME/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin/STM32_Programmer_CLI</em></p>
+</blockquote>
+<p>You also can add an udev rule to allow connection without su:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cp <span class="variable">$HOME</span>/STMicroelectronics/STM32Cube/STM32CubeProgrammer/Drivers/rules/50-usb-conf.rules /etc/udev/rules.d/</span><br><span class="line">sudo service udev restart</span><br></pre></td></tr></table></figure></p>
+<p>If device can be found in DFU mode, using blow cmd to trigger usb flash:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">STM32_Programmer_CLI -c port=usb1 -w flashlayout_st-image-weston/FlashLayout_xxxxxx.tsv</span><br></pre></td></tr></table></figure></p>
+<p>STM32CubeProgrammer using a <code>.tsv</code> file to specify flash layout and the binaries are going to use.</p>
 
       
     </div>
@@ -845,7 +868,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Choose-the-suitable-base-software-package"><span class="nav-number">1.</span> <span class="nav-text">Choose the suitable base software package</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Initialize-repo"><span class="nav-number">2.</span> <span class="nav-text">Initialize repo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#package-structure"><span class="nav-number">3.</span> <span class="nav-text">package structure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Test-building-image"><span class="nav-number">4.</span> <span class="nav-text">Test building image</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Choose-the-suitable-base-software-package"><span class="nav-number">1.</span> <span class="nav-text">Choose the suitable base software package</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Initialize-repo"><span class="nav-number">2.</span> <span class="nav-text">Initialize repo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Package-structure"><span class="nav-number">3.</span> <span class="nav-text">Package structure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Test-building-image"><span class="nav-number">4.</span> <span class="nav-text">Test building image</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Environment-setup"><span class="nav-number">4.1.</span> <span class="nav-text">Environment setup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Trigger-building"><span class="nav-number">4.2.</span> <span class="nav-text">Trigger building</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#USB-Flash"><span class="nav-number">5.</span> <span class="nav-text">USB Flash</span></a></li></ol></div>
             
 
           </div>
@@ -878,7 +901,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">151k</span>
+    <span title="Symbols count total">153k</span>
   
 
   
@@ -887,7 +910,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">2:17</span>
+    <span title="Reading time total">2:19</span>
   
 </div>
 
