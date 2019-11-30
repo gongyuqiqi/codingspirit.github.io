@@ -1,6 +1,6 @@
 ---
 title: 'STM32MP1 getting started: setup environments'
-top: true
+top: false
 tags:
   - Linux
   - Yocto

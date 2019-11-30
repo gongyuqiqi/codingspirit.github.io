@@ -47,3 +47,13 @@ url = git@gxxxx.com:somebody/abcdef.git
 ```bash
 git remote prune origin
 ```
+
+## repo 操作
+对每个子repo进行操作
+```bash
+repo forall -vc "git cmd"
+```
+i.e.
+```bash
+repo forall -vc "git reset --hard"
+```
