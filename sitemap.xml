@@ -2,16 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://lzqblog.top/2019-11-30/STM32MP1-getting-started-create-machine/</loc>
+    
+    <lastmod>2019-11-30T08:25:31.272Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://lzqblog.top/2019-11-16/STM32MP1-getting-started-setup-environments/</loc>
     
-    <lastmod>2019-11-17T05:00:41.257Z</lastmod>
+    <lastmod>2019-11-30T08:23:41.282Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://lzqblog.top/2018-10-21/git-command%E5%A4%87%E5%BF%98%E5%BD%95/</loc>
+    
+    <lastmod>2019-11-23T07:58:57.866Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://lzqblog.top/2019-11-16/Install-JDK-JRE-for-Ubuntu/</loc>
     
-    <lastmod>2019-11-16T09:15:06.797Z</lastmod>
+    <lastmod>2019-11-16T11:21:42.925Z</lastmod>
     
   </url>
   
@@ -138,13 +152,6 @@
     <loc>http://lzqblog.top/2019-07-27/i-MX8-adb-bring-up/</loc>
     
     <lastmod>2019-07-26T10:55:36.226Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://lzqblog.top/2018-10-21/git-command%E5%A4%87%E5%BF%98%E5%BD%95/</loc>
-    
-    <lastmod>2019-07-03T10:27:57.021Z</lastmod>
     
   </url>
   
@@ -541,14 +548,14 @@
   </url>
   
   <url>
-    <loc>http://lzqblog.top/categories/index.html</loc>
+    <loc>http://lzqblog.top/tags/index.html</loc>
     
     <lastmod>2018-11-20T11:54:50.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://lzqblog.top/tags/index.html</loc>
+    <loc>http://lzqblog.top/categories/index.html</loc>
     
     <lastmod>2018-11-20T11:54:50.000Z</lastmod>
     

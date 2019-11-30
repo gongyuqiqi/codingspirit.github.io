@@ -109,22 +109,18 @@
 
 
 
-  <meta name="description" content="Algorithm Puzzles everyday every week sometimes: Longest Palindromic Substring">
-<meta name="keywords" content="Algorithm,C++">
+  <meta name="description" content="Brief notes about how to create a customized machine based on STM32MP1.">
+<meta name="keywords" content="Linux,Yocto">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Algorithm Puzzles: Longest Palindromic Substring">
-<meta property="og:url" content="http://lzqblog.top/2019-08-04/Algorithm-Puzzles-Longest-Palindromic-Substring/index.html">
+<meta property="og:title" content="STM32MP1 getting started: create machine">
+<meta property="og:url" content="http://lzqblog.top/2019-11-30/STM32MP1-getting-started-create-machine/index.html">
 <meta property="og:site_name" content="Coding Spirit">
-<meta property="og:description" content="Algorithm Puzzles everyday every week sometimes: Longest Palindromic Substring">
+<meta property="og:description" content="Brief notes about how to create a customized machine based on STM32MP1.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://lzqblog.top/2019-08-04/Algorithm-Puzzles-Longest-Palindromic-Substring/s1.png">
-<meta property="og:image" content="http://lzqblog.top/2019-08-04/Algorithm-Puzzles-Longest-Palindromic-Substring/f1.jpeg">
-<meta property="og:image" content="http://lzqblog.top/2019-08-04/Algorithm-Puzzles-Longest-Palindromic-Substring/s2.png">
-<meta property="og:updated_time" content="2019-10-05T03:12:10.852Z">
+<meta property="og:updated_time" content="2019-11-30T08:25:31.272Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Algorithm Puzzles: Longest Palindromic Substring">
-<meta name="twitter:description" content="Algorithm Puzzles everyday every week sometimes: Longest Palindromic Substring">
-<meta name="twitter:image" content="http://lzqblog.top/2019-08-04/Algorithm-Puzzles-Longest-Palindromic-Substring/s1.png">
+<meta name="twitter:title" content="STM32MP1 getting started: create machine">
+<meta name="twitter:description" content="Brief notes about how to create a customized machine based on STM32MP1.">
 
 
 
@@ -132,7 +128,7 @@
 
   
   
-  <link rel="canonical" href="http://lzqblog.top/2019-08-04/Algorithm-Puzzles-Longest-Palindromic-Substring/">
+  <link rel="canonical" href="http://lzqblog.top/2019-11-30/STM32MP1-getting-started-create-machine/">
 
 
 
@@ -142,7 +138,7 @@
   };
 </script>
 
-  <title>Algorithm Puzzles: Longest Palindromic Substring | Coding Spirit</title>
+  <title>STM32MP1 getting started: create machine | Coding Spirit</title>
   
 
 
@@ -376,7 +372,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lzqblog.top/2019-08-04/Algorithm-Puzzles-Longest-Palindromic-Substring/">
+    <link itemprop="mainEntityOfPage" href="http://lzqblog.top/2019-11-30/STM32MP1-getting-started-create-machine/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coding Spirit">
@@ -393,7 +389,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Algorithm Puzzles: Longest Palindromic Substring
+          <h1 class="post-title" itemprop="name headline">STM32MP1 getting started: create machine
 
               
             
@@ -419,24 +415,12 @@
                 
               
 
-              <time title="Created: 2019-08-04 15:50:03" itemprop="dateCreated datePublished" datetime="2019-08-04T15:50:03+08:00">2019-08-04</time>
+              <time title="Created: 2019-11-30 15:11:37 / Modified: 16:25:31" itemprop="dateCreated datePublished" datetime="2019-11-30T15:11:37+08:00">2019-11-30</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-10-05 11:12:10" itemprop="dateModified" datetime="2019-10-05T11:12:10+08:00">2019-10-05</time>
               
             
           </span>
@@ -453,7 +437,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/算法题解/" itemprop="url" rel="index"><span itemprop="name">算法题解</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/编程相关/" itemprop="url" rel="index"><span itemprop="name">编程相关</span></a></span>
 
                 
                 
@@ -489,7 +473,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">2.7k</span>
+                <span title="Symbols count in article">1.4k</span>
               
 
               
@@ -503,7 +487,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">2 mins.</span>
+                <span title="Reading time">1 mins.</span>
               
             </div>
           
@@ -523,23 +507,17 @@
       
 
       
-        <p>Algorithm Puzzles <del>everyday</del> <del>every week</del> sometimes: Longest Palindromic Substring</p>
-<a id="more"></a>
-<h2 id="Puzzle"><a href="#Puzzle" class="headerlink" title="Puzzle"></a>Puzzle</h2><p>Puzzle from <a href="https://leetcode.com" target="_blank" rel="noopener">leetcode</a>:</p>
-<p>Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.</p>
-<p>Example 1:</p>
-<p>Input: “babad”<br>Output: “bab”<br>Note: “aba” is also a valid answer.<br>Example 2:</p>
-<p>Input: “cbbd”<br>Output: “bb”</p>
-<h2 id="Solving"><a href="#Solving" class="headerlink" title="Solving"></a>Solving</h2><h3 id="First-Came-out-solution"><a href="#First-Came-out-solution" class="headerlink" title="First Came out solution:"></a>First Came out solution:</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">longestPalindrome</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span>&amp; s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> head = <span class="number">0</span>,tail = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> length = s.length();</span><br><span class="line">        <span class="keyword">int</span> longestH = <span class="number">0</span>, longestT = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(head != length)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s[head] == s[tail])&#123;</span><br><span class="line">                <span class="keyword">if</span>(isPalindromic(s.substr(head, tail - head + <span class="number">1</span>)))&#123;</span><br><span class="line">                    longestH = head;</span><br><span class="line">                    longestT = tail;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            ++tail;</span><br><span class="line">            <span class="keyword">if</span>(tail &gt;= length)&#123;</span><br><span class="line">                ++head;</span><br><span class="line">                tail = head + longestT - longestH + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(tail &gt;= length)&#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s.substr(longestH, longestT - longestH + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPalindromic</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span>&amp; s)</span></span>&#123;</span><br><span class="line">        <span class="keyword">double</span> dMid = s.length()/<span class="number">2.0</span>;</span><br><span class="line">        <span class="keyword">int</span> mid = s.length()/<span class="number">2</span>;</span><br><span class="line">        <span class="built_in">string</span> sub = s.substr((dMid - mid) &gt; <span class="number">0</span> ? mid + <span class="number">1</span> : mid);</span><br><span class="line">        <span class="built_in">std</span>::reverse(sub.begin(), sub.end());</span><br><span class="line">        <span class="keyword">if</span>(sub == s.substr(<span class="number">0</span>, mid))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>Result:</p>
-<p><img src="/2019-08-04/Algorithm-Puzzles-Longest-Palindromic-Substring/s1.png" alt=""></p>
-<div align="center"><br><img src="/2019-08-04/Algorithm-Puzzles-Longest-Palindromic-Substring/f1.jpeg" alt=""><br></div>
-
-<p>Well, that’s the worst result I have ever seen.</p>
-<h2 id="Extend-from-the-center"><a href="#Extend-from-the-center" class="headerlink" title="Extend from the center"></a>Extend from the center</h2><p>Checked the solution provided by leetcode, there is one way only have time complexity O(n²), I implemented in it C++ with a little optimization:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">const</span> <span class="built_in">string</span> <span class="title">longestPalindrome</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span>&amp; s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> start = <span class="number">0</span>, maxLength = <span class="number">0</span>, halfLength = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s.length() - i + <span class="number">1</span> &lt; halfLength || i + <span class="number">1</span> &lt; halfLength)&#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">int</span> len1 = extendFromCenter(s, i, i);</span><br><span class="line">            <span class="keyword">int</span> len2 = extendFromCenter(s, i, i+<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">int</span> len = len1 &gt; len2 ? len1 : len2;</span><br><span class="line">            <span class="keyword">if</span>(len &gt; maxLength)&#123;</span><br><span class="line">                start = i - (len - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">                maxLength = len;</span><br><span class="line">                halfLength = maxLength / <span class="number">2</span>; </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s.substr(start, maxLength);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">extendFromCenter</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span>&amp; s, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(left &gt;= <span class="number">0</span> &amp;&amp; right &lt; s.length() &amp;&amp; s[left] == s[right])&#123;</span><br><span class="line">            --left;</span><br><span class="line">            ++right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> right - left - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>Result with this:</p>
-<p><img src="/2019-08-04/Algorithm-Puzzles-Longest-Palindromic-Substring/s2.png" alt=""></p>
+        <p>Brief notes about how to create a customized machine based on STM32MP1.<br><a id="more"></a></p>
+<h2 id="Device-tree"><a href="#Device-tree" class="headerlink" title="Device tree"></a>Device tree</h2><p>dts files should be created at the very beginning. There are 3 dts files need to implement:</p>
+<ul>
+<li>TF-A device tree</li>
+<li>U-BOOT device tree</li>
+<li>Kernel device tree</li>
+</ul>
+<h2 id="Machine-layer"><a href="#Machine-layer" class="headerlink" title="Machine layer"></a>Machine layer</h2><p>A custom layer can be created outside of <em>meta-st</em>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── conf</span><br><span class="line">│   ├── eula</span><br><span class="line">│   │   └── stm32mp1-cp</span><br><span class="line">│   ├── layer.conf</span><br><span class="line">│   └── machine</span><br><span class="line">│       └── stm32mp1-cp.conf</span><br><span class="line">├── COPYING.MIT</span><br><span class="line">├── README</span><br><span class="line">├── recipes-bsp</span><br><span class="line">│   ├── trusted-firmware-a</span><br><span class="line">│   │   ├── tf-a-stm32mp</span><br><span class="line">│   │   │   └── 0001-tf-a-alex.patch</span><br><span class="line">│   │   └── tf-a-stm32mp_2.0.bbappend</span><br><span class="line">│   └── u-boot</span><br><span class="line">│       ├── u-boot-stm32mp</span><br><span class="line">│       │   └── 0001-u-boot-alex.patch</span><br><span class="line">│       ├── u-boot-stm32mp_2018.11.bbappend</span><br><span class="line">│       ├── u-boot-stm32mp-extlinux</span><br><span class="line">│       │   └── boot.scr.cmd</span><br><span class="line">│       └── u-boot-stm32mp-extlinux.bb</span><br><span class="line">└── recipes-kernel</span><br><span class="line">    └── linux</span><br><span class="line">        ├── linux-stm32mp</span><br><span class="line">        │   └── stm32mp157a-cp.dts</span><br><span class="line">        └── linux-stm32mp_%.bbappend</span><br></pre></td></tr></table></figure></p>
+<p>Here I use patchs and <em>bbappend</em> to add dts files.</p>
+<h2 id="Machine-conf"><a href="#Machine-conf" class="headerlink" title="Machine conf"></a>Machine conf</h2><p>Machine conf can be created based on <strong>stm32mp1-disco.conf</strong>. There are some variables are pre-defined in <strong>st-machine-common-stm32mp.inc</strong> which need to be override in your machine conf.</p>
+<h2 id="U-Boot-extlinux"><a href="#U-Boot-extlinux" class="headerlink" title="U-Boot extlinux"></a>U-Boot extlinux</h2><p>There are some u-boot related env variables are set by <strong>UBOOT_EXTLINUX_</strong> started configs in machine conf. In ST U-Boot, there path of <strong>extlinux.conf</strong> are related to <strong>UBOOT_EXTLINUX_BOOTPREFIXES</strong>.</p>
 
       
     </div>
@@ -574,7 +552,7 @@
   <li class="post-copyright-link">
     <strong>Post link: </strong>
     
-    <a href="http://lzqblog.top/2019-08-04/Algorithm-Puzzles-Longest-Palindromic-Substring/" title="Algorithm Puzzles: Longest Palindromic Substring">http://lzqblog.top/2019-08-04/Algorithm-Puzzles-Longest-Palindromic-Substring/</a>
+    <a href="http://lzqblog.top/2019-11-30/STM32MP1-getting-started-create-machine/" title="STM32MP1 getting started: create machine">http://lzqblog.top/2019-11-30/STM32MP1-getting-started-create-machine/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
@@ -587,9 +565,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
           
-            <a href="/tags/C/" rel="tag"># C++</a>
+            <a href="/tags/Yocto/" rel="tag"># Yocto</a>
           
         </div>
       
@@ -602,8 +580,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019-07-27/Algorithm-Puzzles-Median-of-Two-Sorted-Arrays/" rel="next" title="Algorithm Puzzles: Median of Two Sorted Arrays">
-                <i class="fa fa-chevron-left"></i> Algorithm Puzzles: Median of Two Sorted Arrays
+              <a href="/2019-11-16/Install-JDK-JRE-for-Ubuntu/" rel="next" title="Install JDK/JRE for Ubuntu">
+                <i class="fa fa-chevron-left"></i> Install JDK/JRE for Ubuntu
               </a>
             
           </div>
@@ -611,10 +589,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019-08-17/Yocto-Replace-sysvinit-with-systemd/" rel="prev" title="Yocto: Replace sysvinit with systemd">
-                Yocto: Replace sysvinit with systemd <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -864,7 +838,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Puzzle"><span class="nav-number">1.</span> <span class="nav-text">Puzzle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solving"><span class="nav-number">2.</span> <span class="nav-text">Solving</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#First-Came-out-solution"><span class="nav-number">2.1.</span> <span class="nav-text">First Came out solution:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Extend-from-the-center"><span class="nav-number">3.</span> <span class="nav-text">Extend from the center</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Device-tree"><span class="nav-number">1.</span> <span class="nav-text">Device tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Machine-layer"><span class="nav-number">2.</span> <span class="nav-text">Machine layer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Machine-conf"><span class="nav-number">3.</span> <span class="nav-text">Machine conf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#U-Boot-extlinux"><span class="nav-number">4.</span> <span class="nav-text">U-Boot extlinux</span></a></li></ol></div>
             
 
           </div>

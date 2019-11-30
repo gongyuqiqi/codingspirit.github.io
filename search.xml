@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[STM32MP1 getting started: create machine]]></title>
+    <url>%2F2019-11-30%2FSTM32MP1-getting-started-create-machine%2F</url>
+    <content type="text"><![CDATA[Brief notes about how to create a customized machine based on STM32MP1. Device treedts files should be created at the very beginning. There are 3 dts files need to implement: TF-A device tree U-BOOT device tree Kernel device tree Machine layerA custom layer can be created outside of meta-st:1234567891011121314151617181920212223242526.├── conf│ ├── eula│ │ └── stm32mp1-cp│ ├── layer.conf│ └── machine│ └── stm32mp1-cp.conf├── COPYING.MIT├── README├── recipes-bsp│ ├── trusted-firmware-a│ │ ├── tf-a-stm32mp│ │ │ └── 0001-tf-a-alex.patch│ │ └── tf-a-stm32mp_2.0.bbappend│ └── u-boot│ ├── u-boot-stm32mp│ │ └── 0001-u-boot-alex.patch│ ├── u-boot-stm32mp_2018.11.bbappend│ ├── u-boot-stm32mp-extlinux│ │ └── boot.scr.cmd│ └── u-boot-stm32mp-extlinux.bb└── recipes-kernel └── linux ├── linux-stm32mp │ └── stm32mp157a-cp.dts └── linux-stm32mp_%.bbappend Here I use patchs and bbappend to add dts files. Machine confMachine conf can be created based on stm32mp1-disco.conf. There are some variables are pre-defined in st-machine-common-stm32mp.inc which need to be override in your machine conf. U-Boot extlinuxThere are some u-boot related env variables are set by UBOOT_EXTLINUX_ started configs in machine conf. In ST U-Boot, there path of extlinux.conf are related to UBOOT_EXTLINUX_BOOTPREFIXES.]]></content>
+      <categories>
+        <category>编程相关</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Yocto</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Install JDK/JRE for Ubuntu]]></title>
     <url>%2F2019-11-16%2FInstall-JDK-JRE-for-Ubuntu%2F</url>
     <content type="text"><![CDATA[… There are two versions of JDK/JRE can be installed on Ubuntu: Open JDK/JRE Oracle JDK/JRE Install Open JDK/JREOpen JDK/JRE can be easily installed by12sudo apt install default-jresudo apt install default-jdk Install Oracle standalone JRE First of all download Oracle JRE from Oracle Unpack downloaded package and install it into the path you like(i.e /usr/lib/java) 12cd /usr/lib/javasudo tar -zxvf ~/Downloads/jre-8u231-linux-x64.tar.gz Add JRE installation path into $PATH 1sudo nano /etc/environment Add :/usr/lib/java/jre1.8.0_231 into PATH Add installed java as alternative 1sudo update-alternatives --install /usr/bin/java java /usr/lib/java/jre1.8.0_231/bin/java 1 To switch to other alternative java. use: 1sudo update-alternatives --config java Check installation 1234java -versionjava version "1.8.0_231"Java(TM) SE Runtime Environment (build 1.8.0_231-b11)Java HotSpot(TM) 64-Bit Server VM (build 25.231-b11, mixed mode)]]></content>
@@ -424,8 +436,8 @@
         <category>编程相关</category>
       </categories>
       <tags>
-        <tag>C++</tag>
         <tag>Linux</tag>
+        <tag>C++</tag>
       </tags>
   </entry>
   <entry>
@@ -524,15 +536,15 @@
         <category>编程相关</category>
       </categories>
       <tags>
-        <tag>C++</tag>
         <tag>Linux</tag>
+        <tag>C++</tag>
         <tag>gPRC</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[git command备忘录]]></title>
     <url>%2F2018-10-21%2Fgit-command%E5%A4%87%E5%BF%98%E5%BD%95%2F</url>
-    <content type="text"><![CDATA[… 全局配置用户名和邮箱:12git config --global user.name "Alex.Li"git config --global user.email "Alex.Li@xxxx.com" ssh密钥生成:1ssh-keygen -t rsa -C "Alex.Li@xxxx.com" 储存https/http方式用户名密码:1git config --global credential.helper store 添加tag并推送到远端:12git tag -a 1.0.0 -m 'add version 1.0.0'git push origin master --tags 更改一个https仓库为ssh仓库：.git/config中1url = https://xxxx.com/somebody/abcdef.git 改为1url = git@gxxxx.com:somebody/abcdef.git 反之则反 删除remotes/origin/{branch}远端分支已经删除， 但本地仍可见remotes/origin/{branch}1git remote prune origin]]></content>
+    <content type="text"><![CDATA[… 全局配置用户名和邮箱:12git config --global user.name "Alex.Li"git config --global user.email "Alex.Li@xxxx.com" ssh密钥生成:1ssh-keygen -t rsa -C "Alex.Li@xxxx.com" 储存https/http方式用户名密码:1git config --global credential.helper store 添加tag并推送到远端:12git tag -a 1.0.0 -m 'add version 1.0.0'git push origin master --tags 更改一个https仓库为ssh仓库：.git/config中1url = https://xxxx.com/somebody/abcdef.git 改为1url = git@gxxxx.com:somebody/abcdef.git 反之则反 删除remotes/origin/{branch}远端分支已经删除， 但本地仍可见remotes/origin/{branch}1git remote prune origin repo 操作对每个子repo进行操作1repo forall -vc "git cmd" i.e.1repo forall -vc "git reset --hard"]]></content>
       <categories>
         <category>随便写写</category>
       </categories>
