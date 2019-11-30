@@ -109,20 +109,18 @@
 
 
 
-  <meta name="description" content="现在blog支持使用Github帐号评论啦！You can use your github account to add comments now!">
-<meta name="keywords" content="日志">
+  <meta name="description" content="I have got used to create patch and bbappend files manually, now I’m switching to use devtool - To be honest it’s quite easy to use.">
+<meta name="keywords" content="Yocto">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Comments system has been added">
-<meta property="og:url" content="http://lzqblog.top/2018-12-22/Comments-system-has-been-added/index.html">
+<meta property="og:title" content="Yocto devtool">
+<meta property="og:url" content="http://lzqblog.top/2019-11-30/Yocto-devtool/index.html">
 <meta property="og:site_name" content="Coding Spirit">
-<meta property="og:description" content="现在blog支持使用Github帐号评论啦！You can use your github account to add comments now!">
+<meta property="og:description" content="I have got used to create patch and bbappend files manually, now I’m switching to use devtool - To be honest it’s quite easy to use.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://lzqblog.top/2018-12-22/Comments-system-has-been-added/Screenshot%20from%202018-12-22%2009-46-07.png">
-<meta property="og:updated_time" content="2018-12-22T01:46:58.000Z">
+<meta property="og:updated_time" content="2019-11-30T14:44:46.348Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Comments system has been added">
-<meta name="twitter:description" content="现在blog支持使用Github帐号评论啦！You can use your github account to add comments now!">
-<meta name="twitter:image" content="http://lzqblog.top/2018-12-22/Comments-system-has-been-added/Screenshot%20from%202018-12-22%2009-46-07.png">
+<meta name="twitter:title" content="Yocto devtool">
+<meta name="twitter:description" content="I have got used to create patch and bbappend files manually, now I’m switching to use devtool - To be honest it’s quite easy to use.">
 
 
 
@@ -130,7 +128,7 @@
 
   
   
-  <link rel="canonical" href="http://lzqblog.top/2018-12-22/Comments-system-has-been-added/">
+  <link rel="canonical" href="http://lzqblog.top/2019-11-30/Yocto-devtool/">
 
 
 
@@ -140,7 +138,7 @@
   };
 </script>
 
-  <title>Comments system has been added | Coding Spirit</title>
+  <title>Yocto devtool | Coding Spirit</title>
   
 
 
@@ -374,7 +372,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lzqblog.top/2018-12-22/Comments-system-has-been-added/">
+    <link itemprop="mainEntityOfPage" href="http://lzqblog.top/2019-11-30/Yocto-devtool/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coding Spirit">
@@ -391,7 +389,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Comments system has been added
+          <h1 class="post-title" itemprop="name headline">Yocto devtool
 
               
             
@@ -417,7 +415,7 @@
                 
               
 
-              <time title="Created: 2018-12-22 09:40:27 / Modified: 09:46:58" itemprop="dateCreated datePublished" datetime="2018-12-22T09:40:27+08:00">2018-12-22</time>
+              <time title="Created: 2019-11-30 22:11:19 / Modified: 22:44:46" itemprop="dateCreated datePublished" datetime="2019-11-30T22:11:19+08:00">2019-11-30</time>
             
 
             
@@ -475,7 +473,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">75</span>
+                <span title="Symbols count in article">630</span>
               
 
               
@@ -509,7 +507,14 @@
       
 
       
-        <p>现在blog支持使用Github帐号评论啦！<br>You can use your github account to add comments now!<br><img src="/2018-12-22/Comments-system-has-been-added/Screenshot&#32;from&#32;2018-12-22&#32;09-46-07.png" alt=""></p>
+        <p>I have got used to create patch and <strong>bbappend</strong> files manually, now I’m switching to use <strong>devtool</strong> - To be honest it’s quite easy to use.<br><a id="more"></a></p>
+<h2 id="Export-source-code-to-external-patch"><a href="#Export-source-code-to-external-patch" class="headerlink" title="Export source code to external patch"></a>Export source code to external patch</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">devtool modify &lt;recipe_name&gt; &lt;dst_path_to_export&gt;</span><br></pre></td></tr></table></figure>
+<p>Then we can do changes based on exported source code.</p>
+<h2 id="Upgrade-changes-to-bbappend"><a href="#Upgrade-changes-to-bbappend" class="headerlink" title="Upgrade changes to bbappend"></a>Upgrade changes to bbappend</h2><p>When changes are verified and we need to add changes into bbapned file as a patch, just use git to commit changes, then:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">devtool update-recipe &lt;recipe_name&gt; -m patch -a &lt;dst_layer_path_to_generate_bbapned&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Exit-dev-mode"><a href="#Exit-dev-mode" class="headerlink" title="Exit dev mode"></a>Exit dev mode</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">devtool reset &lt;recipe_name&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Note: devtool will not delete exported source code.</p>
+</blockquote>
 
       
     </div>
@@ -544,7 +549,7 @@
   <li class="post-copyright-link">
     <strong>Post link: </strong>
     
-    <a href="http://lzqblog.top/2018-12-22/Comments-system-has-been-added/" title="Comments system has been added">http://lzqblog.top/2018-12-22/Comments-system-has-been-added/</a>
+    <a href="http://lzqblog.top/2019-11-30/Yocto-devtool/" title="Yocto devtool">http://lzqblog.top/2019-11-30/Yocto-devtool/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
@@ -557,7 +562,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/日志/" rel="tag"># 日志</a>
+            <a href="/tags/Yocto/" rel="tag"># Yocto</a>
           
         </div>
       
@@ -570,8 +575,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018-12-16/Linux-kernel-module-2/" rel="next" title="Linux kernel module(2)">
-                <i class="fa fa-chevron-left"></i> Linux kernel module(2)
+              <a href="/2019-11-30/STM32MP1-getting-started-create-machine/" rel="next" title="STM32MP1 getting started: create machine">
+                <i class="fa fa-chevron-left"></i> STM32MP1 getting started: create machine
               </a>
             
           </div>
@@ -579,10 +584,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018-12-23/Linux-kernel-module-3/" rel="prev" title="Linux kernel module(3)">
-                Linux kernel module(3) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -630,8 +631,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -812,6 +822,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Export-source-code-to-external-patch"><span class="nav-number">1.</span> <span class="nav-text">Export source code to external patch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Upgrade-changes-to-bbappend"><span class="nav-number">2.</span> <span class="nav-text">Upgrade changes to bbappend</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exit-dev-mode"><span class="nav-number">3.</span> <span class="nav-text">Exit dev mode</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
