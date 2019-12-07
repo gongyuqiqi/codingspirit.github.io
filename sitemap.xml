@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://lzqblog.top/2019-12-07/Linux-USB-gadget-configfs/</loc>
+    
+    <lastmod>2019-12-07T07:43:12.414Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://lzqblog.top/2019-11-30/Yocto-devtool/</loc>
     
     <lastmod>2019-11-30T14:44:46.348Z</lastmod>
@@ -555,14 +562,14 @@
   </url>
   
   <url>
-    <loc>http://lzqblog.top/tags/index.html</loc>
+    <loc>http://lzqblog.top/categories/index.html</loc>
     
     <lastmod>2018-11-20T11:54:50.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://lzqblog.top/categories/index.html</loc>
+    <loc>http://lzqblog.top/tags/index.html</loc>
     
     <lastmod>2018-11-20T11:54:50.000Z</lastmod>
     
