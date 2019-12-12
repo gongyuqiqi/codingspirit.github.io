@@ -104,3 +104,24 @@ symbols_count_time:
   total_symbols: true
   total_time: true
   exclude_codeblock: false
+
+live2d:
+  enable: true
+  scriptFrom: local
+  pluginRootPath: live2dw/
+  pluginJsPath: lib/
+  pluginModelPath: assets/
+  tagMode: false
+  log: true
+  model:
+    use: live2d-widget-model-tororo
+  display:
+    position: left
+    width: 150
+    height: 300
+    hOffset: 80
+    vOffset: 220
+  mobile:
+    show: false
+  react:
+    opacity: 1.0
