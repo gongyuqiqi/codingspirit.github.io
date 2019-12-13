@@ -57,16 +57,16 @@
 <meta property="og:url" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2019-07-11&#x2F;Algorithm-Puzzles-Two-Sum&#x2F;index.html">
 <meta property="og:site_name" content="Coding Spirit">
 <meta property="og:description" content="Algorithm Puzzles everyday every week sometimes: Two Sum">
-<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;.top&#x2F;&#x2F;s1.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;.top&#x2F;&#x2F;s2_1.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;.top&#x2F;&#x2F;s2_2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2019-07-11&#x2F;Algorithm-Puzzles-Two-Sum&#x2F;s1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2019-07-11&#x2F;Algorithm-Puzzles-Two-Sum&#x2F;s2_1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2019-07-11&#x2F;Algorithm-Puzzles-Two-Sum&#x2F;s2_2.png">
 <meta property="article:published_time" content="2019-07-11T11:34:16.000Z">
 <meta property="article:modified_time" content="2019-10-05T03:12:27.600Z">
 <meta property="article:author" content="Coding Spirit">
 <meta property="article:tag" content="Algorithm">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;.top&#x2F;&#x2F;s1.png">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2019-07-11&#x2F;Algorithm-Puzzles-Two-Sum&#x2F;s1.png">
 
 <link rel="canonical" href="http://lzqblog.top/2019-07-11/Algorithm-Puzzles-Two-Sum/">
 
@@ -317,10 +317,10 @@
 
 <p>So what kind of search method is better? Maybe hash table?</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; twoSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; <span class="built_in">map</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">const</span> <span class="keyword">auto</span>&amp; a : nums)&#123;</span><br><span class="line">            <span class="built_in">map</span>.insert(&#123;a,i&#125;);</span><br><span class="line">            <span class="keyword">auto</span> res = <span class="built_in">map</span>.find(target-a);</span><br><span class="line">            <span class="keyword">if</span>(res != <span class="built_in">map</span>.end())&#123;</span><br><span class="line">                <span class="keyword">if</span>(i != res-&gt;second)</span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(&#123;i, res-&gt;second&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="built_in">std</span>::invalid_argument(<span class="string">""</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>Bravo! Time complexity is <strong>O(n)</strong> now!(but we used more space)<br>results:<br><img src="/.top//s1.png" alt><br>What? Only better than 88.56%? OK it still can get improvements by replacing for-each with for-loop(But why I choose for-each at the first time…)</p>
+<p>Bravo! Time complexity is <strong>O(n)</strong> now!(but we used more space)<br>results:<br><img src="/2019-07-11/Algorithm-Puzzles-Two-Sum/s1.png" alt><br>What? Only better than 88.56%? OK it still can get improvements by replacing for-each with for-loop(But why I choose for-each at the first time…)</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; twoSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; <span class="built_in">map</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); i++)&#123;</span><br><span class="line">            <span class="built_in">map</span>.insert(&#123;nums[i],i&#125;);</span><br><span class="line">            <span class="keyword">auto</span> res = <span class="built_in">map</span>.find(target-nums[i]);</span><br><span class="line">            <span class="keyword">if</span>(res != <span class="built_in">map</span>.end())&#123;</span><br><span class="line">                <span class="keyword">if</span>(i != res-&gt;second)</span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(&#123;i, res-&gt;second&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>result:<br><img src="/.top//s2_1.png" alt></p>
-<p><img src="/.top//s2_2.png" alt></p>
+<p>result:<br><img src="/2019-07-11/Algorithm-Puzzles-Two-Sum/s2_1.png" alt></p>
+<p><img src="/2019-07-11/Algorithm-Puzzles-Two-Sum/s2_2.png" alt></p>
 <p>Cool, better than 99.79% now!</p>
 
     </div>
@@ -604,8 +604,8 @@
 NexT.utils.loadComments(() => {
   NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
     var gitalk = new Gitalk({
-      clientID: '',
-      clientSecret: '',
+      clientID: '965ca656ae3d59a50b73',
+      clientSecret: '94dbe9c760ce8b778c84481a7fe2f37f548d7375',
       repo: 'blog-gitalk',
       owner: 'codingspirit',
       admin: ['codingspirit'],

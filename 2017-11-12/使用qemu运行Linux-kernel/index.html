@@ -57,16 +57,16 @@
 <meta property="og:url" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2017-11-12&#x2F;%E4%BD%BF%E7%94%A8qemu%E8%BF%90%E8%A1%8CLinux-kernel&#x2F;index.html">
 <meta property="og:site_name" content="Coding Spirit">
 <meta property="og:description" content="之前想买块MTK的开发板，结果根本没有卖。。。 树莓派今年又不会出4，于是想用qemu边学边玩。">
-<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;.top&#x2F;&#x2F;a.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;.top&#x2F;&#x2F;b.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;.top&#x2F;&#x2F;c.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;.top&#x2F;&#x2F;d.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2017-11-12&#x2F;%E4%BD%BF%E7%94%A8qemu%E8%BF%90%E8%A1%8CLinux-kernel&#x2F;a.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2017-11-12&#x2F;%E4%BD%BF%E7%94%A8qemu%E8%BF%90%E8%A1%8CLinux-kernel&#x2F;b.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2017-11-12&#x2F;%E4%BD%BF%E7%94%A8qemu%E8%BF%90%E8%A1%8CLinux-kernel&#x2F;c.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2017-11-12&#x2F;%E4%BD%BF%E7%94%A8qemu%E8%BF%90%E8%A1%8CLinux-kernel&#x2F;d.png">
 <meta property="article:published_time" content="2017-11-12T00:40:54.000Z">
 <meta property="article:modified_time" content="2018-11-28T12:01:18.000Z">
 <meta property="article:author" content="Coding Spirit">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;.top&#x2F;&#x2F;a.png">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2017-11-12&#x2F;%E4%BD%BF%E7%94%A8qemu%E8%BF%90%E8%A1%8CLinux-kernel&#x2F;a.png">
 
 <link rel="canonical" href="http://lzqblog.top/2017-11-12/%E4%BD%BF%E7%94%A8qemu%E8%BF%90%E8%A1%8CLinux-kernel/">
 
@@ -297,7 +297,7 @@
         <p>之前想买块MTK的开发板，结果根本没有卖。。。 树莓派今年又不会出4，于是想用qemu边学边玩。</p>
 <a id="more"></a>
 <p>宿主OS：Ubuntu 17.04</p>
-<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>由于某些众所周知的原因，访问一些国外的服务器非常慢，因此推荐使用国内的镜像，我这里用的是阿里的：<br><img src="/.top//a.png" alt><br>换完更新源后，个人习惯装一个vim：</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>由于某些众所周知的原因，访问一些国外的服务器非常慢，因此推荐使用国内的镜像，我这里用的是阿里的：<br><img src="/2017-11-12/%E4%BD%BF%E7%94%A8qemu%E8%BF%90%E8%A1%8CLinux-kernel/a.png" alt><br>换完更新源后，个人习惯装一个vim：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install vim</span><br></pre></td></tr></table></figure>
 <h2 id="安装arm交叉编译链"><a href="#安装arm交叉编译链" class="headerlink" title="安装arm交叉编译链"></a>安装arm交叉编译链</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gcc-arm-linux-gnueabi</span><br></pre></td></tr></table></figure>
 <p>也可以装一个arm-linux-gnueabihf，如果硬件带fpu，可以使用该工具。</p>
@@ -317,7 +317,7 @@
 <h3 id="复制文件到镜像中"><a href="#复制文件到镜像中" class="headerlink" title="复制文件到镜像中"></a>复制文件到镜像中</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir tmpfs</span><br><span class="line">sudo mount -t ext3 a9rootfs.ext3 tmpfs/ -o loop</span><br><span class="line">sudo cp -r rootfs/*  tmpfs/</span><br><span class="line">sudo umount tmpfs</span><br></pre></td></tr></table></figure>
 <h2 id="启动qemu并运行系统"><a href="#启动qemu并运行系统" class="headerlink" title="启动qemu并运行系统"></a>启动qemu并运行系统</h2><p>写一个runOS.sh并运行：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qemu-system-arm -M vexpress-a9 -m 256M -dtb extra_folder/vexpress-v2p-ca9.dtb -kernel extra_folder/zImage -append <span class="string">"root=/dev/mmcblk0 rw"</span> -sd a9rootfs.ext3</span><br></pre></td></tr></table></figure>
-<p><img src="/.top//b.png" alt><br>然后熟悉的企鹅出现了!<br><img src="/.top//c.png" alt><br>拷个hello world试一下:<br><img src="/.top//d.png" alt></p>
+<p><img src="/2017-11-12/%E4%BD%BF%E7%94%A8qemu%E8%BF%90%E8%A1%8CLinux-kernel/b.png" alt><br>然后熟悉的企鹅出现了!<br><img src="/2017-11-12/%E4%BD%BF%E7%94%A8qemu%E8%BF%90%E8%A1%8CLinux-kernel/c.png" alt><br>拷个hello world试一下:<br><img src="/2017-11-12/%E4%BD%BF%E7%94%A8qemu%E8%BF%90%E8%A1%8CLinux-kernel/d.png" alt></p>
 
     </div>
 
@@ -599,8 +599,8 @@
 NexT.utils.loadComments(() => {
   NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
     var gitalk = new Gitalk({
-      clientID: '',
-      clientSecret: '',
+      clientID: '965ca656ae3d59a50b73',
+      clientSecret: '94dbe9c760ce8b778c84481a7fe2f37f548d7375',
       repo: 'blog-gitalk',
       owner: 'codingspirit',
       admin: ['codingspirit'],

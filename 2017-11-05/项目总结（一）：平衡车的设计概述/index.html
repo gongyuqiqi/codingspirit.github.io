@@ -57,14 +57,14 @@
 <meta property="og:url" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2017-11-05&#x2F;%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0&#x2F;index.html">
 <meta property="og:site_name" content="Coding Spirit">
 <meta property="og:description" content="写篇post总结一下当年做平衡车的一些经验。这篇post是概述性质的，详细的软硬件设计以后有时间再写吧。">
-<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;.top&#x2F;&#x2F;MOSH1.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;.top&#x2F;&#x2F;MOSH2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2017-11-05&#x2F;%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0&#x2F;MOSH1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2017-11-05&#x2F;%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0&#x2F;MOSH2.png">
 <meta property="article:published_time" content="2017-11-05T00:43:47.000Z">
 <meta property="article:modified_time" content="2018-11-29T02:18:03.000Z">
 <meta property="article:author" content="Coding Spirit">
 <meta property="article:tag" content="智能车">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;.top&#x2F;&#x2F;MOSH1.png">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2017-11-05&#x2F;%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0&#x2F;MOSH1.png">
 
 <link rel="canonical" href="http://lzqblog.top/2017-11-05/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0/">
 
@@ -300,7 +300,7 @@
 <h3 id="1-电源"><a href="#1-电源" class="headerlink" title="1.电源"></a>1.电源</h3><p>首先稳压电路是一定会有的，我们选用了LM1117，外围电路简单，使用十分方便，可替代的LDO也不少。另外如果使用MOS管自己搭H桥，就需要boost电路了。</p>
 <h3 id="2-主控部分"><a href="#2-主控部分" class="headerlink" title="2.主控部分"></a>2.主控部分</h3><p>这个部分包括MCU最小系统以及各种传感器。对于平衡车而言，陀螺仪、角度传感器和编码器、图像传感器都算是核心传感器，一个用于获取角加速度，一个获取当前角度，一个获取电机转速，最后一个当然是识别赛道啦。除此之外，我们还使用了蓝牙模块，自己写了个上位机，无线调车、实时图传简直不能再爽。</p>
 <h3 id="3-驱动桥（H桥）"><a href="#3-驱动桥（H桥）" class="headerlink" title="3.驱动桥（H桥）"></a>3.驱动桥（H桥）</h3><p>平衡车是有两个电机的，而且两个电机都要求能够正反转，因此需要两个全桥，需要4片BTS7970或者8片mos。大二图方便，使用的是BTS7970，淘宝上一片二三十。。。<br>大三总裁用mos管搭了一个，效果差不多，成本却低了不少。后来我毕设要用到电机控制又自己画了一块，虽然只是双面板并且为了过大电流大面积开窗，但是花点时间优化layout还是可以把板子做得很小。大三的电路图由于硬盘挂了找不到了:( 贴个毕设搭的MOSH Layout图：</p>
-<p><img src="/.top//MOSH1.png" alt="Top" title="Top"><br><img src="/.top//MOSH2.png" alt="Bottom" title="Bottom"></p>
+<p><img src="/2017-11-05/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0/MOSH1.png" alt="Top" title="Top"><br><img src="/2017-11-05/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0/MOSH2.png" alt="Bottom" title="Bottom"></p>
 <p>设计文件挺早的时候就上传了：<br><a href="https://github.com/codingspirit/MOS_H" target="_blank" rel="noopener">Coding Spirit:MOS_H</a></p>
 <h2 id="MCU选型"><a href="#MCU选型" class="headerlink" title="MCU选型"></a>MCU选型</h2><p>大二用的是coldfire，大三用的是K60。Coldfire是freescale自己的架构，当时我们用的mcf52255, 最高80MHz，K60是Cortex-M4，最高100MHz，另外带FPU。<br>就我的个人感觉来说，K60的综合性能是要好于mcf52255的。另外coldfire资料不如k60多，这点对于初学者来说比较关键，因为从准备到参赛只有几个月的时间，从头开始学一款没接触过的架构的MCU会花掉大量时间。但是Coldfire配合Codewarrior有种STM32CUBEMX的感觉，代码生成感觉还不错。</p>
 <h2 id="软件基本架构"><a href="#软件基本架构" class="headerlink" title="软件基本架构"></a>软件基本架构</h2><p>首先贴个代码：<a href="https://github.com/codingspirit/Balance_Car" target="_blank" rel="noopener">Coding Spirit:Balance_Car</a></p>
@@ -588,8 +588,8 @@
 NexT.utils.loadComments(() => {
   NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
     var gitalk = new Gitalk({
-      clientID: '',
-      clientSecret: '',
+      clientID: '965ca656ae3d59a50b73',
+      clientSecret: '94dbe9c760ce8b778c84481a7fe2f37f548d7375',
       repo: 'blog-gitalk',
       owner: 'codingspirit',
       admin: ['codingspirit'],

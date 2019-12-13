@@ -57,14 +57,14 @@
 <meta property="og:url" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2017-12-06&#x2F;%E5%9C%A8Android-Things%E4%B8%8A%E4%BD%BF%E7%94%A8TTS%E5%8F%8A%E4%BD%BF%E7%94%A8Google-Assistant%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98&#x2F;index.html">
 <meta property="og:site_name" content="Coding Spirit">
 <meta property="og:description" content="智能音响有两个重要功能:“说”和“听”。在Android Things上我们可以通过TextToSpeech和Google Assistant来实现上述功能。TTS的实现比较容易，而Google Assistant就比较麻烦了，目前我遇到的问题是Google Assistant能听懂我说什么，却不能给出答案。。还是写个日志记录一下吧。">
-<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;.top&#x2F;&#x2F;1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2017-12-06&#x2F;%E5%9C%A8Android-Things%E4%B8%8A%E4%BD%BF%E7%94%A8TTS%E5%8F%8A%E4%BD%BF%E7%94%A8Google-Assistant%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98&#x2F;1.png">
 <meta property="article:published_time" content="2017-12-06T08:37:03.000Z">
 <meta property="article:modified_time" content="2018-11-28T12:01:18.000Z">
 <meta property="article:author" content="Coding Spirit">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="Android Things">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;.top&#x2F;&#x2F;1.png">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2017-12-06&#x2F;%E5%9C%A8Android-Things%E4%B8%8A%E4%BD%BF%E7%94%A8TTS%E5%8F%8A%E4%BD%BF%E7%94%A8Google-Assistant%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98&#x2F;1.png">
 
 <link rel="canonical" href="http://lzqblog.top/2017-12-06/%E5%9C%A8Android-Things%E4%B8%8A%E4%BD%BF%E7%94%A8TTS%E5%8F%8A%E4%BD%BF%E7%94%A8Google-Assistant%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
 
@@ -299,7 +299,7 @@
 <p>再通过</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (ttsEngine != <span class="keyword">null</span>) &#123;</span><br><span class="line">    ttsEngine.speak(<span class="string">"Hi master. What can I do for you?"</span>, TextToSpeech.QUEUE_ADD, <span class="keyword">null</span>, <span class="string">"UTTERANCE_ID"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>即可实现音频输出。完整的代码已上传到github：<a href="https://github.com/codingspirit/Android_Things_TTS" target="_blank" rel="noopener">Roach</a></p>
-<h2 id="Google-Assistant"><a href="#Google-Assistant" class="headerlink" title="Google Assistant"></a>Google Assistant</h2><p>  要使用Google Assistant，必须要使用Google Assistant API并创建相应的加密凭据。同时，申请的Google账号还要给予app权限以允许访问一些敏感内容。先贴张测试结果图：<br><img src="/.top//1.png" alt><br>在测试中，app似乎成功上传了录音并能正确识别，但是却不能根据问题进行正确的解答，初步怀疑可能还有一些权限没有申请。</p>
+<h2 id="Google-Assistant"><a href="#Google-Assistant" class="headerlink" title="Google Assistant"></a>Google Assistant</h2><p>  要使用Google Assistant，必须要使用Google Assistant API并创建相应的加密凭据。同时，申请的Google账号还要给予app权限以允许访问一些敏感内容。先贴张测试结果图：<br><img src="/2017-12-06/%E5%9C%A8Android-Things%E4%B8%8A%E4%BD%BF%E7%94%A8TTS%E5%8F%8A%E4%BD%BF%E7%94%A8Google-Assistant%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/1.png" alt><br>在测试中，app似乎成功上传了录音并能正确识别，但是却不能根据问题进行正确的解答，初步怀疑可能还有一些权限没有申请。</p>
 
     </div>
 
@@ -582,8 +582,8 @@
 NexT.utils.loadComments(() => {
   NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
     var gitalk = new Gitalk({
-      clientID: '',
-      clientSecret: '',
+      clientID: '965ca656ae3d59a50b73',
+      clientSecret: '94dbe9c760ce8b778c84481a7fe2f37f548d7375',
       repo: 'blog-gitalk',
       owner: 'codingspirit',
       admin: ['codingspirit'],

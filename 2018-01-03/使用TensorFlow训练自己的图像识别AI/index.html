@@ -57,22 +57,22 @@
 <meta property="og:url" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2018-01-03&#x2F;%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%ABAI&#x2F;index.html">
 <meta property="og:site_name" content="Coding Spirit">
 <meta property="og:description" content="摸索了几天，终于用TensorFlow成功训练了一个能够识别三种动漫人物的AI。写篇post记录一下。由于训练是在虚拟机上跑的，没有办法使用显卡，所以这次的训练只用到了CPU。GPU版本的训练下次再写。">
-<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;.top&#x2F;&#x2F;0.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;.top&#x2F;&#x2F;1.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;.top&#x2F;&#x2F;2.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;.top&#x2F;&#x2F;res1.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;.top&#x2F;&#x2F;res2.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;.top&#x2F;&#x2F;res3.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;.top&#x2F;&#x2F;res4.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;.top&#x2F;&#x2F;res5.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;.top&#x2F;&#x2F;res6.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2018-01-03&#x2F;%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%ABAI&#x2F;0.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2018-01-03&#x2F;%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%ABAI&#x2F;1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2018-01-03&#x2F;%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%ABAI&#x2F;2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2018-01-03&#x2F;%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%ABAI&#x2F;res1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2018-01-03&#x2F;%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%ABAI&#x2F;res2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2018-01-03&#x2F;%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%ABAI&#x2F;res3.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2018-01-03&#x2F;%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%ABAI&#x2F;res4.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2018-01-03&#x2F;%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%ABAI&#x2F;res5.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2018-01-03&#x2F;%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%ABAI&#x2F;res6.png">
 <meta property="article:published_time" content="2018-01-03T07:46:10.000Z">
 <meta property="article:modified_time" content="2018-11-28T12:01:18.000Z">
 <meta property="article:author" content="Coding Spirit">
 <meta property="article:tag" content="Machine Learning">
 <meta property="article:tag" content="TensorFlow">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;.top&#x2F;&#x2F;0.png">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2018-01-03&#x2F;%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%ABAI&#x2F;0.png">
 
 <link rel="canonical" href="http://lzqblog.top/2018-01-03/%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%ABAI/">
 
@@ -319,10 +319,10 @@
 <h4 id="什么是Inception模型"><a href="#什么是Inception模型" class="headerlink" title="什么是Inception模型"></a>什么是Inception模型</h4><p>  Inception模型是一种用于图像分类的卷积神经网络模型。这是一个多层、有着极其复杂结构的卷积神经网络。该模型可以识别超过1000种物品，但并不包括我们想要的动漫人物。Github上有提到Inception模型训练是在一台有128GB RAM和8块Tesla K40的电脑上进行的(We targeted a desktop with 128GB of CPU ram connected to 8 NVIDIA Tesla K40 GPU)。如果你想在你的个人电脑上尝试从零开始训练一个这种量级的神经网络，你可能需要数个星期才能完成训练，还有很大的可能性出现run out of GPU memory或run out of CPU memory导致训练失败。在这里我们将尝试使用Tensorflow提供的retrain.py训练整个神经网络的最后一层，即决策层/分类层，而倒数第二层被称为Bottlenecks(瓶颈层)。我们将利用Bottlenecks产生的有效数据，供给最后的决策层/分类层做出最后的分类预测。</p>
 <h4 id="开始训练-1"><a href="#开始训练-1" class="headerlink" title="开始训练"></a>开始训练</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tensorflow/</span><br><span class="line">python tensorflow/tensorflow/examples/image_retraining/retrain.py \</span><br><span class="line">  --bottleneck_dir=/tf_files/bottlenecks \</span><br><span class="line">  --how_many_training_steps 4000 \</span><br><span class="line">  --model_dir=/tf_files/inception \</span><br><span class="line">  --output_graph=/tf_files/cartoon.pb \</span><br><span class="line">  --output_labels=/tf_files/cartoon.txt \</span><br><span class="line">  --image_dir /tf_files/cartoon</span><br></pre></td></tr></table></figure>
 <p>在这里我们设置了bottleneck的输出目录，training_steps，模型位置，pb文件及label输出位置，样本图片位置。一般而言training_steps越多，训练时间越长，效果越好，反之则反。如果模型位置没有需要的模型，该脚本会尝试自动下载。pb文件就是训练完成的模型，label是一个txt文件，里面包含了我们训练完成的模型能识别的对象名称。不出意外的话，几十分钟后训练就可以完成。</p>
-<p><img src="/.top//0.png" alt></p>
+<p><img src="/2018-01-03/%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%ABAI/0.png" alt></p>
 <p>可以看到我们的模型的测试识别准确率达到了95.5%。</p>
 <p>tf_files下生成了我们训练的模型cartoon.pb以及label文件cartoon.txt。打开cartoon.txt可以看到，该模型可以识别的对象有crayon(蜡笔小新)、minions(小黄人)、spongebob(海绵宝宝)三种(就是cartoon文件夹下子文件夹的名字)。我这里生成的pb文件有87.4MB。</p>
-<p><img src="/.top//1.png" alt></p>
+<p><img src="/2018-01-03/%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%ABAI/1.png" alt></p>
 <h2 id="优化与压缩"><a href="#优化与压缩" class="headerlink" title="优化与压缩"></a>优化与压缩</h2><h3 id="为什么要进行优化和压缩"><a href="#为什么要进行优化和压缩" class="headerlink" title="为什么要进行优化和压缩"></a>为什么要进行优化和压缩</h3><p>  对于移动设备(例如智能手机)和嵌入式设备(例如跑Android Things或Linux的设备)来说，这个模型文件太大了。如果你尝试把其打包为apk文件，你可能会得到一个将近100MB的apk，这对用户来说可能体验并不太友好。因此我们需要对该模型进行优化和压缩以减小其体积。<br>如果你尝试直接将该pb文件压缩为zip文件，你会发现压缩文件大小只比原来小了几MB。我尝试使用优化脚本对pb文件进行优化，优化后的压缩效果还不错。</p>
 <h3 id="使用optimize-for-inference优化工具"><a href="#使用optimize-for-inference优化工具" class="headerlink" title="使用optimize_for_inference优化工具"></a>使用optimize_for_inference优化工具</h3><p>  optimize_for_inference脚本将会帮助我们删除当前模型中输入输出之前不需要的节点，并进行一些其他优化以提高运行性能。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">python tensorflow/python/tools/optimize_for_inference.py \</span><br><span class="line">  --input=/tf_files/cartoon.pb \</span><br><span class="line">  --output=/tf_files/optimized_cartoon.pb \</span><br><span class="line">  --input_names=<span class="string">"Mul"</span> \</span><br><span class="line">  --output_names=<span class="string">"final_result"</span></span><br></pre></td></tr></table></figure>
@@ -330,11 +330,11 @@
 <h3 id="使用quantize-graph工具进行进一步优化"><a href="#使用quantize-graph工具进行进一步优化" class="headerlink" title="使用quantize_graph工具进行进一步优化"></a>使用quantize_graph工具进行进一步优化</h3><p>  看来是时候放大招了。我们将使用quantize_graph对模型文件中的权重参数进行四舍五入。这一方式将会降低预测准确率(但是通常只降低1%左右)。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">python tensorflow/tools/quantization/quantize_graph.py \</span><br><span class="line">  --input=/tf_files/optimized_cartoon.pb \</span><br><span class="line">  --output=/tf_files/rounded_cartoon.pb \</span><br><span class="line">  --output_node_names=<span class="string">"final_result"</span> \</span><br><span class="line">  --mode=weights_rounded</span><br></pre></td></tr></table></figure>
 <p>  通常来说，新生成的rounded_cartoon.pb大小并不会发生太大变化，但是当我尝试将其压缩为zip文件时，我得到了一个令人满意的压缩包大小：23.9MB</p>
-<p><img src="/.top//2.png" alt></p>
+<p><img src="/2018-01-03/%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%ABAI/2.png" alt></p>
 <p>  现在如果我们尝试将其作为资源文件打包进apk，可以得到一个小得多的安装包，用户下载的时间大大减少了。</p>
 <h2 id="测试与验证"><a href="#测试与验证" class="headerlink" title="测试与验证"></a>测试与验证</h2><p>  首先我们将测试经过optimize_for_inference优化的optimized_cartoon.pb。为了方便测试，我使用了TensorFlow在Android上的demo app，你可以在Github上找到其源码。要让我们的模型文件能够在这个demo上正常工作，我们需要做一点微小的工作。<br>1.复制optimized_cartoon.pb及cartoon.txt文件至app/src/main/assets<br>2.在ClassifierActivity.java中修改如下部分：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> INPUT_SIZE = <span class="number">299</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> IMAGE_MEAN = <span class="number">128</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> IMAGE_STD = <span class="number">128</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String INPUT_NAME = <span class="string">"Mul"</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String OUTPUT_NAME = <span class="string">"final_result"</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String MODEL_FILE = <span class="string">"file:///android_asset/optimized_cartoon.pb"</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String LABEL_FILE = <span class="string">"file:///android_asset/cartoon.txt"</span>;</span><br></pre></td></tr></table></figure>
-<p>这里我们限制输入图像为299x299, 并更改INPUT_NAME和OUTPUT_NAME。当然还有MODEL_FILE和LABEL_FILE的位置。测试样例我直接用手机拍的，由于限制了输入图像大小为299x299，所以图片质量比较差，但是还是得到了不错的运行结果：<br><img src="/.top//res1.png" alt><br><img src="/.top//res2.png" alt><br><img src="/.top//res3.png" alt><br>再看看经过quantize_graph优化的：<br><img src="/.top//res4.png" alt><br><img src="/.top//res5.png" alt><br><img src="/.top//res6.png" alt></p>
+<p>这里我们限制输入图像为299x299, 并更改INPUT_NAME和OUTPUT_NAME。当然还有MODEL_FILE和LABEL_FILE的位置。测试样例我直接用手机拍的，由于限制了输入图像大小为299x299，所以图片质量比较差，但是还是得到了不错的运行结果：<br><img src="/2018-01-03/%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%ABAI/res1.png" alt><br><img src="/2018-01-03/%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%ABAI/res2.png" alt><br><img src="/2018-01-03/%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%ABAI/res3.png" alt><br>再看看经过quantize_graph优化的：<br><img src="/2018-01-03/%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%ABAI/res4.png" alt><br><img src="/2018-01-03/%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%ABAI/res5.png" alt><br><img src="/2018-01-03/%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%ABAI/res6.png" alt></p>
 <h2 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h2><p>  接下来我们可以尝试进行音频方向的机器学习探索。目前还在研究中，等有了有趣的发现后再写篇post吧。</p>
 
     </div>
@@ -618,8 +618,8 @@
 NexT.utils.loadComments(() => {
   NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
     var gitalk = new Gitalk({
-      clientID: '',
-      clientSecret: '',
+      clientID: '965ca656ae3d59a50b73',
+      clientSecret: '94dbe9c760ce8b778c84481a7fe2f37f548d7375',
       repo: 'blog-gitalk',
       owner: 'codingspirit',
       admin: ['codingspirit'],

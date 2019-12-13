@@ -57,14 +57,14 @@
 <meta property="og:url" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2019-03-22&#x2F;i-MX-8-getting-started-create-your-general-layer&#x2F;index.html">
 <meta property="og:site_name" content="Coding Spirit">
 <meta property="og:description" content="This post will tell you how to create your own general layer with a “hello world” app to be built into your EVK.">
-<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;.top&#x2F;&#x2F;folder_tree.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2019-03-22&#x2F;i-MX-8-getting-started-create-your-general-layer&#x2F;folder_tree.png">
 <meta property="article:published_time" content="2019-03-22T12:21:37.000Z">
 <meta property="article:modified_time" content="2019-03-26T11:11:39.000Z">
 <meta property="article:author" content="Coding Spirit">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="Yocto">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;.top&#x2F;&#x2F;folder_tree.png">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;lzqblog.top&#x2F;2019-03-22&#x2F;i-MX-8-getting-started-create-your-general-layer&#x2F;folder_tree.png">
 
 <link rel="canonical" href="http://lzqblog.top/2019-03-22/i-MX-8-getting-started-create-your-general-layer/">
 
@@ -323,7 +323,7 @@
 <p>25.10.8. Default Linker Hash Style Changed</p>
 <p>The default linker hash style for gcc-cross is now “sysv” in order to catch recipes that are building software without using the OpenEmbedded LDFLAGS. This change could result in seeing some “No GNU_HASH in the elf binary” QA issues when building such recipes. You need to fix these recipes so that they use the expected LDFLAGS. Depending on how the software is built, the build system used by the software (e.g. a Makefile) might need to be patched. However, sometimes making this fix is as simple as adding the following to the recipe:</p>
 <pre><code>TARGET_CC_ARCH += &quot;${LDFLAGS}&quot;</code></pre></blockquote>
-<p>After those steps, you should have a folder like this:<br><img src="/.top//folder_tree.png" alt></p>
+<p>After those steps, you should have a folder like this:<br><img src="/2019-03-22/i-MX-8-getting-started-create-your-general-layer/folder_tree.png" alt></p>
 <h2 id="Add-your-layer-and-build"><a href="#Add-your-layer-and-build" class="headerlink" title="Add your layer and build"></a>Add your layer and build</h2><p>There are two ways to add your layer into build:</p>
 <h3 id="Use-bitbake-layers-add-layer"><a href="#Use-bitbake-layers-add-layer" class="headerlink" title="Use bitbake-layers add-layer"></a>Use <strong>bitbake-layers add-layer</strong></h3><p>Use <strong>bitbake-layers add-layer &lt;layer name&gt;</strong> to add a layer and build it. Before this, you should source <strong>setup-environment</strong>.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ bitbake-layers add-layer meta-alexlayer</span><br><span class="line">$ bitbake example</span><br></pre></td></tr></table></figure>
@@ -616,8 +616,8 @@
 NexT.utils.loadComments(() => {
   NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
     var gitalk = new Gitalk({
-      clientID: '',
-      clientSecret: '',
+      clientID: '965ca656ae3d59a50b73',
+      clientSecret: '94dbe9c760ce8b778c84481a7fe2f37f548d7375',
       repo: 'blog-gitalk',
       owner: 'codingspirit',
       admin: ['codingspirit'],
