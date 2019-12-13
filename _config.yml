@@ -93,7 +93,7 @@ search:
 
 # Sitemap
 sitemap:
-    path: sitemap
+    path: sitemap.xml
 baidusitemap:
     path: baidusitemap.xml
 
@@ -119,8 +119,8 @@ live2d:
     position: left
     width: 150
     height: 300
-    hOffset: 80
-    vOffset: 220
+    #hOffset: 80
+    #vOffset: 220
   mobile:
     show: false
   react:
