@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Under Maintenance</title>
+    <url>/2019-12-13/Under-Maintenance/</url>
+    <content><![CDATA[<p>Website is currently under maintenance since some new features I have enabled recently might cause some performance issues(i.e. loading too slow)…</p>
+]]></content>
+      <categories>
+        <category>随便写写</category>
+      </categories>
+      <tags>
+        <tag>日志</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux USB gadget configfs</title>
     <url>/2019-12-07/Linux-USB-gadget-configfs/</url>
     <content><![CDATA[<p>Using configs we can easily set up usb gadget in user space. You even can make your board as a compound USB device, just by few commands.</p>
@@ -21,7 +33,7 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Create mount point for ffs and start adbd</span></span><br><span class="line">mkdir -p <span class="string">"<span class="variable">$&#123;mount_point&#125;</span>"</span></span><br><span class="line">mount -t functionfs adb <span class="string">"<span class="variable">$&#123;mount_point&#125;</span>"</span> -o uid=0,gid=0</span><br><span class="line">adbd &amp;</span><br></pre></td></tr></table></figure>
 <p>If no extra step is needed, we can directly enable gadget</p>
 <h2 id="Enable-the-gadget"><a href="#Enable-the-gadget" class="headerlink" title="Enable the gadget"></a>Enable the gadget</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Find the available udc</span></span><br><span class="line">udc=$(ls -1 /sys/class/udc/)</span><br><span class="line"><span class="keyword">if</span> [ -z <span class="variable">$udc</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"No UDC driver registered"</span></span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"<span class="variable">$&#123;udc&#125;</span>"</span> &gt; /sys/kernel/config/usb_gadget/g1/UDC</span><br></pre></td></tr></table></figure>
-<h2 id="Compound-USB-Device"><a href="#Compound-USB-Device" class="headerlink" title="Compound USB Device"></a>Compound USB Device</h2><p>To setup a compound USB device, we just need to create several gadget functions and binding then with configuration(s) before enabling the gadget</p>
+<h2 id="Compound-USB-Device"><a href="#Compound-USB-Device" class="headerlink" title="Compound USB Device"></a>Compound USB Device</h2><p>To setup a compound USB device, we just need to create several gadget functions and binding them with configuration(s) before enabling the gadget</p>
 ]]></content>
       <categories>
         <category>编程相关</category>

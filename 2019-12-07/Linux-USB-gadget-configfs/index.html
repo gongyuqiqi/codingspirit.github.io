@@ -11,7 +11,6 @@
   <link rel="mask-icon" href="/assets/img/favicon.ico" color="#222">
   <meta http-equiv="Cache-Control" content="no-transform">
   <meta http-equiv="Cache-Control" content="no-siteapp">
-  <meta name="baidu-site-verification" content="lHwoaFrtYU">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -59,7 +58,7 @@
 <meta property="og:site_name" content="Coding Spirit">
 <meta property="og:description" content="Using configs we can easily set up usb gadget in user space. You even can make your board as a compound USB device, just by few commands.">
 <meta property="article:published_time" content="2019-12-07T03:56:39.000Z">
-<meta property="article:modified_time" content="2019-12-07T07:43:12.414Z">
+<meta property="article:modified_time" content="2019-12-13T13:32:38.416Z">
 <meta property="article:author" content="Coding Spirit">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
@@ -236,10 +235,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2019-12-07 11:56:39 / Modified: 15:43:12" itemprop="dateCreated datePublished" datetime="2019-12-07T11:56:39+08:00">2019-12-07</time>
+              <time title="Created: 2019-12-07 11:56:39" itemprop="dateCreated datePublished" datetime="2019-12-07T11:56:39+08:00">2019-12-07</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-13 21:32:38" itemprop="dateModified" datetime="2019-12-13T21:32:38+08:00">2019-12-13</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -302,7 +307,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create mount point for ffs and start adbd</span></span><br><span class="line">mkdir -p <span class="string">"<span class="variable">$&#123;mount_point&#125;</span>"</span></span><br><span class="line">mount -t functionfs adb <span class="string">"<span class="variable">$&#123;mount_point&#125;</span>"</span> -o uid=0,gid=0</span><br><span class="line">adbd &amp;</span><br></pre></td></tr></table></figure>
 <p>If no extra step is needed, we can directly enable gadget</p>
 <h2 id="Enable-the-gadget"><a href="#Enable-the-gadget" class="headerlink" title="Enable the gadget"></a>Enable the gadget</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Find the available udc</span></span><br><span class="line">udc=$(ls -1 /sys/class/udc/)</span><br><span class="line"><span class="keyword">if</span> [ -z <span class="variable">$udc</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"No UDC driver registered"</span></span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"<span class="variable">$&#123;udc&#125;</span>"</span> &gt; /sys/kernel/config/usb_gadget/g1/UDC</span><br></pre></td></tr></table></figure>
-<h2 id="Compound-USB-Device"><a href="#Compound-USB-Device" class="headerlink" title="Compound USB Device"></a>Compound USB Device</h2><p>To setup a compound USB device, we just need to create several gadget functions and binding then with configuration(s) before enabling the gadget</p>
+<h2 id="Compound-USB-Device"><a href="#Compound-USB-Device" class="headerlink" title="Compound USB Device"></a>Compound USB Device</h2><p>To setup a compound USB device, we just need to create several gadget functions and binding them with configuration(s) before enabling the gadget</p>
 
     </div>
 
@@ -342,7 +347,10 @@
     <a href="/2019-11-30/Yocto-devtool/" rel="prev" title="Yocto devtool">
       <i class="fa fa-chevron-left"></i> Yocto devtool
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2019-12-13/Under-Maintenance/" rel="next" title="Under Maintenance">
+      Under Maintenance <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -419,7 +427,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -581,8 +589,8 @@
 NexT.utils.loadComments(() => {
   NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
     var gitalk = new Gitalk({
-      clientID: '965ca656ae3d59a50b73',
-      clientSecret: '94dbe9c760ce8b778c84481a7fe2f37f548d7375',
+      clientID: '',
+      clientSecret: '',
       repo: 'blog-gitalk',
       owner: 'codingspirit',
       admin: ['codingspirit'],
