@@ -1,0 +1,177 @@
+//Override next/source/css/_schemes/Mist/_header.styl Start
+.header {
+  background: #1C1C1C;
+}
+
+.header-inner {
+  align-items: center;
+  background: #1C1C1C;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  clearfix();
+
+  +mobile() {
+    display: block;
+    padding: 10px;
+    width: auto;
+  }
+}
+
+.site-meta {
+  float: left;
+  line-height: normal;
+  margin-left: -20px;
+
+  +mobile() {
+    margin-left: 10px;
+  }
+
+  .brand {
+    background: none;
+    padding: 2px 1px;
+
+    +mobile() {
+      display: block;
+    }
+  }
+
+  .site-subtitle {
+    color: #FFFFFF;
+  }
+
+  .site-title {
+    font-weight: bolder;
+    color: #FFFFFF
+  }
+}
+
+.logo-line-before, .logo-line-after {
+  display: block;
+  margin: 0 auto;
+  overflow: hidden;
+  width: 75%;
+
+  +mobile() {
+    display: none;
+  }
+
+  i {
+    background: #F8F8FF;
+    display: block;
+    height: 2px;
+    position: relative;
+
+    +mobile() {
+      height: 3px;
+    }
+  }
+}
+
+.site-subtitle {
+  display: block;
+}
+//Override next/source/css/_schemes/Mist/_header.styl End
+
+//Override next/source/css/_schemes/Mist/_menu.styl Start
+.menu {
+  margin: 0;
+
+  +mobile() {
+    margin: 10px 0;
+    padding: 0;
+  }
+
+  .menu-item {
+    margin: 0;
+
+    +mobile() {
+      display: block;
+      margin-top: 5px;
+    }
+
+    a, span.exturl {
+      border-radius: 2px;
+      color: #FFFFFF;
+      background: none;
+      padding: 0 10px;
+      transition-property: background,color;
+
+      +mobile() {
+        text-align: left;
+      }
+
+      &:hover {
+        background: #FFFFFF;
+        color: #000000;
+      }
+    }
+
+    .badge {
+      background: white;
+      border-radius: 10px;
+      color: $black-light;
+      padding: 1px 4px;
+      text-shadow: 1px 1px 0 rgba(0, 0, 0, .1);
+    }
+  }
+}
+//Override next/source/css/_schemes/Mist/_menu.styl End
+
+//Override next/source/css/_common/outline/header/github-banner.styl Start
+.github-corner {
+  svg {
+    border: 0;
+    color: white;
+    fill: blue;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: $zindex-0;
+  }
+}
+//Override next/source/css/_common/outline/header/github-banner.styl End
+
+//Background
+body {
+  background: url(/assets/img/photo-1504326008149-71dbc00aa3ae.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+}
+
+//Override next/source/css/_schemes/Mist/_layout.styl Start
+.main-inner {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border: 10px solid rgba(200, 200, 200, 0.3);
+  padding: 30px;
+  background: #F8F8FF;
+  opacity: 0.95;
+  border-radius: 30px;
+  width: 1000px;
+
+  +mobile() {
+    width: auto;
+    border: none;
+  }
+}
+
+.footer {
+  background: #1C1C1C;
+  color: $grey-dim;
+  opacity: 0.8;
+  padding: 10px 0;
+}
+
+.footer-inner {
+  text-align: left;
+  color: #FFFFFF
+
+  +mobile() {
+    text-align: center;
+    width: auto;
+  }
+}
+//Override next/source/css/_schemes/Mist/_layout.styl End
