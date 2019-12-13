@@ -67,4 +67,4 @@ fi
 echo "${udc}" > /sys/kernel/config/usb_gadget/g1/UDC
 ```
 ## Compound USB Device
-To setup a compound USB device, we just need to create several gadget functions and binding then with configuration(s) before enabling the gadget
+To setup a compound USB device, we just need to create several gadget functions and binding them with configuration(s) before enabling the gadget
