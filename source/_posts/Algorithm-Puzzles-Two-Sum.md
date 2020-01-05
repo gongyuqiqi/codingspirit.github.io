@@ -57,10 +57,7 @@ public:
 
 It's really ez! But time complexity will be **O(n^2)** since there are 2 for-loops inside. There must be a better way, I can't submit with this solution!
 
-<div  align="center"> 
 ![](Algorithm-Puzzles-Two-Sum/think.jpg)
-</div>
-
 
 So what kind of search method is better? Maybe hash table?
 
