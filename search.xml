@@ -1,6 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Algorithm Puzzles: Regular Expression Matching</title>
+    <url>/2020-01-05/Algorithm-Puzzles-Regular-Expression-Matching/</url>
+    <content><![CDATA[<p><del>每天</del> <del>每周</del> 偶尔一道算法题： 正则表达式匹配</p>
+<a id="more"></a>
+
+<h2 id="Puzzle"><a href="#Puzzle" class="headerlink" title="Puzzle"></a>Puzzle</h2><p>Puzzle from <a href="https://leetcode.com" target="_blank" rel="noopener">leetcode</a>:</p>
+<p>Given an input string (s) and a pattern (p), implement regular expression matching with support for ‘.’ and ‘*’.</p>
+<p>‘.’ Matches any single character.<br><br>‘*’ Matches zero or more of the preceding element.<br><br>The matching should cover the entire input string (not partial).</p>
+<p>Note:</p>
+<p>s could be empty and contains only lowercase letters a-z.<br><br>p could be empty and contains only lowercase letters a-z, and characters like . or *.</p>
+<p><a href="http://lzqblog.top">Super_Link</a></p>
+<h2 id="Solving"><a href="#Solving" class="headerlink" title="Solving"></a>Solving</h2><p>其实一开始我是打算用c++自带的正则表达式库的，敲完<code>#include &lt;regex&gt;</code>后觉得这样不太好，毕竟是在做算法题</p>
+<p><img src="/2020-01-05/Algorithm-Puzzles-Regular-Expression-Matching/Onn.png" alt></p>
+<p>那就暴力流来一波！首先考虑没有通配符的情况下, 比较完一位再比较下一位，很自然地想到递归：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isMatch</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span>&amp; s, <span class="keyword">const</span> <span class="built_in">string</span>&amp; p)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (p.empty()) &#123;</span><br><span class="line">            <span class="keyword">return</span> s.empty();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (s[<span class="number">0</span>] == p[<span class="number">0</span>]) &amp;&amp; isMatch(s.substr(<span class="number">1</span>), p.substr(<span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>加上通配符<strong>“.”</strong>的情况也比较容易，只需要检查一下字符串在该位有字符即可：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isMatch</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span>&amp; s, <span class="keyword">const</span> <span class="built_in">string</span>&amp; p)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (p.empty()) &#123;</span><br><span class="line">            <span class="keyword">return</span> s.empty();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">bool</span> currentMatch = (s[<span class="number">0</span>] == p[<span class="number">0</span>]) || (p[<span class="number">0</span>] == <span class="string">'.'</span> &amp;&amp; !s.empty());</span><br><span class="line">        <span class="keyword">return</span> currentMatch &amp;&amp; isMatch(s.substr(<span class="number">1</span>), p.substr(<span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>然后是通配符<strong>“*“</strong>,这个有点麻烦需要去搜字符串后面几位，匹配0次的情况即<code>return isMatch(s, p.substr(2))</code>，直接跳过当前字符后后面的”*”, 匹配1次的情况即<code>return (currentMatch &amp;&amp; isMatch(s.substr(1), p))</code>, 把待匹配字符串后移一位，然后继续递归：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isMatch</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span>&amp; s, <span class="keyword">const</span> <span class="built_in">string</span>&amp; p)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (p.empty()) &#123;</span><br><span class="line">            <span class="keyword">return</span> s.empty();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">bool</span> currentMatch = (s[<span class="number">0</span>] == p[<span class="number">0</span>]) || (p[<span class="number">0</span>] == <span class="string">'.'</span> &amp;&amp; !s.empty());</span><br><span class="line">        <span class="keyword">if</span> (p[<span class="number">1</span>] == <span class="string">'*'</span> &amp;&amp; p.length() &gt;= <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> isMatch(s, p.substr(<span class="number">2</span>)) ||</span><br><span class="line">                   (currentMatch &amp;&amp; isMatch(s.substr(<span class="number">1</span>), p));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> currentMatch &amp;&amp; isMatch(s.substr(<span class="number">1</span>), p.substr(<span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>试了几个测试例，感觉还行哈~~</p>
+<p><img src="/2020-01-05/Algorithm-Puzzles-Regular-Expression-Matching/baoli.jpg" alt></p>
+<p>然后提交完结果出来了：</p>
+<p><img src="/2020-01-05/Algorithm-Puzzles-Regular-Expression-Matching/s1.png" alt></p>
+<p>看来我还是too naive…</p>
+<p><img src="/2020-01-05/Algorithm-Puzzles-Regular-Expression-Matching/meijianguo.jpeg" alt></p>
+<p>看了下提示，大意是用动态规划，先写状态转移方程:<br>定义dp[i][j] 在 s[0,i-1]和p[0,j-1]匹配时为正，反之为假</p>
+<ul>
+<li>当没有通配符<strong>*</strong>时：dp[i][j] = dp[i-1][j-1] &amp;&amp; (s[i-1] == p[j-1])</li>
+<li>当有通配符<strong>*</strong>时:<ul>
+<li>重复0次：dp[i][j] = dp[i][j-2]</li>
+<li>重复1次：dp[i][j] = dp[i-1][j] &amp;&amp; (s[i-1] == p[j-2])</li>
+</ul>
+</li>
+</ul>
+<p>贴一下代码(这里优化了一下，照着上面的写空间复杂度会到O(i*j), 下面的为O(N))</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isMatch</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span>&amp; s, <span class="keyword">const</span> <span class="built_in">string</span>&amp; p)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = s.length(), n = p.length();</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; dp(n + <span class="number">1</span>, <span class="literal">false</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= m; i++) &#123;</span><br><span class="line">            <span class="keyword">bool</span> pre = dp[<span class="number">0</span>];</span><br><span class="line">            dp[<span class="number">0</span>] = !i;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">                <span class="keyword">bool</span> temp = dp[j];</span><br><span class="line">                <span class="keyword">if</span> (p[j - <span class="number">1</span>] == <span class="string">'*'</span>) &#123;</span><br><span class="line">                    dp[j] = dp[j - <span class="number">2</span>] || (i &amp;&amp; dp[j] &amp;&amp; (s[i - <span class="number">1</span>] == p[j - <span class="number">2</span>] || p[j - <span class="number">2</span>] == <span class="string">'.'</span>));</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    dp[j] = i &amp;&amp; pre &amp;&amp; (s[i - <span class="number">1</span>] == p[j - <span class="number">1</span>] || p[j - <span class="number">1</span>] == <span class="string">'.'</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                pre = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020-01-05/Algorithm-Puzzles-Regular-Expression-Matching/s2.png" alt></p>
+]]></content>
+      <categories>
+        <category>算法题解</category>
+      </categories>
+      <tags>
+        <tag>Algorithm</tag>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Yocto rtl8811 wifi adapter bring up</title>
     <url>/2019-12-21/Yocto-rtl8811-wifi-adapter-bring-up/</url>
     <content><![CDATA[<p>Brief notes about bring up rtl8811 and wlan0 on STM32MP1</p>
@@ -768,11 +817,7 @@
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; twoSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">const</span> <span class="keyword">auto</span>&amp; a : nums)&#123;</span><br><span class="line">            <span class="keyword">auto</span> tryToFind = target - a;</span><br><span class="line">            <span class="keyword">for</span>(...)</span><br><span class="line">                <span class="comment">//if tryToFind exist in nums</span></span><br><span class="line">                <span class="comment">//return</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <p>It’s really ez! But time complexity will be <strong>O(n^2)</strong> since there are 2 for-loops inside. There must be a better way, I can’t submit with this solution!</p>
-<div align="center"> 
-![](Algorithm-Puzzles-Two-Sum/think.jpg)
-</div>
-
-
+<p><img src="/2019-07-11/Algorithm-Puzzles-Two-Sum/think.jpg" alt></p>
 <p>So what kind of search method is better? Maybe hash table?</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; twoSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; <span class="built_in">map</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">const</span> <span class="keyword">auto</span>&amp; a : nums)&#123;</span><br><span class="line">            <span class="built_in">map</span>.insert(&#123;a,i&#125;);</span><br><span class="line">            <span class="keyword">auto</span> res = <span class="built_in">map</span>.find(target-a);</span><br><span class="line">            <span class="keyword">if</span>(res != <span class="built_in">map</span>.end())&#123;</span><br><span class="line">                <span class="keyword">if</span>(i != res-&gt;second)</span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(&#123;i, res-&gt;second&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="built_in">std</span>::invalid_argument(<span class="string">""</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>Bravo! Time complexity is <strong>O(n)</strong> now!(but we used more space)<br>results:<br><img src="/2019-07-11/Algorithm-Puzzles-Two-Sum/s1.png" alt><br>What? Only better than 88.56%? OK it still can get improvements by replacing for-each with for-loop(But why I choose for-each at the first time…)</p>
@@ -1374,8 +1419,8 @@ Set <strong>MACHINE</strong> to other variable if you are not using i.MX8 Mini E
         <category>编程相关</category>
       </categories>
       <tags>
-        <tag>C++</tag>
         <tag>Linux</tag>
+        <tag>C++</tag>
       </tags>
   </entry>
   <entry>
@@ -1750,8 +1795,8 @@ cond(yes,down)->e</textarea><textarea id="flowchart-0-options" style="display: n
         <category>编程相关</category>
       </categories>
       <tags>
-        <tag>C++</tag>
         <tag>Linux</tag>
+        <tag>C++</tag>
         <tag>gPRC</tag>
       </tags>
   </entry>
