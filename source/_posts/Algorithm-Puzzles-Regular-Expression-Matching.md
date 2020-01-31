@@ -24,8 +24,6 @@ Note:
 s could be empty and contains only lowercase letters a-z.<br>
 p could be empty and contains only lowercase letters a-z, and characters like . or *.
 
-[Super_Link](http://lzqblog.top)
-
 ## Solving
 其实一开始我是打算用c++自带的正则表达式库的，敲完`#include <regex>`后觉得这样不太好，毕竟是在做算法题
 
