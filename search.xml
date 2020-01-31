@@ -85,7 +85,6 @@
 <p>‘.’ Matches any single character.<br><br>‘*’ Matches zero or more of the preceding element.<br><br>The matching should cover the entire input string (not partial).</p>
 <p>Note:</p>
 <p>s could be empty and contains only lowercase letters a-z.<br><br>p could be empty and contains only lowercase letters a-z, and characters like . or *.</p>
-<p><a href="http://lzqblog.top">Super_Link</a></p>
 <h2 id="Solving"><a href="#Solving" class="headerlink" title="Solving"></a>Solving</h2><p>其实一开始我是打算用c++自带的正则表达式库的，敲完<code>#include &lt;regex&gt;</code>后觉得这样不太好，毕竟是在做算法题</p>
 <p><img src="/2020-01-05/Algorithm-Puzzles-Regular-Expression-Matching/Onn.png" alt></p>
 <p>那就暴力流来一波！首先考虑没有通配符的情况下, 比较完一位再比较下一位，很自然地想到递归：</p>
@@ -1495,6 +1494,42 @@ Set <strong>MACHINE</strong> to other variable if you are not using i.MX8 Mini E
       <tags>
         <tag>Linux</tag>
         <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>个人博客搭建简明教程(特供版)</title>
+    <url>/2019-01-26/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B-%E7%89%B9%E4%BE%9B%E7%89%88/</url>
+    <content><![CDATA[<p>Prepared by Coding Spirit, with love 💗</p>
+<a id="more"></a>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章适用于某个小可爱了解<strong>Windows</strong>下个人博客的搭建流程。</p>
+<h2 id="工具准备"><a href="#工具准备" class="headerlink" title="工具准备"></a>工具准备</h2><h3 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h3><p><strong>Git</strong>可能是目前这个星球上最多人用的分布式版本控制系统。我们的博客源码会通过Git发布到GitHub或者其他第三方托管平台上。 有了版本控制系统，我们还可以很轻松地<strong>备份,追踪改动,回滚</strong>代码和文档(当然还有很多其他用处啦)。</p>
+<h4 id="下载Git"><a href="#下载Git" class="headerlink" title="下载Git"></a>下载Git</h4><p><a href="https://git-scm.com/download/" target="_blank" rel="noopener">Git下载</a> 记得挂VPN不然下载可能有点慢</p>
+<h4 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h4><p>可以使用默认安装选项一路next过去~ 当然也可以根据个人需求做出调整~</p>
+<h4 id="验证安装"><a href="#验证安装" class="headerlink" title="验证安装"></a>验证安装</h4><p>安装完成后在开始菜单搜索Git应该会出现Git bash:<br><img src="/2019-01-26/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B-%E7%89%B9%E4%BE%9B%E7%89%88/git-bash-check.png" alt></p>
+<p>运行Git bash, 输入命令<code>git --version</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git --version</span><br><span class="line">git version 2.25.0.windows.1</span><br></pre></td></tr></table></figure>
+<h4 id="配置Git"><a href="#配置Git" class="headerlink" title="配置Git"></a>配置Git</h4><p>下面的操作都在Git bash里进行。</p>
+<h5 id="全局配置用户名和邮箱"><a href="#全局配置用户名和邮箱" class="headerlink" title="全局配置用户名和邮箱"></a>全局配置用户名和邮箱</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;Alex.Li&quot;</span><br><span class="line">git config --global user.email &quot;Alex.Li@xxxx.com&quot;</span><br></pre></td></tr></table></figure>
+<h5 id="生成SSH密钥"><a href="#生成SSH密钥" class="headerlink" title="生成SSH密钥"></a>生成SSH密钥</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;Alex.Li@xxxx.com&quot;</span><br></pre></td></tr></table></figure>
+<p>注意<code>-C</code>后面是之前配置的邮箱。输入后会有几个确认，直接按回车就行。<br>生成完之后可以使用<code>cat .ssh/id_rsa.pub</code>检查一下。</p>
+<h5 id="添加SSH密钥到Github"><a href="#添加SSH密钥到Github" class="headerlink" title="添加SSH密钥到Github"></a>添加SSH密钥到Github</h5><p>首先登陆<a href="https://github.com" target="_blank" rel="noopener">Github</a>, 然后跳转到GitHub设置:</p>
+<p><img src="/2019-01-26/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B-%E7%89%B9%E4%BE%9B%E7%89%88/github.png" alt></p>
+<p>然后添加SSH key:<br><img src="/2019-01-26/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B-%E7%89%B9%E4%BE%9B%E7%89%88/github-ssh.png" alt><br>复制刚才<code>cat .ssh/id_rsa.pub</code>的输出到这里:<br><img src="/2019-01-26/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B-%E7%89%B9%E4%BE%9B%E7%89%88/add-ssh.png" alt><br>然后点击<strong>Add SSH Key</strong>，再输入密码确认授权就可以了</p>
+<h5 id="测试SSH-Key"><a href="#测试SSH-Key" class="headerlink" title="测试SSH Key"></a>测试SSH Key</h5><p>在Git bash中输入命令<code>ssh -T git@github.com</code>:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br><span class="line">The authenticity of host &#39;github.com (52.192.72.89)&#39; can&#39;t be established.</span><br><span class="line">RSA key fingerprint is SHA256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.</span><br><span class="line">Are you sure you want to continue connecting (yes&#x2F;no&#x2F;[fingerprint])? yes</span><br><span class="line">Warning: Permanently added &#39;github.com,52.192.72.89&#39; (RSA) to the list of known hosts.</span><br><span class="line">Hi codingspirit! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
+<p>当出现上面的输出，SSH密钥添加就完成啦。</p>
+<h3 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h3><p><strong>Node.js</strong> 是一个被广泛使用的JavaScript运行环境。<strong>Node.js</strong>自带的包管理(npm)可以帮助配置安装博客需要的各种js. </p>
+<h4 id="下载Node-js"><a href="#下载Node-js" class="headerlink" title="下载Node.js"></a>下载Node.js</h4><p><a href="https://nodejs.org/dist/v12.14.1/node-v12.14.1-x64.msi" target="_blank" rel="noopener">Node.js 下载</a> 记得挂VPN不然下载可能有点慢</p>
+<h4 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h4><p>注意不要改动默认安装地址</p>
+<h4 id="验证安装-1"><a href="#验证安装-1" class="headerlink" title="验证安装"></a>验证安装</h4><p>安装完成后，使用<code>Windows+R</code>启动cmd:<br><img src="/2019-01-26/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B-%E7%89%B9%E4%BE%9B%E7%89%88/cmd.png" alt></p>
+<p>输入命令<code>node -v</code>和<code>npm -v</code>:<br><img src="/2019-01-26/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B-%E7%89%B9%E4%BE%9B%E7%89%88/node-npm-version.png" alt></p>
+<p>未完待续…</p>
+]]></content>
+      <categories>
+        <category>随便写写</category>
+      </categories>
+      <tags>
+        <tag>日志</tag>
       </tags>
   </entry>
   <entry>
