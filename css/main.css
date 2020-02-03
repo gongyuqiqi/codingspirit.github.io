@@ -1264,7 +1264,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ff06b9;
+  background: #5358d9;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2783,7 +2783,7 @@ hr {
   z-index: 1000;
 }
 body {
-  background: url("https://s2.ax1x.com/2019/12/19/QqL2lj.jpg");
+  background: url("https://blog-image-host.oss-cn-shanghai.aliyuncs.com/lzqblog/photo-1504326008149-71dbc00aa3ae.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
