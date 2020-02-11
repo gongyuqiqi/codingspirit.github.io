@@ -51,21 +51,20 @@
   };
 </script>
 
-  <meta name="description" content="前段时间尝试在树莓派上使用Google Assistant, 系统能够捕捉音频并识别，使用USB声卡也能正常工作，但使用3.5mm jack时没有音频输出。经过摸索终于有输出了！写篇post记录一下关键步骤吧！">
+  <meta name="description" content="It specifies that a member field has the smallest possible alignment. That is, one byte for a variable field, and one bit for a bitfield, unless you specify a larger value with the aligned attribute.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在树莓派上使用Google Assistant">
-<meta property="og:url" content="https:&#x2F;&#x2F;lzqblog.top&#x2F;2017-12-28&#x2F;%E5%9C%A8%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BD%BF%E7%94%A8Google-Assistant&#x2F;index.html">
+<meta property="og:title" content="GCC: __attribute__ ((__packed__))">
+<meta property="og:url" content="https:&#x2F;&#x2F;lzqblog.top&#x2F;2020-02-11&#x2F;GCC-attribute-packed&#x2F;index.html">
 <meta property="og:site_name" content="Coding Spirit">
-<meta property="og:description" content="前段时间尝试在树莓派上使用Google Assistant, 系统能够捕捉音频并识别，使用USB声卡也能正常工作，但使用3.5mm jack时没有音频输出。经过摸索终于有输出了！写篇post记录一下关键步骤吧！">
-<meta property="article:published_time" content="2017-12-28T08:21:13.000Z">
-<meta property="article:modified_time" content="2018-11-20T11:54:50.000Z">
+<meta property="og:description" content="It specifies that a member field has the smallest possible alignment. That is, one byte for a variable field, and one bit for a bitfield, unless you specify a larger value with the aligned attribute.">
+<meta property="article:published_time" content="2020-02-11T13:28:07.000Z">
+<meta property="article:modified_time" content="2020-02-11T13:59:40.074Z">
 <meta property="article:author" content="Coding Spirit">
-<meta property="article:tag" content="Java">
-<meta property="article:tag" content="Raspberry Pi">
-<meta property="article:tag" content="Android Things">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="C">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://lzqblog.top/2017-12-28/%E5%9C%A8%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BD%BF%E7%94%A8Google-Assistant/">
+<link rel="canonical" href="https://lzqblog.top/2020-02-11/GCC-attribute-packed/">
 
 
 <script id="page-configurations">
@@ -77,7 +76,7 @@
   };
 </script>
 
-  <title>在树莓派上使用Google Assistant | Coding Spirit</title>
+  <title>GCC: __attribute__ ((__packed__)) | Coding Spirit</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154617667-1"></script>
     <script>
@@ -224,7 +223,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://lzqblog.top/2017-12-28/%E5%9C%A8%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BD%BF%E7%94%A8Google-Assistant/">
+    <link itemprop="mainEntityOfPage" href="https://lzqblog.top/2020-02-11/GCC-attribute-packed/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/assets/img/coding_spirit.jpg">
@@ -237,7 +236,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          在树莓派上使用Google Assistant
+          GCC: __attribute__ ((__packed__))
         </h1>
 
         <div class="post-meta">
@@ -246,16 +245,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2017-12-28 16:21:13" itemprop="dateCreated datePublished" datetime="2017-12-28T16:21:13+08:00">2017-12-28</time>
+              <time title="Created: 2020-02-11 21:28:07 / Modified: 21:59:40" itemprop="dateCreated datePublished" datetime="2020-02-11T21:28:07+08:00">2020-02-11</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2018-11-20 19:54:50" itemprop="dateModified" datetime="2018-11-20T19:54:50+08:00">2018-11-20</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -281,7 +274,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>788</span>
+              <span>1k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -300,13 +293,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>前段时间尝试在树莓派上使用Google Assistant, 系统能够捕捉音频并识别，使用USB声卡也能正常工作，但使用3.5mm jack时没有音频输出。经过摸索终于有输出了！写篇post记录一下关键步骤吧！</p>
+        <blockquote>
+<p>It specifies that a member field has the smallest possible alignment. That is, one byte for a variable field, and one bit for a bitfield, unless you specify a larger value with the aligned attribute.</p>
+</blockquote>
 <a id="more"></a>
-<p>  首先配置输入输出设备：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">audioInputDevice = findAudioDevice(AudioManager.GET_DEVICES_INPUTS, AudioDeviceInfo.TYPE_USB_DEVICE);</span><br><span class="line">audioOutputDevice = findAudioDevice(AudioManager.GET_DEVICES_OUTPUTS, AudioDeviceInfo.TYPE_BUILTIN_SPEAKER);</span><br></pre></td></tr></table></figure>
-<p>此处TYPE_BUILTIN_SPEAKER即为3.5mm输出口。之前尝试TYPE_AUX_LINE、TYPE_LINE_ANALOG、TYPE_WIRED_HEADPHONES等全都不能发现设备返回null;<br>  然后生成凭据：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    userCredentials =</span><br><span class="line">            EmbeddedAssistant.generateCredentials(<span class="keyword">this</span>, R.raw.credentials);</span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException | JSONException e) &#123;</span><br><span class="line">    Log.e(TAG, <span class="string">"error getting user credentials"</span>, e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>  最后使用mEmbeddedAssistant = new EmbeddedAssistant.Builder(), 绑定完RequestCallback、ConversationCallback、凭据、初始音量、采样率、输入输出设备就可以啦！<br>  现在的sample还有点蠢，不能使用HotWord唤醒。而且在没有前置语言处理模块的情况下，识别稍微有点慢。</p>
+
+<h2 id="Data-alignment-and-data-structure-padding"><a href="#Data-alignment-and-data-structure-padding" class="headerlink" title="Data alignment and data structure padding"></a>Data alignment and data structure padding</h2><p>GCC will enable structure padding by default, i.e. we have a structure like this:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">test_struct</span> &#123;</span></span><br><span class="line">    <span class="keyword">char</span> a;</span><br><span class="line">    <span class="keyword">char</span> b;</span><br><span class="line">    <span class="keyword">int</span> c;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">test_struct</span> <span class="title">test_data</span>;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>sizeof(test_data)</code> will be <span style="color:red">8</span> due to structure padded to to 4-byte alignment: 1(char a) + 1(char b) + <span style="color:red"><strong>2(added)</strong></span>  + 4(int c).</p>
+<h2 id="attribute-packed"><a href="#attribute-packed" class="headerlink" title="attribute ((packed))"></a><strong>attribute</strong> ((<strong>packed</strong>))</h2><p>GCC provides us a way to disable structure padding, i.e. we have a structure like this:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">test_struct</span> &#123;</span></span><br><span class="line">    <span class="keyword">char</span> a;</span><br><span class="line">    <span class="keyword">char</span> b;</span><br><span class="line">    <span class="keyword">int</span> c;</span><br><span class="line">&#125; __attribute__((__packed__));</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">test_struct</span> <span class="title">test_data</span>;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>sizeof(test_data)</code> will be <span style="color:red">6</span>: 1(char a) + 1(char b) + 4(int c). With this some memory can be saved.</p>
+<p>We also can use <code>__attribute__((packed, aligned(X)))</code> to specify padding size(X should be powers of 2):</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">test_struct</span> &#123;</span></span><br><span class="line">    <span class="keyword">char</span> a;</span><br><span class="line">    <span class="keyword">char</span> b;</span><br><span class="line">    <span class="keyword">int</span> c;</span><br><span class="line">    <span class="keyword">char</span> d;</span><br><span class="line">&#125; __attribute__((packed, aligned(<span class="number">2</span>)));</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">test_struct</span> <span class="title">test_data</span>;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>sizeof(test_data)</code> will be <span style="color:red">8</span>: 1(char a) + 1(char b) + 4(int c) + 1(char d) + <span style="color:red"><strong>1(added)</strong></span></p>
 
     </div>
 
@@ -322,7 +325,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="https://lzqblog.top/2017-12-28/%E5%9C%A8%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BD%BF%E7%94%A8Google-Assistant/" title="在树莓派上使用Google Assistant">https://lzqblog.top/2017-12-28/在树莓派上使用Google-Assistant/</a>
+    <a href="https://lzqblog.top/2020-02-11/GCC-attribute-packed/" title="GCC: __attribute__ ((__packed__))">https://lzqblog.top/2020-02-11/GCC-attribute-packed/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -334,9 +337,8 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
-              <a href="/tags/Raspberry-Pi/" rel="tag"><i class="fa fa-tag"></i> Raspberry Pi</a>
-              <a href="/tags/Android-Things/" rel="tag"><i class="fa fa-tag"></i> Android Things</a>
+              <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
+              <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C</a>
           </div>
 
         
@@ -345,13 +347,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2017-12-06/%E5%9C%A8Android-Things%E4%B8%8A%E4%BD%BF%E7%94%A8TTS%E5%8F%8A%E4%BD%BF%E7%94%A8Google-Assistant%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" rel="prev" title="在Android Things上使用TTS及使用Google Assistant遇到的问题">
-      <i class="fa fa-chevron-left"></i> 在Android Things上使用TTS及使用Google Assistant遇到的问题
+    <a href="/2020-02-07/PyQt5-Getting-Started/" rel="prev" title="PyQt5 Getting Started">
+      <i class="fa fa-chevron-left"></i> PyQt5 Getting Started
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2018-01-03/%E4%BD%BF%E7%94%A8Gparted%E6%89%A9%E5%B1%95%E5%88%86%E5%8C%BA/" rel="next" title="使用Gparted扩展分区">
-      使用Gparted扩展分区 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -412,6 +411,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-alignment-and-data-structure-padding"><span class="nav-number">1.</span> <span class="nav-text">Data alignment and data structure padding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#attribute-packed"><span class="nav-number">2.</span> <span class="nav-text">attribute ((packed))</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -594,7 +594,7 @@ NexT.utils.loadComments(() => {
       repo: 'blog-gitalk',
       owner: 'codingspirit',
       admin: ['codingspirit'],
-      id: 'e5e9e4d12638e1c73a452b80335b0182',
+      id: 'b7c21a9f887847de648ddb7d379b37ac',
         language: '',
       distractionFreeMode: 'true'
     });

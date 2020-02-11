@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>GCC: __attribute__ ((__packed__))</title>
+    <url>/2020-02-11/GCC-attribute-packed/</url>
+    <content><![CDATA[<blockquote>
+<p>It specifies that a member field has the smallest possible alignment. That is, one byte for a variable field, and one bit for a bitfield, unless you specify a larger value with the aligned attribute.</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="Data-alignment-and-data-structure-padding"><a href="#Data-alignment-and-data-structure-padding" class="headerlink" title="Data alignment and data structure padding"></a>Data alignment and data structure padding</h2><p>GCC will enable structure padding by default, i.e. we have a structure like this:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">test_struct</span> &#123;</span></span><br><span class="line">    <span class="keyword">char</span> a;</span><br><span class="line">    <span class="keyword">char</span> b;</span><br><span class="line">    <span class="keyword">int</span> c;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">test_struct</span> <span class="title">test_data</span>;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>sizeof(test_data)</code> will be <span style="color:red">8</span> due to structure padded to to 4-byte alignment: 1(char a) + 1(char b) + <span style="color:red"><strong>2(added)</strong></span>  + 4(int c).</p>
+<h2 id="attribute-packed"><a href="#attribute-packed" class="headerlink" title="attribute ((packed))"></a><strong>attribute</strong> ((<strong>packed</strong>))</h2><p>GCC provides us a way to disable structure padding, i.e. we have a structure like this:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">test_struct</span> &#123;</span></span><br><span class="line">    <span class="keyword">char</span> a;</span><br><span class="line">    <span class="keyword">char</span> b;</span><br><span class="line">    <span class="keyword">int</span> c;</span><br><span class="line">&#125; __attribute__((__packed__));</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">test_struct</span> <span class="title">test_data</span>;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>sizeof(test_data)</code> will be <span style="color:red">6</span>: 1(char a) + 1(char b) + 4(int c). With this some memory can be saved.</p>
+<p>We also can use <code>__attribute__((packed, aligned(X)))</code> to specify padding size(X should be powers of 2):</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">test_struct</span> &#123;</span></span><br><span class="line">    <span class="keyword">char</span> a;</span><br><span class="line">    <span class="keyword">char</span> b;</span><br><span class="line">    <span class="keyword">int</span> c;</span><br><span class="line">    <span class="keyword">char</span> d;</span><br><span class="line">&#125; __attribute__((packed, aligned(<span class="number">2</span>)));</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">test_struct</span> <span class="title">test_data</span>;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>sizeof(test_data)</code> will be <span style="color:red">8</span>: 1(char a) + 1(char b) + 4(int c) + 1(char d) + <span style="color:red"><strong>1(added)</strong></span></p>
+]]></content>
+      <categories>
+        <category>编程相关</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PyQt5 Getting Started</title>
     <url>/2020-02-07/PyQt5-Getting-Started/</url>
     <content><![CDATA[<p>Recently I start to evaluate the feasibility of porting one old C++ Qt4 project to PyQt5 since Python is more friendly for some engineers.</p>
