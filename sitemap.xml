@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://lzqblog.top/2020-02-16/STM32MP1-Boot-kernel-via-TFTP-from-U-Boot/</loc>
+    
+    <lastmod>2020-02-16T08:26:23.257Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://lzqblog.top/2020-02-11/GCC-attribute-packed/</loc>
     
     <lastmod>2020-02-11T13:59:40.074Z</lastmod>
@@ -233,14 +240,14 @@
   </url>
   
   <url>
-    <loc>https://lzqblog.top/2018-03-20/Jenkins-Gerrit-%E8%87%AA%E5%8A%A8commit-code-review-submit/</loc>
+    <loc>https://lzqblog.top/2019-06-28/Webserver-bring-up-II-Create-a-demo-page-html-fcgi/</loc>
     
     <lastmod>2019-06-28T12:17:06.853Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://lzqblog.top/2019-06-28/Webserver-bring-up-II-Create-a-demo-page-html-fcgi/</loc>
+    <loc>https://lzqblog.top/2018-03-20/Jenkins-Gerrit-%E8%87%AA%E5%8A%A8commit-code-review-submit/</loc>
     
     <lastmod>2019-06-28T12:17:06.853Z</lastmod>
     
