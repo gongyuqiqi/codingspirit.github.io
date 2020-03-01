@@ -2,10 +2,9 @@
 title: 'Setting up Gitlab CI (II): pipeline and .gitlab-ci.yml'
 top: false
 tags:
-  - null
-  - null
+  - Continuous integration
 date: 2019-10-19 19:00:31
-categories:
+categories: CI
 ---
 
 A brief introduction about how to setup Gitlab CI (part II).

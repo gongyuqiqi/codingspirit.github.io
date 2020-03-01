@@ -5,7 +5,7 @@ tags:
   - Linux
   - Yocto
 date: 2019-11-16 09:14:45
-categories: 编程相关
+categories: 系统构建
 ---
 I'm planing to do some research on ST newest MPU series: STM32MP1. It's a Cortex A7(solo or dual core) + M4 solution, not very powerful but the price might be very competitive. In this post we will setup the development environments.
 <!--more-->

@@ -5,7 +5,7 @@ tags:
   - Linux
   - U-Boot
 date: 2020-02-16 13:52:30
-categories: 编程相关
+categories: 系统构建
 ---
 Today I just managed to boot kernel via TFTP on STM32MP1 board but steps I go through are quite different with i.MX8. Thus, I think there is a necessity to have a short note about this 🖋
 <!--more-->

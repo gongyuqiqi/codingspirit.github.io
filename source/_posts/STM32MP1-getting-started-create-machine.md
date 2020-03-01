@@ -5,7 +5,7 @@ tags:
   - Linux
   - Yocto
 date: 2019-11-30 15:11:37
-categories: 编程相关
+categories: 系统构建
 ---
 Brief notes about how to create a customized machine based on STM32MP1.
 <!--more-->

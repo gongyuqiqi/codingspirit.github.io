@@ -4,7 +4,7 @@ tags:
   - Linux
   - Yocto
 date: 2019-03-21 14:51:39
-categories: 编程相关
+categories: 系统构建
 ---
 This post will show you how to setup environment(Linux) for NXP i.MX 8 and build a image fot i.MX8 Mini EVK. If you trying to build a Android image, close this post.
 <!--more-->

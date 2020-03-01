@@ -4,7 +4,7 @@ tags:
   - Yocto
   - Linux
 date: 2019-03-26 20:34:32
-categories: 编程相关
+categories: 系统构建
 ---
 The normal way that using yocto to do kernel development is really painful... Maybe try out-of-tree build is a better choice.
 

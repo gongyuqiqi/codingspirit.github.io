@@ -4,7 +4,7 @@ tags:
   - Linux
   - Yocto
 date: 2019-03-28 19:56:53
-categories: 编程相关
+categories: 系统构建
 ---
 We already started to use cmake instead of writing Makefile by our own in buildroot. Let's see how to have a cmake package in Yocto.
 <!--more-->

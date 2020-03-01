@@ -1,7 +1,7 @@
 ---
 title: C# 生成Log文件
 tags:
-  - C#
+  - C Sharp
 date: 2017-11-16 13:05:43
 categories: 编程相关
 ---

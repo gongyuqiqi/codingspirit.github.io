@@ -5,7 +5,7 @@ tags:
   - Yocto
   - Linux
 date: 2019-06-06 20:00:22
-categories: 编程相关
+categories: 系统构建
 ---
 The default BSP provided by NXP requires login in UART after booting up, which seems "unfriendly" to some users.
 <!--more-->
