@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon.ico">
+  <link rel="mask-icon" href="/assets/img/favicon.ico" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-bounce.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://lzqblog.top').hostname,
+    root: '/',
+    scheme: 'Mist',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"default"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="Last and this weekend I spend some time on mounting NFS rootfs on STM32MP1… There are some PHY driver issues and permission issues troubled me a lot…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STM32MP1: NFS rootfs">
+<meta property="og:url" content="https:&#x2F;&#x2F;lzqblog.top&#x2F;2020-03-01&#x2F;STM32MP1-NFS-rootfs&#x2F;index.html">
+<meta property="og:site_name" content="Coding Spirit">
+<meta property="og:description" content="Last and this weekend I spend some time on mounting NFS rootfs on STM32MP1… There are some PHY driver issues and permission issues troubled me a lot…">
+<meta property="article:published_time" content="2020-03-01T01:36:40.000Z">
+<meta property="article:modified_time" content="2020-03-01T06:24:56.493Z">
+<meta property="article:author" content="Coding Spirit">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://lzqblog.top/2020-03-01/STM32MP1-NFS-rootfs/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>STM32MP1: NFS rootfs | Coding Spirit</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154617667-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-154617667-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coding Spirit</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">一位程序员，比较帅的那种</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/codingspirit" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://lzqblog.top/2020-03-01/STM32MP1-NFS-rootfs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/assets/img/coding_spirit.jpg">
+      <meta itemprop="name" content="Coding Spirit">
+      <meta itemprop="description" content="毕业于OUC，现就职于TT Electronics">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Spirit">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          STM32MP1: NFS rootfs
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-03-01 09:36:40 / Modified: 14:24:56" itemprop="dateCreated datePublished" datetime="2020-03-01T09:36:40+08:00">2020-03-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%84%E5%BB%BA/" itemprop="url" rel="index">
+                    <span itemprop="name">系统构建</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>11k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>10 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Last and this weekend I spend some time on mounting NFS rootfs on STM32MP1… There are some PHY driver issues and permission issues troubled me a lot…</p>
+<a id="more"></a>
+
+<h2 id="Pre-requirements"><a href="#Pre-requirements" class="headerlink" title="Pre-requirements"></a>Pre-requirements</h2><ul>
+<li><span style="color:red">nfs-kernel-server</span> has been installed on server side</li>
+<li>Board and PC are in same LAN</li>
+</ul>
+<h2 id="Exports-settings"><a href="#Exports-settings" class="headerlink" title="Exports settings"></a>Exports settings</h2><p>Assuming that we will put board rootfs under <em>/home/alex/data/srv/nfs</em>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/exports</span><br><span class="line"><span class="comment"># /etc/exports: the access control list for filesystems which may be exported</span></span><br><span class="line"><span class="comment">#		to NFS clients.  See exports(5).</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Example for NFSv2 and NFSv3:</span></span><br><span class="line"><span class="comment"># /srv/homes       hostname1(rw,sync,no_subtree_check) hostname2(ro,sync,no_subtree_check)</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Example for NFSv4:</span></span><br><span class="line"><span class="comment"># /srv/nfs4        gss/krb5i(rw,sync,fsid=0,crossmnt,no_subtree_check)</span></span><br><span class="line"><span class="comment"># /srv/nfs4/homes  gss/krb5i(rw,sync,no_subtree_check)</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">/home/alex/data/srv/nfs 192.168.0.*(rw,sync,no_subtree_check,no_root_squash)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Wildcard in ip address(192.168.0.*) is supported, which is helpful for multiple boards</li>
+<li><span style="color:red">no_root_squash</span> will map NFS client root user as NFS server root user</li>
+</ul>
+<p>After modifying <em>/etc/exports</em>, we can restart nfs server and check server exports:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart nfs-kernel-server</span><br><span class="line">sudo exportfs</span><br><span class="line"></span><br><span class="line">/home/alex/data/srv/nfs</span><br><span class="line">		192.168.0.*</span><br></pre></td></tr></table></figure>
+
+<h2 id="PXE-configuration-file"><a href="#PXE-configuration-file" class="headerlink" title="PXE configuration file"></a>PXE configuration file</h2><p>Create PXE configuration file for nfs booting. U-boot will pass chosen parameters to kernel.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">menu title Select the boot mode</span><br><span class="line"> DEFAULT eMMC</span><br><span class="line"> TIMEOUT 20</span><br><span class="line"> LABEL initramfs</span><br><span class="line"> 	KERNEL uImage</span><br><span class="line"> 	FDT stm32mp157a-cp.dtb</span><br><span class="line"> 	INITRD uInitrd</span><br><span class="line"> 	APPEND rootwait rw earlyprintk console&#x3D;ttySTM0,115200</span><br><span class="line"> LABEL nfs</span><br><span class="line"> 	KERNEL uImage</span><br><span class="line"> 	FDT stm32mp157a-cp.dtb</span><br><span class="line"> 	APPEND root&#x3D;&#x2F;dev&#x2F;nfs ip&#x3D;192.168.0.102 nfsroot&#x3D;192.168.0.101:&#x2F;home&#x2F;alex&#x2F;data&#x2F;srv&#x2F;nfs,nfsvers&#x3D;3 rootwait rw earlyprintk console&#x3D;ttySTM0,115200</span><br><span class="line"> LABEL sdcard</span><br><span class="line"> 	KERNEL uImage</span><br><span class="line"> 	FDT stm32mp157a-cp.dtb</span><br><span class="line"> 	APPEND root&#x3D;&#x2F;dev&#x2F;mmcblk0p6 rootwait rw earlyprintk console&#x3D;ttySTM0,115200</span><br><span class="line"> LABEL eMMC</span><br><span class="line"> 	KERNEL uImage</span><br><span class="line"> 	FDT stm32mp157a-cp.dtb </span><br><span class="line"> 	APPEND root&#x3D;&#x2F;dev&#x2F;mmcblk1p6 rootwait rw earlyprintk console&#x3D;ttySTM0,115200</span><br></pre></td></tr></table></figure>
+
+<p><strong>LABEL nfs</strong> was set for nfs rootfs:</p>
+<ul>
+<li><strong>root=/dev/nfs</strong> Set nfs as rootfs</li>
+<li><strong>ip=192.168.0.102</strong> Set board ip address, also can be <strong>dhcp</strong></li>
+<li><strong>nfsroot=192.168.0.101:/home/alex/data/srv/nfs,nfsvers=3</strong> Specify nfs server ip, rootfs dir and nfs version</li>
+</ul>
+<h2 id="Unpack-boards-rootfs-and-modify-permissions"><a href="#Unpack-boards-rootfs-and-modify-permissions" class="headerlink" title="Unpack boards rootfs and modify permissions"></a>Unpack boards rootfs and modify permissions</h2><p>Unpack board rootfs under the path we set at exports setting, then we need to modify permissions for some folders and files:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line">TARGET_RFS_PATH=<span class="string">"/home/alex/data/srv/nfs"</span></span><br><span class="line"></span><br><span class="line">sudo chown -R <span class="variable">$&#123;USER&#125;</span> <span class="string">"<span class="variable">$&#123;TARGET_RFS_PATH&#125;</span>/var/lib/systemd"</span></span><br><span class="line">sudo chown -R <span class="variable">$&#123;USER&#125;</span> <span class="string">"<span class="variable">$&#123;TARGET_RFS_PATH&#125;</span>/var/lib/machines"</span></span><br><span class="line">suidfiles=$(sudo find <span class="variable">$&#123;TARGET_RFS_PATH&#125;</span> -perm /u=s)</span><br><span class="line"><span class="keyword">if</span> [ -n <span class="string">"<span class="variable">$suidfiles</span>"</span> ] ; <span class="keyword">then</span></span><br><span class="line">    sudo chown root:root <span class="variable">$&#123;suidfiles&#125;</span></span><br><span class="line">    sudo chmod u+s <span class="variable">$&#123;suidfiles&#125;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Reference: <a href="https://git.kontron-electronics.de/yocto-ktn/yocto-ktn/blob/master/scripts/init-remote2" target="_blank" rel="noopener">kontron-electronics</a></p>
+</blockquote>
+<h2 id="Booting-the-board"><a href="#Booting-the-board" class="headerlink" title="Booting the board"></a>Booting the board</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br></pre></td><td class="code"><pre><span class="line">U-Boot 2018.11-stm32mp-r3 (Nov 14 2018 - 16:10:06 +0000)</span><br><span class="line"></span><br><span class="line">CPU: STM32MP157AAA Rev.B</span><br><span class="line">Model: CP STM32MP157A Dev Board V1</span><br><span class="line">Board: stm32mp1 in basic mode (cp,stm32mp157a-cp)</span><br><span class="line">DRAM:  512 MiB</span><br><span class="line">Clocks:</span><br><span class="line">- MPU : 650 MHz</span><br><span class="line">- MCU : 208.878 MHz</span><br><span class="line">- AXI : 266.500 MHz</span><br><span class="line">- PER : 24 MHz</span><br><span class="line">- DDR : 533 MHz</span><br><span class="line">NAND:  0 MiB</span><br><span class="line">MMC:   STM32 SDMMC2: 0, STM32 SDMMC2: 1</span><br><span class="line">Loading Environment from EXT4... OK</span><br><span class="line">In:    serial</span><br><span class="line">Out:   serial</span><br><span class="line">Err:   serial</span><br><span class="line">invalid MAC address in OTP 00:00:00:00:00:00Net:   eth0: ethernet@5800a000</span><br><span class="line">Hit any key to stop autoboot:  0 </span><br><span class="line">STM32MP&gt; </span><br><span class="line">STM32MP&gt; </span><br><span class="line">STM32MP&gt; run bootcmd_pxe</span><br><span class="line">ethernet@5800a000 Waiting for PHY auto negotiation to complete. done</span><br><span class="line">BOOTP broadcast 1</span><br><span class="line">BOOTP broadcast 2</span><br><span class="line">DHCP client bound to address 192.168.0.102 (990 ms)</span><br><span class="line">missing environment variable: pxeuuid</span><br><span class="line">missing environment variable: bootfile</span><br><span class="line">Retrieving file: pxelinux.cfg&#x2F;01-e2-a4-06-a5-8f-7f</span><br><span class="line">Using ethernet@5800a000 device</span><br><span class="line">TFTP from server 192.168.0.101; our IP address is 192.168.0.102</span><br><span class="line">Filename &#39;pxelinux.cfg&#x2F;01-e2-a4-06-a5-8f-7f&#39;.</span><br><span class="line">Load address: 0xc4200000</span><br><span class="line">Loading: #</span><br><span class="line">         11.7 KiB&#x2F;s</span><br><span class="line">done</span><br><span class="line">Bytes transferred &#x3D; 658 (292 hex)</span><br><span class="line">Config file found</span><br><span class="line">Select the boot mode</span><br><span class="line">1:      initramfs</span><br><span class="line">2:      nfs</span><br><span class="line">3:      sdcard</span><br><span class="line">4:      eMMC</span><br><span class="line">Enter choice: 2</span><br><span class="line">2:      nfs</span><br><span class="line">missing environment variable: bootfile</span><br><span class="line">Retrieving file: uImage</span><br><span class="line">Using ethernet@5800a000 device</span><br><span class="line">TFTP from server 192.168.0.101; our IP address is 192.168.0.102</span><br><span class="line">Filename &#39;uImage&#39;.</span><br><span class="line">Load address: 0xc2000000</span><br><span class="line">Loading: #################################################################</span><br><span class="line">         ################################################################T #</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #####################################################T ############</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         ###################T ##############################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         ########</span><br><span class="line">         76.2 KiB&#x2F;s</span><br><span class="line">done</span><br><span class="line">Bytes transferred &#x3D; 6693440 (662240 hex)</span><br><span class="line">append: root&#x3D;&#x2F;dev&#x2F;nfs ip&#x3D;192.168.0.102 nfsrootdebug nfsroot&#x3D;192.168.0.101:&#x2F;home&#x2F;alex&#x2F;data&#x2F;srv&#x2F;nfs,nfsver0</span><br><span class="line">missing environment variable: bootfile</span><br><span class="line">Retrieving file: stm32mp157a-cp.dtb</span><br><span class="line">Using ethernet@5800a000 device</span><br><span class="line">TFTP from server 192.168.0.101; our IP address is 192.168.0.102</span><br><span class="line">Filename &#39;stm32mp157a-cp.dtb&#39;.</span><br><span class="line">Load address: 0xc4000000</span><br><span class="line">Loading: #############</span><br><span class="line">         86.9 KiB&#x2F;s</span><br><span class="line">done</span><br><span class="line">Bytes transferred &#x3D; 62891 (f5ab hex)</span><br><span class="line">## Booting kernel from Legacy Image at c2000000 ...</span><br><span class="line">   Image Name:   Linux-4.19.49</span><br><span class="line">   Created:      2019-06-09   7:17:25 UTC</span><br><span class="line">   Image Type:   ARM Linux Kernel Image (uncompressed)</span><br><span class="line">   Data Size:    6693376 Bytes &#x3D; 6.4 MiB</span><br><span class="line">   Load Address: c2000040</span><br><span class="line">   Entry Point:  c2000040</span><br><span class="line">   Verifying Checksum ... OK</span><br><span class="line">## Flattened Device Tree blob at c4000000</span><br><span class="line">   Booting using the fdt blob at 0xc4000000</span><br><span class="line">   XIP Kernel Image ... OK</span><br><span class="line">   Using Device Tree in place at c4000000, end c40125aa</span><br><span class="line"></span><br><span class="line">Starting kernel ...</span><br><span class="line"></span><br><span class="line">......</span><br><span class="line"></span><br><span class="line">[    2.174568] stm32_rtc 5c004000.rtc: setting system clock to 2000-01-01 00:01:41 UTC (946684901)</span><br><span class="line">[    2.183611] Generic PHY stmmac-0:00: attached PHY driver [Generic PHY] (mii_bus:phy_addr&#x3D;stmmac-0:00,)</span><br><span class="line">[    2.197201] usb 1-1: new high-speed USB device number 2 using ehci-platform</span><br><span class="line">[    2.214199] dwmac4: Master AXI performs any burst length</span><br><span class="line">[    2.218189] stm32-dwmac 5800a000.ethernet eth0: No Safety Features support found</span><br><span class="line">[    2.225501] stm32-dwmac 5800a000.ethernet eth0: IEEE 1588-2008 Advanced Timestamp supported</span><br><span class="line">[    2.234275] stm32-dwmac 5800a000.ethernet eth0: registered PTP clock</span><br><span class="line">[    2.398628] hub 1-1:1.0: USB hub found</span><br><span class="line">[    2.401140] hub 1-1:1.0: 4 ports detected</span><br><span class="line">[    3.277927] stm32-dwmac 5800a000.ethernet eth0: Link is Up - 100Mbps&#x2F;Full - flow control rx&#x2F;tx</span><br><span class="line">[    3.317195] IP-Config: Guessing netmask 255.255.255.0</span><br><span class="line">[    3.320790] IP-Config: Complete:</span><br><span class="line">[    3.324024]      device&#x3D;eth0, hwaddr&#x3D;e2:a4:06:a5:8f:7f, ipaddr&#x3D;192.168.0.102, mask&#x3D;255.255.255.0, gw&#x3D;5</span><br><span class="line">[    3.334612]      host&#x3D;192.168.0.102, domain&#x3D;, nis-domain&#x3D;(none)</span><br><span class="line">[    3.340520]      bootserver&#x3D;255.255.255.255, rootserver&#x3D;192.168.0.101, rootpath&#x3D;</span><br><span class="line">[    3.349127] ALSA device list:</span><br><span class="line">[    3.350873]   No soundcards found.</span><br><span class="line">[    3.519504] VFS: Mounted root (nfs filesystem) on device 0:15.</span><br><span class="line">[    3.529231] devtmpfs: mounted</span><br><span class="line">[    3.532594] Freeing unused kernel memory: 1024K</span><br><span class="line">[    3.535990] Run &#x2F;sbin&#x2F;init as init process</span><br><span class="line">[    5.499422] systemd[1]: System time before build time, advancing clock.</span><br><span class="line">[    6.079843] NET: Registered protocol family 10</span><br><span class="line">[    9.012545] Segment Routing with IPv6</span><br><span class="line">[    9.200958] systemd[1]: systemd 239 running in system mode. (+PAM -AUDIT -SELINUX +IMA -APPARMOR +SMA)</span><br><span class="line">[    9.222756] systemd[1]: Detected architecture arm.</span><br><span class="line"></span><br><span class="line">Welcome to ST OpenSTLinux - EGLfs - (A Yocto Project Based Distro) 2.6-snapshot-20191124 (thud)!</span><br><span class="line"></span><br><span class="line">[    9.371860] systemd[1]: Set hostname to &lt;stm32mp1-cp&gt;.</span><br><span class="line">[    9.476160] systemd[1]: Hardware watchdog &#39;STM32 Independent Watchdog&#39;, version 0</span><br><span class="line">[    9.483357] systemd[1]: Set hardware watchdog to 30s.</span><br><span class="line">[   15.306868] systemd[1]: Unnecessary job for dev-ttySTM0.device was removed.</span><br><span class="line">[   15.315395] systemd[1]: Started Dispatch Password Requests to Console Directory Watch.</span><br><span class="line">[  OK  ] Started Dispatch Password Requests to Console Directory Watch.</span><br><span class="line">[   15.374193] systemd[1]: Listening on Journal Socket (&#x2F;dev&#x2F;log).</span><br><span class="line">[  OK  ] Listening on Journal Socket (&#x2F;dev&#x2F;log).</span><br><span class="line">[   15.407969] systemd[1]: Listening on initctl Compatibility Named Pipe.</span><br><span class="line">[  OK  ] Listening on initctl Compatibility Named Pipe.</span><br><span class="line">[   15.479167] systemd[1]: Listening on udev Control Socket.</span><br><span class="line">[  OK  ] Listening on udev Control Socket.</span><br><span class="line">[   15.653309] systemd[1]: Reached target Remote File Systems.</span><br><span class="line">[  OK  ] Reached target Remote File Systems.</span><br><span class="line">[   15.696091] systemd[1]: Listening on Network Service Netlink Socket.</span><br><span class="line">[  OK  ] Listening on Network Service Netlink Socket.</span><br><span class="line">[   15.764924] systemd[1]: Listening on Syslog Socket.</span><br><span class="line">[  OK  ] Listening on Syslog Socket.</span><br><span class="line">[   15.802155] systemd[1]: Created slice system-getty.slice.</span><br><span class="line">[  OK  ] Created slice system-getty.slice.</span><br><span class="line">[   15.837597] systemd[1]: Reached target Swap.</span><br><span class="line">[  OK  ] Reached target Swap.</span><br><span class="line">[  OK  ] Started Forward Password Requests to Wall Directory Watch.</span><br><span class="line">[  OK  ] Reached target Paths.</span><br><span class="line">[  OK  ] Listening on udev Kernel Socket.</span><br><span class="line">[  OK  ] Created slice User and Session Slice.</span><br><span class="line">[  OK  ] Reached target Slices.</span><br><span class="line">[  OK  ] Listening on Journal Socket.</span><br><span class="line">         Mounting Kernel Debug File System...</span><br><span class="line">         Starting Journal Service...</span><br><span class="line">         Mounting POSIX Message Queue File System...</span><br><span class="line">         Starting Mount partitions...</span><br><span class="line">         Starting Create list of required st��…ce nodes for the current kernel...</span><br><span class="line">         Starting udev Coldplug all Devices...</span><br><span class="line">         Starting Apply Kernel Variables...</span><br><span class="line">         Mounting FUSE Control File System...</span><br><span class="line">         Mounting Kernel Configuration File System...</span><br><span class="line">         Starting Remount Root and Kernel File Systems...</span><br><span class="line">         Mounting Temporary Directory (&#x2F;tmp)...</span><br><span class="line">[  OK  ] Listening on Process Core Dump Socket.</span><br><span class="line">[  OK  ] Created slice system-serial\x2dgetty.slice.</span><br><span class="line">[  OK  ] Started Journal Service.</span><br><span class="line">[  OK  ] Mounted Kernel Debug File System.</span><br><span class="line">[  OK  ] Mounted POSIX Message Queue File System.</span><br><span class="line">[  OK  ] Started Mount partitions.</span><br><span class="line">[  OK  ] Started Create list of required sta��…vice nodes for the current kernel.</span><br><span class="line">[  OK  ] Started Apply Kernel Variables.</span><br><span class="line">[  OK  ] Mounted FUSE Control File System.</span><br><span class="line">[  OK  ] Mounted Kernel Configuration File System.</span><br><span class="line">[  OK  ] Started Remount Root and Kernel File Systems.</span><br><span class="line">[  OK  ] Mounted Temporary Directory (&#x2F;tmp).</span><br><span class="line">         Starting Create Static Device Nodes in &#x2F;dev...</span><br><span class="line">         Starting Flush Journal to Persistent Storage...</span><br><span class="line">[   18.106096] systemd-journald[130]: Received request to flush runtime journal from PID 1</span><br><span class="line">[  OK  ] Started Flush Journal to Persistent Storage.</span><br><span class="line">[  OK  ] Started udev Coldplug all Devices.</span><br><span class="line">[  OK  ] Started Create Static Device Nodes in &#x2F;dev.</span><br><span class="line">         Starting udev Kernel Device Manager...</span><br><span class="line">[  OK  ] Reached target Local File Systems (Pre).</span><br><span class="line">[  OK  ] Reached target Containers.</span><br><span class="line">         Mounting &#x2F;var&#x2F;volatile...</span><br><span class="line">[  OK  ] Mounted &#x2F;var&#x2F;volatile.</span><br><span class="line">         Starting Load&#x2F;Save Random Seed...</span><br><span class="line">[  OK  ] Reached target Local File Systems.</span><br><span class="line">         Starting Create Volatile Files and Directories...</span><br><span class="line">[  OK  ] Started Load&#x2F;Save Random Seed.</span><br><span class="line">[  OK  ] Started udev Kernel Device Manager.</span><br><span class="line">[  OK  ] Started Create Volatile Files and Directories.</span><br><span class="line"></span><br><span class="line">ST OpenSTLinux - EGLfs - (A Yocto Project Based Distro) 2.6-snapshot stm32mp1-cp ttySTM0</span><br><span class="line"></span><br><span class="line">stm32mp1-cp login: root (automatic login)</span><br><span class="line"></span><br><span class="line">root@stm32mp1-cp:~#</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Coding Spirit
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://lzqblog.top/2020-03-01/STM32MP1-NFS-rootfs/" title="STM32MP1: NFS rootfs">https://lzqblog.top/2020-03-01/STM32MP1-NFS-rootfs/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020-02-16/STM32MP1-Boot-kernel-via-TFTP-from-U-Boot/" rel="prev" title="STM32MP1: Boot kernel via TFTP from U-Boot">
+      <i class="fa fa-chevron-left"></i> STM32MP1: Boot kernel via TFTP from U-Boot
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Pre-requirements"><span class="nav-number">1.</span> <span class="nav-text">Pre-requirements</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exports-settings"><span class="nav-number">2.</span> <span class="nav-text">Exports settings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PXE-configuration-file"><span class="nav-number">3.</span> <span class="nav-text">PXE configuration file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Unpack-boards-rootfs-and-modify-permissions"><span class="nav-number">4.</span> <span class="nav-text">Unpack boards rootfs and modify permissions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Booting-the-board"><span class="nav-number">5.</span> <span class="nav-text">Booting the board</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Coding Spirit"
+      src="/assets/img/coding_spirit.jpg">
+  <p class="site-author-name" itemprop="name">Coding Spirit</p>
+  <div class="site-description" itemprop="description">毕业于OUC，现就职于TT Electronics</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/codingspirit" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;codingspirit" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:596544399@qq.com" title="E-Mail → mailto:596544399@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+      
+        <div id="musicPlayerPost">
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=30153005&auto=0&height=66"></iframe>
+        </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Powered by Coding Spirit. All rights reserved.</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="Symbols count total">174k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">2:38</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script color='255,0,0' opacity='1' zIndex='-1' count='256' src="/lib/canvas-nest/canvas-nest-nomobile.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(() => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: '965ca656ae3d59a50b73',
+      clientSecret: '94dbe9c760ce8b778c84481a7fe2f37f548d7375',
+      repo: 'blog-gitalk',
+      owner: 'codingspirit',
+      admin: ['codingspirit'],
+      id: 'b91a43f96d94f71cfb065675a41d5232',
+        language: '',
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":true,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":1}});</script></body>
+  
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+    <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+    <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+</html>

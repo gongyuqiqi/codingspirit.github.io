@@ -1,6 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>STM32MP1: NFS rootfs</title>
+    <url>/2020-03-01/STM32MP1-NFS-rootfs/</url>
+    <content><![CDATA[<p>Last and this weekend I spend some time on mounting NFS rootfs on STM32MP1… There are some PHY driver issues and permission issues troubled me a lot…</p>
+<a id="more"></a>
+
+<h2 id="Pre-requirements"><a href="#Pre-requirements" class="headerlink" title="Pre-requirements"></a>Pre-requirements</h2><ul>
+<li><span style="color:red">nfs-kernel-server</span> has been installed on server side</li>
+<li>Board and PC are in same LAN</li>
+</ul>
+<h2 id="Exports-settings"><a href="#Exports-settings" class="headerlink" title="Exports settings"></a>Exports settings</h2><p>Assuming that we will put board rootfs under <em>/home/alex/data/srv/nfs</em>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cat /etc/exports</span><br><span class="line"><span class="comment"># /etc/exports: the access control list for filesystems which may be exported</span></span><br><span class="line"><span class="comment">#		to NFS clients.  See exports(5).</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Example for NFSv2 and NFSv3:</span></span><br><span class="line"><span class="comment"># /srv/homes       hostname1(rw,sync,no_subtree_check) hostname2(ro,sync,no_subtree_check)</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Example for NFSv4:</span></span><br><span class="line"><span class="comment"># /srv/nfs4        gss/krb5i(rw,sync,fsid=0,crossmnt,no_subtree_check)</span></span><br><span class="line"><span class="comment"># /srv/nfs4/homes  gss/krb5i(rw,sync,no_subtree_check)</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">/home/alex/data/srv/nfs 192.168.0.*(rw,sync,no_subtree_check,no_root_squash)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Wildcard in ip address(192.168.0.*) is supported, which is helpful for multiple boards</li>
+<li><span style="color:red">no_root_squash</span> will map NFS client root user as NFS server root user</li>
+</ul>
+<p>After modifying <em>/etc/exports</em>, we can restart nfs server and check server exports:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl restart nfs-kernel-server</span><br><span class="line">sudo exportfs</span><br><span class="line"></span><br><span class="line">/home/alex/data/srv/nfs</span><br><span class="line">		192.168.0.*</span><br></pre></td></tr></table></figure>
+
+<h2 id="PXE-configuration-file"><a href="#PXE-configuration-file" class="headerlink" title="PXE configuration file"></a>PXE configuration file</h2><p>Create PXE configuration file for nfs booting. U-boot will pass chosen parameters to kernel.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">menu title Select the boot mode</span><br><span class="line"> DEFAULT eMMC</span><br><span class="line"> TIMEOUT 20</span><br><span class="line"> LABEL initramfs</span><br><span class="line"> 	KERNEL uImage</span><br><span class="line"> 	FDT stm32mp157a-cp.dtb</span><br><span class="line"> 	INITRD uInitrd</span><br><span class="line"> 	APPEND rootwait rw earlyprintk console&#x3D;ttySTM0,115200</span><br><span class="line"> LABEL nfs</span><br><span class="line"> 	KERNEL uImage</span><br><span class="line"> 	FDT stm32mp157a-cp.dtb</span><br><span class="line"> 	APPEND root&#x3D;&#x2F;dev&#x2F;nfs ip&#x3D;192.168.0.102 nfsroot&#x3D;192.168.0.101:&#x2F;home&#x2F;alex&#x2F;data&#x2F;srv&#x2F;nfs,nfsvers&#x3D;3 rootwait rw earlyprintk console&#x3D;ttySTM0,115200</span><br><span class="line"> LABEL sdcard</span><br><span class="line"> 	KERNEL uImage</span><br><span class="line"> 	FDT stm32mp157a-cp.dtb</span><br><span class="line"> 	APPEND root&#x3D;&#x2F;dev&#x2F;mmcblk0p6 rootwait rw earlyprintk console&#x3D;ttySTM0,115200</span><br><span class="line"> LABEL eMMC</span><br><span class="line"> 	KERNEL uImage</span><br><span class="line"> 	FDT stm32mp157a-cp.dtb </span><br><span class="line"> 	APPEND root&#x3D;&#x2F;dev&#x2F;mmcblk1p6 rootwait rw earlyprintk console&#x3D;ttySTM0,115200</span><br></pre></td></tr></table></figure>
+
+<p><strong>LABEL nfs</strong> was set for nfs rootfs:</p>
+<ul>
+<li><strong>root=/dev/nfs</strong> Set nfs as rootfs</li>
+<li><strong>ip=192.168.0.102</strong> Set board ip address, also can be <strong>dhcp</strong></li>
+<li><strong>nfsroot=192.168.0.101:/home/alex/data/srv/nfs,nfsvers=3</strong> Specify nfs server ip, rootfs dir and nfs version</li>
+</ul>
+<h2 id="Unpack-boards-rootfs-and-modify-permissions"><a href="#Unpack-boards-rootfs-and-modify-permissions" class="headerlink" title="Unpack boards rootfs and modify permissions"></a>Unpack boards rootfs and modify permissions</h2><p>Unpack board rootfs under the path we set at exports setting, then we need to modify permissions for some folders and files:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line">TARGET_RFS_PATH=<span class="string">"/home/alex/data/srv/nfs"</span></span><br><span class="line"></span><br><span class="line">sudo chown -R <span class="variable">$&#123;USER&#125;</span> <span class="string">"<span class="variable">$&#123;TARGET_RFS_PATH&#125;</span>/var/lib/systemd"</span></span><br><span class="line">sudo chown -R <span class="variable">$&#123;USER&#125;</span> <span class="string">"<span class="variable">$&#123;TARGET_RFS_PATH&#125;</span>/var/lib/machines"</span></span><br><span class="line">suidfiles=$(sudo find <span class="variable">$&#123;TARGET_RFS_PATH&#125;</span> -perm /u=s)</span><br><span class="line"><span class="keyword">if</span> [ -n <span class="string">"<span class="variable">$suidfiles</span>"</span> ] ; <span class="keyword">then</span></span><br><span class="line">    sudo chown root:root <span class="variable">$&#123;suidfiles&#125;</span></span><br><span class="line">    sudo chmod u+s <span class="variable">$&#123;suidfiles&#125;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Reference: <a href="https://git.kontron-electronics.de/yocto-ktn/yocto-ktn/blob/master/scripts/init-remote2" target="_blank" rel="noopener">kontron-electronics</a></p>
+</blockquote>
+<h2 id="Booting-the-board"><a href="#Booting-the-board" class="headerlink" title="Booting the board"></a>Booting the board</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">U-Boot 2018.11-stm32mp-r3 (Nov 14 2018 - 16:10:06 +0000)</span><br><span class="line"></span><br><span class="line">CPU: STM32MP157AAA Rev.B</span><br><span class="line">Model: CP STM32MP157A Dev Board V1</span><br><span class="line">Board: stm32mp1 in basic mode (cp,stm32mp157a-cp)</span><br><span class="line">DRAM:  512 MiB</span><br><span class="line">Clocks:</span><br><span class="line">- MPU : 650 MHz</span><br><span class="line">- MCU : 208.878 MHz</span><br><span class="line">- AXI : 266.500 MHz</span><br><span class="line">- PER : 24 MHz</span><br><span class="line">- DDR : 533 MHz</span><br><span class="line">NAND:  0 MiB</span><br><span class="line">MMC:   STM32 SDMMC2: 0, STM32 SDMMC2: 1</span><br><span class="line">Loading Environment from EXT4... OK</span><br><span class="line">In:    serial</span><br><span class="line">Out:   serial</span><br><span class="line">Err:   serial</span><br><span class="line">invalid MAC address in OTP 00:00:00:00:00:00Net:   eth0: ethernet@5800a000</span><br><span class="line">Hit any key to stop autoboot:  0 </span><br><span class="line">STM32MP&gt; </span><br><span class="line">STM32MP&gt; </span><br><span class="line">STM32MP&gt; run bootcmd_pxe</span><br><span class="line">ethernet@5800a000 Waiting for PHY auto negotiation to complete. done</span><br><span class="line">BOOTP broadcast 1</span><br><span class="line">BOOTP broadcast 2</span><br><span class="line">DHCP client bound to address 192.168.0.102 (990 ms)</span><br><span class="line">missing environment variable: pxeuuid</span><br><span class="line">missing environment variable: bootfile</span><br><span class="line">Retrieving file: pxelinux.cfg&#x2F;01-e2-a4-06-a5-8f-7f</span><br><span class="line">Using ethernet@5800a000 device</span><br><span class="line">TFTP from server 192.168.0.101; our IP address is 192.168.0.102</span><br><span class="line">Filename &#39;pxelinux.cfg&#x2F;01-e2-a4-06-a5-8f-7f&#39;.</span><br><span class="line">Load address: 0xc4200000</span><br><span class="line">Loading: #</span><br><span class="line">         11.7 KiB&#x2F;s</span><br><span class="line">done</span><br><span class="line">Bytes transferred &#x3D; 658 (292 hex)</span><br><span class="line">Config file found</span><br><span class="line">Select the boot mode</span><br><span class="line">1:      initramfs</span><br><span class="line">2:      nfs</span><br><span class="line">3:      sdcard</span><br><span class="line">4:      eMMC</span><br><span class="line">Enter choice: 2</span><br><span class="line">2:      nfs</span><br><span class="line">missing environment variable: bootfile</span><br><span class="line">Retrieving file: uImage</span><br><span class="line">Using ethernet@5800a000 device</span><br><span class="line">TFTP from server 192.168.0.101; our IP address is 192.168.0.102</span><br><span class="line">Filename &#39;uImage&#39;.</span><br><span class="line">Load address: 0xc2000000</span><br><span class="line">Loading: #################################################################</span><br><span class="line">         ################################################################T #</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #####################################################T ############</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         ###################T ##############################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         ########</span><br><span class="line">         76.2 KiB&#x2F;s</span><br><span class="line">done</span><br><span class="line">Bytes transferred &#x3D; 6693440 (662240 hex)</span><br><span class="line">append: root&#x3D;&#x2F;dev&#x2F;nfs ip&#x3D;192.168.0.102 nfsrootdebug nfsroot&#x3D;192.168.0.101:&#x2F;home&#x2F;alex&#x2F;data&#x2F;srv&#x2F;nfs,nfsver0</span><br><span class="line">missing environment variable: bootfile</span><br><span class="line">Retrieving file: stm32mp157a-cp.dtb</span><br><span class="line">Using ethernet@5800a000 device</span><br><span class="line">TFTP from server 192.168.0.101; our IP address is 192.168.0.102</span><br><span class="line">Filename &#39;stm32mp157a-cp.dtb&#39;.</span><br><span class="line">Load address: 0xc4000000</span><br><span class="line">Loading: #############</span><br><span class="line">         86.9 KiB&#x2F;s</span><br><span class="line">done</span><br><span class="line">Bytes transferred &#x3D; 62891 (f5ab hex)</span><br><span class="line">## Booting kernel from Legacy Image at c2000000 ...</span><br><span class="line">   Image Name:   Linux-4.19.49</span><br><span class="line">   Created:      2019-06-09   7:17:25 UTC</span><br><span class="line">   Image Type:   ARM Linux Kernel Image (uncompressed)</span><br><span class="line">   Data Size:    6693376 Bytes &#x3D; 6.4 MiB</span><br><span class="line">   Load Address: c2000040</span><br><span class="line">   Entry Point:  c2000040</span><br><span class="line">   Verifying Checksum ... OK</span><br><span class="line">## Flattened Device Tree blob at c4000000</span><br><span class="line">   Booting using the fdt blob at 0xc4000000</span><br><span class="line">   XIP Kernel Image ... OK</span><br><span class="line">   Using Device Tree in place at c4000000, end c40125aa</span><br><span class="line"></span><br><span class="line">Starting kernel ...</span><br><span class="line"></span><br><span class="line">......</span><br><span class="line"></span><br><span class="line">[    2.174568] stm32_rtc 5c004000.rtc: setting system clock to 2000-01-01 00:01:41 UTC (946684901)</span><br><span class="line">[    2.183611] Generic PHY stmmac-0:00: attached PHY driver [Generic PHY] (mii_bus:phy_addr&#x3D;stmmac-0:00,)</span><br><span class="line">[    2.197201] usb 1-1: new high-speed USB device number 2 using ehci-platform</span><br><span class="line">[    2.214199] dwmac4: Master AXI performs any burst length</span><br><span class="line">[    2.218189] stm32-dwmac 5800a000.ethernet eth0: No Safety Features support found</span><br><span class="line">[    2.225501] stm32-dwmac 5800a000.ethernet eth0: IEEE 1588-2008 Advanced Timestamp supported</span><br><span class="line">[    2.234275] stm32-dwmac 5800a000.ethernet eth0: registered PTP clock</span><br><span class="line">[    2.398628] hub 1-1:1.0: USB hub found</span><br><span class="line">[    2.401140] hub 1-1:1.0: 4 ports detected</span><br><span class="line">[    3.277927] stm32-dwmac 5800a000.ethernet eth0: Link is Up - 100Mbps&#x2F;Full - flow control rx&#x2F;tx</span><br><span class="line">[    3.317195] IP-Config: Guessing netmask 255.255.255.0</span><br><span class="line">[    3.320790] IP-Config: Complete:</span><br><span class="line">[    3.324024]      device&#x3D;eth0, hwaddr&#x3D;e2:a4:06:a5:8f:7f, ipaddr&#x3D;192.168.0.102, mask&#x3D;255.255.255.0, gw&#x3D;5</span><br><span class="line">[    3.334612]      host&#x3D;192.168.0.102, domain&#x3D;, nis-domain&#x3D;(none)</span><br><span class="line">[    3.340520]      bootserver&#x3D;255.255.255.255, rootserver&#x3D;192.168.0.101, rootpath&#x3D;</span><br><span class="line">[    3.349127] ALSA device list:</span><br><span class="line">[    3.350873]   No soundcards found.</span><br><span class="line">[    3.519504] VFS: Mounted root (nfs filesystem) on device 0:15.</span><br><span class="line">[    3.529231] devtmpfs: mounted</span><br><span class="line">[    3.532594] Freeing unused kernel memory: 1024K</span><br><span class="line">[    3.535990] Run &#x2F;sbin&#x2F;init as init process</span><br><span class="line">[    5.499422] systemd[1]: System time before build time, advancing clock.</span><br><span class="line">[    6.079843] NET: Registered protocol family 10</span><br><span class="line">[    9.012545] Segment Routing with IPv6</span><br><span class="line">[    9.200958] systemd[1]: systemd 239 running in system mode. (+PAM -AUDIT -SELINUX +IMA -APPARMOR +SMA)</span><br><span class="line">[    9.222756] systemd[1]: Detected architecture arm.</span><br><span class="line"></span><br><span class="line">Welcome to ST OpenSTLinux - EGLfs - (A Yocto Project Based Distro) 2.6-snapshot-20191124 (thud)!</span><br><span class="line"></span><br><span class="line">[    9.371860] systemd[1]: Set hostname to &lt;stm32mp1-cp&gt;.</span><br><span class="line">[    9.476160] systemd[1]: Hardware watchdog &#39;STM32 Independent Watchdog&#39;, version 0</span><br><span class="line">[    9.483357] systemd[1]: Set hardware watchdog to 30s.</span><br><span class="line">[   15.306868] systemd[1]: Unnecessary job for dev-ttySTM0.device was removed.</span><br><span class="line">[   15.315395] systemd[1]: Started Dispatch Password Requests to Console Directory Watch.</span><br><span class="line">[  OK  ] Started Dispatch Password Requests to Console Directory Watch.</span><br><span class="line">[   15.374193] systemd[1]: Listening on Journal Socket (&#x2F;dev&#x2F;log).</span><br><span class="line">[  OK  ] Listening on Journal Socket (&#x2F;dev&#x2F;log).</span><br><span class="line">[   15.407969] systemd[1]: Listening on initctl Compatibility Named Pipe.</span><br><span class="line">[  OK  ] Listening on initctl Compatibility Named Pipe.</span><br><span class="line">[   15.479167] systemd[1]: Listening on udev Control Socket.</span><br><span class="line">[  OK  ] Listening on udev Control Socket.</span><br><span class="line">[   15.653309] systemd[1]: Reached target Remote File Systems.</span><br><span class="line">[  OK  ] Reached target Remote File Systems.</span><br><span class="line">[   15.696091] systemd[1]: Listening on Network Service Netlink Socket.</span><br><span class="line">[  OK  ] Listening on Network Service Netlink Socket.</span><br><span class="line">[   15.764924] systemd[1]: Listening on Syslog Socket.</span><br><span class="line">[  OK  ] Listening on Syslog Socket.</span><br><span class="line">[   15.802155] systemd[1]: Created slice system-getty.slice.</span><br><span class="line">[  OK  ] Created slice system-getty.slice.</span><br><span class="line">[   15.837597] systemd[1]: Reached target Swap.</span><br><span class="line">[  OK  ] Reached target Swap.</span><br><span class="line">[  OK  ] Started Forward Password Requests to Wall Directory Watch.</span><br><span class="line">[  OK  ] Reached target Paths.</span><br><span class="line">[  OK  ] Listening on udev Kernel Socket.</span><br><span class="line">[  OK  ] Created slice User and Session Slice.</span><br><span class="line">[  OK  ] Reached target Slices.</span><br><span class="line">[  OK  ] Listening on Journal Socket.</span><br><span class="line">         Mounting Kernel Debug File System...</span><br><span class="line">         Starting Journal Service...</span><br><span class="line">         Mounting POSIX Message Queue File System...</span><br><span class="line">         Starting Mount partitions...</span><br><span class="line">         Starting Create list of required st��…ce nodes for the current kernel...</span><br><span class="line">         Starting udev Coldplug all Devices...</span><br><span class="line">         Starting Apply Kernel Variables...</span><br><span class="line">         Mounting FUSE Control File System...</span><br><span class="line">         Mounting Kernel Configuration File System...</span><br><span class="line">         Starting Remount Root and Kernel File Systems...</span><br><span class="line">         Mounting Temporary Directory (&#x2F;tmp)...</span><br><span class="line">[  OK  ] Listening on Process Core Dump Socket.</span><br><span class="line">[  OK  ] Created slice system-serial\x2dgetty.slice.</span><br><span class="line">[  OK  ] Started Journal Service.</span><br><span class="line">[  OK  ] Mounted Kernel Debug File System.</span><br><span class="line">[  OK  ] Mounted POSIX Message Queue File System.</span><br><span class="line">[  OK  ] Started Mount partitions.</span><br><span class="line">[  OK  ] Started Create list of required sta��…vice nodes for the current kernel.</span><br><span class="line">[  OK  ] Started Apply Kernel Variables.</span><br><span class="line">[  OK  ] Mounted FUSE Control File System.</span><br><span class="line">[  OK  ] Mounted Kernel Configuration File System.</span><br><span class="line">[  OK  ] Started Remount Root and Kernel File Systems.</span><br><span class="line">[  OK  ] Mounted Temporary Directory (&#x2F;tmp).</span><br><span class="line">         Starting Create Static Device Nodes in &#x2F;dev...</span><br><span class="line">         Starting Flush Journal to Persistent Storage...</span><br><span class="line">[   18.106096] systemd-journald[130]: Received request to flush runtime journal from PID 1</span><br><span class="line">[  OK  ] Started Flush Journal to Persistent Storage.</span><br><span class="line">[  OK  ] Started udev Coldplug all Devices.</span><br><span class="line">[  OK  ] Started Create Static Device Nodes in &#x2F;dev.</span><br><span class="line">         Starting udev Kernel Device Manager...</span><br><span class="line">[  OK  ] Reached target Local File Systems (Pre).</span><br><span class="line">[  OK  ] Reached target Containers.</span><br><span class="line">         Mounting &#x2F;var&#x2F;volatile...</span><br><span class="line">[  OK  ] Mounted &#x2F;var&#x2F;volatile.</span><br><span class="line">         Starting Load&#x2F;Save Random Seed...</span><br><span class="line">[  OK  ] Reached target Local File Systems.</span><br><span class="line">         Starting Create Volatile Files and Directories...</span><br><span class="line">[  OK  ] Started Load&#x2F;Save Random Seed.</span><br><span class="line">[  OK  ] Started udev Kernel Device Manager.</span><br><span class="line">[  OK  ] Started Create Volatile Files and Directories.</span><br><span class="line"></span><br><span class="line">ST OpenSTLinux - EGLfs - (A Yocto Project Based Distro) 2.6-snapshot stm32mp1-cp ttySTM0</span><br><span class="line"></span><br><span class="line">stm32mp1-cp login: root (automatic login)</span><br><span class="line"></span><br><span class="line">root@stm32mp1-cp:~#</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>系统构建</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>STM32MP1: Boot kernel via TFTP from U-Boot</title>
     <url>/2020-02-16/STM32MP1-Boot-kernel-via-TFTP-from-U-Boot/</url>
     <content><![CDATA[<p>Today I just managed to boot kernel via TFTP on STM32MP1 board but steps I go through are quite different with i.MX8. Thus, I think there is a necessity to have a short note about this 🖋</p>
@@ -25,7 +68,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Hit any key to stop autoboot:  0 </span><br><span class="line">STM32MP&gt; run bootcmd_pxe</span><br><span class="line">ethernet@5800a000 Waiting for PHY auto negotiation to complete. done</span><br><span class="line">BOOTP broadcast 1</span><br><span class="line">DHCP client bound to address 192.168.0.101 (2 ms)</span><br><span class="line">missing environment variable: pxeuuid</span><br><span class="line">missing environment variable: bootfile</span><br><span class="line">Retrieving file: pxelinux.cfg&#x2F;01-e2-a4-06-a5-8f-7f</span><br><span class="line">Using ethernet@5800a000 device</span><br><span class="line">TFTP from server 192.168.0.106; our IP address is 192.168.0.101</span><br><span class="line">Filename &#39;pxelinux.cfg&#x2F;01-e2-a4-06-a5-8f-7f&#39;.</span><br><span class="line">Load address: 0xc4200000</span><br><span class="line">Loading: #</span><br><span class="line">         8.8 KiB&#x2F;s</span><br><span class="line">done</span><br><span class="line">Bytes transferred &#x3D; 608 (260 hex)</span><br><span class="line">Config file found</span><br><span class="line">Select the boot mode</span><br><span class="line">1:      initramfs</span><br><span class="line">2:      nfs</span><br><span class="line">3:      sdcard</span><br><span class="line">4:      eMMC</span><br><span class="line">Enter choice: 4:        eMMC</span><br><span class="line">missing environment variable: bootfile</span><br><span class="line">Retrieving file: uImage</span><br><span class="line">Using ethernet@5800a000 device</span><br><span class="line">TFTP from server 192.168.0.106; our IP address is 192.168.0.101</span><br><span class="line">Filename &#39;uImage&#39;.</span><br><span class="line">Load address: 0xc2000000</span><br><span class="line">Loading: #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         ##################T ###############################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         #################################################################</span><br><span class="line">         ##############################################################</span><br><span class="line">         265.6 KiB&#x2F;s</span><br><span class="line">done</span><br><span class="line">Bytes transferred &#x3D; 6640192 (655240 hex)</span><br><span class="line">append: root&#x3D;&#x2F;dev&#x2F;mmcblk1p6 rootwait rw earlyprintk console&#x3D;ttySTM0,115200</span><br><span class="line">missing environment variable: bootfile</span><br><span class="line">Retrieving file: stm32mp157a-cp.dtb</span><br><span class="line">Using ethernet@5800a000 device</span><br><span class="line">TFTP from server 192.168.0.106; our IP address is 192.168.0.101</span><br><span class="line">Filename &#39;stm32mp157a-cp.dtb&#39;.</span><br><span class="line">Load address: 0xc4000000</span><br><span class="line">Loading: #############</span><br><span class="line">         188.5 KiB&#x2F;s</span><br><span class="line">done</span><br><span class="line">Bytes transferred &#x3D; 62891 (f5ab hex)</span><br><span class="line">## Booting kernel from Legacy Image at c2000000 ...</span><br><span class="line">   Image Name:   Linux-4.19.49</span><br><span class="line">   Created:      2019-06-09   7:17:25 UTC</span><br><span class="line">   Image Type:   ARM Linux Kernel Image (uncompressed)</span><br><span class="line">   Data Size:    6640128 Bytes &#x3D; 6.3 MiB</span><br><span class="line">   Load Address: c2000040</span><br><span class="line">   Entry Point:  c2000040</span><br><span class="line">   Verifying Checksum ... OK</span><br><span class="line">## Flattened Device Tree blob at c4000000</span><br><span class="line">   Booting using the fdt blob at 0xc4000000</span><br><span class="line">   XIP Kernel Image ... OK</span><br><span class="line">   Using Device Tree in place at c4000000, end c40125aa</span><br><span class="line"></span><br><span class="line">Starting kernel ...</span><br><span class="line"></span><br><span class="line">[    0.000000] Booting Linux on physical CPU 0x0</span><br><span class="line">[    0.000000] Linux version 4.19.49 (oe-user@oe-host) (gcc version 8.2.0 (GCC)) #1 SMP PREEMPT Sun Jun 9</span><br><span class="line">[    0.000000] CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr&#x3D;10c5387d</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>编程相关</category>
+        <category>系统构建</category>
       </categories>
       <tags>
         <tag>Linux</tag>
@@ -346,7 +389,7 @@
 <h2 id="U-Boot-extlinux"><a href="#U-Boot-extlinux" class="headerlink" title="U-Boot extlinux"></a>U-Boot extlinux</h2><p>There are some u-boot related env variables are set by <strong>UBOOT_EXTLINUX_</strong> started configs in machine conf. In ST U-Boot, there path of <strong>extlinux.conf</strong> are related to <strong>UBOOT_EXTLINUX_BOOTPREFIXES</strong>.</p>
 ]]></content>
       <categories>
-        <category>编程相关</category>
+        <category>系统构建</category>
       </categories>
       <tags>
         <tag>Linux</tag>
@@ -424,7 +467,7 @@
 <p>STM32CubeProgrammer using a <code>.tsv</code> file to specify flash layout and the binaries are going to use.</p>
 ]]></content>
       <categories>
-        <category>编程相关</category>
+        <category>系统构建</category>
       </categories>
       <tags>
         <tag>Linux</tag>
@@ -551,6 +594,12 @@
 <p>Job name also can start with a dot(<strong>.</strong>) like <em>.job</em>. If a job name started with a dot, it will be ignored by gitlab CI(gitlab-runner will skip it).</p>
 <h3 id="More"><a href="#More" class="headerlink" title="More"></a>More</h3><p>There are a lot of features can be defined in <strong>.gitlab-ci.yml</strong>. Go to <a href="https://docs.gitlab.com/ee/ci/yaml/README.html" target="_blank" rel="noopener">GitLab CI/CD Pipeline Configuration Reference</a> for more details.</p>
 ]]></content>
+      <categories>
+        <category>CI</category>
+      </categories>
+      <tags>
+        <tag>Continuous integration</tag>
+      </tags>
   </entry>
   <entry>
     <title>Algorithm Puzzles: String to Integer (atoi)</title>
@@ -1149,7 +1198,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[Service]</span><br><span class="line">Environment&#x3D;&quot;TERM&#x3D;xterm&quot;</span><br><span class="line">#ExecStart&#x3D;-&#x2F;sbin&#x2F;agetty -8 -L %I @BAUDRATE@ $TERM</span><br><span class="line">ExecStart&#x3D;-&#x2F;sbin&#x2F;agetty -8 -a root -L %I @BAUDRATE@ $TERM</span><br><span class="line">Type&#x3D;idle</span><br><span class="line">Restart&#x3D;always</span><br><span class="line">RestartSec&#x3D;0</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>编程相关</category>
+        <category>系统构建</category>
       </categories>
       <tags>
         <tag>Linux</tag>
@@ -1254,7 +1303,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">setenv nfsroot &#x2F;home&#x2F;alex&#x2F;imx8-evk-dummy&#x2F;rootfs</span><br><span class="line">setenv image Image</span><br><span class="line">setenv fdt_file fsl-imx8mm-evk.dtb</span><br><span class="line">setenv serverip 10.0.1.17</span><br><span class="line">setenv bootcmd &#39;run netboot&#39;</span><br><span class="line">sav</span><br><span class="line">reset</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>随便写写</category>
+        <category>系统构建</category>
       </categories>
       <tags>
         <tag>Linux</tag>
@@ -1330,7 +1379,7 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ bitbake fsl-image-qt5-validation-imx</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>编程相关</category>
+        <category>系统构建</category>
       </categories>
       <tags>
         <tag>Linux</tag>
@@ -1373,7 +1422,7 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake -e &lt;recipe&gt; | grep ^WORKDIR=</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>编程相关</category>
+        <category>系统构建</category>
       </categories>
       <tags>
         <tag>Linux</tag>
@@ -1427,7 +1476,7 @@
 <h2 id="Rebuild-your-image-file"><a href="#Rebuild-your-image-file" class="headerlink" title="Rebuild your image file"></a>Rebuild your image file</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ bitbake fsl-image-qt5-validation-imx</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>编程相关</category>
+        <category>系统构建</category>
       </categories>
       <tags>
         <tag>Linux</tag>
@@ -1478,7 +1527,7 @@ Set <strong>MACHINE</strong> to other variable if you are not using i.MX8 Mini E
 <p>In develop stage, suggest to use TFTP and NFS for a longer flash life span. See <a href="https://lzqblog.top/2019-05-26/i-MX-setup-TFTP-and-NFS/">i.MX setup TFTP and NFS</a> for more details.</p>
 ]]></content>
       <categories>
-        <category>编程相关</category>
+        <category>系统构建</category>
       </categories>
       <tags>
         <tag>Linux</tag>
@@ -2227,8 +2276,8 @@ cond(yes,down)->e</textarea><textarea id="flowchart-0-options" style="display: n
         <category>编程相关</category>
       </categories>
       <tags>
-        <tag>C#</tag>
         <tag>转载</tag>
+        <tag>C Sharp</tag>
       </tags>
   </entry>
   <entry>
@@ -2566,7 +2615,7 @@ cond(yes,down)->e</textarea><textarea id="flowchart-0-options" style="display: n
         <category>编程相关</category>
       </categories>
       <tags>
-        <tag>C#</tag>
+        <tag>C Sharp</tag>
       </tags>
   </entry>
   <entry>
@@ -2637,7 +2686,7 @@ cond(yes,down)->e</textarea><textarea id="flowchart-0-options" style="display: n
         <category>编程相关</category>
       </categories>
       <tags>
-        <tag>C#</tag>
+        <tag>C Sharp</tag>
       </tags>
   </entry>
   <entry>
@@ -2655,8 +2704,8 @@ cond(yes,down)->e</textarea><textarea id="flowchart-0-options" style="display: n
         <category>编程相关</category>
       </categories>
       <tags>
-        <tag>C#</tag>
         <tag>多线程</tag>
+        <tag>C Sharp</tag>
       </tags>
   </entry>
   <entry>
