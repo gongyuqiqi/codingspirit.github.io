@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://lzqblog.top/2019-01-31/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B-%E7%89%B9%E4%BE%9B%E7%89%88/</loc>
-    <lastmod>2020-03-07T13:26:21.056Z</lastmod>
+    <lastmod>2020-03-07T13:39:48.100Z</lastmod>
   </url>  <url>
     <loc>https://lzqblog.top/2020-03-07/Yocto-debugging-commands/</loc>
     <lastmod>2020-03-07T11:30:24.505Z</lastmod>
@@ -139,10 +139,10 @@
     <loc>https://lzqblog.top/2019-07-27/i-MX8-adb-bring-up/</loc>
     <lastmod>2019-07-26T10:55:36.226Z</lastmod>
   </url>  <url>
-    <loc>https://lzqblog.top/2018-03-20/Jenkins-Gerrit-%E8%87%AA%E5%8A%A8commit-code-review-submit/</loc>
+    <loc>https://lzqblog.top/2019-06-28/Webserver-bring-up-II-Create-a-demo-page-html-fcgi/</loc>
     <lastmod>2019-06-28T12:17:06.853Z</lastmod>
   </url>  <url>
-    <loc>https://lzqblog.top/2019-06-28/Webserver-bring-up-II-Create-a-demo-page-html-fcgi/</loc>
+    <loc>https://lzqblog.top/2018-03-20/Jenkins-Gerrit-%E8%87%AA%E5%8A%A8commit-code-review-submit/</loc>
     <lastmod>2019-06-28T12:17:06.853Z</lastmod>
   </url>  <url>
     <loc>https://lzqblog.top/2019-06-20/Webserver-bring-up-I-Install-lighttpd-and-fastcgi/</loc>
@@ -217,10 +217,10 @@
     <loc>https://lzqblog.top/2018-01-11/%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%ABAI/</loc>
     <lastmod>2018-11-28T12:01:18.000Z</lastmod>
   </url>  <url>
-    <loc>https://lzqblog.top/2017-11-12/%E4%BD%BF%E7%94%A8qemu%E8%BF%90%E8%A1%8CLinux-kernel/</loc>
+    <loc>https://lzqblog.top/2018-01-03/%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%ABAI/</loc>
     <lastmod>2018-11-28T12:01:18.000Z</lastmod>
   </url>  <url>
-    <loc>https://lzqblog.top/2018-01-03/%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%ABAI/</loc>
+    <loc>https://lzqblog.top/2017-11-12/%E4%BD%BF%E7%94%A8qemu%E8%BF%90%E8%A1%8CLinux-kernel/</loc>
     <lastmod>2018-11-28T12:01:18.000Z</lastmod>
   </url>  <url>
     <loc>https://lzqblog.top/2018-11-23/Linux-%E2%80%98adb-devices%E2%80%99-can-t-find-devices/</loc>
@@ -241,16 +241,19 @@
     <loc>https://lzqblog.top/2018-02-09/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4/</loc>
     <lastmod>2018-11-20T11:54:50.000Z</lastmod>
   </url>  <url>
-    <loc>https://lzqblog.top/2018-06-11/%E7%8E%B0%E5%9C%A8%E6%94%AF%E6%8C%81HTTPS%E5%95%A6/</loc>
-    <lastmod>2018-11-20T11:54:50.000Z</lastmod>
-  </url>  <url>
     <loc>https://lzqblog.top/2017-11-01/%E5%B8%B8%E7%94%A8%E7%9A%84Regex/</loc>
     <lastmod>2018-11-20T11:54:50.000Z</lastmod>
   </url>  <url>
-    <loc>https://lzqblog.top/2018-05-02/Linux%E9%85%8D%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%A3%B0%E5%8D%A1/</loc>
+    <loc>https://lzqblog.top/2018-06-11/%E7%8E%B0%E5%9C%A8%E6%94%AF%E6%8C%81HTTPS%E5%95%A6/</loc>
+    <lastmod>2018-11-20T11:54:50.000Z</lastmod>
+  </url>  <url>
+    <loc>https://lzqblog.top/2018-04-02/Ubuntu%E5%88%87%E6%8D%A2python%E7%89%88%E6%9C%AC/</loc>
     <lastmod>2018-11-20T11:54:50.000Z</lastmod>
   </url>  <url>
     <loc>https://lzqblog.top/2018-11-08/Cross-compile-gRPC-for-ARM/</loc>
+    <lastmod>2018-11-20T11:54:50.000Z</lastmod>
+  </url>  <url>
+    <loc>https://lzqblog.top/2017-11-09/Android%E6%B7%BB%E5%8A%A0App%E8%BD%BD%E5%85%A5%E7%95%8C%E9%9D%A2/</loc>
     <lastmod>2018-11-20T11:54:50.000Z</lastmod>
   </url>  <url>
     <loc>https://lzqblog.top/2017-10-31/Welcome/</loc>
@@ -259,13 +262,10 @@
     <loc>https://lzqblog.top/2018-05-24/make-warning-Clock-skew-detected/</loc>
     <lastmod>2018-11-20T11:54:50.000Z</lastmod>
   </url>  <url>
-    <loc>https://lzqblog.top/2017-11-09/Android%E6%B7%BB%E5%8A%A0App%E8%BD%BD%E5%85%A5%E7%95%8C%E9%9D%A2/</loc>
-    <lastmod>2018-11-20T11:54:50.000Z</lastmod>
-  </url>  <url>
     <loc>https://lzqblog.top/2018-06-05/makefile-summarize/</loc>
     <lastmod>2018-11-20T11:54:50.000Z</lastmod>
   </url>  <url>
-    <loc>https://lzqblog.top/2018-04-02/Ubuntu%E5%88%87%E6%8D%A2python%E7%89%88%E6%9C%AC/</loc>
+    <loc>https://lzqblog.top/2018-05-02/Linux%E9%85%8D%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%A3%B0%E5%8D%A1/</loc>
     <lastmod>2018-11-20T11:54:50.000Z</lastmod>
   </url>
 </urlset>

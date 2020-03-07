@@ -1730,7 +1730,10 @@ Set <strong>MACHINE</strong> to other variable if you are not using i.MX8 Mini E
 </ul>
 <p>主题的下载可以通过<code>git clone</code>到 <em>theme</em> 文件夹下完成，下载完主题后，通过修改根目录下 <em>_config.yml</em> 的<strong>theme</strong>来进行主题的切换:</p>
 <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">landscape</span></span><br></pre></td></tr></table></figure>
-<p>正如yml中提到的，主题也可以在<a href="https://hexo.io/themes/" target="_blank" rel="noopener">Hexo官方主题站</a>找到:<br><img src="/2019-01-31/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B-%E7%89%B9%E4%BE%9B%E7%89%88/themes.png" alt></p>
+<p>正如yml中提到的，主题也可以在<a href="https://hexo.io/themes/" target="_blank" rel="noopener">Hexo官方主题站</a>找到:</p>
+<img src="https://blog-image-host.oss-cn-shanghai.aliyuncs.com/lzqblog/themes.png">
+
+
 <h3 id="新建一篇博文"><a href="#新建一篇博文" class="headerlink" title="新建一篇博文"></a>新建一篇博文</h3><p>使用<code>hexo new post &quot;post_name&quot;</code>来新建一篇博文:</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo new post &quot;这是一篇博文&quot;</span><br><span class="line">INFO  Created: ~\test_blog\source\_posts\这是一篇博文.md</span><br></pre></td></tr></table></figure>
 <p>新建的博文位于<em>source/_posts*下，博文内容可以通过修改 *这是一篇博文.md</em> 进行追加</p>
