@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Yocto debugging commands</title>
+    <url>/2020-03-07/Yocto-debugging-commands/</url>
+    <content><![CDATA[<p>Notes about some useful Yocto debugging commands</p>
+<a id="more"></a>
+
+<h2 id="Checking-owner-of-installed-files"><a href="#Checking-owner-of-installed-files" class="headerlink" title="Checking owner of installed files"></a>Checking owner of installed files</h2><p>Assuming that build environments is ready(which means you can run <code>bitbake</code> normally), using <code>oe-pkgdata-util</code> can help to find the recipe who populated it. i.e:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">oe-pkgdata-util find-path /lib/ld-2.28.so</span><br><span class="line">glibc: /lib/ld-2.28.so</span><br></pre></td></tr></table></figure>
+<p><em>/lib/ld-2.28.so</em> was installed by <strong>glibc</strong></p>
+<h2 id="Checking-packages-are-going-to-install"><a href="#Checking-packages-are-going-to-install" class="headerlink" title="Checking packages are going to install"></a>Checking packages are going to install</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake -g &lt;image&gt; &amp;&amp; cat pn-buildlist | grep -ve <span class="string">"native"</span> | sort | uniq</span><br></pre></td></tr></table></figure>
+
+<h2 id="Checking-packages-installed"><a href="#Checking-packages-installed" class="headerlink" title="Checking packages installed"></a>Checking packages installed</h2><p>There are several <em>.manifest</em> files under the path of built images, which contained packages has been installed.</p>
+<h2 id="Checking-variables-inside-recipes"><a href="#Checking-variables-inside-recipes" class="headerlink" title="Checking variables inside recipes"></a>Checking variables inside recipes</h2><p><code>bb.utils.contains</code> can help to check variables inside recipes. i.e. we’d like to install some files base on <strong>MACHINE_FEATURES</strong> :</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">do_install() &#123;</span><br><span class="line">    if $&#123;@bb.utils.contains(&#39;MACHINE_FEATURES&#39;,&#39;ethernet&#39;,&#39;true&#39;,&#39;false&#39;,d)&#125;; then</span><br><span class="line">        install -d $&#123;D&#125;$&#123;systemd_unitdir&#125;&#x2F;network&#x2F;</span><br><span class="line">        install -m 0644 $&#123;WORKDIR&#125;&#x2F;10-eth.network $&#123;D&#125;$&#123;systemd_unitdir&#125;&#x2F;network&#x2F;</span><br><span class="line">    fi</span><br><span class="line"></span><br><span class="line">    if $&#123;@bb.utils.contains(&#39;MACHINE_FEATURES&#39;,&#39;wifi&#39;,&#39;true&#39;,&#39;false&#39;,d)&#125;; then</span><br><span class="line">        install -d $&#123;D&#125;$&#123;systemd_unitdir&#125;&#x2F;network&#x2F;</span><br><span class="line">        install -m 0644 $&#123;WORKDIR&#125;&#x2F;51-wlan.network $&#123;D&#125;$&#123;systemd_unitdir&#125;&#x2F;network&#x2F;</span><br><span class="line">    fi</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Below is the python code from openembedded, which explains usage of this function:</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">contains</span><span class="params">(variable, checkvalues, truevalue, falsevalue, d)</span>:</span></span><br><span class="line">   <span class="string">"""Check if a variable contains all the values specified.</span></span><br><span class="line"><span class="string">   Arguments:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">   variable -- the variable name. This will be fetched and expanded (using</span></span><br><span class="line"><span class="string">   d.getVar(variable)) and then split into a set().</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">   checkvalues -- if this is a string it is split on whitespace into a set(),</span></span><br><span class="line"><span class="string">   otherwise coerced directly into a set().</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">   truevalue -- the value to return if checkvalues is a subset of variable.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">   falsevalue -- the value to return if variable is empty or if checkvalues is</span></span><br><span class="line"><span class="string">   not a subset of variable.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">   d -- the data store.</span></span><br><span class="line"><span class="string">   """</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>系统构建</category>
+      </categories>
+      <tags>
+        <tag>Yocto</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>STM32MP1: NFS rootfs</title>
     <url>/2020-03-01/STM32MP1-NFS-rootfs/</url>
     <content><![CDATA[<p>Last and this weekend I spend some time on mounting NFS rootfs on STM32MP1… There are some PHY driver issues and permission issues troubled me a lot…</p>
