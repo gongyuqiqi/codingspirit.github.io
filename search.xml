@@ -1,6 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>nfsroot boot crash after systemd-networkd starts</title>
+    <url>/2020-03-08/nfsroot-boot-crash-after-systemd-networkd-starts/</url>
+    <content><![CDATA[<p>Yesterday we found that nfsroot will get crash after systemd-networkd starts:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nfs: server 192.168.0.101 not responding, still trying</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h2 id="Root-cause"><a href="#Root-cause" class="headerlink" title="Root cause"></a>Root cause</h2><p>Crash was happened after we importing <em>eth.network</em> for systemd-networkd, which will set ethernet as DHCP mode after system booting. We doubting that this setting will release the IP we set when boards was mounting nfsroot.</p>
+<h2 id="Solutions"><a href="#Solutions" class="headerlink" title="Solutions"></a>Solutions</h2><p>As far as I know there are two solutions to avoid systemd-networkd breaking nfs connection:</p>
+<ul>
+<li><strong>KernelCommandLine=!nfsroot</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[Match]</span><br><span class="line">Name&#x3D;eth0</span><br><span class="line">KernelCommandLine&#x3D;!nfsroot</span><br><span class="line"></span><br><span class="line">[Network]</span><br><span class="line">Address&#x3D;DHCP</span><br></pre></td></tr></table></figure>
+
+<p>According to Linux manual page:</p>
+<blockquote>
+<pre><code>KernelCommandLine=
+    Checks whether a specific kernel command line option is set (or
+    if prefixed with the exclamation mark unset). See
+    &quot;ConditionKernelCommandLine=&quot; in systemd.unit(5) for details.</code></pre></blockquote>
+<p>So <strong>KernelCommandLine=!nfsroot</strong> will prevent this config to be applied if we have set nfsroot in kernel command line.</p>
+<ul>
+<li><strong>CriticalConnection=true</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[Match]</span><br><span class="line">Name&#x3D;eth0</span><br><span class="line"></span><br><span class="line">[Network]</span><br><span class="line">Address&#x3D;DHCP</span><br><span class="line"></span><br><span class="line">[DHCP]</span><br><span class="line">CriticalConnection&#x3D;true</span><br></pre></td></tr></table></figure>
+
+<p>According to Linux manual page:</p>
+<blockquote>
+<pre><code>CriticalConnection=
+   When true, the connection will never be torn down even if the
+   DHCP lease expires. This is contrary to the DHCP specification,
+   but may be the best choice if, say, the root filesystem relies on
+   this connection. Defaults to false.</code></pre></blockquote>
+<p>So with <strong>CriticalConnection=true</strong> the connection will not be dropped, which prevent nfs from disconnecting as well.</p>
+]]></content>
+      <categories>
+        <category>问题记录</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Yocto debugging commands</title>
     <url>/2020-03-07/Yocto-debugging-commands/</url>
     <content><![CDATA[<p>Notes about some useful Yocto debugging commands</p>

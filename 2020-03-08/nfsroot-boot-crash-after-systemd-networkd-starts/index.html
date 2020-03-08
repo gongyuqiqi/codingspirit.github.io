@@ -51,20 +51,19 @@
   };
 </script>
 
-  <meta name="description" content="Jenkins+Gerrit的一般工作模式：user commit code to Gerrit-&gt;Jenkins test build success-&gt;other user code review +2-&gt;user submit-&gt;Jenkins release build-&gt;release SW. 我之前写了个release notes generator,">
+  <meta name="description" content="Yesterday we found that nfsroot will get crash after systemd-networkd starts: 1nfs: server 192.168.0.101 not responding, still trying">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Jenkins+Gerrit: 自动commit&#x2F;&#x2F;code review&#x2F;&#x2F;submit">
-<meta property="og:url" content="https:&#x2F;&#x2F;lzqblog.top&#x2F;2018-03-20&#x2F;Jenkins-Gerrit-%E8%87%AA%E5%8A%A8commit-code-review-submit&#x2F;index.html">
+<meta property="og:title" content="nfsroot boot crash after systemd-networkd starts">
+<meta property="og:url" content="https:&#x2F;&#x2F;lzqblog.top&#x2F;2020-03-08&#x2F;nfsroot-boot-crash-after-systemd-networkd-starts&#x2F;index.html">
 <meta property="og:site_name" content="Coding Spirit">
-<meta property="og:description" content="Jenkins+Gerrit的一般工作模式：user commit code to Gerrit-&gt;Jenkins test build success-&gt;other user code review +2-&gt;user submit-&gt;Jenkins release build-&gt;release SW. 我之前写了个release notes generator,">
-<meta property="article:published_time" content="2018-03-20T05:08:29.000Z">
-<meta property="article:modified_time" content="2019-06-28T12:17:06.853Z">
+<meta property="og:description" content="Yesterday we found that nfsroot will get crash after systemd-networkd starts: 1nfs: server 192.168.0.101 not responding, still trying">
+<meta property="article:published_time" content="2020-03-08T02:02:36.000Z">
+<meta property="article:modified_time" content="2020-03-08T02:35:52.794Z">
 <meta property="article:author" content="Coding Spirit">
-<meta property="article:tag" content="shell">
-<meta property="article:tag" content="Continuous integration">
+<meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://lzqblog.top/2018-03-20/Jenkins-Gerrit-%E8%87%AA%E5%8A%A8commit-code-review-submit/">
+<link rel="canonical" href="https://lzqblog.top/2020-03-08/nfsroot-boot-crash-after-systemd-networkd-starts/">
 
 
 <script id="page-configurations">
@@ -76,7 +75,7 @@
   };
 </script>
 
-  <title>Jenkins+Gerrit: 自动commit//code review//submit | Coding Spirit</title>
+  <title>nfsroot boot crash after systemd-networkd starts | Coding Spirit</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154617667-1"></script>
     <script>
@@ -223,7 +222,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://lzqblog.top/2018-03-20/Jenkins-Gerrit-%E8%87%AA%E5%8A%A8commit-code-review-submit/">
+    <link itemprop="mainEntityOfPage" href="https://lzqblog.top/2020-03-08/nfsroot-boot-crash-after-systemd-networkd-starts/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/assets/img/coding_spirit.jpg">
@@ -236,7 +235,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Jenkins+Gerrit: 自动commit//code review//submit
+          nfsroot boot crash after systemd-networkd starts
         </h1>
 
         <div class="post-meta">
@@ -245,24 +244,18 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2018-03-20 13:08:29" itemprop="dateCreated datePublished" datetime="2018-03-20T13:08:29+08:00">2018-03-20</time>
+              <time title="Created: 2020-03-08 10:02:36 / Modified: 10:35:52" itemprop="dateCreated datePublished" datetime="2020-03-08T10:02:36+08:00">2020-03-08</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-06-28 20:17:06" itemprop="dateModified" datetime="2019-06-28T20:17:06+08:00">2019-06-28</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CI/" itemprop="url" rel="index">
-                    <span itemprop="name">CI</span>
+                  <a href="/categories/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index">
+                    <span itemprop="name">问题记录</span>
                   </a>
                 </span>
             </span>
@@ -280,14 +273,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>2.1k</span>
+              <span>1.3k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>2 mins.</span>
+              <span>1 mins.</span>
             </span>
 
         </div>
@@ -299,24 +292,38 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>  Jenkins+Gerrit的一般工作模式：user commit code to Gerrit-&gt;Jenkins test build success-&gt;other user code review +2-&gt;user submit-&gt;Jenkins release build-&gt;release SW. 我之前写了个release notes generator, 在Jenasdkins server上release build的时候， 可以自动生成release notes并打包并发给开发者。但是这个release notes在下一次build的时候会因为workspace的清空而被删除，因此希望Jenkins能够将release notes commit到Gerrit并保留下来，最后再自动上传到sharepoint上。实现上述过程后，自动化构建的自动化程度会更高一点，开发者只需在Jenkins上press a button, release就自动完成了。</p>
+        <p>Yesterday we found that nfsroot will get crash after systemd-networkd starts:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nfs: server 192.168.0.101 not responding, still trying</span><br></pre></td></tr></table></figure>
+
 <a id="more"></a>
 
-<h2 id="新建branch"><a href="#新建branch" class="headerlink" title="新建branch"></a>新建branch</h2><p>  通常Gerrit trigger jenkins build的时候, jenkins 只会抓取某一次commit，这会导致抓取的code不在任何一个branch上。此时需要新建一个临时的branch，才能在后面进行push:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch <span class="string">"jenkins_temp"</span></span><br><span class="line">git checkout jenkins_temp</span><br></pre></td></tr></table></figure>
-<h2 id="Jenkins检测改动并提交"><a href="#Jenkins检测改动并提交" class="headerlink" title="Jenkins检测改动并提交"></a>Jenkins检测改动并提交</h2><p>  首先需要检测文件改动,以一个名为test.txt的文件为例：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$(git diff test.txt)</span>"</span> != <span class="string">""</span> ]; <span class="keyword">then</span></span><br><span class="line"><span class="comment">#if file has been modfied, do something</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Release_Notes.xlsx has been modfied"</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Release_Notes.xlsx hasn't been modfied"</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-<p>  Staged changes并commit:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add test.txt</span><br><span class="line"><span class="comment">#if have two files: git add test1.txt text2.txt</span></span><br><span class="line">git commit -m <span class="string">"jenkins update test.txt</span></span><br></pre></td></tr></table></figure>
-<p>另：如果提交时没有生成commit id, 可以通过git hooks实现自动添加commit id。</p>
-<h2 id="Push-changes"><a href="#Push-changes" class="headerlink" title="Push changes"></a>Push changes</h2><p>  然后需要把改动Push到git远端。之前在Jenkins server上配置过git ssh key，因此我可以在server上直接push changes而不会报错。但是如果在Jenkins execute shell中执行脚本会遇到Permission denied的问题，因为execute shell的运行环境是独立的，并没有配置过ssh key。这时可以通过临时添加key的方式进行push：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-agent sh -c <span class="string">'ssh-add C:/Users/jenkins1/.ssh/id_rsa; git push origin</span></span><br><span class="line"><span class="string">jenkins_temp:refs/for/master'</span></span><br></pre></td></tr></table></figure>
-<h2 id="verified-code-review-submit"><a href="#verified-code-review-submit" class="headerlink" title="verified,code review,submit"></a>verified,code review,submit</h2><p>  通常来讲，Push到git remote的commit都需要通过test build,如果成功，将会由jenkins verified +1。只后再通过其他人code review, 在code review +2后才能submit，也就是真正合并到remote branch上。由于jenkins只更改了relase notes这种非代码文件，我们希望jenkins能够自动将changes合并到remote branch上。这里就需要通过shell操作Gerrit。从<a href="https://gerrit-documentation.storage.googleapis.com/Documentation/2.5.1/cmd-review.html" target="_blank" rel="noopener">Gerrit官方文档</a>上，我们可以找到一些可以通过ssh连接完成的操作，包括verified,code review,submit等等。注意，这里同样需要指定ssh key，否则Permission denied。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh -i C:/Users/jenkins1/.ssh/id_rsa -p 29418 jenkins1@sw.domian.com gerrit review --verified +1 <span class="string">"<span class="variable">$(git rev-parse --short HEAD)</span>"</span></span><br><span class="line">ssh -i C:/Users/jenkins1/.ssh/id_rsa -p 29418 jenkins1@sw.domian.com gerrit review --code-review +2 <span class="string">"<span class="variable">$(git rev-parse --short HEAD)</span>"</span></span><br><span class="line">ssh -i C:/Users/jenkins1/.ssh/id_rsa -p 29418 jenkins1@sw.domian.com gerrit review -s <span class="string">"<span class="variable">$(git rev-parse --short HEAD)</span>"</span></span><br></pre></td></tr></table></figure>
-<p>至此，jenkins完成了自动构建。<br>其他可能有用的git command:<br>git 获取当前branch name</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git symbolic-ref --short -q HEAD</span><br></pre></td></tr></table></figure>
-<p>git 获取上一次提交的commit id</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#short</span></span><br><span class="line">git rev-parse --short HEAD</span><br><span class="line"><span class="comment">#long</span></span><br><span class="line">git rev-parse HEAD</span><br></pre></td></tr></table></figure>
+<h2 id="Root-cause"><a href="#Root-cause" class="headerlink" title="Root cause"></a>Root cause</h2><p>Crash was happened after we importing <em>eth.network</em> for systemd-networkd, which will set ethernet as DHCP mode after system booting. We doubting that this setting will release the IP we set when boards was mounting nfsroot.</p>
+<h2 id="Solutions"><a href="#Solutions" class="headerlink" title="Solutions"></a>Solutions</h2><p>As far as I know there are two solutions to avoid systemd-networkd breaking nfs connection:</p>
+<ul>
+<li><strong>KernelCommandLine=!nfsroot</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[Match]</span><br><span class="line">Name&#x3D;eth0</span><br><span class="line">KernelCommandLine&#x3D;!nfsroot</span><br><span class="line"></span><br><span class="line">[Network]</span><br><span class="line">Address&#x3D;DHCP</span><br></pre></td></tr></table></figure>
+
+<p>According to Linux manual page:</p>
+<blockquote>
+<pre><code>KernelCommandLine=
+    Checks whether a specific kernel command line option is set (or
+    if prefixed with the exclamation mark unset). See
+    &quot;ConditionKernelCommandLine=&quot; in systemd.unit(5) for details.</code></pre></blockquote>
+<p>So <strong>KernelCommandLine=!nfsroot</strong> will prevent this config to be applied if we have set nfsroot in kernel command line.</p>
+<ul>
+<li><strong>CriticalConnection=true</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[Match]</span><br><span class="line">Name&#x3D;eth0</span><br><span class="line"></span><br><span class="line">[Network]</span><br><span class="line">Address&#x3D;DHCP</span><br><span class="line"></span><br><span class="line">[DHCP]</span><br><span class="line">CriticalConnection&#x3D;true</span><br></pre></td></tr></table></figure>
+
+<p>According to Linux manual page:</p>
+<blockquote>
+<pre><code>CriticalConnection=
+   When true, the connection will never be torn down even if the
+   DHCP lease expires. This is contrary to the DHCP specification,
+   but may be the best choice if, say, the root filesystem relies on
+   this connection. Defaults to false.</code></pre></blockquote>
+<p>So with <strong>CriticalConnection=true</strong> the connection will not be dropped, which prevent nfs from disconnecting as well.</p>
 
     </div>
 
@@ -332,7 +339,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="https://lzqblog.top/2018-03-20/Jenkins-Gerrit-%E8%87%AA%E5%8A%A8commit-code-review-submit/" title="Jenkins+Gerrit: 自动commit&#x2F;&#x2F;code review&#x2F;&#x2F;submit">https://lzqblog.top/2018-03-20/Jenkins-Gerrit-自动commit-code-review-submit/</a>
+    <a href="https://lzqblog.top/2020-03-08/nfsroot-boot-crash-after-systemd-networkd-starts/" title="nfsroot boot crash after systemd-networkd starts">https://lzqblog.top/2020-03-08/nfsroot-boot-crash-after-systemd-networkd-starts/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -344,8 +351,7 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/shell/" rel="tag"><i class="fa fa-tag"></i> shell</a>
-              <a href="/tags/Continuous-integration/" rel="tag"><i class="fa fa-tag"></i> Continuous integration</a>
+              <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
           </div>
 
         
@@ -354,13 +360,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2018-03-12/%E8%BD%AC%E8%BD%BD%EF%BC%9A%E5%B8%B8%E7%94%A8%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="prev" title="转载：常用的正则表达式">
-      <i class="fa fa-chevron-left"></i> 转载：常用的正则表达式
+    <a href="/2020-03-07/Yocto-debugging-commands/" rel="prev" title="Yocto debugging commands">
+      <i class="fa fa-chevron-left"></i> Yocto debugging commands
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2018-04-02/Ubuntu%E5%88%87%E6%8D%A2python%E7%89%88%E6%9C%AC/" rel="next" title="Ubuntu切换python版本">
-      Ubuntu切换python版本 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -421,7 +424,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#新建branch"><span class="nav-number">1.</span> <span class="nav-text">新建branch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jenkins检测改动并提交"><span class="nav-number">2.</span> <span class="nav-text">Jenkins检测改动并提交</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Push-changes"><span class="nav-number">3.</span> <span class="nav-text">Push changes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#verified-code-review-submit"><span class="nav-number">4.</span> <span class="nav-text">verified,code review,submit</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Root-cause"><span class="nav-number">1.</span> <span class="nav-text">Root cause</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solutions"><span class="nav-number">2.</span> <span class="nav-text">Solutions</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -604,7 +607,7 @@ NexT.utils.loadComments(() => {
       repo: 'blog-gitalk',
       owner: 'codingspirit',
       admin: ['codingspirit'],
-      id: 'd82d42ad6bced7844bdcdff2e112a467',
+      id: '64c5180f0bbd749e6bdaaae8e41cd64b',
         language: '',
       distractionFreeMode: 'true'
     });
