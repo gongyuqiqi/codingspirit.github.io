@@ -1,13 +1,14 @@
 {%- if theme.leancloud_visitors.enable and not theme.valine.visitor %}
   <script{{ pjax }}>
   function leancloudSelector(url) {
+    url = encodeURI(url);
     return document.getElementById(url).querySelector('.leancloud-visitors-count');
   }
   if (CONFIG.page.isPost) {
     function addCount(Counter) {
       var visitors = document.querySelector('.leancloud_visitors');
-      var url = visitors.getAttribute('id').trim();
-      var title = visitors.getAttribute('data-flag-title').trim();
+      var url = decodeURI(visitors.getAttribute('id'));
+      var title = visitors.dataset.flagTitle;
 
       Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
         .then(response => response.json())
@@ -25,33 +26,33 @@
               })
             {%- endif %}
               .catch(error => {
-                console.log('Failed to save visitor count', error);
+                console.error('Failed to save visitor count', error);
               })
           } else {
             {%- if theme.leancloud_visitors.security %}
               leancloudSelector(url).innerText = 'Counter not initialized! More info at console err msg.';
               console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
             {% else %}
-              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+              Counter('post', '/classes/Counter', { title, url, time: 1 })
                 .then(response => response.json())
                 .then(() => {
                   leancloudSelector(url).innerText = 1;
                 })
                 .catch(error => {
-                  console.log('Failed to create', error);
+                  console.error('Failed to create', error);
                 });
             {%- endif %}
           }
         })
         .catch(error => {
-          console.log('LeanCloud Counter Error', error);
+          console.error('LeanCloud Counter Error', error);
         });
     }
   } else {
     function showTime(Counter) {
       var visitors = document.querySelectorAll('.leancloud_visitors');
       var entries = [...visitors].map(element => {
-        return element.getAttribute('id').trim();
+        return decodeURI(element.getAttribute('id'));
       });
 
       Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
@@ -75,7 +76,7 @@
           }
         })
         .catch(error => {
-          console.log('LeanCloud Counter Error', error);
+          console.error('LeanCloud Counter Error', error);
         });
     }
   }
@@ -85,10 +86,10 @@
     .then(({ api_server }) => {
       var Counter = (method, url, data) => {
         return fetch(`https://${api_server}/1.1${url}`, {
-          method: method,
+          method,
           headers: {
-            'X-LC-Id': '{{ theme.leancloud_visitors.app_id }}',
-            'X-LC-Key': '{{ theme.leancloud_visitors.app_key }}',
+            'X-LC-Id'     : '{{ theme.leancloud_visitors.app_id }}',
+            'X-LC-Key'    : '{{ theme.leancloud_visitors.app_key }}',
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(data)
