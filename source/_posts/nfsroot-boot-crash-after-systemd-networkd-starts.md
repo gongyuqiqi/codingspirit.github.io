@@ -30,7 +30,7 @@ Name=eth0
 KernelCommandLine=!nfsroot
 
 [Network]
-Address=DHCP
+DHCP=ipv4
 
 ```
 
@@ -50,7 +50,7 @@ So **KernelCommandLine=!nfsroot** will prevent this config to be applied if we h
 Name=eth0
 
 [Network]
-Address=DHCP
+DHCP=ipv4
 
 [DHCP]
 CriticalConnection=true
