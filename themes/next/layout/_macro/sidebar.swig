@@ -44,14 +44,22 @@
         </div>
       {%- endif %}
 
-      {% if is_home() %}
-        <div id="musicPlayerHome">
-          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=30153005&auto=1&height=66"></iframe>
-        </div>
-      {% else %}
-        <div id="musicPlayerPost">
-          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=30153005&auto=0&height=66"></iframe>
-        </div>
+      {% if theme.163player %}
+        {% if is_home() %}
+          <div id="musicPlayerHome">
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=30153005&auto=1&height=66"></iframe>
+          </div>
+        {% else %}
+          <div id="musicPlayerPost">
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=30153005&auto=0&height=66"></iframe>
+          </div>
+        {% endif %}
+      {% endif %}
+      {% if theme.aplayer %}
+        <link rel="stylesheet" href="https://blog-music-host.oss-cn-shanghai.aliyuncs.com/player/APlayer.min.css">
+        <div id="aplayer"></div>
+        <script type="text/javascript" src="https://blog-music-host.oss-cn-shanghai.aliyuncs.com/player/APlayer.min.js"></script>
+        <script type="text/javascript" src="/js/src/aplayer.js"></script>
       {% endif %}
 
     </div>
