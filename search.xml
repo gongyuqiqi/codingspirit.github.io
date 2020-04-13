@@ -1,6 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>AWS IoT Getting Started: MQTT sample</title>
+    <url>/2020-04-13/AWS-IoT-Getting-Started-MQTT-sample/</url>
+    <content><![CDATA[<p>AWS IoT Getting Started: MQTT sample</p>
+<a id="more"></a>
+
+<h2 id="AWS-IoT-Console"><a href="#AWS-IoT-Console" class="headerlink" title="AWS IoT Console"></a>AWS IoT Console</h2><p>Using <a href="https://console.aws.amazon.com/iot/home" target="_blank" rel="noopener">AWS IoT Console</a> to manage IoT devices. In MQTT sample, we need to create a thing in console and setup policy, certificate, and keys.</p>
+<h2 id="Create-a-Thing"><a href="#Create-a-Thing" class="headerlink" title="Create a Thing"></a>Create a Thing</h2><blockquote>
+<p>Devices connected to AWS IoT are represented by things in the AWS IoT registry. A thing represents a specific device or logical entity. It can be a physical device or sensor (for example, a light bulb or a switch on the wall). It can also be a logical entity, like an instance of an application or physical entity that does not connect to AWS IoT, but is related to other devices that do (for example, a car that has engine sensors or a control panel). (From <a href="https://docs.aws.amazon.com/iot/latest/developerguide/create-aws-thing.html" target="_blank" rel="noopener">Amazon docs</a>)</p>
+</blockquote>
+<p>In AWS IoT Console, go to Manage-&gt;Things to create a thing. After that, in things details page <em>Interact</em> tab we can find the API endpoint for IoT device.</p>
+<p><img src="https://blog-image-host.oss-cn-shanghai.aliyuncs.com/lzqblog/AWS-IoT-Getting-Started-MQTT-sample/Screenshot%20from%202020-04-13%2016-23-25.png" alt></p>
+<h2 id="Certificates-and-keys"><a href="#Certificates-and-keys" class="headerlink" title="Certificates and keys"></a>Certificates and keys</h2><p>In AWS IoT Console, go to Secure-&gt;Certificates to create a certificate(One-click certificate creation are recommended):</p>
+<p><img src="https://blog-image-host.oss-cn-shanghai.aliyuncs.com/lzqblog/AWS-IoT-Getting-Started-MQTT-sample/Screenshot%20from%202020-04-13%2016-32-30.png" alt></p>
+<p>Then we need to download certificate, keys and root CA from this page:</p>
+<p><img src="https://blog-image-host.oss-cn-shanghai.aliyuncs.com/lzqblog/AWS-IoT-Getting-Started-MQTT-sample/Screenshot%20from%202020-04-13%2016-33-47.png" alt></p>
+<h2 id="AWS-IoT-SDK"><a href="#AWS-IoT-SDK" class="headerlink" title="AWS IoT SDK"></a>AWS IoT SDK</h2><p><a href="https://github.com/aws/aws-iot-device-sdk-embedded-C" target="_blank" rel="noopener">AWS IoT SDK</a> is the SDK for connecting to AWS IoT from a device using embedded C. Before porting to embedded platform, we can have a quick trial on a Linux based PC.</p>
+<h3 id="Dependencies"><a href="#Dependencies" class="headerlink" title="Dependencies"></a>Dependencies</h3><p>This SDK depends on <a href="https://github.com/ARMmbed/mbedtls" target="_blank" rel="noopener">MbedTLS</a>. Files of MbedTLS need to copy to <em>aws-iot-device-sdk-embedded-C/external_libs/mbedTLS/</em>.</p>
+<h3 id="Modifications-before-building"><a href="#Modifications-before-building" class="headerlink" title="Modifications before building"></a>Modifications before building</h3><p>MQTT sample code is under <em>aws-iot-device-sdk-embedded-C/samples/linux/subscribe_publish_sample/</em>. Before building, we need to do some modifications to make it work.</p>
+<ul>
+<li>Copy the downloaded certificate, keys and root CA into <em>aws-iot-device-sdk-embedded-C/certs/</em>.</li>
+<li>Modify <em>/home/alex/data/aws/aws-iot-device-sdk-embedded-C/samples/linux/subscribe_publish_sample/aws_iot_config.h</em>:<ul>
+<li>AWS_IOT_MQTT_HOST: Which is the API endpoint we got when created a thing</li>
+<li>AWS_IOT_MY_THING_NAME: Should be same as the name we set when created a thing</li>
+<li>AWS_IOT_ROOT_CA_FILENAME: File name of the rootCA we downloaded.</li>
+<li>AWS_IOT_CERTIFICATE_FILENAME: File name of the device certificate we downloaded.</li>
+<li>AWS_IOT_PRIVATE_KEY_FILENAME: File name of the private key we downloaded.</li>
+</ul>
+</li>
+</ul>
+<h3 id="make-and-run"><a href="#make-and-run" class="headerlink" title="make and run"></a>make and run</h3><p>Device log:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Subscribing...</span><br><span class="line">--&gt;sleep</span><br><span class="line">Subscribe callback</span><br><span class="line">sdkTest&#x2F;sub	hello from SDK QOS0 : 0 </span><br><span class="line">Subscribe callback</span><br><span class="line">sdkTest&#x2F;sub	hello from SDK QOS1 : 1 </span><br><span class="line">--&gt;sleep</span><br><span class="line">Subscribe callback</span><br><span class="line">sdkTest&#x2F;sub	hello from SDK QOS0 : 2 </span><br><span class="line">Subscribe callback</span><br><span class="line">sdkTest&#x2F;sub	hello from SDK QOS1 : 3 </span><br><span class="line">--&gt;sleep</span><br><span class="line">Subscribe callback</span><br><span class="line">sdkTest&#x2F;sub	hello from SDK QOS0 : 4 </span><br><span class="line">Subscribe callback</span><br></pre></td></tr></table></figure>
+
+<p>AWS IoT Console:<br><img src="/2020-04-13/AWS-IoT-Getting-Started-MQTT-sample/Screenshot%20from%202020-04-13%2017-02-38.png" alt></p>
+]]></content>
+      <categories>
+        <category>IoT</category>
+      </categories>
+      <tags>
+        <tag>MQTT</tag>
+        <tag>IoT</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SWUpdate bring up (I): Install to Yocto Linux and create single copy image</title>
     <url>/2020-04-05/SWUpdate-bring-up-I-Install-to-Yocto-Linux-and-create-single-copy-image/</url>
     <content><![CDATA[<p><a href="https://github.com/sbabic/meta-swupdate-boards" target="_blank" rel="noopener">SWUpdate</a> is a popular embedded system update framework. I’m trying to bring up a OTA update system on stm32mp1, and this OTA system will base on SWUpdate. This post records steps need to be done to install SWUpdate system into Yocto Linux, and create a single copy image to test it.</p>
