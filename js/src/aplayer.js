@@ -1,6 +1,7 @@
 const ap = new APlayer({
   container: document.getElementById('aplayer'),
   autoplay: false,
+  preload: 'none',
   audio: [
     {
       name: 'Falling Into A Dream',

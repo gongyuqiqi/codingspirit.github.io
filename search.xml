@@ -1826,8 +1826,8 @@ Set <strong>MACHINE</strong> to other variable if you are not using i.MX8 Mini E
         <category>编程相关</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
         <tag>C++</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -2202,8 +2202,8 @@ cond(yes,down)->e</textarea><textarea id="flowchart-0-options" style="display: n
         <category>编程相关</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
         <tag>C++</tag>
+        <tag>Linux</tag>
         <tag>gPRC</tag>
       </tags>
   </entry>
