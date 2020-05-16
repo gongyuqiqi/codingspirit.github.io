@@ -4,7 +4,7 @@ tags:
   - Android
   - Java
 date: 2017-11-09 14:16:42
-categories: 编程相关
+categories: App Development
 ---
 当App启动载入时间较长时，我们希望有一个载入界面过渡，当载入完成后再切换到MainActivity。这个载入界面我们称之为SplashActivity。
 <!--more-->
