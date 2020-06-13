@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Python: Use mmap to create shared memory for IPC</title>
+    <url>/2020-06-13/Python-Use-mmap-to-create-shared-memory-for-IPC/</url>
+    <content><![CDATA[<p>There are several ways to achieve IPC, shared memory is one of those. In this post, we will try to create shared memory via <strong>mmap</strong> module in python.</p>
+<a id="more"></a>
+
+<h2 id="Write-to-shared-memory"><a href="#Write-to-shared-memory" class="headerlink" title="Write to shared memory"></a>Write to shared memory</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="keyword">import</span> mmap</span><br><span class="line"><span class="keyword">import</span> contextlib</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">write_to_mem</span><span class="params">(file, share_data)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> contextlib.closing(mmap.mmap(file.fileno(), <span class="number">1024</span>, access=mmap.ACCESS_WRITE)) <span class="keyword">as</span> mem:</span><br><span class="line">        mem.seek(<span class="number">0</span>)</span><br><span class="line">        mem.write(share_data.encode())</span><br><span class="line">        mem.write(<span class="string">'\x00'</span> * (<span class="number">1024</span> - len(share_data.encode())))</span><br><span class="line">        mem.flush()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'data.dat'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">'\x00'</span> * <span class="number">1024</span>)</span><br><span class="line"></span><br><span class="line">file = open(<span class="string">'data.dat'</span>, <span class="string">'r+'</span>)</span><br><span class="line">write_to_mem(file, <span class="string">'hello'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>Here we created a 1026 bytes file, which will be mapped to memory. </p>
+<h2 id="Read-from-shared-memory"><a href="#Read-from-shared-memory" class="headerlink" title="Read from shared memory"></a>Read from shared memory</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="keyword">import</span> mmap</span><br><span class="line"><span class="keyword">import</span> contextlib</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'data.dat'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">with</span> contextlib.closing(mmap.mmap(f.fileno(), <span class="number">1024</span>, access=mmap.ACCESS_READ)) <span class="keyword">as</span> mem:</span><br><span class="line">        s = mem.read(<span class="number">1024</span>)</span><br><span class="line">        print(s)</span><br></pre></td></tr></table></figure>
+
+<p>Here we mapped <em>data.dat</em> file to memory and read from it.</p>
+]]></content>
+      <categories>
+        <category>编程相关</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Use ffmpeg to make kazam recorded mp4 available for Android devices</title>
+    <url>/2020-06-13/Use-ffmpeg-to-make-kazam-recorded-mp4-available-for-Android-devices/</url>
+    <content><![CDATA[<p><strong>kazam</strong> is an easy to use screen record tool for Linux. User can install it via <code>apt install kazam</code> on Debian based distribution. After recording, <strong>kazam</strong> supports to save as mp4 files, which are 4:4:4 by default. To make it available for typical player on other platform, we can covert it to 4:2:0:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ffmpeg -i <span class="variable">$&#123;original.mp4&#125;</span> -vf format=yuv420p <span class="variable">$&#123;new.mp4&#125;</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>随便写写</category>
+      </categories>
+      <tags>
+        <tag>日志</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android: Swipe Views With Tabs(TabLayout + ViewPager)</title>
     <url>/2020-05-16/Android-Swipe-Views-With-Tabs-TabLayout-ViewPager/</url>
     <content><![CDATA[<p>In AndroidX, TabLayout has been extended and moved to package com.google.android.material.tabs.TabLayout. This post will describe how to use <strong>TabLayout + ViewPager</strong> to create swipe views with tabs in AndroidX.</p>
