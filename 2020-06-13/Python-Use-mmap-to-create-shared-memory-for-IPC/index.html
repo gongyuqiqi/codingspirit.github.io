@@ -32,7 +32,7 @@
 <meta property="og:site_name" content="Coding Spirit">
 <meta property="og:description" content="There are several ways to achieve IPC, shared memory is one of those. In this post, we will try to create shared memory via mmap module in python.">
 <meta property="article:published_time" content="2020-06-13T06:35:11.000Z">
-<meta property="article:modified_time" content="2020-06-13T07:23:20.246Z">
+<meta property="article:modified_time" content="2020-06-20T10:46:42.333Z">
 <meta property="article:author" content="Coding Spirit">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
@@ -229,10 +229,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-06-13 14:35:11 / Modified: 15:23:20" itemprop="dateCreated datePublished" datetime="2020-06-13T14:35:11+08:00">2020-06-13</time>
+              <time title="Created: 2020-06-13 14:35:11" itemprop="dateCreated datePublished" datetime="2020-06-13T14:35:11+08:00">2020-06-13</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-06-20 18:46:42" itemprop="dateModified" datetime="2020-06-20T18:46:42+08:00">2020-06-20</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -256,7 +262,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>842</span>
+              <span>851</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -278,7 +284,7 @@
         <p>There are several ways to achieve IPC, shared memory is one of those. In this post, we will try to create shared memory via <strong>mmap</strong> module in python.</p>
 <a id="more"></a>
 
-<h2 id="Write-to-shared-memory"><a href="#Write-to-shared-memory" class="headerlink" title="Write to shared memory"></a>Write to shared memory</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="keyword">import</span> mmap</span><br><span class="line"><span class="keyword">import</span> contextlib</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">write_to_mem</span><span class="params">(file, share_data)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> contextlib.closing(mmap.mmap(file.fileno(), <span class="number">1024</span>, access=mmap.ACCESS_WRITE)) <span class="keyword">as</span> mem:</span><br><span class="line">        mem.seek(<span class="number">0</span>)</span><br><span class="line">        mem.write(share_data.encode())</span><br><span class="line">        mem.write(<span class="string">'\x00'</span> * (<span class="number">1024</span> - len(share_data.encode())))</span><br><span class="line">        mem.flush()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'data.dat'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">'\x00'</span> * <span class="number">1024</span>)</span><br><span class="line"></span><br><span class="line">file = open(<span class="string">'data.dat'</span>, <span class="string">'r+'</span>)</span><br><span class="line">write_to_mem(file, <span class="string">'hello'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="Write-to-shared-memory"><a href="#Write-to-shared-memory" class="headerlink" title="Write to shared memory"></a>Write to shared memory</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="keyword">import</span> mmap</span><br><span class="line"><span class="keyword">import</span> contextlib</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">write_to_mem</span><span class="params">(file, share_data)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> contextlib.closing(mmap.mmap(file.fileno(), <span class="number">1024</span>, access=mmap.ACCESS_WRITE)) <span class="keyword">as</span> mem:</span><br><span class="line">        mem.seek(<span class="number">0</span>)</span><br><span class="line">        mem.write(share_data.encode())</span><br><span class="line">        mem.write(<span class="string">'\x00'</span>.encode() * (<span class="number">1024</span> - len(share_data.encode())))</span><br><span class="line">        mem.flush()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'data.dat'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">'\x00'</span> * <span class="number">1024</span>)</span><br><span class="line"></span><br><span class="line">file = open(<span class="string">'data.dat'</span>, <span class="string">'r+'</span>)</span><br><span class="line">write_to_mem(file, <span class="string">'hello'</span>)</span><br></pre></td></tr></table></figure>
 
 <p>Here we created a 1026 bytes file, which will be mapped to memory. </p>
 <h2 id="Read-from-shared-memory"><a href="#Read-from-shared-memory" class="headerlink" title="Read from shared memory"></a>Read from shared memory</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="keyword">import</span> mmap</span><br><span class="line"><span class="keyword">import</span> contextlib</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'data.dat'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">with</span> contextlib.closing(mmap.mmap(f.fileno(), <span class="number">1024</span>, access=mmap.ACCESS_READ)) <span class="keyword">as</span> mem:</span><br><span class="line">        s = mem.read(<span class="number">1024</span>)</span><br><span class="line">        print(s)</span><br></pre></td></tr></table></figure>
