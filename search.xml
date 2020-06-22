@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Give serial port access to normal user</title>
+    <url>/2020-06-22/Give-serial-port-access-to-normal-user/</url>
+    <content><![CDATA[<p>When we try to access a serial port device(i.e <strong>/dev/ttyUSB0</strong>) as a normal user, a <em>Permission denied</em> error will occur. Let’s take a look at permissions for those serial port devices:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ll /dev/ttyUSB0</span><br><span class="line">crw-rw---- 1 root dialout 188, 0 6月  22 19:28 /dev/ttyUSB0</span><br></pre></td></tr></table></figure>
+
+<p>As we can see, except root user, <strong>dialout</strong> group also has permissions to those serial port tty devices. Hence, to allow normal user access serial port devices, adding normal user to <strong>dialout</strong> group will suffice:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo usermod -aG dialout <span class="variable">$USER</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>随便写写</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python: Use mmap to create shared memory for IPC</title>
     <url>/2020-06-13/Python-Use-mmap-to-create-shared-memory-for-IPC/</url>
     <content><![CDATA[<p>There are several ways to achieve IPC, shared memory is one of those. In this post, we will try to create shared memory via <strong>mmap</strong> module in python.</p>
