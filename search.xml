@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Android: Swipe Down To Refresh</title>
+    <url>/2020-06-27/Android-Swipe-Down-To-Refresh/</url>
+    <content><![CDATA[<p>“Swipe down/Pull down to refresh” is a widely used feature in various kinds of apps. Let’s see how can we do that via SwipeRefreshLayout in AndroidX.</p>
+<a id="more"></a>
+
+<h2 id="Dependencies"><a href="#Dependencies" class="headerlink" title="Dependencies"></a>Dependencies</h2><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">implementation <span class="string">'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Layout"><a href="#Layout" class="headerlink" title="Layout"></a>Layout</h2><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">androidx.swiperefreshlayout.widget.SwipeRefreshLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">"@+id/mySwipeRefreshLayout"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">tools:context</span>=<span class="string">".ui.main.DevicesFragment"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">androidx.recyclerview.widget.RecyclerView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/myRecyclerView"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag"></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_constraintStart_toStartOf</span>=<span class="string">"parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_constraintTop_toTopOf</span>=<span class="string">"parent"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">androidx.swiperefreshlayout.widget.SwipeRefreshLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Here we have a <code>RecyclerView</code> inside <code>SwipeRefreshLayout</code>. We plan to update dataset in <code>RecyclerView</code> when user swipe down.</p>
+<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><p>To implement the logic of refreshing, we need to set refresh listener and override method <code>onRefresh</code>:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">mSwipeRefreshLayout = getView().findViewById(R.id.mySwipeRefreshLayout);</span><br><span class="line">mSwipeRefreshLayout.setOnRefreshListener(<span class="keyword">new</span> SwipeRefreshLayout.OnRefreshListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRefresh</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="comment">// logic implementation start</span></span><br><span class="line">      <span class="comment">// dataSet.add(fetchFromServer());</span></span><br><span class="line">      <span class="comment">// logic implementation end</span></span><br><span class="line">      mSwipeRefreshLayout.setRefreshing(<span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>When refreshing is done, call <code>setRefreshing(false)</code> to stop refreshing animation.</p>
+]]></content>
+      <categories>
+        <category>App Development</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Give serial port access to normal user</title>
     <url>/2020-06-22/Give-serial-port-access-to-normal-user/</url>
     <content><![CDATA[<p>When we try to access a serial port device(i.e <strong>/dev/ttyUSB0</strong>) as a normal user, a <em>Permission denied</em> error will occur. Let’s take a look at permissions for those serial port devices:</p>
