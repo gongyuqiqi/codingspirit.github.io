@@ -3,6 +3,7 @@ title: 'Android: Swipe Down To Refresh'
 top: false
 tags:
   - Android
+  - Java
 date: 2020-06-27 14:15:56
 categories: App Development
 ---
