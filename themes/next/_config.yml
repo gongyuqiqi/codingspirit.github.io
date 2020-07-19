@@ -871,8 +871,8 @@ canvas_ribbon:
 fireworks: true
 
 # Music Player
-aplayer: true
-163player: false
+aplayer: false
+163player: true
 
 #! ---------------------------------------------------------------
 #! DO NOT EDIT THE FOLLOWING SETTINGS
