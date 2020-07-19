@@ -2,297 +2,394 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://lzqblog.top/2020-07-05/Android-BLE-Operations/</loc>
-    <lastmod>2020-07-05T12:56:32.416Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2020-06-27/Android-Swipe-Down-To-Refresh/</loc>
-    <lastmod>2020-07-05T06:53:16.667Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2020-06-22/Give-serial-port-access-to-normal-user/</loc>
-    <lastmod>2020-06-22T11:49:19.243Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2020-06-13/Python-Use-mmap-to-create-shared-memory-for-IPC/</loc>
-    <lastmod>2020-06-20T10:46:42.333Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2020-06-13/Use-ffmpeg-to-make-kazam-recorded-mp4-available-for-Android-devices/</loc>
-    <lastmod>2020-06-13T06:35:26.547Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2017-11-09/Android%E6%B7%BB%E5%8A%A0App%E8%BD%BD%E5%85%A5%E7%95%8C%E9%9D%A2/</loc>
-    <lastmod>2020-05-16T09:29:40.452Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2020-05-16/Android-Swipe-Views-With-Tabs-TabLayout-ViewPager/</loc>
-    <lastmod>2020-05-16T09:27:18.945Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2020-04-13/AWS-IoT-Getting-Started-MQTT-sample/</loc>
-    <lastmod>2020-04-13T09:09:38.178Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2020-04-05/SWUpdate-bring-up-I-Install-to-Yocto-Linux-and-create-single-copy-image/</loc>
-    <lastmod>2020-04-06T05:08:09.303Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2020-01-31/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B-%E7%89%B9%E4%BE%9B%E7%89%88/</loc>
-    <lastmod>2020-03-15T05:15:01.836Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2020-03-08/nfsroot-boot-crash-after-systemd-networkd-starts/</loc>
-    <lastmod>2020-03-08T13:03:58.794Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2020-03-07/Yocto-debugging-commands/</loc>
-    <lastmod>2020-03-07T11:30:24.505Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2020-03-01/STM32MP1-NFS-rootfs/</loc>
-    <lastmod>2020-03-01T06:24:56.493Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2017-11-08/CSharp%E8%87%AA%E5%AE%9A%E4%B9%89Excel%E5%AF%BC%E5%87%BA%E7%B1%BB/</loc>
-    <lastmod>2020-03-01T02:21:21.637Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2018-03-12/%E8%BD%AC%E8%BD%BD%EF%BC%9A%E5%B8%B8%E7%94%A8%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</loc>
-    <lastmod>2020-03-01T02:21:17.665Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2017-11-07/%E5%85%B3%E9%97%AD%E7%A8%8B%E5%BA%8F%E7%AA%97%E5%8F%A3%E5%90%8E%E4%BB%8D%E6%9C%89%E7%BA%BF%E7%A8%8B%E6%AE%8B%E7%95%99%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</loc>
-    <lastmod>2020-03-01T02:21:13.889Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2017-11-16/CSharp-%E7%94%9F%E6%88%90Log%E6%96%87%E4%BB%B6/</loc>
-    <lastmod>2020-03-01T02:21:10.349Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-03-28/i-MX-8-getting-started-cmake-package/</loc>
-    <lastmod>2020-03-01T02:01:51.096Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-03-26/i-MX-8-getting-started-create-your-kernel-module/</loc>
-    <lastmod>2020-03-01T02:01:45.264Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-11-16/STM32MP1-getting-started-setup-environments/</loc>
-    <lastmod>2020-03-01T02:01:21.004Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-05-26/i-MX-setup-TFTP-and-NFS/</loc>
-    <lastmod>2020-03-01T01:44:55.516Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-06-06/i-MX-setup-auto-login/</loc>
-    <lastmod>2020-03-01T01:44:49.992Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-03-22/i-MX-8-getting-started-create-your-general-layer/</loc>
-    <lastmod>2020-03-01T01:44:38.727Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-03-21/i-MX-8-getting-started-setup-environment/</loc>
-    <lastmod>2020-03-01T01:44:06.075Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-10-19/Setting-up-Gitlab-CI-II-pipeline-and-gitlab-ci-yml/</loc>
-    <lastmod>2020-03-01T01:43:19.142Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2020-02-16/STM32MP1-Boot-kernel-via-TFTP-from-U-Boot/</loc>
-    <lastmod>2020-03-01T01:41:56.057Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-11-30/STM32MP1-getting-started-create-machine/</loc>
-    <lastmod>2020-03-01T01:41:50.785Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2020-02-11/GCC-attribute-packed/</loc>
-    <lastmod>2020-02-11T13:59:40.074Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2020-02-07/PyQt5-Getting-Started/</loc>
-    <lastmod>2020-02-07T08:44:33.253Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2020-01-05/Algorithm-Puzzles-Regular-Expression-Matching/</loc>
-    <lastmod>2020-01-31T07:15:15.547Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2020-01-29/Algorithm-Puzzles-Roman-to-Integer/</loc>
-    <lastmod>2020-01-29T13:23:07.891Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2020-01-27/Algorithm-Puzzles-Integer-to-Roman/</loc>
-    <lastmod>2020-01-27T06:06:26.692Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2020-01-26/Algorithm-Puzzles-Container-With-Most-Water/</loc>
-    <lastmod>2020-01-26T07:10:47.782Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-07-11/Algorithm-Puzzles-Two-Sum/</loc>
-    <lastmod>2020-01-05T05:26:26.856Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-12-13/Under-Maintenance/</loc>
-    <lastmod>2019-12-21T08:04:47.178Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-12-21/Yocto-rtl8811-wifi-adapter-bring-up/</loc>
-    <lastmod>2019-12-21T08:03:03.947Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-12-07/Linux-USB-gadget-configfs/</loc>
-    <lastmod>2019-12-13T13:32:38.416Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-11-30/Yocto-devtool/</loc>
-    <lastmod>2019-11-30T14:44:46.348Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2018-10-21/git-command%E5%A4%87%E5%BF%98%E5%BD%95/</loc>
-    <lastmod>2019-11-23T07:58:57.866Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-11-16/Install-JDK-JRE-for-Ubuntu/</loc>
-    <lastmod>2019-11-16T11:21:42.925Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-11-10/vscode-settings-for-zephyr/</loc>
-    <lastmod>2019-11-14T12:32:40.944Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-11-14/Chrome-ERR-NETWORK-CHANGED-on-Ubuntu/</loc>
-    <lastmod>2019-11-14T12:32:40.936Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-10-26/Algorithm-Puzzles-Palindrome-Number/</loc>
-    <lastmod>2019-10-26T04:49:30.371Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-10-13/Algorithm-Puzzles-String-to-Integer-atoi/</loc>
-    <lastmod>2019-10-14T12:23:29.821Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-10-05/Algorithm-Puzzles-Reverse-Integer/</loc>
-    <lastmod>2019-10-05T03:23:46.831Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-09-01/ALSA-Naming-rule-of-codec-name-inside-snd-soc-dai-link/</loc>
-    <lastmod>2019-10-05T03:12:45.004Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-09-28/Algorithm-Puzzles-ZigZag-Conversion/</loc>
-    <lastmod>2019-10-05T03:12:30.992Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-07-27/Algorithm-Puzzles-Median-of-Two-Sorted-Arrays/</loc>
-    <lastmod>2019-10-05T03:12:21.024Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-07-21/Algorithm-Puzzles-Longest-Substring-Without-Repeating-Characters/</loc>
-    <lastmod>2019-10-05T03:12:16.072Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-08-04/Algorithm-Puzzles-Longest-Palindromic-Substring/</loc>
-    <lastmod>2019-10-05T03:12:10.852Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-07-14/Algorithm-Puzzles-Add-two-numbers/</loc>
-    <lastmod>2019-10-05T03:12:05.560Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-09-28/Setting-up-Gitlab-CI-I-docker-gitlab-runner/</loc>
-    <lastmod>2019-09-28T01:21:19.068Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2018-01-09/Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
-    <lastmod>2019-09-28T01:18:21.741Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-08-24/Yocto-Configure-kernel-with-config-fragments/</loc>
-    <lastmod>2019-08-24T10:11:34.888Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-08-17/Yocto-Replace-sysvinit-with-systemd/</loc>
-    <lastmod>2019-08-17T11:50:16.195Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-07-27/i-MX8-adb-bring-up/</loc>
-    <lastmod>2019-07-26T10:55:36.226Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-06-28/Webserver-bring-up-II-Create-a-demo-page-html-fcgi/</loc>
-    <lastmod>2019-06-28T12:17:06.853Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2018-03-20/Jenkins-Gerrit-%E8%87%AA%E5%8A%A8commit-code-review-submit/</loc>
-    <lastmod>2019-06-28T12:17:06.853Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-06-20/Webserver-bring-up-I-Install-lighttpd-and-fastcgi/</loc>
-    <lastmod>2019-06-20T11:41:31.531Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-06-07/Yocto-systemd/</loc>
-    <lastmod>2019-06-07T12:07:57.320Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-05-27/canvas-demo-page/</loc>
-    <lastmod>2019-06-06T12:15:13.631Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-05-28/Android-Error-when-execute-sdkmanager/</loc>
-    <lastmod>2019-05-28T12:54:51.548Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-05-27/Yocto-recipe-Git/</loc>
-    <lastmod>2019-05-27T11:55:41.468Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-05-02/Yocto-QA-Issue-Files-directories-were-installed-but-not-shipped-in-any-package/</loc>
-    <lastmod>2019-05-02T12:21:16.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-04-29/Yocto-QA-Issue-dev-package-contains-non-symlink-so/</loc>
-    <lastmod>2019-05-02T11:52:11.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-03-18/C-C-mixed-programming-error-undefined-reference/</loc>
-    <lastmod>2019-03-21T12:26:44.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-03-04/cmake-notes/</loc>
-    <lastmod>2019-03-04T11:49:16.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-02-28/C-standard-exceptions/</loc>
-    <lastmod>2019-02-28T12:22:00.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2019-02-16/Linux-C-C-debugging-using-adb-and-gdb/</loc>
-    <lastmod>2019-02-16T14:04:27.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2018-12-23/Linux-kernel-module-3/</loc>
-    <lastmod>2018-12-23T04:26:49.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2018-12-22/Comments-system-has-been-added/</loc>
-    <lastmod>2018-12-22T01:46:58.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2018-12-16/Linux-kernel-module-2/</loc>
-    <lastmod>2018-12-16T12:09:05.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2018-12-09/Linux-kernel-module-1/</loc>
-    <lastmod>2018-12-16T12:08:54.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2018-11-24/Markdown-frequently-used-syntax/</loc>
-    <lastmod>2018-11-29T11:02:29.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2018-09-12/Cpp-Design-Patterns-Singleton/</loc>
-    <lastmod>2018-11-29T02:21:02.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2017-11-05/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0/</loc>
-    <lastmod>2018-11-29T02:18:03.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2017-11-25/%E5%9C%A8Android-Things%E4%B8%8A%E4%BD%BF%E7%94%A8%E8%BF%9C%E7%A8%8B%E5%B1%8F%E5%B9%95/</loc>
-    <lastmod>2018-11-28T12:01:18.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2018-01-03/%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%ABAI/</loc>
-    <lastmod>2018-11-28T12:01:18.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2017-12-06/%E5%9C%A8Android-Things%E4%B8%8A%E4%BD%BF%E7%94%A8TTS%E5%8F%8A%E4%BD%BF%E7%94%A8Google-Assistant%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</loc>
-    <lastmod>2018-11-28T12:01:18.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2017-11-24/%E5%9C%A8Raspberry-Pi%E4%B8%8A%E5%88%9D%E8%AF%95Android-Things/</loc>
-    <lastmod>2018-11-28T12:01:18.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2018-11-20/Debian-nvidia-display-card-driver-install/</loc>
-    <lastmod>2018-11-28T12:01:18.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2017-11-12/%E4%BD%BF%E7%94%A8qemu%E8%BF%90%E8%A1%8CLinux-kernel/</loc>
-    <lastmod>2018-11-28T12:01:18.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2018-01-11/%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%ABAI/</loc>
-    <lastmod>2018-11-28T12:01:18.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2018-01-03/%E4%BD%BF%E7%94%A8Gparted%E6%89%A9%E5%B1%95%E5%88%86%E5%8C%BA/</loc>
-    <lastmod>2018-11-28T12:01:18.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2018-11-23/Linux-%E2%80%98adb-devices%E2%80%99-can-t-find-devices/</loc>
-    <lastmod>2018-11-26T11:26:53.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2018-05-02/Linux%E9%85%8D%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%A3%B0%E5%8D%A1/</loc>
-    <lastmod>2018-11-20T11:54:50.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2018-06-05/makefile-summarize/</loc>
-    <lastmod>2018-11-20T11:54:50.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2017-11-27/%E4%BD%BF%E7%94%A8-IntDef%E6%9B%BF%E4%BB%A3Enum/</loc>
-    <lastmod>2018-11-20T11:54:50.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2018-01-23/%E5%9C%A8Windows%E4%B8%8B%E5%AE%89%E8%A3%85gpu%E7%89%88%E7%9A%84TensorFlow/</loc>
-    <lastmod>2018-11-20T11:54:50.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2017-10-31/Welcome/</loc>
-    <lastmod>2018-11-20T11:54:50.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2018-11-14/Issue-No-such-file-or-directory/</loc>
-    <lastmod>2018-11-20T11:54:50.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2018-04-02/Ubuntu%E5%88%87%E6%8D%A2python%E7%89%88%E6%9C%AC/</loc>
-    <lastmod>2018-11-20T11:54:50.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2017-12-28/%E5%9C%A8%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BD%BF%E7%94%A8Google-Assistant/</loc>
-    <lastmod>2018-11-20T11:54:50.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2018-11-08/Cross-compile-gRPC-for-ARM/</loc>
-    <lastmod>2018-11-20T11:54:50.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2018-06-11/%E7%8E%B0%E5%9C%A8%E6%94%AF%E6%8C%81HTTPS%E5%95%A6/</loc>
-    <lastmod>2018-11-20T11:54:50.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2018-05-24/make-warning-Clock-skew-detected/</loc>
-    <lastmod>2018-11-20T11:54:50.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2017-11-01/%E5%B8%B8%E7%94%A8%E7%9A%84Regex/</loc>
-    <lastmod>2018-11-20T11:54:50.000Z</lastmod>
-  </url>  <url>
-    <loc>https://lzqblog.top/2018-02-09/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4/</loc>
-    <lastmod>2018-11-20T11:54:50.000Z</lastmod>
+    <lastmod>2020-07-05</lastmod>
   </url>
-</urlset>
+  <url>
+    <loc>https://lzqblog.top/2020-06-27/Android-Swipe-Down-To-Refresh/</loc>
+    <lastmod>2020-07-05</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2020-06-22/Give-serial-port-access-to-normal-user/</loc>
+    <lastmod>2020-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2020-06-13/Python-Use-mmap-to-create-shared-memory-for-IPC/</loc>
+    <lastmod>2020-06-20</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2020-06-13/Use-ffmpeg-to-make-kazam-recorded-mp4-available-for-Android-devices/</loc>
+    <lastmod>2020-06-13</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2017-11-09/Android%E6%B7%BB%E5%8A%A0App%E8%BD%BD%E5%85%A5%E7%95%8C%E9%9D%A2/</loc>
+    <lastmod>2020-05-16</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2020-05-16/Android-Swipe-Views-With-Tabs-TabLayout-ViewPager/</loc>
+    <lastmod>2020-05-16</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2020-04-13/AWS-IoT-Getting-Started-MQTT-sample/</loc>
+    <lastmod>2020-04-13</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2020-04-05/SWUpdate-bring-up-I-Install-to-Yocto-Linux-and-create-single-copy-image/</loc>
+    <lastmod>2020-04-06</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2020-01-31/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B-%E7%89%B9%E4%BE%9B%E7%89%88/</loc>
+    <lastmod>2020-03-15</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2020-03-08/nfsroot-boot-crash-after-systemd-networkd-starts/</loc>
+    <lastmod>2020-03-08</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2020-03-07/Yocto-debugging-commands/</loc>
+    <lastmod>2020-03-07</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2020-03-01/STM32MP1-NFS-rootfs/</loc>
+    <lastmod>2020-03-01</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2017-11-08/CSharp%E8%87%AA%E5%AE%9A%E4%B9%89Excel%E5%AF%BC%E5%87%BA%E7%B1%BB/</loc>
+    <lastmod>2020-03-01</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2018-03-12/%E8%BD%AC%E8%BD%BD%EF%BC%9A%E5%B8%B8%E7%94%A8%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</loc>
+    <lastmod>2020-03-01</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2017-11-07/%E5%85%B3%E9%97%AD%E7%A8%8B%E5%BA%8F%E7%AA%97%E5%8F%A3%E5%90%8E%E4%BB%8D%E6%9C%89%E7%BA%BF%E7%A8%8B%E6%AE%8B%E7%95%99%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</loc>
+    <lastmod>2020-03-01</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2017-11-16/CSharp-%E7%94%9F%E6%88%90Log%E6%96%87%E4%BB%B6/</loc>
+    <lastmod>2020-03-01</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-03-28/i-MX-8-getting-started-cmake-package/</loc>
+    <lastmod>2020-03-01</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-03-26/i-MX-8-getting-started-create-your-kernel-module/</loc>
+    <lastmod>2020-03-01</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-11-16/STM32MP1-getting-started-setup-environments/</loc>
+    <lastmod>2020-03-01</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-05-26/i-MX-setup-TFTP-and-NFS/</loc>
+    <lastmod>2020-03-01</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-06-06/i-MX-setup-auto-login/</loc>
+    <lastmod>2020-03-01</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-03-22/i-MX-8-getting-started-create-your-general-layer/</loc>
+    <lastmod>2020-03-01</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-03-21/i-MX-8-getting-started-setup-environment/</loc>
+    <lastmod>2020-03-01</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-10-19/Setting-up-Gitlab-CI-II-pipeline-and-gitlab-ci-yml/</loc>
+    <lastmod>2020-03-01</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2020-02-16/STM32MP1-Boot-kernel-via-TFTP-from-U-Boot/</loc>
+    <lastmod>2020-03-01</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-11-30/STM32MP1-getting-started-create-machine/</loc>
+    <lastmod>2020-03-01</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2020-02-11/GCC-attribute-packed/</loc>
+    <lastmod>2020-02-11</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2020-02-07/PyQt5-Getting-Started/</loc>
+    <lastmod>2020-02-07</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2020-01-05/Algorithm-Puzzles-Regular-Expression-Matching/</loc>
+    <lastmod>2020-01-31</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2020-01-29/Algorithm-Puzzles-Roman-to-Integer/</loc>
+    <lastmod>2020-01-29</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2020-01-27/Algorithm-Puzzles-Integer-to-Roman/</loc>
+    <lastmod>2020-01-27</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2020-01-26/Algorithm-Puzzles-Container-With-Most-Water/</loc>
+    <lastmod>2020-01-26</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-07-11/Algorithm-Puzzles-Two-Sum/</loc>
+    <lastmod>2020-01-05</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-12-13/Under-Maintenance/</loc>
+    <lastmod>2019-12-21</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-12-21/Yocto-rtl8811-wifi-adapter-bring-up/</loc>
+    <lastmod>2019-12-21</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-12-07/Linux-USB-gadget-configfs/</loc>
+    <lastmod>2019-12-13</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-11-30/Yocto-devtool/</loc>
+    <lastmod>2019-11-30</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2018-10-21/git-command%E5%A4%87%E5%BF%98%E5%BD%95/</loc>
+    <lastmod>2019-11-23</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-11-16/Install-JDK-JRE-for-Ubuntu/</loc>
+    <lastmod>2019-11-16</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-11-10/vscode-settings-for-zephyr/</loc>
+    <lastmod>2019-11-14</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-11-14/Chrome-ERR-NETWORK-CHANGED-on-Ubuntu/</loc>
+    <lastmod>2019-11-14</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-10-26/Algorithm-Puzzles-Palindrome-Number/</loc>
+    <lastmod>2019-10-26</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-10-13/Algorithm-Puzzles-String-to-Integer-atoi/</loc>
+    <lastmod>2019-10-14</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-10-05/Algorithm-Puzzles-Reverse-Integer/</loc>
+    <lastmod>2019-10-05</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-09-01/ALSA-Naming-rule-of-codec-name-inside-snd-soc-dai-link/</loc>
+    <lastmod>2019-10-05</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-09-28/Algorithm-Puzzles-ZigZag-Conversion/</loc>
+    <lastmod>2019-10-05</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-07-27/Algorithm-Puzzles-Median-of-Two-Sorted-Arrays/</loc>
+    <lastmod>2019-10-05</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-07-21/Algorithm-Puzzles-Longest-Substring-Without-Repeating-Characters/</loc>
+    <lastmod>2019-10-05</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-08-04/Algorithm-Puzzles-Longest-Palindromic-Substring/</loc>
+    <lastmod>2019-10-05</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-07-14/Algorithm-Puzzles-Add-two-numbers/</loc>
+    <lastmod>2019-10-05</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-09-28/Setting-up-Gitlab-CI-I-docker-gitlab-runner/</loc>
+    <lastmod>2019-09-28</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2018-01-09/Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
+    <lastmod>2019-09-28</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-08-24/Yocto-Configure-kernel-with-config-fragments/</loc>
+    <lastmod>2019-08-24</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-08-17/Yocto-Replace-sysvinit-with-systemd/</loc>
+    <lastmod>2019-08-17</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-07-27/i-MX8-adb-bring-up/</loc>
+    <lastmod>2019-07-26</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-06-28/Webserver-bring-up-II-Create-a-demo-page-html-fcgi/</loc>
+    <lastmod>2019-06-28</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2018-03-20/Jenkins-Gerrit-%E8%87%AA%E5%8A%A8commit-code-review-submit/</loc>
+    <lastmod>2019-06-28</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-06-20/Webserver-bring-up-I-Install-lighttpd-and-fastcgi/</loc>
+    <lastmod>2019-06-20</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-06-07/Yocto-systemd/</loc>
+    <lastmod>2019-06-07</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-05-27/canvas-demo-page/</loc>
+    <lastmod>2019-06-06</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-05-28/Android-Error-when-execute-sdkmanager/</loc>
+    <lastmod>2019-05-28</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-05-27/Yocto-recipe-Git/</loc>
+    <lastmod>2019-05-27</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-05-02/Yocto-QA-Issue-Files-directories-were-installed-but-not-shipped-in-any-package/</loc>
+    <lastmod>2019-05-02</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-04-29/Yocto-QA-Issue-dev-package-contains-non-symlink-so/</loc>
+    <lastmod>2019-05-02</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-03-18/C-C-mixed-programming-error-undefined-reference/</loc>
+    <lastmod>2019-03-21</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-03-04/cmake-notes/</loc>
+    <lastmod>2019-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-02-28/C-standard-exceptions/</loc>
+    <lastmod>2019-02-28</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2019-02-16/Linux-C-C-debugging-using-adb-and-gdb/</loc>
+    <lastmod>2019-02-16</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2018-12-23/Linux-kernel-module-3/</loc>
+    <lastmod>2018-12-23</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2018-12-22/Comments-system-has-been-added/</loc>
+    <lastmod>2018-12-22</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2018-12-16/Linux-kernel-module-2/</loc>
+    <lastmod>2018-12-16</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2018-12-09/Linux-kernel-module-1/</loc>
+    <lastmod>2018-12-16</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2018-11-24/Markdown-frequently-used-syntax/</loc>
+    <lastmod>2018-11-29</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2018-09-12/Cpp-Design-Patterns-Singleton/</loc>
+    <lastmod>2018-11-29</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2017-11-05/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0/</loc>
+    <lastmod>2018-11-29</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2017-11-25/%E5%9C%A8Android-Things%E4%B8%8A%E4%BD%BF%E7%94%A8%E8%BF%9C%E7%A8%8B%E5%B1%8F%E5%B9%95/</loc>
+    <lastmod>2018-11-28</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2017-11-24/%E5%9C%A8Raspberry-Pi%E4%B8%8A%E5%88%9D%E8%AF%95Android-Things/</loc>
+    <lastmod>2018-11-28</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2018-11-20/Debian-nvidia-display-card-driver-install/</loc>
+    <lastmod>2018-11-28</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2017-11-12/%E4%BD%BF%E7%94%A8qemu%E8%BF%90%E8%A1%8CLinux-kernel/</loc>
+    <lastmod>2018-11-28</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2018-01-03/%E4%BD%BF%E7%94%A8Gparted%E6%89%A9%E5%B1%95%E5%88%86%E5%8C%BA/</loc>
+    <lastmod>2018-11-28</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2018-01-03/%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%ABAI/</loc>
+    <lastmod>2018-11-28</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2017-12-06/%E5%9C%A8Android-Things%E4%B8%8A%E4%BD%BF%E7%94%A8TTS%E5%8F%8A%E4%BD%BF%E7%94%A8Google-Assistant%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</loc>
+    <lastmod>2018-11-28</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2018-01-11/%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%ABAI/</loc>
+    <lastmod>2018-11-28</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2018-11-23/Linux-%E2%80%98adb-devices%E2%80%99-can-t-find-devices/</loc>
+    <lastmod>2018-11-26</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2018-01-23/%E5%9C%A8Windows%E4%B8%8B%E5%AE%89%E8%A3%85gpu%E7%89%88%E7%9A%84TensorFlow/</loc>
+    <lastmod>2018-11-20</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2017-11-01/%E5%B8%B8%E7%94%A8%E7%9A%84Regex/</loc>
+    <lastmod>2018-11-20</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2017-12-28/%E5%9C%A8%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E4%BD%BF%E7%94%A8Google-Assistant/</loc>
+    <lastmod>2018-11-20</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2018-11-08/Cross-compile-gRPC-for-ARM/</loc>
+    <lastmod>2018-11-20</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2017-11-27/%E4%BD%BF%E7%94%A8-IntDef%E6%9B%BF%E4%BB%A3Enum/</loc>
+    <lastmod>2018-11-20</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2018-06-11/%E7%8E%B0%E5%9C%A8%E6%94%AF%E6%8C%81HTTPS%E5%95%A6/</loc>
+    <lastmod>2018-11-20</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2018-05-02/Linux%E9%85%8D%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%A3%B0%E5%8D%A1/</loc>
+    <lastmod>2018-11-20</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2018-02-09/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4/</loc>
+    <lastmod>2018-11-20</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2018-11-14/Issue-No-such-file-or-directory/</loc>
+    <lastmod>2018-11-20</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2018-05-24/make-warning-Clock-skew-detected/</loc>
+    <lastmod>2018-11-20</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2018-06-05/makefile-summarize/</loc>
+    <lastmod>2018-11-20</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2017-10-31/Welcome/</loc>
+    <lastmod>2018-11-20</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2018-04-02/Ubuntu%E5%88%87%E6%8D%A2python%E7%89%88%E6%9C%AC/</loc>
+    <lastmod>2018-11-20</lastmod>
+  </url>
+</urlset> 
