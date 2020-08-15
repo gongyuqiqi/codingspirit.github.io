@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Kibana: Read only dashboard</title>
+    <url>/2020-08-15/Kibana-Read-only-dashboard/</url>
+    <content><![CDATA[<p>…</p>
+<a id="more"></a>
+
+<h2 id="X-Pack-security-enabled"><a href="#X-Pack-security-enabled" class="headerlink" title="X-Pack security enabled"></a>X-Pack security enabled</h2><p>With X-Pack security enabled, give specific user with <code>kibana_dashboard_only_user</code> role in <strong>Management &gt; Security &gt; Users</strong>. In this case user can access dashboard but there is no edit button in dashboard.</p>
+<h2 id="X-Pack-security-is-not-enabled"><a href="#X-Pack-security-is-not-enabled" class="headerlink" title="X-Pack security is not enabled"></a>X-Pack security is not enabled</h2><p>If X-Pack security is not enabled, there is another way to make dashboard “read only” :</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">PUT .kibana/_settings</span><br><span class="line">&#123;</span><br><span class="line">  "index": &#123;</span><br><span class="line">    "blocks.read_only": true</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>If applied code in <strong>Dev tool</strong>, Edit button still can be seen in dashboard but user can’t save modified dashboard.</p>
+]]></content>
+      <categories>
+        <category>随便写写</category>
+      </categories>
+      <tags>
+        <tag>日志</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android: BLE Operations</title>
     <url>/2020-07-05/Android-BLE-Operations/</url>
     <content><![CDATA[<p>When I was in university, I had developed a BLE based UAV controller based on an open source Android BLE library. The library itself is quite easy to use but I decided to develop an Android BLE app with native Android BLE API, which can connect and communicate with BLE GATT devices.</p>
