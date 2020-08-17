@@ -25,16 +25,20 @@
     var CONFIG = {"hostname":"lzqblog.top","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="毕业于OUC，现就职于Amazon">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Coding Spirit">
-<meta property="og:url" content="https://lzqblog.top/tags/Continuous-integration/index.html">
+  <meta name="description" content="This post records some errors I have met during set up an Android build pipeline with Travis CI.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Travis CI: Android Build Errors">
+<meta property="og:url" content="https://lzqblog.top/2020-08-17/Travis-CI-Android-Build-Errors/index.html">
 <meta property="og:site_name" content="Coding Spirit">
-<meta property="og:description" content="毕业于OUC，现就职于Amazon">
+<meta property="og:description" content="This post records some errors I have met during set up an Android build pipeline with Travis CI.">
+<meta property="article:published_time" content="2020-08-17T11:09:57.000Z">
+<meta property="article:modified_time" content="2020-08-17T11:28:47.282Z">
 <meta property="article:author" content="Coding Spirit">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="Continuous Integration">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://lzqblog.top/tags/Continuous-integration/">
+<link rel="canonical" href="https://lzqblog.top/2020-08-17/Travis-CI-Android-Build-Errors/">
 
 
 <script id="page-configurations">
@@ -42,12 +46,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-Hans'
   };
 </script>
 
-  <title>Tag: Continuous integration | Coding Spirit</title>
+  <title>Travis CI: Android Build Errors | Coding Spirit</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154617667-1"></script>
     <script>
@@ -196,100 +200,151 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">Continuous integration
-          <small>Tag</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://lzqblog.top/2020-08-17/Travis-CI-Android-Build-Errors/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/assets/img/coding_spirit.jpg">
+      <meta itemprop="name" content="Coding Spirit">
+      <meta itemprop="description" content="毕业于OUC，现就职于Amazon">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Spirit">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Travis CI: Android Build Errors
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-08-17 19:09:57 / Modified: 19:28:47" itemprop="dateCreated datePublished" datetime="2020-08-17T19:09:57+08:00">2020-08-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">问题记录</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>935</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2019</span>
-    </div>
+        <p>This post records some errors I have met during set up an Android build pipeline with Travis CI.</p>
+<a id="more"></a>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+<h2 id="Failed-to-install-the-following-Android-SDK-packages-as-some-licences-have-not-been-accepted"><a href="#Failed-to-install-the-following-Android-SDK-packages-as-some-licences-have-not-been-accepted" class="headerlink" title="Failed to install the following Android SDK packages as some licences have not been accepted."></a>Failed to install the following Android SDK packages as some licences have not been accepted.</h2><p>Error message:</p>
+<p>Failed to install the following Android SDK packages as some licences have not been accepted.<br>     platforms;android-29 Android SDK Platform 29<br>  To build this project, accept the SDK license agreements and install the missing components using the Android Studio SDK Manager.</p>
+<p>Fix:</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">before_install:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="literal">yes</span> <span class="string">|</span> <span class="string">sdkmanager</span> <span class="string">"platforms;android-29"</span></span><br></pre></td></tr></table></figure>
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-10-19T19:00:31+08:00"
-              content="2019-10-19">
-          10-19
-        </time>
-      </div>
+<h2 id="Lint-found-errors-in-the-project-aborting-build"><a href="#Lint-found-errors-in-the-project-aborting-build" class="headerlink" title="Lint found errors in the project; aborting build."></a>Lint found errors in the project; aborting build.</h2><p>Error message:</p>
+<p>Execution failed for task ‘:app:lint’.<br><br>&gt; Lint found errors in the project; aborting build.</p>
+<p>Quick Fix:</p>
+<p>Add following code into <em>app/build.gradle</em> to disable abort when lint error:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lintOptions &#123;</span><br><span class="line">    abortOnError false</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2019-10-19/Setting-up-Gitlab-CI-II-pipeline-and-gitlab-ci-yml/" itemprop="url">
-            <span itemprop="name">Setting up Gitlab CI (II): pipeline and .gitlab-ci.yml</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-09-28T08:14:36+08:00"
-              content="2019-09-28">
-          09-28
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2019-09-28/Setting-up-Gitlab-CI-I-docker-gitlab-runner/" itemprop="url">
-            <span itemprop="name">Setting up Gitlab CI (I): docker+gitlab-runner</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-    <div class="collection-year">
-      <span class="collection-header">2018</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-03-20T13:08:29+08:00"
-              content="2018-03-20">
-          03-20
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2018-03-20/Jenkins-Gerrit-%E8%87%AA%E5%8A%A8commit-code-review-submit/" itemprop="url">
-            <span itemprop="name">Jenkins+Gerrit: 自动commit//code review//submit</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
+<p>Suggested Fix:</p>
+<p>Run <code>./gradlew lint</code> to generate lint report and fix those errors. You can find it under <em>/app/build/outputs/lint-results-debug.html</em>. You also can run <code>./gradlew lintDebug</code> or <code>./gradlew lintRelease</code> to run lint for debug or release version specifically.</p>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Coding Spirit
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://lzqblog.top/2020-08-17/Travis-CI-Android-Build-Errors/" title="Travis CI: Android Build Errors">https://lzqblog.top/2020-08-17/Travis-CI-Android-Build-Errors/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
+              <a href="/tags/Continuous-Integration/" rel="tag"><i class="fa fa-tag"></i> Continuous Integration</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020-08-15/Kibana-Read-only-dashboard/" rel="prev" title="Kibana: Read only dashboard">
+      <i class="fa fa-chevron-left"></i> Kibana: Read only dashboard
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -336,6 +391,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Failed-to-install-the-following-Android-SDK-packages-as-some-licences-have-not-been-accepted"><span class="nav-number">1.</span> <span class="nav-text">Failed to install the following Android SDK packages as some licences have not been accepted.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lint-found-errors-in-the-project-aborting-build"><span class="nav-number">2.</span> <span class="nav-text">Lint found errors in the project; aborting build.</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -351,7 +407,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-count">100</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -417,12 +473,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">206k</span>
+    <span title="Symbols count total">207k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">3:07</span>
+    <span title="Reading time total">3:08</span>
 </div>
 
         
@@ -527,6 +583,25 @@
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '965ca656ae3d59a50b73',
+      clientSecret: '94dbe9c760ce8b778c84481a7fe2f37f548d7375',
+      repo        : 'blog-gitalk',
+      owner       : 'codingspirit',
+      admin       : ['codingspirit'],
+      id          : '30ce465451fce3d2b725468e9bea1188',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":true,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":1}});</script></body>
   

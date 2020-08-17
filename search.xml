@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Travis CI: Android Build Errors</title>
+    <url>/2020-08-17/Travis-CI-Android-Build-Errors/</url>
+    <content><![CDATA[<p>This post records some errors I have met during set up an Android build pipeline with Travis CI.</p>
+<a id="more"></a>
+
+<h2 id="Failed-to-install-the-following-Android-SDK-packages-as-some-licences-have-not-been-accepted"><a href="#Failed-to-install-the-following-Android-SDK-packages-as-some-licences-have-not-been-accepted" class="headerlink" title="Failed to install the following Android SDK packages as some licences have not been accepted."></a>Failed to install the following Android SDK packages as some licences have not been accepted.</h2><p>Error message:</p>
+<p>Failed to install the following Android SDK packages as some licences have not been accepted.<br>     platforms;android-29 Android SDK Platform 29<br>  To build this project, accept the SDK license agreements and install the missing components using the Android Studio SDK Manager.</p>
+<p>Fix:</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">before_install:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="literal">yes</span> <span class="string">|</span> <span class="string">sdkmanager</span> <span class="string">"platforms;android-29"</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Lint-found-errors-in-the-project-aborting-build"><a href="#Lint-found-errors-in-the-project-aborting-build" class="headerlink" title="Lint found errors in the project; aborting build."></a>Lint found errors in the project; aborting build.</h2><p>Error message:</p>
+<p>Execution failed for task ‘:app:lint’.<br><br>&gt; Lint found errors in the project; aborting build.</p>
+<p>Quick Fix:</p>
+<p>Add following code into <em>app/build.gradle</em> to disable abort when lint error:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">lintOptions &#123;</span><br><span class="line">    abortOnError false</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Suggested Fix:</p>
+<p>Run <code>./gradlew lint</code> to generate lint report and fix those errors. You can find it under <em>/app/build/outputs/lint-results-debug.html</em>. You also can run <code>./gradlew lintDebug</code> or <code>./gradlew lintRelease</code> to run lint for debug or release version specifically.</p>
+]]></content>
+      <categories>
+        <category>问题记录</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>Continuous Integration</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Kibana: Read only dashboard</title>
     <url>/2020-08-15/Kibana-Read-only-dashboard/</url>
     <content><![CDATA[<p>…</p>
@@ -940,7 +968,7 @@
         <category>CI</category>
       </categories>
       <tags>
-        <tag>Continuous integration</tag>
+        <tag>Continuous Integration</tag>
       </tags>
   </entry>
   <entry>
@@ -1042,7 +1070,7 @@
         <category>CI</category>
       </categories>
       <tags>
-        <tag>Continuous integration</tag>
+        <tag>Continuous Integration</tag>
       </tags>
   </entry>
   <entry>
@@ -2605,7 +2633,7 @@ cond(yes,down)->e</textarea><textarea id="flowchart-0-options" style="display: n
       </categories>
       <tags>
         <tag>shell</tag>
-        <tag>Continuous integration</tag>
+        <tag>Continuous Integration</tag>
       </tags>
   </entry>
   <entry>
