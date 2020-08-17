@@ -2,7 +2,7 @@
 title: 'Jenkins+Gerrit: 自动commit//code review//submit'
 tags:
   - shell
-  - Continuous integration
+  - Continuous Integration
 date: 2018-03-20 13:08:29
 categories: CI
 ---

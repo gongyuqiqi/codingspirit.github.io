@@ -106,7 +106,7 @@ symbols_count_time:
   exclude_codeblock: false
 
 live2d:
-  enable: true
+  enable: false
   scriptFrom: local
   pluginRootPath: live2dw/
   pluginJsPath: lib/
