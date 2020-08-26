@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>SSL certificate problem: unable to get local issuer certificate</title>
+    <url>/2020-08-26/SSL-certificate-problem-unable-to-get-local-issuer-certificate/</url>
+    <content><![CDATA[<p>Yesterday successfully cross compiled curl with mbedTLS, but there was an error when trying to access a https link:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SSL certificate problem: unable to get local issuer certificate</span><br></pre></td></tr></table></figure>
+
+<p>To fix it, download CA certificate to local machine and export environment variable <code>CURL_CA_BUNDLE</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://curl.haxx.se/ca/cacert.pem</span><br><span class="line"><span class="built_in">export</span> CURL_CA_BUNDLE=&lt;path of cacert.pem&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>问题记录</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Travis CI: Android Build Errors</title>
     <url>/2020-08-17/Travis-CI-Android-Build-Errors/</url>
     <content><![CDATA[<p>This post records some errors I have met during set up an Android build pipeline with Travis CI.</p>

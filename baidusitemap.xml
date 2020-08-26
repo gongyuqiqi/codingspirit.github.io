@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://lzqblog.top/2020-08-26/SSL-certificate-problem-unable-to-get-local-issuer-certificate/</loc>
+    <lastmod>2020-08-26</lastmod>
+  </url>
+  <url>
     <loc>https://lzqblog.top/2020-08-17/Travis-CI-Android-Build-Errors/</loc>
     <lastmod>2020-08-17</lastmod>
   </url>
@@ -313,15 +317,11 @@
     <lastmod>2018-11-29</lastmod>
   </url>
   <url>
-    <loc>https://lzqblog.top/2018-01-03/%E4%BD%BF%E7%94%A8Gparted%E6%89%A9%E5%B1%95%E5%88%86%E5%8C%BA/</loc>
-    <lastmod>2018-11-28</lastmod>
-  </url>
-  <url>
     <loc>https://lzqblog.top/2017-11-25/%E5%9C%A8Android-Things%E4%B8%8A%E4%BD%BF%E7%94%A8%E8%BF%9C%E7%A8%8B%E5%B1%8F%E5%B9%95/</loc>
     <lastmod>2018-11-28</lastmod>
   </url>
   <url>
-    <loc>https://lzqblog.top/2018-01-11/%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%ABAI/</loc>
+    <loc>https://lzqblog.top/2018-11-20/Debian-nvidia-display-card-driver-install/</loc>
     <lastmod>2018-11-28</lastmod>
   </url>
   <url>
@@ -341,16 +341,16 @@
     <lastmod>2018-11-28</lastmod>
   </url>
   <url>
-    <loc>https://lzqblog.top/2018-11-20/Debian-nvidia-display-card-driver-install/</loc>
+    <loc>https://lzqblog.top/2018-01-03/%E4%BD%BF%E7%94%A8Gparted%E6%89%A9%E5%B1%95%E5%88%86%E5%8C%BA/</loc>
+    <lastmod>2018-11-28</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2018-01-11/%E4%BD%BF%E7%94%A8TensorFlow%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%ABAI/</loc>
     <lastmod>2018-11-28</lastmod>
   </url>
   <url>
     <loc>https://lzqblog.top/2018-11-23/Linux-%E2%80%98adb-devices%E2%80%99-can-t-find-devices/</loc>
     <lastmod>2018-11-26</lastmod>
-  </url>
-  <url>
-    <loc>https://lzqblog.top/2018-05-02/Linux%E9%85%8D%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%A3%B0%E5%8D%A1/</loc>
-    <lastmod>2018-11-20</lastmod>
   </url>
   <url>
     <loc>https://lzqblog.top/2018-01-23/%E5%9C%A8Windows%E4%B8%8B%E5%AE%89%E8%A3%85gpu%E7%89%88%E7%9A%84TensorFlow/</loc>
@@ -377,15 +377,11 @@
     <lastmod>2018-11-20</lastmod>
   </url>
   <url>
+    <loc>https://lzqblog.top/2018-05-02/Linux%E9%85%8D%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%A3%B0%E5%8D%A1/</loc>
+    <lastmod>2018-11-20</lastmod>
+  </url>
+  <url>
     <loc>https://lzqblog.top/2018-11-14/Issue-No-such-file-or-directory/</loc>
-    <lastmod>2018-11-20</lastmod>
-  </url>
-  <url>
-    <loc>https://lzqblog.top/2018-04-02/Ubuntu%E5%88%87%E6%8D%A2python%E7%89%88%E6%9C%AC/</loc>
-    <lastmod>2018-11-20</lastmod>
-  </url>
-  <url>
-    <loc>https://lzqblog.top/2018-11-08/Cross-compile-gRPC-for-ARM/</loc>
     <lastmod>2018-11-20</lastmod>
   </url>
   <url>
@@ -398,6 +394,14 @@
   </url>
   <url>
     <loc>https://lzqblog.top/2018-06-05/makefile-summarize/</loc>
+    <lastmod>2018-11-20</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2018-11-08/Cross-compile-gRPC-for-ARM/</loc>
+    <lastmod>2018-11-20</lastmod>
+  </url>
+  <url>
+    <loc>https://lzqblog.top/2018-04-02/Ubuntu%E5%88%87%E6%8D%A2python%E7%89%88%E6%9C%AC/</loc>
     <lastmod>2018-11-20</lastmod>
   </url>
 </urlset> 
