@@ -32,7 +32,7 @@
 <meta property="og:site_name" content="Coding Spirit">
 <meta property="og:description" content="…">
 <meta property="article:published_time" content="2018-10-21T08:20:36.000Z">
-<meta property="article:modified_time" content="2019-11-23T07:58:57.866Z">
+<meta property="article:modified_time" content="2020-08-29T12:34:28.170Z">
 <meta property="article:author" content="Coding Spirit">
 <meta property="article:tag" content="日志">
 <meta name="twitter:card" content="summary">
@@ -236,7 +236,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-23 15:58:57" itemprop="dateModified" datetime="2019-11-23T15:58:57+08:00">2019-11-23</time>
+                <time title="Modified: 2020-08-29 20:34:28" itemprop="dateModified" datetime="2020-08-29T20:34:28+08:00">2020-08-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -261,7 +261,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>577</span>
+              <span>737</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -303,6 +303,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">repo forall -vc <span class="string">"git cmd"</span></span><br></pre></td></tr></table></figure>
 <p>i.e.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">repo forall -vc <span class="string">"git reset --hard"</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="使用指定private-key"><a href="#使用指定private-key" class="headerlink" title="使用指定private key"></a>使用指定private key</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GIT_SSH_COMMAND&#x3D;&#39;ssh -i private_key.pem -o IdentitiesOnly&#x3D;yes&#39; git clone git@github.com:codingspirit&#x2F;iotlab-kvs-jenkins-build.git</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -405,7 +407,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#全局配置用户名和邮箱"><span class="nav-number">1.</span> <span class="nav-text">全局配置用户名和邮箱:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssh密钥生成"><span class="nav-number">2.</span> <span class="nav-text">ssh密钥生成:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#储存https-http方式用户名密码"><span class="nav-number">3.</span> <span class="nav-text">储存https&#x2F;http方式用户名密码:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加tag并推送到远端"><span class="nav-number">4.</span> <span class="nav-text">添加tag并推送到远端:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改一个https仓库为ssh仓库："><span class="nav-number">5.</span> <span class="nav-text">更改一个https仓库为ssh仓库：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除remotes-origin-branch"><span class="nav-number">6.</span> <span class="nav-text">删除remotes&#x2F;origin&#x2F;{branch}</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#repo-操作"><span class="nav-number">7.</span> <span class="nav-text">repo 操作</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#全局配置用户名和邮箱"><span class="nav-number">1.</span> <span class="nav-text">全局配置用户名和邮箱:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssh密钥生成"><span class="nav-number">2.</span> <span class="nav-text">ssh密钥生成:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#储存https-http方式用户名密码"><span class="nav-number">3.</span> <span class="nav-text">储存https&#x2F;http方式用户名密码:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加tag并推送到远端"><span class="nav-number">4.</span> <span class="nav-text">添加tag并推送到远端:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改一个https仓库为ssh仓库："><span class="nav-number">5.</span> <span class="nav-text">更改一个https仓库为ssh仓库：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除remotes-origin-branch"><span class="nav-number">6.</span> <span class="nav-text">删除remotes&#x2F;origin&#x2F;{branch}</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#repo-操作"><span class="nav-number">7.</span> <span class="nav-text">repo 操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用指定private-key"><span class="nav-number">8.</span> <span class="nav-text">使用指定private key</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -492,7 +494,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">3:08</span>
+    <span title="Reading time total">3:09</span>
 </div>
 
         

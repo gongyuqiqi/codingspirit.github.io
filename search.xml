@@ -2444,6 +2444,8 @@ cond(yes,down)->e</textarea><textarea id="flowchart-0-options" style="display: n
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">repo forall -vc <span class="string">"git cmd"</span></span><br></pre></td></tr></table></figure>
 <p>i.e.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">repo forall -vc <span class="string">"git reset --hard"</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="使用指定private-key"><a href="#使用指定private-key" class="headerlink" title="使用指定private key"></a>使用指定private key</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GIT_SSH_COMMAND&#x3D;&#39;ssh -i private_key.pem -o IdentitiesOnly&#x3D;yes&#39; git clone git@github.com:codingspirit&#x2F;iotlab-kvs-jenkins-build.git</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>随便写写</category>

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://lzqblog.top/2018-10-21/git-command%E5%A4%87%E5%BF%98%E5%BD%95/</loc>
+    <lastmod>2020-08-29</lastmod>
+  </url>
+  <url>
     <loc>https://lzqblog.top/2020-08-26/SSL-certificate-problem-unable-to-get-local-issuer-certificate/</loc>
     <lastmod>2020-08-26</lastmod>
   </url>
@@ -171,10 +175,6 @@
   <url>
     <loc>https://lzqblog.top/2019-11-30/Yocto-devtool/</loc>
     <lastmod>2019-11-30</lastmod>
-  </url>
-  <url>
-    <loc>https://lzqblog.top/2018-10-21/git-command%E5%A4%87%E5%BF%98%E5%BD%95/</loc>
-    <lastmod>2019-11-23</lastmod>
   </url>
   <url>
     <loc>https://lzqblog.top/2019-11-16/Install-JDK-JRE-for-Ubuntu/</loc>
