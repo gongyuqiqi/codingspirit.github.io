@@ -57,3 +57,9 @@ i.e.
 ```bash
 repo forall -vc "git reset --hard"
 ```
+
+## 使用指定private key
+
+```
+GIT_SSH_COMMAND='ssh -i private_key.pem -o IdentitiesOnly=yes' git clone git@github.com:codingspirit/iotlab-kvs-jenkins-build.git
+```
