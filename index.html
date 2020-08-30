@@ -202,6 +202,92 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://lzqblog.top/2020-08-30/GitHub-REST-API-v3-Use-Curl-To-Upload-Artifacts-To-Release/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/assets/img/coding_spirit.jpg">
+      <meta itemprop="name" content="Coding Spirit">
+      <meta itemprop="description" content="毕业于OUC，现就职于Amazon">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Spirit">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020-08-30/GitHub-REST-API-v3-Use-Curl-To-Upload-Artifacts-To-Release/" class="post-title-link" itemprop="url">GitHub REST API v3: Use Curl To Upload Artifact To Release</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-08-30 09:01:17 / Modified: 10:29:37" itemprop="dateCreated datePublished" datetime="2020-08-30T09:01:17+08:00">2020-08-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9A%8F%E4%BE%BF%E5%86%99%E5%86%99/" itemprop="url" rel="index"><span itemprop="name">随便写写</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>715</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <a id="more"></a>
+
+<h2 id="With-OAuth2-Token-Authentication"><a href="#With-OAuth2-Token-Authentication" class="headerlink" title="With OAuth2 Token Authentication"></a>With OAuth2 Token Authentication</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -H <span class="string">"Authorization: token &lt;OAUTH-TOKEN&gt;"</span> https://api.github.com</span><br></pre></td></tr></table></figure>
+
+<h2 id="Create-A-Release-And-Add-An-Artifact"><a href="#Create-A-Release-And-Add-An-Artifact" class="headerlink" title="Create A Release And Add An Artifact"></a>Create A Release And Add An Artifact</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create a new release and get upload url</span></span><br><span class="line">upload_url=$(curl -s -H <span class="string">"Authorization: token <span class="variable">$TOKEN</span>"</span>  \</span><br><span class="line">     -d <span class="string">'&#123;"tag_name":"'</span><span class="string">"<span class="variable">$ARTIFACTS_BASE_NAME</span>"</span><span class="string">'", "name":"'</span><span class="string">"<span class="variable">$ARTIFACTS_BASE_NAME</span>"</span><span class="string">'", "body":"'</span><span class="string">"<span class="variable">$ARTIFACTS_BASE_NAME</span>"</span><span class="string">'", "target_commitish":"'</span><span class="string">"<span class="variable">$TARGET_BRANCH</span>"</span><span class="string">'"&#125;'</span>  \</span><br><span class="line">     <span class="string">"https://api.github.com/repos/<span class="variable">$REPO</span>/<span class="variable">$TARGET_BRANCH</span>"</span> | jq -r <span class="string">'.upload_url'</span>)</span><br><span class="line"></span><br><span class="line">upload_url=<span class="string">"<span class="variable">$&#123;upload_url%\&#123;*&#125;</span>"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Upload a tarball</span></span><br><span class="line">curl -s -H <span class="string">"Authorization: token <span class="variable">$TOKEN</span>"</span>  \</span><br><span class="line">            -H <span class="string">"Content-Type: application/x-gzip"</span> \</span><br><span class="line">            --data-binary @<span class="variable">$ARTIFACTS_BASE_NAME</span>.tar.gz  \</span><br><span class="line">            <span class="string">"<span class="variable">$upload_url</span>?name=<span class="variable">$ARTIFACTS_BASE_NAME</span>.tar.gz&amp;label=<span class="variable">$ARTIFACTS_BASE_NAME</span>.tar.gz"</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="https://lzqblog.top/2020-08-26/SSL-certificate-problem-unable-to-get-local-issuer-certificate/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -999,95 +1085,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://lzqblog.top/2020-04-13/AWS-IoT-Getting-Started-MQTT-sample/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/assets/img/coding_spirit.jpg">
-      <meta itemprop="name" content="Coding Spirit">
-      <meta itemprop="description" content="毕业于OUC，现就职于Amazon">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Coding Spirit">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020-04-13/AWS-IoT-Getting-Started-MQTT-sample/" class="post-title-link" itemprop="url">AWS IoT Getting Started: MQTT sample</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-04-13 14:40:37 / Modified: 17:09:38" itemprop="dateCreated datePublished" datetime="2020-04-13T14:40:37+08:00">2020-04-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/IoT/" itemprop="url" rel="index"><span itemprop="name">IoT</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>2.2k</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>2 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>AWS IoT Getting Started: MQTT sample</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020-04-13/AWS-IoT-Getting-Started-MQTT-sample/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1159,7 +1156,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-count">102</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1225,7 +1222,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">207k</span>
+    <span title="Symbols count total">208k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>

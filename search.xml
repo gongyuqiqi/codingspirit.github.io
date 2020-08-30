@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>GitHub REST API v3: Use Curl To Upload Artifact To Release</title>
+    <url>/2020-08-30/GitHub-REST-API-v3-Use-Curl-To-Upload-Artifacts-To-Release/</url>
+    <content><![CDATA[<a id="more"></a>
+
+<h2 id="With-OAuth2-Token-Authentication"><a href="#With-OAuth2-Token-Authentication" class="headerlink" title="With OAuth2 Token Authentication"></a>With OAuth2 Token Authentication</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">curl -H <span class="string">"Authorization: token &lt;OAUTH-TOKEN&gt;"</span> https://api.github.com</span><br></pre></td></tr></table></figure>
+
+<h2 id="Create-A-Release-And-Add-An-Artifact"><a href="#Create-A-Release-And-Add-An-Artifact" class="headerlink" title="Create A Release And Add An Artifact"></a>Create A Release And Add An Artifact</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Create a new release and get upload url</span></span><br><span class="line">upload_url=$(curl -s -H <span class="string">"Authorization: token <span class="variable">$TOKEN</span>"</span>  \</span><br><span class="line">     -d <span class="string">'&#123;"tag_name":"'</span><span class="string">"<span class="variable">$ARTIFACTS_BASE_NAME</span>"</span><span class="string">'", "name":"'</span><span class="string">"<span class="variable">$ARTIFACTS_BASE_NAME</span>"</span><span class="string">'", "body":"'</span><span class="string">"<span class="variable">$ARTIFACTS_BASE_NAME</span>"</span><span class="string">'", "target_commitish":"'</span><span class="string">"<span class="variable">$TARGET_BRANCH</span>"</span><span class="string">'"&#125;'</span>  \</span><br><span class="line">     <span class="string">"https://api.github.com/repos/<span class="variable">$REPO</span>/<span class="variable">$TARGET_BRANCH</span>"</span> | jq -r <span class="string">'.upload_url'</span>)</span><br><span class="line"></span><br><span class="line">upload_url=<span class="string">"<span class="variable">$&#123;upload_url%\&#123;*&#125;</span>"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Upload a tarball</span></span><br><span class="line">curl -s -H <span class="string">"Authorization: token <span class="variable">$TOKEN</span>"</span>  \</span><br><span class="line">            -H <span class="string">"Content-Type: application/x-gzip"</span> \</span><br><span class="line">            --data-binary @<span class="variable">$ARTIFACTS_BASE_NAME</span>.tar.gz  \</span><br><span class="line">            <span class="string">"<span class="variable">$upload_url</span>?name=<span class="variable">$ARTIFACTS_BASE_NAME</span>.tar.gz&amp;label=<span class="variable">$ARTIFACTS_BASE_NAME</span>.tar.gz"</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>随便写写</category>
+      </categories>
+      <tags>
+        <tag>日志</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SSL certificate problem: unable to get local issuer certificate</title>
     <url>/2020-08-26/SSL-certificate-problem-unable-to-get-local-issuer-certificate/</url>
     <content><![CDATA[<p>Yesterday successfully cross compiled curl with mbedTLS, but there was an error when trying to access a https link:</p>

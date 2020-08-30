@@ -25,16 +25,19 @@
     var CONFIG = {"hostname":"lzqblog.top","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="毕业于OUC，现就职于Amazon">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Coding Spirit">
-<meta property="og:url" content="https://lzqblog.top/tags/%E6%97%A5%E5%BF%97/page/2/index.html">
+  <meta name="description" content="With OAuth2 Token Authentication1curl -H &quot;Authorization: token &lt;OAUTH-TOKEN&gt;&quot; https:&#x2F;&#x2F;api.github.com  Create A Release And Add An Artifact123456789101112# Create a new release and get upload u">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GitHub REST API v3: Use Curl To Upload Artifact To Release">
+<meta property="og:url" content="https://lzqblog.top/2020-08-30/GitHub-REST-API-v3-Use-Curl-To-Upload-Artifacts-To-Release/index.html">
 <meta property="og:site_name" content="Coding Spirit">
-<meta property="og:description" content="毕业于OUC，现就职于Amazon">
+<meta property="og:description" content="With OAuth2 Token Authentication1curl -H &quot;Authorization: token &lt;OAUTH-TOKEN&gt;&quot; https:&#x2F;&#x2F;api.github.com  Create A Release And Add An Artifact123456789101112# Create a new release and get upload u">
+<meta property="article:published_time" content="2020-08-30T01:01:17.000Z">
+<meta property="article:modified_time" content="2020-08-30T02:29:37.051Z">
 <meta property="article:author" content="Coding Spirit">
+<meta property="article:tag" content="日志">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://lzqblog.top/tags/%E6%97%A5%E5%BF%97/page/2/">
+<link rel="canonical" href="https://lzqblog.top/2020-08-30/GitHub-REST-API-v3-Use-Curl-To-Upload-Artifacts-To-Release/">
 
 
 <script id="page-configurations">
@@ -42,12 +45,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-Hans'
   };
 </script>
 
-  <title>Tag: 日志 | Coding Spirit</title>
+  <title>GitHub REST API v3: Use Curl To Upload Artifact To Release | Coding Spirit</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154617667-1"></script>
     <script>
@@ -196,123 +199,139 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">日志
-          <small>Tag</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://lzqblog.top/2020-08-30/GitHub-REST-API-v3-Use-Curl-To-Upload-Artifacts-To-Release/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/assets/img/coding_spirit.jpg">
+      <meta itemprop="name" content="Coding Spirit">
+      <meta itemprop="description" content="毕业于OUC，现就职于Amazon">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Spirit">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          GitHub REST API v3: Use Curl To Upload Artifact To Release
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-08-30 09:01:17 / Modified: 10:29:37" itemprop="dateCreated datePublished" datetime="2020-08-30T09:01:17+08:00">2020-08-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9A%8F%E4%BE%BF%E5%86%99%E5%86%99/" itemprop="url" rel="index"><span itemprop="name">随便写写</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>715</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2018</span>
-    </div>
+        <a id="more"></a>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+<h2 id="With-OAuth2-Token-Authentication"><a href="#With-OAuth2-Token-Authentication" class="headerlink" title="With OAuth2 Token Authentication"></a>With OAuth2 Token Authentication</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -H <span class="string">"Authorization: token &lt;OAUTH-TOKEN&gt;"</span> https://api.github.com</span><br></pre></td></tr></table></figure>
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-06-11T14:46:02+08:00"
-              content="2018-06-11">
-          06-11
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2018-06-11/%E7%8E%B0%E5%9C%A8%E6%94%AF%E6%8C%81HTTPS%E5%95%A6/" itemprop="url">
-            <span itemprop="name">现在支持HTTPS啦</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-02-09T15:42:29+08:00"
-              content="2018-02-09">
-          02-09
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2018-02-09/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4/" itemprop="url">
-            <span itemprop="name">常用命令行字符串操作指令</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-01-09T14:10:14+08:00"
-              content="2018-01-09">
-          01-09
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2018-01-09/Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" itemprop="url">
-            <span itemprop="name">Docker常用命令</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-    <div class="collection-year">
-      <span class="collection-header">2017</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2017-10-31T20:48:07+08:00"
-              content="2017-10-31">
-          10-31
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2017-10-31/Welcome/" itemprop="url">
-            <span itemprop="name">Welcome</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
+<h2 id="Create-A-Release-And-Add-An-Artifact"><a href="#Create-A-Release-And-Add-An-Artifact" class="headerlink" title="Create A Release And Add An Artifact"></a>Create A Release And Add An Artifact</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create a new release and get upload url</span></span><br><span class="line">upload_url=$(curl -s -H <span class="string">"Authorization: token <span class="variable">$TOKEN</span>"</span>  \</span><br><span class="line">     -d <span class="string">'&#123;"tag_name":"'</span><span class="string">"<span class="variable">$ARTIFACTS_BASE_NAME</span>"</span><span class="string">'", "name":"'</span><span class="string">"<span class="variable">$ARTIFACTS_BASE_NAME</span>"</span><span class="string">'", "body":"'</span><span class="string">"<span class="variable">$ARTIFACTS_BASE_NAME</span>"</span><span class="string">'", "target_commitish":"'</span><span class="string">"<span class="variable">$TARGET_BRANCH</span>"</span><span class="string">'"&#125;'</span>  \</span><br><span class="line">     <span class="string">"https://api.github.com/repos/<span class="variable">$REPO</span>/<span class="variable">$TARGET_BRANCH</span>"</span> | jq -r <span class="string">'.upload_url'</span>)</span><br><span class="line"></span><br><span class="line">upload_url=<span class="string">"<span class="variable">$&#123;upload_url%\&#123;*&#125;</span>"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Upload a tarball</span></span><br><span class="line">curl -s -H <span class="string">"Authorization: token <span class="variable">$TOKEN</span>"</span>  \</span><br><span class="line">            -H <span class="string">"Content-Type: application/x-gzip"</span> \</span><br><span class="line">            --data-binary @<span class="variable">$ARTIFACTS_BASE_NAME</span>.tar.gz  \</span><br><span class="line">            <span class="string">"<span class="variable">$upload_url</span>?name=<span class="variable">$ARTIFACTS_BASE_NAME</span>.tar.gz&amp;label=<span class="variable">$ARTIFACTS_BASE_NAME</span>.tar.gz"</span></span><br></pre></td></tr></table></figure>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Coding Spirit
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://lzqblog.top/2020-08-30/GitHub-REST-API-v3-Use-Curl-To-Upload-Artifacts-To-Release/" title="GitHub REST API v3: Use Curl To Upload Artifact To Release">https://lzqblog.top/2020-08-30/GitHub-REST-API-v3-Use-Curl-To-Upload-Artifacts-To-Release/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%97%A5%E5%BF%97/" rel="tag"><i class="fa fa-tag"></i> 日志</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020-08-26/SSL-certificate-problem-unable-to-get-local-issuer-certificate/" rel="prev" title="SSL certificate problem: unable to get local issuer certificate">
+      <i class="fa fa-chevron-left"></i> SSL certificate problem: unable to get local issuer certificate
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
   
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/tags/%E6%97%A5%E5%BF%97/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/tags/%E6%97%A5%E5%BF%97/">1</a><span class="page-number current">2</span>
-  </nav>
+  
+  
 
 
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -359,6 +378,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#With-OAuth2-Token-Authentication"><span class="nav-number">1.</span> <span class="nav-text">With OAuth2 Token Authentication</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-A-Release-And-Add-An-Artifact"><span class="nav-number">2.</span> <span class="nav-text">Create A Release And Add An Artifact</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -550,6 +570,25 @@
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '965ca656ae3d59a50b73',
+      clientSecret: '94dbe9c760ce8b778c84481a7fe2f37f548d7375',
+      repo        : 'blog-gitalk',
+      owner       : 'codingspirit',
+      admin       : ['codingspirit'],
+      id          : '2eecd3fd0ec7069d16adb81b4a53de73',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
   
