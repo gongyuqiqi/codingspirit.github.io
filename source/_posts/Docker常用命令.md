@@ -81,3 +81,9 @@ Remove unused data to free disk space <br> 删除未使用的数据以释放磁�
 ```bash
 docker system prune
 ```
+
+## Docker build without cache
+
+```bash
+docker build --no-cache .
+```
