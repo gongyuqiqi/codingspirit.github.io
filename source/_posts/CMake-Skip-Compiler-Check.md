@@ -7,7 +7,7 @@ date: 2020-09-13 08:08:38
 categories: 编程相关
 ---
 
-CMake will try to check compiler is working or not if project languages was set to C/CXX. However, sometimes we just want to skip this test...
+CMake will try to check compiler is working or not if project language was set to C/CXX. However, sometimes we just want to skip this test...
 
 <!--more-->
 
