@@ -25,14 +25,14 @@
     var CONFIG = {"hostname":"lzqblog.top","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="CMake will try to check compiler is working or not if project languages was set to C&#x2F;CXX. However, sometimes we just want to skip this test…">
+  <meta name="description" content="CMake will try to check compiler is working or not if project language was set to C&#x2F;CXX. However, sometimes we just want to skip this test…">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CMake: Skip Compiler Check">
 <meta property="og:url" content="https://lzqblog.top/2020-09-13/CMake-Skip-Compiler-Check/index.html">
 <meta property="og:site_name" content="Coding Spirit">
-<meta property="og:description" content="CMake will try to check compiler is working or not if project languages was set to C&#x2F;CXX. However, sometimes we just want to skip this test…">
+<meta property="og:description" content="CMake will try to check compiler is working or not if project language was set to C&#x2F;CXX. However, sometimes we just want to skip this test…">
 <meta property="article:published_time" content="2020-09-13T00:08:38.000Z">
-<meta property="article:modified_time" content="2020-09-13T00:27:30.524Z">
+<meta property="article:modified_time" content="2020-09-13T00:53:45.909Z">
 <meta property="article:author" content="Coding Spirit">
 <meta property="article:tag" content="cmake">
 <meta name="twitter:card" content="summary">
@@ -230,7 +230,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-09-13 08:08:38 / Modified: 08:27:30" itemprop="dateCreated datePublished" datetime="2020-09-13T08:08:38+08:00">2020-09-13</time>
+              <time title="Created: 2020-09-13 08:08:38 / Modified: 08:53:45" itemprop="dateCreated datePublished" datetime="2020-09-13T08:08:38+08:00">2020-09-13</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -255,7 +255,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>282</span>
+              <span>281</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -274,7 +274,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>CMake will try to check compiler is working or not if project languages was set to C/CXX. However, sometimes we just want to skip this test…</p>
+        <p>CMake will try to check compiler is working or not if project language was set to C/CXX. However, sometimes we just want to skip this test…</p>
 <a id="more"></a>
 
 <h1 id="Solution-1-Manually-Set-COMPILER-WORKS-Flag"><a href="#Solution-1-Manually-Set-COMPILER-WORKS-Flag" class="headerlink" title="Solution 1: Manually Set COMPILER_WORKS Flag"></a>Solution 1: Manually Set COMPILER_WORKS Flag</h1><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span>(CMAKE_C_COMPILER_WORKS <span class="number">1</span>)</span><br><span class="line"><span class="keyword">set</span>(CMAKE_CXX_COMPILER_WORKS <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
