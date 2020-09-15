@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Jenkins (I): Install Jenkins On Ubuntu 18.04/20.04</title>
+    <url>/2020-09-15/Jenkins-I-Install-Jenkins-On-Ubuntu-18-04-20-04/</url>
+    <content><![CDATA[<p>…</p>
+<a id="more"></a>
+
+<h1 id="Jenkins-Install-Jenkins-On-Ubuntu-18-04-20-04"><a href="#Jenkins-Install-Jenkins-On-Ubuntu-18-04-20-04" class="headerlink" title="Jenkins: Install Jenkins On Ubuntu 18.04/20.04"></a>Jenkins: Install Jenkins On Ubuntu 18.04/20.04</h1><h2 id="Install-Java"><a href="#Install-Java" class="headerlink" title="Install Java"></a>Install Java</h2><p>Jenkins requires java in order to run:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install openjdk-11-jdk</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Note: In current release, Jenkins only supports Java 8/11. For more information, check <a href="https://www.jenkins.io/doc/administration/requirements/java/" target="_blank" rel="noopener">Java requirements</a></p>
+</blockquote>
+<h2 id="Install-Jenkins-LTS-Release-By-apt"><a href="#Install-Jenkins-LTS-Release-By-apt" class="headerlink" title="Install Jenkins LTS Release By apt"></a>Install Jenkins LTS Release By apt</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -</span><br><span class="line">sudo sh -c <span class="string">'echo deb https://pkg.jenkins.io/debian-stable binary/ &gt; \</span></span><br><span class="line"><span class="string">    /etc/apt/sources.list.d/jenkins.list'</span></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install jenkins</span><br></pre></td></tr></table></figure>
+
+<h2 id="Start-Jenkins"><a href="#Start-Jenkins" class="headerlink" title="Start Jenkins"></a>Start Jenkins</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl start jenkins</span><br></pre></td></tr></table></figure>
+
+<p>If Jenkins is up and running, you could see similar log at <code>/var/log/jenkins/jenkins.log</code>:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2020-09-15 20:14:14.384+0000 [id&#x3D;21]	INFO	hudson.WebAppMain$3#run: Jenkins is fully up and running</span><br></pre></td></tr></table></figure>
+
+<h2 id="Unlock-Jenkins"><a href="#Unlock-Jenkins" class="headerlink" title="Unlock Jenkins"></a>Unlock Jenkins</h2><p>Use browser to access <code>http://&lt;your-jenkins-ip&gt;:8080</code>:</p>
+<p><img src="/2020-09-15/Jenkins-I-Install-Jenkins-On-Ubuntu-18-04-20-04/unlock-jenkins-page.jpg" alt></p>
+<p>Get the <code>initialAdminPassword</code> by <code>sudo cat /var/lib/jenkins/secrets/initialAdminPassword</code>, or find it in <code>/var/log/jenkins/jenkins.log</code>.</p>
+]]></content>
+      <categories>
+        <category>CI</category>
+      </categories>
+      <tags>
+        <tag>Continuous Integration</tag>
+        <tag>Jenkins</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CMake: Skip Compiler Check</title>
     <url>/2020-09-13/CMake-Skip-Compiler-Check/</url>
     <content><![CDATA[<p>CMake will try to check compiler is working or not if project language was set to C/CXX. However, sometimes we just want to skip this test…</p>
