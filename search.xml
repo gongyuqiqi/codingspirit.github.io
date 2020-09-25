@@ -6,7 +6,7 @@
     <content><![CDATA[<p>Jenkins is running on port 8080 by default, thus user need to manually add <strong>:8080</strong> when access Jenkins. If we make it running on port 80(default http port), user will no longer need to type port number manually.</p>
 <a id="more"></a>
 
-<h2 id="Open-ports-and-forwarding"><a href="#Open-ports-and-forwarding" class="headerlink" title="Open ports and forwarding"></a>Open ports and forwarding</h2><p>First of all we need to make sure that port 8080/80 and 8443/433 has been opened. To check, use <code>sudo iptalbes -L -n</code>. If those ports are not opened to tcp, use following commands to add rules:</p>
+<h2 id="Open-ports-and-forwarding"><a href="#Open-ports-and-forwarding" class="headerlink" title="Open ports and forwarding"></a>Open ports and forwarding</h2><p>First of all we need to make sure that ports 8080/80 and 8443/433 have been opened. To check, use <code>sudo iptalbes -L -n</code>. If those ports are not opened to tcp, use following commands to add rules:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo iptables -I INPUT 1 -p tcp --dport 8443 -j ACCEPT</span><br><span class="line">sudo iptables -I INPUT 1 -p tcp --dport 8080 -j ACCEPT</span><br><span class="line">sudo iptables -I INPUT 1 -p tcp --dport 443 -j ACCEPT</span><br><span class="line">sudo iptables -I INPUT 1 -p tcp --dport 80 -j ACCEPT</span><br></pre></td></tr></table></figure>
 
 <p>Then forward 8080 to 80 and 8443 to 443:</p>

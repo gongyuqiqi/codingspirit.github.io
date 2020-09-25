@@ -32,7 +32,7 @@
 <meta property="og:site_name" content="Coding Spirit">
 <meta property="og:description" content="Jenkins is running on port 8080 by default, thus user need to manually add :8080 when access Jenkins. If we make it running on port 80(default http port), user will no longer need to type port number">
 <meta property="article:published_time" content="2020-09-15T12:40:21.000Z">
-<meta property="article:modified_time" content="2020-09-20T02:37:03.815Z">
+<meta property="article:modified_time" content="2020-09-25T12:01:10.999Z">
 <meta property="article:author" content="Coding Spirit">
 <meta property="article:tag" content="Continuous Integration">
 <meta property="article:tag" content="Jenkins">
@@ -237,7 +237,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-20 10:37:03" itemprop="dateModified" datetime="2020-09-20T10:37:03+08:00">2020-09-20</time>
+                <time title="Modified: 2020-09-25 20:01:10" itemprop="dateModified" datetime="2020-09-25T20:01:10+08:00">2020-09-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -262,7 +262,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>996</span>
+              <span>998</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -284,7 +284,7 @@
         <p>Jenkins is running on port 8080 by default, thus user need to manually add <strong>:8080</strong> when access Jenkins. If we make it running on port 80(default http port), user will no longer need to type port number manually.</p>
 <a id="more"></a>
 
-<h2 id="Open-ports-and-forwarding"><a href="#Open-ports-and-forwarding" class="headerlink" title="Open ports and forwarding"></a>Open ports and forwarding</h2><p>First of all we need to make sure that port 8080/80 and 8443/433 has been opened. To check, use <code>sudo iptalbes -L -n</code>. If those ports are not opened to tcp, use following commands to add rules:</p>
+<h2 id="Open-ports-and-forwarding"><a href="#Open-ports-and-forwarding" class="headerlink" title="Open ports and forwarding"></a>Open ports and forwarding</h2><p>First of all we need to make sure that ports 8080/80 and 8443/433 have been opened. To check, use <code>sudo iptalbes -L -n</code>. If those ports are not opened to tcp, use following commands to add rules:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo iptables -I INPUT 1 -p tcp --dport 8443 -j ACCEPT</span><br><span class="line">sudo iptables -I INPUT 1 -p tcp --dport 8080 -j ACCEPT</span><br><span class="line">sudo iptables -I INPUT 1 -p tcp --dport 443 -j ACCEPT</span><br><span class="line">sudo iptables -I INPUT 1 -p tcp --dport 80 -j ACCEPT</span><br></pre></td></tr></table></figure>
 
 <p>Then forward 8080 to 80 and 8443 to 443:</p>
