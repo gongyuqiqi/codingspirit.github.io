@@ -820,7 +820,7 @@
 
 <p>把<code>enable</code>改成<code>true</code>就好啦～ </p>
 <blockquote>
-<p>注意～<code>hexo s</code>时显示的是随机值，只有当部署到淇淇的<a href="gyqgyq.com">gyqgyq.com</a>的时候，才会真正生效哦～因为这个统计是基于域名的呢</p>
+<p>注意～<code>hexo s</code>时显示的是随机值，只有当部署到淇淇的<a href="http://gyqgyq.com" target="_blank" rel="noopener">gyqgyq.com</a>的时候，才会真正生效哦～因为这个统计是基于域名的呢</p>
 </blockquote>
 <p>好啦～ 今天先到这里～ 今天(2020/09/26)我们在一起8个月啦～而且我马上就要见到我的小可爱啦🥳<br>(说起来还是有一点点紧张呢)</p>
 <p>7月份以来，我的淇淇有时候心情会不太好，不过不要担心，我一直都在呢</p>
