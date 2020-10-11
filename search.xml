@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Run tshark/wireshark In Docker</title>
+    <url>/2020-10-11/Run-tshark-wireshark-In-Docker/</url>
+    <content><![CDATA[<p>Last week when I was trying to run tshark in a Docker container to capture http packets, tshark reported following error even with root user:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tshark: Couldn&#39;t run &#x2F;usr&#x2F;bin&#x2F;dumpcap in child process: Operation not permitted</span><br></pre></td></tr></table></figure>
+
+<p>After searching, to access dumcap, we need to add <code>--cap-add</code> options when start container, then add user into <strong>wireshark</strong> group:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --<span class="built_in">cap</span>-add=NET_RAW --<span class="built_in">cap</span>-add=NET_ADMIN <span class="variable">$IMAGE</span></span><br><span class="line">usermod -a -G wireshark <span class="variable">$USER</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>问题记录</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Jenkins (II): Configure Jenkins To Run On Port 80</title>
     <url>/2020-09-15/Jenkins-II-Configure-Jenkins-To-Run-On-Port-80/</url>
     <content><![CDATA[<p>Jenkins is running on port 8080 by default, thus user need to manually add <strong>:8080</strong> when access Jenkins. If we make it running on port 80(default http port), user will no longer need to type port number manually.</p>
@@ -2897,7 +2913,7 @@ cond(yes,down)->e</textarea><textarea id="flowchart-0-options" style="display: n
         <category>随便写写</category>
       </categories>
       <tags>
-        <tag>日志</tag>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
