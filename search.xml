@@ -3290,4 +3290,28 @@ Set <strong>MACHINE</strong> to other variable if you are not using i.MX8 Mini E
         <tag>C++</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Algorithm Puzzles: Symmetric Tree</title>
+    <url>/2020-10-25/Algorithm-Puzzles-Symmetric-Tree/</url>
+    <content><![CDATA[<p>Algorithm Puzzles <del>everyday</del> <del>every week</del> sometimes: Symmetric Tree</p>
+<a id="more"></a>
+
+<h2 id="Puzzle"><a href="#Puzzle" class="headerlink" title="Puzzle"></a>Puzzle</h2><p>Puzzle from <a href="https://leetcode.com" target="_blank" rel="noopener">leetcode</a>:</p>
+<p>Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).</p>
+<p>For example, this binary tree [1,2,2,3,4,4,3] is symmetric:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    1</span><br><span class="line">   &#x2F; \</span><br><span class="line">  2   2</span><br><span class="line"> &#x2F; \ &#x2F; \</span><br><span class="line">3  4 4  3</span><br></pre></td></tr></table></figure>
+
+<p>But the following [1,2,2,null,3,null,3] is not:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  1</span><br><span class="line"> &#x2F; \</span><br><span class="line">2   2</span><br><span class="line"> \   \</span><br><span class="line"> 3    3</span><br></pre></td></tr></table></figure>
+
+<h2 id="Solving"><a href="#Solving" class="headerlink" title="Solving"></a>Solving</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isSymmetric</span><span class="params">(<span class="keyword">const</span> TreeNode* <span class="keyword">const</span> root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> isSubTreeSymmetric(root-&gt;left, root-&gt;right);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isSubTreeSymmetric</span><span class="params">(<span class="keyword">const</span> TreeNode* <span class="keyword">const</span> r, <span class="keyword">const</span> TreeNode* <span class="keyword">const</span> l)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (r == l) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (r == <span class="literal">nullptr</span> || l == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> (r-&gt;val == l-&gt;val) &amp;&amp; isSubTreeSymmetric(r-&gt;right, l-&gt;left) &amp;&amp;</span><br><span class="line">               isSubTreeSymmetric(r-&gt;left, l-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法题解</category>
+      </categories>
+      <tags>
+        <tag>Algorithm</tag>
+        <tag>C++</tag>
+      </tags>
+  </entry>
 </search>
