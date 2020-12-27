@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>CMake: Toolchain File</title>
+    <url>/2020-12-27/CMake-Toolchain-File/</url>
+    <content><![CDATA[<p>When we have a build system like Yocto or Buildroot, cross compiling a CMake project is a simple task - We just need to create a simple CMake inherited recipe. If the SoC vendor only provides toolchain for you to cross compile a single CMake project, CMake toolchain file is a good approach.</p>
+<a id="more"></a>
+
+<h2 id="What-is-CMake-Toolchain-File"><a href="#What-is-CMake-Toolchain-File" class="headerlink" title="What is CMake Toolchain File"></a>What is CMake Toolchain File</h2><p>CMake has a variable <a href="https://cmake.org/cmake/help/latest/variable/CMAKE_TOOLCHAIN_FILE.html?highlight=cmake_toolchain_file#variable:CMAKE_TOOLCHAIN_FILE" target="_blank" rel="noopener"><code>CMAKE_TOOLCHAIN_FILE</code></a>:</p>
+<blockquote>
+<p>This variable is specified on the command line when cross-compiling with CMake. It is the path to a file which is read early in the CMake run and which specifies locations for compilers and toolchain utilities, and other target platform and compiler related information.</p>
+</blockquote>
+<h2 id="Toolchain-File-Example"><a href="#Toolchain-File-Example" class="headerlink" title="Toolchain File Example"></a>Toolchain File Example</h2><figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span>(CMAKE_SYSTEM_NAME Linux)</span><br><span class="line"><span class="comment"># specify the cross compiler</span></span><br><span class="line"><span class="keyword">SET</span>(CMAKE_C_COMPILER   /toolchain/gcc-linaro-<span class="number">7.3</span>.<span class="number">1</span>-<span class="number">2018.05</span>-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-gcc)</span><br><span class="line"><span class="keyword">SET</span>(CMAKE_CXX_COMPILER /toolchain/gcc-linaro-<span class="number">7.3</span>.<span class="number">1</span>-<span class="number">2018.05</span>-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-g++)</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span>(CMAKE_FIND_ROOT_PATH /toolchain/gcc-linaro-<span class="number">7.3</span>.<span class="number">1</span>-<span class="number">2018.05</span>-x86_64_aarch64-linux-gnu/)</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span>(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)</span><br><span class="line"><span class="keyword">SET</span>(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)</span><br><span class="line"><span class="keyword">SET</span>(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>CMAKE_FIND_ROOT_PATH</code>: This variable tells CMake <code>find_*</code> commands need to look into this sysroot.</li>
+<li><code>CMAKE_FIND_ROOT_PATH_MODE_LIBRARY</code>: This variable controls whether the <code>CMAKE_FIND_ROOT_PATH</code> and <code>CMAKE_SYSROOT</code> are used by <code>find_library()</code>. We set to <code>ONLY</code>, so CMake will <code>find_library</code> under this path only.</li>
+<li><code>CMAKE_FIND_ROOT_PATH_MODE_INCLUDE</code>: This variable controls whether the <code>CMAKE_FIND_ROOT_PATH</code> and <code>CMAKE_SYSROOT</code> are used by <code>find_file()</code> and <code>find_path()</code>. We set to <code>ONLY</code>, so CMake will look into this path only.</li>
+</ul>
+]]></content>
+      <categories>
+        <category>编程相关</category>
+      </categories>
+      <tags>
+        <tag>cmake</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>printf not working?</title>
     <url>/2020-12-14/printf-not-working/</url>
     <content><![CDATA[<p>Sometimes we noticed that <code>printf</code> will only flush after there is a newline in the print string, this behavior is caused by <code>stdout</code> stream buffer, which is line buffered by default. This behavior has been mentioned in ISO C99 standard:</p>
