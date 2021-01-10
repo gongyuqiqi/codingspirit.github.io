@@ -2913,6 +2913,9 @@ cond(yes,down)->e</textarea><textarea id="flowchart-0-options" style="display: n
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$&#123;#sw_version&#125;</span>"</span> = <span class="string">"5"</span> ]; <span class="keyword">then</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
 <p>读取文件某一行：</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">cat url.txt|sed -n <span class="string">'1p'</span></span><br></pre></td></tr></table></figure>
+<p>把字符串中的<code>\n</code>替换为换行:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">eol=$<span class="string">'\n'</span></span><br><span class="line">str=<span class="string">"<span class="variable">$&#123;str//\\n/$eol&#125;</span>"</span></span><br></pre></td></tr></table></figure>
+<p><code>//</code>同样适用于其他替换的场合</p>
 ]]></content>
       <categories>
         <category>随便写写</category>
